@@ -1,49 +1,105 @@
-/*
-	Visualize by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
-*/
+(function () {
+  "use strict";
 
-$(function() {
+  var root = document.documentElement;
+  var header = document.querySelector(".site-header");
+  var themeToggle = document.getElementById("theme-toggle");
+  var navToggle = document.getElementById("nav-toggle");
 
-	// Vars.
-		var	$window = $(window),
-			$body = $('body'),
-			$wrapper = $('#wrapper');
+  // ---- Theme toggle ----
+  function applyTheme(theme) {
+    if (theme === "light" || theme === "dark") {
+      root.setAttribute("data-theme", theme);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    if (themeToggle) {
+      var isDark = theme === "dark" ||
+        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      themeToggle.textContent = isDark ? "Light" : "Dark";
+      themeToggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    }
+  }
 
-	// Breakpoints.
-		skel.breakpoints({
-			xlarge:	'(max-width: 1680px)',
-			large:	'(max-width: 1280px)',
-			medium:	'(max-width: 980px)',
-			small:	'(max-width: 736px)',
-			xsmall:	'(max-width: 480px)'
-		});
+  var stored = null;
+  try { stored = localStorage.getItem("theme"); } catch (e) {}
+  applyTheme(stored);
 
-	// Disable animations/transitions until everything's loaded.
-		$body.addClass('is-loading');
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var current = root.getAttribute("data-theme");
+      var isDark = current === "dark" ||
+        (!current && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      var next = isDark ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
 
-		$window.on('load', function() {
-			$body.removeClass('is-loading');
-		});
+  // ---- Mobile nav ----
+  if (navToggle && header) {
+    navToggle.addEventListener("click", function () {
+      var open = header.classList.toggle("nav-open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.querySelectorAll(".site-header nav a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        header.classList.remove("nav-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
-	// Poptrox.
-		$window.on('load', function() {
+  // ---- Copy email ----
+  var copyBtn = document.getElementById("copy-email");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var email = copyBtn.getAttribute("data-email") || "";
+      var label = copyBtn.querySelector(".meta");
+      function done(ok) {
+        if (label) {
+          var original = label.textContent;
+          label.textContent = ok ? "Copied" : "Copy failed";
+          setTimeout(function () { label.textContent = original; }, 1800);
+        }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
+      } else {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = email;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          done(true);
+        } catch (e) {
+          done(false);
+        }
+      }
+    });
+  }
 
-			$('.thumbnails').poptrox({
-				onPopupClose: function() { $body.removeClass('is-covered'); },
-				onPopupOpen: function() { $body.addClass('is-covered'); },
-				baseZIndex: 10001,
-				useBodyOverflow: false,
-				usePopupEasyClose: true,
-				overlayColor: '#000000',
-				overlayOpacity: 0.75,
-				popupLoaderText: '',
-				fadeSpeed: 500,
-				usePopupDefaultStyling: false,
-				windowMargin: (skel.breakpoint('small').active ? 5 : 50)
-			});
+  // ---- Scroll reveal ----
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
 
-		});
-
-});
+  // ---- Footer year ----
+  var yearEl = document.getElementById("year");
+  if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+})();
