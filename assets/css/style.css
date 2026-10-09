@@ -443,3 +443,19 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 	.diagram, .feature__visual { padding: 20px; }
 	.flow { flex-direction: column; }
 }
+
+/* Case study: compact variants */
+.study__facts { grid-template-columns: repeat(4, 1fr); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.chips li { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 500; }
+.insights { grid-template-columns: repeat(3, 1fr); }
+.insights strong { font: 400 22px/1.3 var(--serif); }
+.tokens--row { grid-template-columns: repeat(4, 1fr); }
+.tokens--row li { margin: 0 !important; text-align: center; padding: 22px 12px; }
+.learn--row { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.learn--row strong { margin: 0; }
+@media (max-width: 960px) {
+	.study__facts { grid-template-columns: repeat(2, 1fr); }
+	.insights, .learn--row { grid-template-columns: 1fr; }
+	.tokens--row { grid-template-columns: repeat(2, 1fr); }
+}
