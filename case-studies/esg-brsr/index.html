@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Verdant — BRSR Filing Case Study · Usha Tapal</title>
+	<meta name="description"
+		content="Product design case study: Verdant, an AI-assisted platform that turns India's annual BRSR sustainability filing from a spreadsheet scramble into four steps.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--primary: #2D7FF9;
+			--primary-soft: #E8F1FF;
+			--mint: #22C08A;
+			--violet: #7C5CFC;
+			--amber: #D97706;
+			--red: #E5484D;
+			--ink: #0F1A2A;
+			--ink-2: #3B4656;
+			--muted: #6B7685;
+			--canvas: #F4F6F9;
+			--surface: #FFFFFF;
+			--hairline: #E7EBF0;
+			--dark: #0B1220;
+			--dark-2: #131C2E;
+			--dark-line: #222D42;
+			--max: 1120px;
+		}
+
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+		html { scroll-behavior: smooth; }
+		body {
+			font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+			color: var(--ink);
+			background: var(--surface);
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+			font-feature-settings: "tnum" 1;
+		}
+		img { display: block; max-width: 100%; height: auto; }
+		a { color: inherit; }
+
+		.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+		section { padding: 104px 0; }
+		.dark { background: var(--dark); color: #fff; }
+		.tint { background: var(--canvas); }
+
+		.eyebrow {
+			font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+			color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+		}
+		.eyebrow .num { color: var(--muted); }
+		.dark .eyebrow { color: #7FB0FF; }
+		.dark .eyebrow .num { color: #6B7A93; }
+		h1, h2, h3 { letter-spacing: -.025em; line-height: 1.12; font-weight: 800; }
+		h2 { font-size: clamp(30px, 4vw, 44px); max-width: 760px; }
+		h3 { font-size: 19px; letter-spacing: -.01em; line-height: 1.3; font-weight: 700; }
+		.lede { font-size: 18px; color: var(--ink-2); max-width: 640px; margin-top: 20px; }
+		.dark .lede { color: #B4BFD0; }
+		.small { font-size: 13px; color: var(--muted); }
+		.dark .small { color: #8592A8; }
+
+		/* Top bar */
+		.topbar {
+			position: sticky; top: 0; z-index: 10; background: rgba(11, 18, 32, .85);
+			backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+			border-bottom: 1px solid rgba(255, 255, 255, .06);
+		}
+		.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+		.topbar a { color: #C9D3E3; text-decoration: none; font-size: 14px; font-weight: 600; }
+		.topbar a:hover { color: #fff; }
+		.topbar nav { display: flex; gap: 24px; }
+		@media (max-width: 760px) { .topbar nav { display: none; } }
+
+		/* Hero */
+		.hero {
+			background: radial-gradient(1200px 600px at 85% -10%, #2563EB 0%, rgba(37, 99, 235, 0) 60%), var(--dark);
+			color: #fff; padding: 96px 0 0; overflow: hidden;
+		}
+		.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; margin-bottom: 36px; }
+		.brand i { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #DFF7EC, #9DE3C6); display: block; }
+		.hero h1 { font-size: clamp(42px, 6.6vw, 76px); max-width: 860px; }
+		.hero h1 em { font-style: normal; color: #7FB0FF; }
+		.hero .lede { font-size: 20px; max-width: 620px; color: #C9D3E3; }
+		.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+		.tag {
+			font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, .22); color: #E3E9F3;
+		}
+		.meta {
+			display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+			margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, .12);
+		}
+		.meta dt { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: #8592A8; font-weight: 700; margin-bottom: 6px; }
+		.meta dd { font-size: 15px; color: #E3E9F3; font-weight: 600; line-height: 1.45; }
+		.hero-shot { margin-top: 64px; }
+		.hero-shot .frame { border-bottom-left-radius: 0; border-bottom-right-radius: 0; margin-bottom: -1px; }
+
+		/* Screenshot frame */
+		.frame {
+			border-radius: 16px; overflow: hidden; background: #fff;
+			border: 1px solid var(--hairline);
+			box-shadow: 0 1px 2px rgba(15, 26, 42, .04), 0 24px 60px -20px rgba(15, 26, 42, .22);
+		}
+		.dark .frame { border-color: rgba(255, 255, 255, .08); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6); }
+		figure figcaption { font-size: 13px; color: var(--muted); margin-top: 14px; }
+		.dark figure figcaption { color: #8592A8; }
+
+		/* TL;DR */
+		.tldr { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+		.card {
+			background: var(--surface); border: 1px solid var(--hairline); border-radius: 16px; padding: 28px;
+		}
+		.tint .card { border-color: transparent; }
+		.dark .card { background: var(--dark-2); border-color: var(--dark-line); }
+		.card .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+		.card p { color: var(--ink-2); font-size: 15px; }
+		.dark .card p { color: #B4BFD0; }
+
+		/* Two column */
+		.split { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+		.split.even { grid-template-columns: 1fr 1fr; }
+
+		/* Context facts */
+		.facts { display: grid; gap: 0; }
+		.fact { padding: 20px 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 140px 1fr; gap: 24px; }
+		.fact:first-child { border-top: 1px solid var(--hairline); }
+		.fact b { font-size: 13px; color: var(--muted); font-weight: 600; }
+		.fact span { font-weight: 600; }
+
+		/* Pain points */
+		.pains { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+		.pains .card .n { font-size: 40px; font-weight: 800; color: var(--primary); letter-spacing: -.03em; line-height: 1; margin-bottom: 20px; }
+		.pains .card h3 { margin-bottom: 8px; }
+		.hmw {
+			margin-top: 72px; padding: 40px; border-radius: 20px;
+			background: linear-gradient(135deg, rgba(45, 127, 249, .16), rgba(124, 92, 252, .12));
+			border: 1px solid rgba(127, 176, 255, .25);
+		}
+		.hmw p.q { font-size: clamp(22px, 2.6vw, 30px); font-weight: 600; line-height: 1.35; letter-spacing: -.015em; }
+		.hmw em { font-style: normal; color: #7FB0FF; }
+
+		/* Roles */
+		.roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+		.avatar {
+			width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+			font-weight: 800; font-size: 15px; margin-bottom: 18px;
+		}
+		.roles h3 { margin-bottom: 4px; }
+		.roles .need { font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 14px; }
+
+		/* Research */
+		.methods { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+		.method { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-2); }
+		.method::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); margin-top: 9px; flex: none; }
+		.insights { border-top: 1px solid var(--hairline); }
+		.insight { display: grid; grid-template-columns: 44px 1fr 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--hairline); }
+		.insight .i { font-weight: 800; color: var(--primary); font-size: 15px; }
+		.insight h3 { font-size: 17px; }
+		.insight .resp { font-size: 15px; color: var(--ink-2); }
+		.insight .resp b { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mint); margin-bottom: 4px; }
+		.insights-head { display: grid; grid-template-columns: 44px 1fr 1fr; gap: 20px; padding-bottom: 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+
+		/* Table */
+		.table-wrap { margin-top: 48px; background: #fff; border-radius: 16px; overflow-x: auto; border: 1px solid var(--hairline); }
+		table { width: 100%; border-collapse: collapse; min-width: 680px; font-size: 15px; }
+		th, td { text-align: left; padding: 18px 24px; border-bottom: 1px solid var(--hairline); }
+		th { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+		td small { display: block; color: var(--muted); font-size: 12px; }
+		tr:last-child td { border-bottom: 0; }
+		tr.us { background: var(--primary-soft); }
+		tr.us td:first-child { color: var(--primary); font-weight: 800; }
+		.yes, .no, .part { font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 999px; display: inline-block; }
+		.yes { color: #0E7A55; background: #E3F7EE; }
+		.no { color: #B42328; background: #FDECEC; }
+		.part { color: #8A5A00; background: #FFF4DB; }
+
+		/* Process */
+		.timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 56px; position: relative; }
+		.timeline::before { content: ""; position: absolute; left: 7px; right: 0; top: 7px; height: 2px; background: linear-gradient(90deg, #2D4A7A, var(--primary)); }
+		.step { position: relative; padding-top: 36px; }
+		.step::before { content: ""; position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--dark); border: 2px solid #4D7FD0; }
+		.step.final::before { background: var(--primary); border-color: var(--primary); box-shadow: 0 0 0 6px rgba(45, 127, 249, .25); }
+		.step .v { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: #7FB0FF; margin-bottom: 8px; }
+		.step h3 { margin-bottom: 8px; }
+		.step p { font-size: 14px; color: #B4BFD0; }
+		.step .why { margin-top: 12px; font-size: 13px; color: #8592A8; border-left: 2px solid var(--dark-line); padding-left: 12px; }
+		.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 64px; }
+		.flow span { padding: 10px 20px; border-radius: 999px; background: var(--dark-2); border: 1px solid var(--dark-line); font-weight: 700; font-size: 14px; }
+		.flow span.on { background: var(--primary); border-color: var(--primary); }
+		.flow i { color: #6B7A93; font-style: normal; }
+
+		/* Solution screens */
+		.screen-head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+		.screen-head p { color: var(--ink-2); font-size: 17px; }
+		.dark .screen-head p { color: #B4BFD0; }
+		.callouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+		.callouts .card h3 { font-size: 16px; margin-bottom: 6px; }
+		.callouts .card p { font-size: 14px; }
+		.callouts .k { font-size: 12px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+		.dark .callouts .k { color: #7FB0FF; }
+		figure.narrow { max-width: 880px; margin: 0 auto; }
+
+		/* AI principles */
+		.principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+		.principles .card { display: grid; grid-template-columns: 40px 1fr; gap: 16px; }
+		.spark { width: 40px; height: 40px; border-radius: 10px; background: #FFF4DB; color: var(--amber); display: grid; place-items: center; font-size: 18px; font-weight: 800; }
+		.principles h3 { margin-bottom: 6px; font-size: 17px; }
+
+		/* Design system */
+		.swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-top: 48px; }
+		.sw div { height: 72px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, .08); }
+		.sw b { display: block; font-size: 13px; margin-top: 10px; }
+		.sw code { font-size: 12px; color: #8592A8; font-family: inherit; }
+		.ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+		.type-card .big { font-size: 64px; font-weight: 700; letter-spacing: -.03em; line-height: 1; margin: 18px 0 20px; }
+		.type-card .h { font-size: 22px; font-weight: 600; }
+		.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+		.chip { font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; }
+		.cmd { background: #fff; color: var(--ink); border-radius: 14px; padding: 12px 12px 12px 18px; display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 12px; }
+		.cmd .grow { flex: 1; color: var(--muted); }
+		.btn { background: var(--primary); color: #fff; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+
+		/* Outcomes */
+		.outcomes { background: var(--primary); color: #fff; }
+		.outcomes .eyebrow { color: #D6E6FF; }
+		.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+		.stats .v { font-size: 56px; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+		.stats p { margin-top: 12px; color: #E3EDFF; font-size: 15px; }
+		.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 64px; }
+		.metrics .m { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .2); border-radius: 16px; padding: 24px; }
+		.metrics .m b { display: block; font-size: 17px; margin-bottom: 6px; }
+		.metrics .m p { color: #E3EDFF; font-size: 14px; }
+
+		/* Reflection */
+		.reflect { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+		.reflect .card h3 { margin-bottom: 10px; }
+		.reflect ul { list-style: none; display: grid; gap: 10px; }
+		.reflect li { font-size: 15px; color: var(--ink-2); padding-left: 18px; position: relative; }
+		.reflect li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+
+		footer { background: var(--dark); color: #fff; padding: 80px 0 48px; }
+		footer .end { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 32px; }
+		footer h2 { font-size: clamp(36px, 5vw, 56px); }
+		footer .links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+		footer .links a { text-decoration: none; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .22); }
+		footer .links a.primary { background: var(--primary); border-color: var(--primary); }
+		footer .note { margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 13px; color: #8592A8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+		@media (max-width: 960px) {
+			section { padding: 80px 0; }
+			.split, .split.even, .screen-head { grid-template-columns: 1fr; gap: 32px; }
+			.pains, .roles { grid-template-columns: repeat(2, 1fr); }
+			.timeline { grid-template-columns: 1fr; gap: 28px; }
+			.timeline::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+			.step { padding: 0 0 0 36px; }
+			.swatches { grid-template-columns: repeat(4, 1fr); }
+			.stats { grid-template-columns: repeat(2, 1fr); }
+			.meta { grid-template-columns: repeat(2, 1fr); }
+		}
+		@media (max-width: 640px) {
+			.wrap { padding: 0 16px; }
+			section { padding: 64px 0; }
+			.hero { padding-top: 64px; }
+			.tldr, .pains, .roles, .callouts, .principles, .metrics, .reflect, .ds-grid { grid-template-columns: 1fr; }
+			.insight, .insights-head { grid-template-columns: 32px 1fr; }
+			.insight .resp { grid-column: 2; }
+			.insights-head span:last-child { display: none; }
+			.fact { grid-template-columns: 1fr; gap: 4px; }
+			.hmw { padding: 28px 22px; }
+			.type-card .big { font-size: 48px; }
+		}
+		@media print {
+			.topbar { display: none; }
+			section, .hero, footer { break-inside: avoid-page; }
+			* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="topbar">
+		<div class="wrap">
+			<a href="../../index.html">← Usha Tapal · Portfolio</a>
+			<nav>
+				<a href="#problem">Problem</a>
+				<a href="#research">Research</a>
+				<a href="#process">Process</a>
+				<a href="#solution">Solution</a>
+				<a href="#impact">Impact</a>
+			</nav>
+		</div>
+	</div>
+
+	<!-- ============ HERO ============ -->
+	<header class="hero">
+		<div class="wrap">
+			<div class="brand"><i></i>Verdant</div>
+			<h1>BRSR filing, made simple <em>with AI.</em></h1>
+			<p class="lede">Redesigning how Indian listed companies prepare their annual sustainability report — from a
+				spreadsheet-and-email scramble to a guided, four-step workflow.</p>
+			<div class="tags">
+				<span class="tag">Product design</span>
+				<span class="tag">AI UX</span>
+				<span class="tag">Enterprise SaaS</span>
+				<span class="tag">Design system</span>
+			</div>
+			<dl class="meta">
+				<div>
+					<dt>Role</dt>
+					<dd>Product designer — research, UX, UI, prototype</dd>
+				</div>
+				<div>
+					<dt>Users</dt>
+					<dd>ESG head, data owners, CFO, external assurer</dd>
+				</div>
+				<div>
+					<dt>Scope</dt>
+					<dd>Data collection, live E/S/G calculations, review, report, AI assistant</dd>
+				</div>
+				<div>
+					<dt>Deliverables</dt>
+					<dd>Research synthesis, design system, 5-iteration hi-fi prototype</dd>
+				</div>
+			</dl>
+			<div class="hero-shot">
+				<div class="frame"><img src="img/home.webp" width="2000" height="1281"
+						alt="Verdant home dashboard: AI briefing, filing readiness at 78%, KPIs, and a list of next actions"></div>
+			</div>
+		</div>
+	</header>
+
+	<!-- ============ TL;DR ============ -->
+	<section class="tint">
+		<div class="wrap">
+			<div class="eyebrow">At a glance</div>
+			<h2>One report, ten departments, hundreds of data points — and a deadline.</h2>
+			<div class="tldr">
+				<div class="card">
+					<div class="label">Challenge</div>
+					<p>BRSR is structured for regulators, not for the teams who own the data. Values are re-entered
+						across disclosures, calculated by hand, and approved over email with no clear audit trail.</p>
+				</div>
+				<div class="card">
+					<div class="label">Approach</div>
+					<p>Mapped every BRSR question to its raw data point, regrouped them into 10 department-owned themes,
+						and added an AI layer that flags, estimates and drafts — always with a human approving.</p>
+				</div>
+				<div class="card">
+					<div class="label">Result</div>
+					<p>A four-step product — Home, Collect, Review, File — where each value is entered once, every
+						disclosure calculates itself, and approvers start from what needs their attention.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ CONTEXT ============ -->
+	<section>
+		<div class="wrap split">
+			<div>
+				<div class="eyebrow"><span class="num">01</span> Context</div>
+				<h2>A mandatory report most companies still build in spreadsheets.</h2>
+			</div>
+			<div>
+				<p class="lede" style="margin-top:0">India's market regulator, SEBI, requires listed companies to publish a
+					<strong>Business Responsibility &amp; Sustainability Report (BRSR)</strong> every year alongside the
+					annual report. It covers environmental, social and governance performance across Sections A–C and nine
+					principles.</p>
+				<div class="facts" style="margin-top:32px">
+					<div class="fact"><b>Who files</b><span>Listed companies in India</span></div>
+					<div class="fact"><b>How often</b><span>Every financial year, with prior-year comparison</span></div>
+					<div class="fact"><b>Who's involved</b><span>EHS, HR, Finance, Legal, Company Secretary, ESG team,
+							CFO, assurer</span></div>
+					<div class="fact"><b>Today's tooling</b><span>Spreadsheets, email threads and external
+							consultants</span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ PROBLEM ============ -->
+	<section class="dark" id="problem">
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">02</span> The problem</div>
+			<h2>The form is built for regulators — not for the people who fill it.</h2>
+			<div class="pains">
+				<div class="card">
+					<div class="n">01</div>
+					<h3>Not grouped by owner</h3>
+					<p>Questions follow Sections A, B and Principles 1–9 — not the teams that actually own the data.</p>
+				</div>
+				<div class="card">
+					<div class="n">02</div>
+					<h3>Asked twice</h3>
+					<p>Electricity, headcount and turnover reappear across many disclosures and get re-entered each
+						time.</p>
+				</div>
+				<div class="card">
+					<div class="n">03</div>
+					<h3>Hard maths</h3>
+					<p>Emissions, intensities and safety rates are calculated by hand — the main source of errors.</p>
+				</div>
+				<div class="card">
+					<div class="n">04</div>
+					<h3>Blind review</h3>
+					<p>Approvals happen over email; nobody knows which numbers deserve a second look.</p>
+				</div>
+			</div>
+			<div class="hmw">
+				<div class="eyebrow">How might we</div>
+				<p class="q">…let each department enter its numbers <em>once</em>, have every disclosure <em>calculate
+						itself</em>, and give approvers <em>confidence</em> before filing?</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ USERS ============ -->
+	<section>
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">03</span> Users</div>
+			<h2>Four roles, four very different jobs.</h2>
+			<p class="lede">A single filing passes through several hands. Each role needed its own entry point — not one
+				dashboard for everyone.</p>
+			<div class="roles">
+				<div class="card">
+					<div class="avatar" style="background:#E3F7EE;color:#0E7A55">DO</div>
+					<h3>Data owners</h3>
+					<p class="small">EHS, HR, Finance, Legal</p>
+					<p class="need">Needs to</p>
+					<p>Enter only their team's numbers, quickly, without learning the BRSR structure.</p>
+				</div>
+				<div class="card">
+					<div class="avatar" style="background:var(--primary-soft);color:var(--primary)">EH</div>
+					<h3>ESG head</h3>
+					<p class="small">Owns the filing end-to-end</p>
+					<p class="need">Needs to</p>
+					<p>See what's blocking the filing, chase owners, and review values with context.</p>
+				</div>
+				<div class="card">
+					<div class="avatar" style="background:#EFEAFF;color:var(--violet)">CF</div>
+					<h3>CFO</h3>
+					<p class="small">Final internal approver</p>
+					<p class="need">Needs to</p>
+					<p>Approve with confidence, starting from flagged values rather than the whole sheet.</p>
+				</div>
+				<div class="card">
+					<div class="avatar" style="background:#FFF4DB;color:var(--amber)">AS</div>
+					<h3>Assurer</h3>
+					<p class="small">External verification</p>
+					<p class="need">Needs to</p>
+					<p>Trace every reported number back to its source, formula and approver.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ RESEARCH ============ -->
+	<section class="tint" id="research">
+		<div class="wrap split">
+			<div>
+				<div class="eyebrow"><span class="num">04</span> Research</div>
+				<h2>Five insights that shaped the product.</h2>
+				<div class="methods">
+					<div class="method">Mapped every BRSR question to the raw data points behind it</div>
+					<div class="method">Walked the end-to-end filing workflow, role by role</div>
+					<div class="method">Reviewed existing ESG reporting tools and their gaps</div>
+				</div>
+			</div>
+			<div>
+				<div class="insights-head"><span>#</span><span>Insight</span><span>Design response</span></div>
+				<div class="insights">
+					<div class="insight"><span class="i">01</span>
+						<h3>Questions follow regulation; data follows departments.</h3>
+						<p class="resp"><b>Response</b>Regroup into 10 themes, each owned by one team.</p>
+					</div>
+					<div class="insight"><span class="i">02</span>
+						<h3>One raw value feeds many disclosures.</h3>
+						<p class="resp"><b>Response</b>“Enter once” — each input shows which questions it feeds and is
+							reused.</p>
+					</div>
+					<div class="insight"><span class="i">03</span>
+						<h3>Manual calculation causes most errors.</h3>
+						<p class="resp"><b>Response</b>Live, visible formulas with last year's value alongside.</p>
+					</div>
+					<div class="insight"><span class="i">04</span>
+						<h3>Reviewers don't know where to look.</h3>
+						<p class="resp"><b>Response</b>AI flags large year-on-year swings and gaps first.</p>
+					</div>
+					<div class="insight"><span class="i">05</span>
+						<h3>Four roles, four different jobs.</h3>
+						<p class="resp"><b>Response</b>A role-aware home that shows only your next actions.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ COMPETITION ============ -->
+	<section>
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">05</span> Competitive landscape</div>
+			<h2>Powerful tools exist — none are built around how Indian filers work.</h2>
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>BRSR-native</th>
+							<th>Enter once</th>
+							<th>Auto-calculate</th>
+							<th>AI review</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>Global enterprise suites</strong><small>Salesforce, SAP, Workiva, Samsung SDS</small></td>
+							<td><span class="part">Partial</span></td>
+							<td><span class="part">Partial</span></td>
+							<td><span class="yes">Yes</span></td>
+							<td><span class="part">Partial</span></td>
+						</tr>
+						<tr>
+							<td><strong>India-focused ESG tools</strong><small>BRSR reporting software</small></td>
+							<td><span class="yes">Yes</span></td>
+							<td><span class="no">No</span></td>
+							<td><span class="part">Partial</span></td>
+							<td><span class="no">No</span></td>
+						</tr>
+						<tr>
+							<td><strong>Spreadsheets + consultants</strong><small>Still the default</small></td>
+							<td><span class="part">Manual</span></td>
+							<td><span class="no">No</span></td>
+							<td><span class="no">No</span></td>
+							<td><span class="no">No</span></td>
+						</tr>
+						<tr class="us">
+							<td>Verdant</td>
+							<td><span class="yes">Yes</span></td>
+							<td><span class="yes">Yes</span></td>
+							<td><span class="yes">Yes</span></td>
+							<td><span class="yes">Yes</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="small" style="margin-top:14px">Category-level assessment based on public product material; to be
+				validated through product demos.</p>
+		</div>
+	</section>
+
+	<!-- ============ PROCESS ============ -->
+	<section class="dark" id="process">
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">06</span> Process</div>
+			<h2>Five iterations, from structure to simplicity.</h2>
+			<p class="lede">Each round answered a different question — first <em style="font-style:normal;color:#fff">is
+					the model right?</em>, then <em style="font-style:normal;color:#fff">does it feel familiar?</em>, and
+				finally <em style="font-style:normal;color:#fff">what can we remove?</em></p>
+			<div class="timeline">
+				<div class="step">
+					<div class="v">V1</div>
+					<h3>Structure</h3>
+					<p>Themes, enter-once inputs, live formulas, 4-role approval.</p>
+					<p class="why">Proved the information model before any visual design.</p>
+				</div>
+				<div class="step">
+					<div class="v">V2</div>
+					<h3>Restyle</h3>
+					<p>Moved from a wireframe aesthetic to familiar components.</p>
+					<p class="why">Lowered the learning curve for non-specialist data owners.</p>
+				</div>
+				<div class="step">
+					<div class="v">V3</div>
+					<h3>Clean SaaS</h3>
+					<p>Readiness ring, approval pipeline, charts, data checks.</p>
+					<p class="why">Gave the ESG head a live view of progress.</p>
+				</div>
+				<div class="step">
+					<div class="v">V4</div>
+					<h3>AI layer</h3>
+					<p>Briefing, flags, estimates, drafted narratives, assistant.</p>
+					<p class="why">Shifted effort from finding problems to fixing them.</p>
+				</div>
+				<div class="step final">
+					<div class="v">V5 · Final</div>
+					<h3>Simplify</h3>
+					<p>Four steps, a command bar, one-click actions.</p>
+					<p class="why">Cut navigation down to the path every filing takes.</p>
+				</div>
+			</div>
+			<div class="flow" aria-label="Final product flow">
+				<span>Home</span><i>→</i><span>1 · Collect</span><i>→</i><span>2 · Review</span><i>→</i><span
+					class="on">3 · File</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ SOLUTION: HOME ============ -->
+	<section id="solution">
+		<div class="wrap">
+			<div class="screen-head">
+				<div>
+					<div class="eyebrow"><span class="num">07</span> Solution · Home</div>
+					<h2>AI says what matters — then does it in one click.</h2>
+				</div>
+				<p>A role-aware briefing replaces the generic dashboard. A command bar answers questions or takes action
+					(“fill missing waste data”), and next actions can be finished without leaving the page.</p>
+			</div>
+			<figure class="narrow">
+				<div class="frame"><img src="img/assistant.webp" width="1785" height="1610" loading="lazy"
+						alt="Home screen with AI briefing, next actions and the Verdant AI assistant panel open"></div>
+				<figcaption>Home with the assistant open — it can explain numbers, find inconsistencies and draft narratives.</figcaption>
+			</figure>
+			<div class="callouts">
+				<div class="card">
+					<div class="k">Briefing</div>
+					<h3>Personal briefing</h3>
+					<p>Opens with what's waiting for you: themes to review, values flagged, and filing readiness.</p>
+				</div>
+				<div class="card">
+					<div class="k">Command bar</div>
+					<h3>Ask or act</h3>
+					<p>One input for questions and commands, with suggested prompts for common tasks.</p>
+				</div>
+				<div class="card">
+					<div class="k">Next actions</div>
+					<h3>Next actions, inline</h3>
+					<p>Missing values can be filled from last year's trend — tagged for verification.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ SOLUTION: COLLECT ============ -->
+	<section class="dark">
+		<div class="wrap">
+			<div class="screen-head">
+				<div>
+					<div class="eyebrow"><span class="num">08</span> Solution · Collect</div>
+					<h2>Grouped by theme. Entered once. Calculated live.</h2>
+				</div>
+				<p>Each department sees only its own theme. An AI pre-check lists gaps and unusual swings; missing values
+					can be estimated from last year's trend and stay tagged until verified.</p>
+			</div>
+			<figure>
+				<div class="frame"><img src="img/collect.webp" width="2000" height="1245" loading="lazy"
+						alt="Collect screen for the Waste theme: AI pre-check, data entry table with prior year values, live calculations and the BRSR questions each value fills"></div>
+			</figure>
+			<div class="callouts">
+				<div class="card">
+					<div class="k">Traceable</div>
+					<h3>Feeds shown on every input</h3>
+					<p>Users see exactly which BRSR questions a value fills.</p>
+				</div>
+				<div class="card">
+					<div class="k">Transparent</div>
+					<h3>Formulas in the open</h3>
+					<p>Scope 1, 2 and intensity figures recalculate as you type.</p>
+				</div>
+				<div class="card">
+					<div class="k">Efficient</div>
+					<h3>Confirm, don't re-check</h3>
+					<p>AI flags swings over 25%; confirming takes one click.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ SOLUTION: REVIEW ============ -->
+	<section class="tint">
+		<div class="wrap">
+			<div class="screen-head">
+				<div>
+					<div class="eyebrow"><span class="num">09</span> Solution · Review &amp; Ask AI</div>
+					<h2>Approvers start with the flags, not the spreadsheet.</h2>
+				</div>
+				<p>Themes move from owner → ESG head → CFO, with AI flags visible on every card and a full audit trail. The
+					assistant (⌘K) knows every value in the filing and answers in context.</p>
+			</div>
+			<figure class="narrow">
+				<div class="frame"><img src="img/review.webp" width="1785" height="1610" loading="lazy"
+						alt="Review board with columns In progress, ESG review, CFO approval and Approved, plus an audit trail"></div>
+				<figcaption>Approval pipeline with AI flag counts on every card, and an audit trail for assurers.</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<!-- ============ SOLUTION: FILE ============ -->
+	<section>
+		<div class="wrap">
+			<div class="screen-head">
+				<div>
+					<div class="eyebrow"><span class="num">10</span> Solution · File</div>
+					<h2>The BRSR writes itself — in the regulator's order.</h2>
+				</div>
+				<p>Approved values flow straight into Sections A–C. AI drafts each section's narrative from live data,
+					clearly marked “review before filing”, with PDF and XBRL export.</p>
+			</div>
+			<figure>
+				<div class="frame"><img src="img/file.webp" width="2000" height="904" loading="lazy"
+						alt="Report view showing the BRSR Section A with an AI-drafted narrative and a table of current and prior year values"></div>
+			</figure>
+		</div>
+	</section>
+
+	<!-- ============ AI PRINCIPLES ============ -->
+	<section class="tint">
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">11</span> Designing AI for a regulated report</div>
+			<h2>AI suggests. People approve.</h2>
+			<p class="lede">A filed report carries legal weight, so every AI feature was designed around trust and
+				accountability.</p>
+			<div class="principles">
+				<div class="card">
+					<div class="spark">✦</div>
+					<div>
+						<h3>One consistent AI signal</h3>
+						<p>A single ✦ mark and amber colour identify everything AI produced, so it's never mistaken for
+							verified data.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="spark">✦</div>
+					<div>
+						<h3>Estimates stay tagged</h3>
+						<p>Trend-based estimates remain marked until a data owner verifies them.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="spark">✦</div>
+					<div>
+						<h3>Drafts, not final copy</h3>
+						<p>Narratives are labelled “review before filing” and can be regenerated as data changes.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="spark">✦</div>
+					<div>
+						<h3>Always explainable</h3>
+						<p>Every figure can be explained — its formula, its inputs and who approved it.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ DESIGN SYSTEM ============ -->
+	<section class="dark">
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">12</span> Design system</div>
+			<h2>Calm surfaces, precise numbers, one AI signal.</h2>
+			<div class="swatches">
+				<div class="sw"><div style="background:#2D7FF9"></div><b>Primary</b><code>#2D7FF9</code></div>
+				<div class="sw"><div style="background:#22C08A"></div><b>Mint · E</b><code>#22C08A</code></div>
+				<div class="sw"><div style="background:#7C5CFC"></div><b>Violet · G</b><code>#7C5CFC</code></div>
+				<div class="sw"><div style="background:#D97706"></div><b>AI flag</b><code>#D97706</code></div>
+				<div class="sw"><div style="background:#E5484D"></div><b>Missing</b><code>#E5484D</code></div>
+				<div class="sw"><div style="background:#0F1A2A"></div><b>Ink</b><code>#0F1A2A</code></div>
+				<div class="sw"><div style="background:#F4F6F9"></div><b>Canvas</b><code>#F4F6F9</code></div>
+				<div class="sw"><div style="background:#E7EBF0"></div><b>Hairline</b><code>#E7EBF0</code></div>
+			</div>
+			<div class="ds-grid">
+				<div class="card type-card">
+					<p class="small">Manrope · tabular figures</p>
+					<div class="big">68,213</div>
+					<div class="h">3 themes await your review</div>
+					<p class="small" style="margin-top:8px">Grid electricity purchased · Feeds P6 E1</p>
+				</div>
+				<div class="card">
+					<div class="cmd"><span style="color:var(--primary)">✦</span><span class="grow">Ask a question or tell
+							AI what to do…</span><span class="btn">Run</span></div>
+					<div class="cmd"><span class="chip" style="background:#E3F7EE;color:#0E7A55">E</span><span
+							class="grow"><b style="color:var(--ink)">Fill 2 missing values in Waste</b><br><span
+								style="font-size:12px">AI estimate from FY25 trend</span></span><span class="btn">Fill with AI</span>
+					</div>
+					<div class="chips">
+						<span class="chip" style="background:#E7EBF0;color:#3B4656">Not started</span>
+						<span class="chip" style="background:#E8F1FF;color:#1F5FC2">In progress</span>
+						<span class="chip" style="background:#EFEAFF;color:#5B3FD6">ESG review</span>
+						<span class="chip" style="background:#FFF4DB;color:#8A5A00">CFO approval</span>
+						<span class="chip" style="background:#E3F7EE;color:#0E7A55">Approved</span>
+						<span class="chip" style="background:#FDECEC;color:#B42328">Returned</span>
+					</div>
+					<p class="small">4px grid · radius 8 / 16 / 20 / pill · flat hairline surfaces · shadows only on floating
+						layers</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ IMPACT ============ -->
+	<section class="outcomes" id="impact">
+		<div class="wrap">
+			<div class="eyebrow">13 · What the design delivers</div>
+			<h2>From a regulatory questionnaire to a four-step workflow.</h2>
+			<div class="stats">
+				<div>
+					<div class="v">10</div>
+					<p>department-owned themes replace a regulator-ordered questionnaire</p>
+				</div>
+				<div>
+					<div class="v">1×</div>
+					<p>every value entered once and reused wherever it's needed</p>
+				</div>
+				<div>
+					<div class="v">20+</div>
+					<p>E, S and G metrics calculated live with visible formulas</p>
+				</div>
+				<div>
+					<div class="v">4</div>
+					<p>steps from first data request to a filed report</p>
+				</div>
+			</div>
+			<div class="metrics">
+				<div class="m"><b>Time to file</b>
+					<p>Days from the first data request to an approved, exported report.</p>
+				</div>
+				<div class="m"><b>Auto-fill rate</b>
+					<p>Share of BRSR questions answered automatically from entered inputs.</p>
+				</div>
+				<div class="m"><b>Review efficiency</b>
+					<p>Values returned to owners, and how many of those were caught by AI flags first.</p>
+				</div>
+			</div>
+			<p style="margin-top:16px;font-size:13px;color:#D6E6FF">Success metrics proposed for validation with real
+				filers.</p>
+		</div>
+	</section>
+
+	<!-- ============ REFLECTION ============ -->
+	<section>
+		<div class="wrap">
+			<div class="eyebrow"><span class="num">14</span> Reflection</div>
+			<h2>What I learned, and what's next.</h2>
+			<div class="reflect">
+				<div class="card">
+					<h3>What worked</h3>
+					<ul>
+						<li>Getting the information model right in V1 made later visual rounds faster.</li>
+						<li>Showing what each input “feeds” made the enter-once idea instantly clear.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h3>What I'd do differently</h3>
+					<ul>
+						<li>Bring AI into the prototype earlier, to test trust signals sooner.</li>
+						<li>Simplify sooner — V5 removed more than it added.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h3>Next steps</h3>
+					<ul>
+						<li>Usability testing with ESG teams at listed companies.</li>
+						<li>Measure time-to-file and auto-fill rate against a spreadsheet baseline.</li>
+						<li>Validate the competitive assessment through product demos.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="wrap">
+			<div class="end">
+				<div>
+					<h2>Thank you.</h2>
+					<div class="links">
+						<a class="primary" href="mailto:usha.tapal@gmail.com">Get in touch</a>
+						<a href="https://www.linkedin.com/in/usha-tapal-0325b6144/">LinkedIn</a>
+						<a href="../../index.html">Back to portfolio</a>
+					</div>
+				</div>
+			</div>
+			<div class="note">
+				<span>Concept project · Company, people and figures shown are fictional.</span>
+				<span>© Usha Tapal</span>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>
