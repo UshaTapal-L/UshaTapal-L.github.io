@@ -493,3 +493,5 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 	.solve__pair { grid-template-columns: 1fr; }
 	.solve__arrow { justify-self: center; transform: rotate(90deg); }
 }
+.solve__side .solve__img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: contain; background: #fff; box-shadow: var(--shadow); }
+.solve ~ .diagram { margin-top: 12px; }

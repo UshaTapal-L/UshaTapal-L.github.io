@@ -123,8 +123,8 @@
 			<h2 class="section__title reveal" id="sol"><span>04</span> How we solved it</h2>
 
 			<!--
-				REAL SCREENS: swap a .ui sketch for a sanitized screenshot, e.g.
-				<img class="solve__img" src="images/magik/decision-home-after.png" alt="Decision home with AI recommendations" loading="lazy">
+				REAL SCREENS live in images/magik/ (client-identifying values blurred). To swap another sketch:
+				<img class="solve__img" src="images/magik/your-screen.png" alt="…" loading="lazy">
 			-->
 
 			<article class="solve reveal" aria-label="Problem 1 solved">
@@ -159,20 +159,13 @@
 				</header>
 				<div class="solve__pair">
 					<figure class="solve__side solve__side--before">
-						<div class="ui ui--form" aria-hidden="true">
-							<span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-						</div>
-						<figcaption><b>Before</b> Blank forms, built field by field.</figcaption>
+						<img class="solve__img" src="images/magik/before-rule-builder.png" width="918" height="550" loading="lazy" alt="Legacy rule builder with deeply nested condition, group and action boxes">
+						<figcaption><b>Before</b> Legacy rule builder: nested groups, field by field.</figcaption>
 					</figure>
 					<span class="solve__arrow" aria-hidden="true">→</span>
 					<figure class="solve__side">
-						<div class="ui ui--steps" aria-hidden="true">
-							<div class="ui__step is-done"><i></i><span></span></div>
-							<div class="ui__step is-done"><i></i><span></span></div>
-							<div class="ui__step is-active"><i></i><span></span></div>
-							<div class="ui__step"><i></i><span></span></div>
-						</div>
-						<figcaption><b>After</b> AI pre-fills audience, offer and channel. Marketers edit.</figcaption>
+						<img class="solve__img" src="images/magik/after-ai-campaign-start.png" width="860" height="745" loading="lazy" alt="New campaign builder: describe the campaign in plain language or fill in details on a visual canvas">
+						<figcaption><b>After</b> Describe the campaign in plain words. AI drafts it on a visual canvas.</figcaption>
 					</figure>
 				</div>
 				<p class="solve__result"><strong>30%</strong> faster campaign launch</p>
@@ -194,17 +187,25 @@
 					</figure>
 					<span class="solve__arrow" aria-hidden="true">→</span>
 					<figure class="solve__side">
-						<div class="ui ui--canvas" aria-hidden="true">
-							<div class="node">Trigger</div><div class="edge"></div>
-							<div class="node node--ai">AI agent · shows why</div><div class="edge"></div>
-							<div class="node node--guard">Guardrail · limits &amp; approval</div><div class="edge"></div>
-							<div class="node">Channels</div>
-						</div>
-						<figcaption><b>After</b> Every step visible, checkable and reversible.</figcaption>
+						<img class="solve__img" src="images/magik/after-segment-test-run.png" width="460" height="786" loading="lazy" alt="Campaign canvas showing readable conditions such as churn likelihood high, with a live segment size of 428,502">
+						<figcaption><b>After</b> Readable rules, live audience size, and a test run before launch.</figcaption>
 					</figure>
 				</div>
 				<p class="solve__result"><strong>Self-serve</strong> marketers build, audit &amp; launch</p>
 			</article>
+
+			<figure class="diagram reveal" aria-labelledby="flow-cap">
+				<p class="flowrow__label">The new campaign flow</p>
+				<ol class="flow">
+					<li><b>Describe</b><small>goal in plain words</small></li>
+					<li><b>Audience</b><small>AI segment + live size</small></li>
+					<li><b>Offer</b><small>new or saved template</small></li>
+					<li><b>Channels</b><small>app, SMS, social</small></li>
+					<li><b>Schedule</b><small>timing &amp; triggers</small></li>
+					<li><b>Test run</b><small>check before launch</small></li>
+				</ol>
+				<figcaption id="flow-cap">One canvas, start to launch.</figcaption>
+			</figure>
 
 			<p class="solve__then reveal">Then we scaled the same patterns to <b>loyalty</b> and <b>segmentation</b>.</p>
 		</section>
