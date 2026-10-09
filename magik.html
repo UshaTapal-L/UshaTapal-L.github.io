@@ -12,7 +12,7 @@
 	<meta property="og:title" content="Magik — Designing decisions, not dashboards">
 	<meta property="og:description" content="A case study in AI-native enterprise UX for telecom marketing. Task time down 30%, campaigns built 30% faster.">
 	<meta property="og:url" content="https://ushatapal-l.github.io/magik.html">
-	<meta property="og:image" content="https://ushatapal-l.github.io/images/avatar.jpg">
+	<meta property="og:image" content="https://ushatapal-l.github.io/images/magik/journey-canvas.png">
 	<meta name="theme-color" content="#f6f4f0" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#151413" media="(prefers-color-scheme: dark)">
 
@@ -23,11 +23,8 @@
 	<script>document.documentElement.classList.add("js")</script>
 
 	<!--
-		NDA NOTE: everything on this page is written from the public résumé story and drawn as
-		abstract diagrams — no client data, competitor names, internal people or real screens.
-		To add real visuals, export frames from Figma, replace client/customer data with dummy
-		data, save them in images/magik/ and use the <figure class="shot"> pattern shown in the
-		"Solution" section comment.
+		Screens come from the Magik Figma file, published with the author's confirmation of employer approval.
+		Location values are blurred and client branding is excluded. Images live in images/magik/.
 	-->
 </head>
 
@@ -53,9 +50,8 @@
 		<section class="container study__hero">
 			<p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Case study · AI · Telecom</p>
 			<h1 class="reveal">Magik: designing <em>decisions</em>,<br>not dashboards.</h1>
-			<p class="lead reveal">Turning a legacy telemetry tool into an AI marketing platform that tells telecom
-				marketers what to do next.</p>
-
+			<p class="lead reveal">An AI campaign builder that lets telecom marketers go from a goal in plain words to a
+				live, multi-channel campaign.</p>
 			<dl class="study__facts reveal">
 				<div><dt>Role</dt><dd>Product Designer</dd></div>
 				<div><dt>Company</dt><dd>6D Technologies</dd></div>
@@ -64,7 +60,11 @@
 			</dl>
 		</section>
 
-		<!-- Impact -->
+		<figure class="container cover reveal">
+			<img src="images/magik/journey-canvas.png" width="2000" height="1531" alt="The Magik campaign canvas: segment rules, live segment size, dynamic offers and WhatsApp, Instagram and in-app channel previews with response branches">
+			<figcaption>The final canvas: one campaign, from audience to offers to every channel, on a single screen.</figcaption>
+		</figure>
+
 		<section class="container stats" aria-label="Results">
 			<div class="stat reveal"><strong>30%</strong><span>less task time</span></div>
 			<div class="stat reveal"><strong>30%</strong><span>faster campaign launch</span></div>
@@ -77,8 +77,8 @@
 			<h2 class="section__title reveal" id="prob"><span>01</span> The problem</h2>
 			<div class="grid grid--3">
 				<article class="card reveal"><p class="num">Problem 1</p><h3>Data first, decision last</h3><p>The insight was buried screens deep.</p></article>
-				<article class="card reveal"><p class="num">Problem 2</p><h3>Manual, multi-step logic</h3><p>Every campaign was built by hand.</p></article>
-				<article class="card reveal"><p class="num">Problem 3</p><h3>AI without trust</h3><p>Users couldn't see why the AI suggested something.</p></article>
+				<article class="card reveal"><p class="num">Problem 2</p><h3>Manual, multi-step logic</h3><p>Every campaign was built rule by rule.</p></article>
+				<article class="card reveal"><p class="num">Problem 3</p><h3>AI without trust</h3><p>Users couldn't see why, or catch mistakes.</p></article>
 			</div>
 			<p class="hmw reveal"><span>How might we</span> let AI do the analysis, while marketers keep the final say?</p>
 		</section>
@@ -96,9 +96,31 @@
 			</ol>
 		</section>
 
-		<!-- 03 Framework -->
+		<!-- 03 Structure -->
+		<section class="section container" aria-labelledby="ia">
+			<h2 class="section__title reveal" id="ia"><span>03</span> Mapping the product</h2>
+			<p class="intro reveal">I mapped every part of campaign creation into 14 modules before designing a single screen.</p>
+			<figure class="shot shot--wide reveal">
+				<img src="images/magik/ia-map.png" width="2400" height="387" loading="lazy" alt="Feature map with columns for global navigation, campaign details, segment, condition group, reorder menu, select offers, set triggers and decision logic, set target price, run campaign, channels, actions, status, geo location and add file">
+				<figcaption>Feature map: navigation → details → segment → conditions → offers → triggers → price → run → channels → actions → status.</figcaption>
+			</figure>
+			<figure class="diagram reveal" aria-labelledby="flow-cap">
+				<p class="flowrow__label">The new campaign flow</p>
+				<ol class="flow">
+					<li><b>Describe</b><small>goal in plain words</small></li>
+					<li><b>Audience</b><small>segment + live size</small></li>
+					<li><b>Offer</b><small>dynamic, by behaviour</small></li>
+					<li><b>Channels</b><small>WhatsApp, social, app</small></li>
+					<li><b>Responses</b><small>yes / no follow-ups</small></li>
+					<li><b>Test run</b><small>check before launch</small></li>
+				</ol>
+				<figcaption id="flow-cap">One canvas, start to launch.</figcaption>
+			</figure>
+		</section>
+
+		<!-- 04 Framework -->
 		<section class="section container" aria-labelledby="fw">
-			<h2 class="section__title reveal" id="fw"><span>03</span> Decision-First framework</h2>
+			<h2 class="section__title reveal" id="fw"><span>04</span> Decision-First framework</h2>
 			<figure class="diagram reveal" aria-labelledby="fw-cap">
 				<div class="flowcompare">
 					<div class="flowrow">
@@ -110,7 +132,7 @@
 					<div class="flowrow">
 						<p class="flowrow__label">After · decision-first</p>
 						<ol class="flow">
-							<li><b>See recommendation</b></li><li><b>Check the why</b></li><li><b>Approve or adjust</b></li>
+							<li><b>Describe the goal</b></li><li><b>Check the why</b></li><li><b>Approve or adjust</b></li>
 						</ol>
 					</div>
 				</div>
@@ -118,35 +140,26 @@
 			</figure>
 		</section>
 
-		<!-- 04 How we solved it -->
+		<!-- 05 How we solved it -->
 		<section class="section container" aria-labelledby="sol">
-			<h2 class="section__title reveal" id="sol"><span>04</span> How we solved it</h2>
-
-			<!--
-				REAL SCREENS live in images/magik/ (client-identifying values blurred). To swap another sketch:
-				<img class="solve__img" src="images/magik/your-screen.png" alt="…" loading="lazy">
-			-->
+			<h2 class="section__title reveal" id="sol"><span>05</span> How we solved it</h2>
 
 			<article class="solve reveal" aria-label="Problem 1 solved">
 				<header class="solve__head">
 					<p class="num">Problem 1 · Data first, decision last</p>
-					<h3>A decision home</h3>
+					<h3>Start from the goal</h3>
 				</header>
 				<div class="solve__pair">
 					<figure class="solve__side solve__side--before">
 						<div class="ui ui--busy" aria-hidden="true">
 							<i></i><i></i><i></i><i></i><i class="w2"></i><i></i><i></i><i class="w2"></i><i></i><i></i><i></i><i></i>
 						</div>
-						<figcaption><b>Before</b> Dozens of charts to interpret.</figcaption>
+						<figcaption><b>Before</b> Dozens of charts to interpret first.</figcaption>
 					</figure>
 					<span class="solve__arrow" aria-hidden="true">→</span>
 					<figure class="solve__side">
-						<div class="ui" aria-hidden="true">
-							<div class="ui__rec ui__rec--top"><i></i><span></span><span class="s"></span><b>Review</b></div>
-							<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
-							<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
-						</div>
-						<figcaption><b>After</b> Ranked AI recommendations. Data on demand.</figcaption>
+						<img class="solve__img" src="images/magik/ai-start-modes.png" width="851" height="794" loading="lazy" alt="Campaign creation start screen offering Conversational AI or Campaign Builder, and an AI prompt reading Create a campaign to reduce churn in prepaid users">
+						<figcaption><b>After</b> Type the goal, pick a tone. Or build step by step.</figcaption>
 					</figure>
 				</div>
 				<p class="solve__result"><strong>30%</strong> less task time</p>
@@ -165,7 +178,7 @@
 					<span class="solve__arrow" aria-hidden="true">→</span>
 					<figure class="solve__side">
 						<img class="solve__img" src="images/magik/after-ai-campaign-start.png" width="860" height="745" loading="lazy" alt="New campaign builder: describe the campaign in plain language or fill in details on a visual canvas">
-						<figcaption><b>After</b> Describe the campaign in plain words. AI drafts it on a visual canvas.</figcaption>
+						<figcaption><b>After</b> AI drafts the details on a visual canvas. Marketers edit.</figcaption>
 					</figure>
 				</div>
 				<p class="solve__result"><strong>30%</strong> faster campaign launch</p>
@@ -174,59 +187,47 @@
 			<article class="solve reveal" aria-label="Problem 3 solved">
 				<header class="solve__head">
 					<p class="num">Problem 3 · AI without trust</p>
-					<h3>Guardrails you can see</h3>
+					<h3>AI that explains itself</h3>
 				</header>
 				<div class="solve__pair">
-					<figure class="solve__side solve__side--before">
-						<div class="ui ui--canvas" aria-hidden="true">
-							<div class="node">Data in</div><div class="edge"></div>
-							<div class="node node--box">?</div><div class="edge"></div>
-							<div class="node">Campaign out</div>
-						</div>
-						<figcaption><b>Before</b> A black box.</figcaption>
-					</figure>
-					<span class="solve__arrow" aria-hidden="true">→</span>
 					<figure class="solve__side">
 						<img class="solve__img" src="images/magik/after-segment-test-run.png" width="460" height="786" loading="lazy" alt="Campaign canvas showing readable conditions such as churn likelihood high, with a live segment size of 428,502">
-						<figcaption><b>After</b> Readable rules, live audience size, and a test run before launch.</figcaption>
+						<figcaption><b>Readable rules</b> Plain conditions and a live audience size.</figcaption>
+					</figure>
+					<span class="solve__arrow" aria-hidden="true">+</span>
+					<figure class="solve__side">
+						<img class="solve__img" src="images/magik/ai-insights.png" width="322" height="775" loading="lazy" alt="AI Insights panel flagging a missing action, a low threshold and an unused branch, each with a one-click fix">
+						<figcaption><b>AI insights</b> Flags gaps and risky settings, with one-click fixes.</figcaption>
 					</figure>
 				</div>
 				<p class="solve__result"><strong>Self-serve</strong> marketers build, audit &amp; launch</p>
 			</article>
-
-			<figure class="diagram reveal" aria-labelledby="flow-cap">
-				<p class="flowrow__label">The new campaign flow</p>
-				<ol class="flow">
-					<li><b>Describe</b><small>goal in plain words</small></li>
-					<li><b>Audience</b><small>AI segment + live size</small></li>
-					<li><b>Offer</b><small>new or saved template</small></li>
-					<li><b>Channels</b><small>app, SMS, social</small></li>
-					<li><b>Schedule</b><small>timing &amp; triggers</small></li>
-					<li><b>Test run</b><small>check before launch</small></li>
-				</ol>
-				<figcaption id="flow-cap">One canvas, start to launch.</figcaption>
-			</figure>
-
-			<p class="solve__then reveal">Then we scaled the same patterns to <b>loyalty</b> and <b>segmentation</b>.</p>
 		</section>
 
-		<!-- 05 Design system -->
+		<!-- 06 Design system -->
 		<section class="section container" aria-labelledby="dls">
-			<h2 class="section__title reveal" id="dls"><span>05</span> Design system</h2>
-			<figure class="diagram diagram--tokens reveal" aria-labelledby="tok-cap">
-				<ol class="tokens tokens--row">
-					<li><b>Foundations</b></li>
-					<li><b>Tokens</b></li>
-					<li><b>Components</b></li>
-					<li><b>Patterns</b></li>
-				</ol>
-				<figcaption id="tok-cap">One tokenized Figma system for the whole CVM suite.</figcaption>
-			</figure>
+			<h2 class="section__title reveal" id="dls"><span>06</span> Design system</h2>
+			<p class="intro reveal">A tokenized Figma system, specced down to the pixel so engineering builds it right the first time.</p>
+			<div class="split split--even">
+				<figure class="diagram diagram--tokens reveal" aria-labelledby="tok-cap">
+					<ol class="tokens">
+						<li><b>Foundations</b><span>colour, type, spacing</span></li>
+						<li><b>Tokens</b><span>semantic names</span></li>
+						<li><b>Components</b><span>tags, inputs, AI search</span></li>
+						<li><b>Patterns</b><span>canvas, insights, channels</span></li>
+					</ol>
+					<figcaption id="tok-cap">One system for the whole CVM suite.</figcaption>
+				</figure>
+				<figure class="shot reveal">
+					<img src="images/magik/ds-specs.png" width="1282" height="1350" loading="lazy" alt="Component specs for tags and the AI search bar with spacing redlines">
+					<figcaption>Component specs with spacing redlines.</figcaption>
+				</figure>
+			</div>
 		</section>
 
-		<!-- 06 Learnings -->
+		<!-- 07 Learnings -->
 		<section class="section container" aria-labelledby="ref">
-			<h2 class="section__title reveal" id="ref"><span>06</span> What I learned</h2>
+			<h2 class="section__title reveal" id="ref"><span>07</span> What I learned</h2>
 			<ul class="learn learn--row">
 				<li class="reveal"><strong>Design the decision before the data.</strong></li>
 				<li class="reveal"><strong>Trust is a UX problem.</strong></li>
@@ -238,7 +239,7 @@
 		<section class="contact container" aria-labelledby="next-title">
 			<div class="contact__card reveal">
 				<h2 id="next-title">Want the full walkthrough?</h2>
-				<p>Real screens are under NDA. I'm happy to show them in an interview.</p>
+				<p>Happy to walk through the complete flows in an interview.</p>
 				<div class="hero__cta">
 					<a class="btn btn--light" href="mailto:usha.tapal@gmail.com?subject=Magik%20case%20study">Email me</a>
 					<a class="btn btn--ghost-light" href="index.html#work">More work</a>
