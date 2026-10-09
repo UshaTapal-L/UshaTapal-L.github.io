@@ -76,9 +76,9 @@
 		<section class="section container" aria-labelledby="prob">
 			<h2 class="section__title reveal" id="prob"><span>01</span> The problem</h2>
 			<div class="grid grid--3">
-				<article class="card reveal"><h3>Data first, decision last</h3><p>The insight was buried screens deep.</p></article>
-				<article class="card reveal"><h3>Manual, multi-step logic</h3><p>Every campaign was built by hand.</p></article>
-				<article class="card reveal"><h3>AI without trust</h3><p>Users couldn't see why the AI suggested something.</p></article>
+				<article class="card reveal"><p class="num">Problem 1</p><h3>Data first, decision last</h3><p>The insight was buried screens deep.</p></article>
+				<article class="card reveal"><p class="num">Problem 2</p><h3>Manual, multi-step logic</h3><p>Every campaign was built by hand.</p></article>
+				<article class="card reveal"><p class="num">Problem 3</p><h3>AI without trust</h3><p>Users couldn't see why the AI suggested something.</p></article>
 			</div>
 			<p class="hmw reveal"><span>How might we</span> let AI do the analysis, while marketers keep the final say?</p>
 		</section>
@@ -118,74 +118,95 @@
 			</figure>
 		</section>
 
-		<!-- 04 Solution -->
+		<!-- 04 How we solved it -->
 		<section class="section container" aria-labelledby="sol">
-			<h2 class="section__title reveal" id="sol"><span>04</span> Solution</h2>
+			<h2 class="section__title reveal" id="sol"><span>04</span> How we solved it</h2>
 
 			<!--
-				REAL SCREENS: add one sanitized screenshot under each feature like this:
-				<figure class="shot"><img src="images/magik/decision-home.png" alt="Decision home showing three AI recommendations" loading="lazy"><figcaption>Data is illustrative.</figcaption></figure>
+				REAL SCREENS: swap a .ui sketch for a sanitized screenshot, e.g.
+				<img class="solve__img" src="images/magik/decision-home-after.png" alt="Decision home with AI recommendations" loading="lazy">
 			-->
 
-			<div class="feature reveal">
-				<div class="feature__text">
-					<p class="num">01</p>
-					<h3>Decision home</h3>
-					<p>AI recommendations first, data on demand.</p>
+			<article class="solve reveal" aria-label="Problem 1 solved">
+				<header class="solve__head">
+					<p class="num">Problem 1 · Data first, decision last</p>
+					<h3>A decision home</h3>
+				</header>
+				<div class="solve__pair">
+					<figure class="solve__side solve__side--before">
+						<div class="ui ui--busy" aria-hidden="true">
+							<i></i><i></i><i></i><i></i><i class="w2"></i><i></i><i></i><i class="w2"></i><i></i><i></i><i></i><i></i>
+						</div>
+						<figcaption><b>Before</b> Dozens of charts to interpret.</figcaption>
+					</figure>
+					<span class="solve__arrow" aria-hidden="true">→</span>
+					<figure class="solve__side">
+						<div class="ui" aria-hidden="true">
+							<div class="ui__rec ui__rec--top"><i></i><span></span><span class="s"></span><b>Review</b></div>
+							<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
+							<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
+						</div>
+						<figcaption><b>After</b> Ranked AI recommendations. Data on demand.</figcaption>
+					</figure>
 				</div>
-				<div class="feature__visual" aria-hidden="true">
-					<div class="ui">
-						<div class="ui__rec ui__rec--top"><i></i><span></span><span class="s"></span><b>Review</b></div>
-						<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
-						<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
-					</div>
-				</div>
-			</div>
+				<p class="solve__result"><strong>30%</strong> less task time</p>
+			</article>
 
-			<div class="feature feature--flip reveal">
-				<div class="feature__text">
-					<p class="num">02</p>
-					<h3>AI campaign creation</h3>
-					<p>The AI drafts the plan. Marketers edit, not build.</p>
+			<article class="solve reveal" aria-label="Problem 2 solved">
+				<header class="solve__head">
+					<p class="num">Problem 2 · Manual, multi-step logic</p>
+					<h3>AI-drafted campaigns</h3>
+				</header>
+				<div class="solve__pair">
+					<figure class="solve__side solve__side--before">
+						<div class="ui ui--form" aria-hidden="true">
+							<span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+						</div>
+						<figcaption><b>Before</b> Blank forms, built field by field.</figcaption>
+					</figure>
+					<span class="solve__arrow" aria-hidden="true">→</span>
+					<figure class="solve__side">
+						<div class="ui ui--steps" aria-hidden="true">
+							<div class="ui__step is-done"><i></i><span></span></div>
+							<div class="ui__step is-done"><i></i><span></span></div>
+							<div class="ui__step is-active"><i></i><span></span></div>
+							<div class="ui__step"><i></i><span></span></div>
+						</div>
+						<figcaption><b>After</b> AI pre-fills audience, offer and channel. Marketers edit.</figcaption>
+					</figure>
 				</div>
-				<div class="feature__visual" aria-hidden="true">
-					<div class="ui ui--steps">
-						<div class="ui__step is-done"><i></i><span></span></div>
-						<div class="ui__step is-done"><i></i><span></span></div>
-						<div class="ui__step is-active"><i></i><span></span></div>
-						<div class="ui__step"><i></i><span></span></div>
-					</div>
-				</div>
-			</div>
+				<p class="solve__result"><strong>30%</strong> faster campaign launch</p>
+			</article>
 
-			<div class="feature reveal">
-				<div class="feature__text">
-					<p class="num">03</p>
-					<h3>Low-code agent workspace</h3>
-					<p>Build AI campaigns visually, with guardrails.</p>
+			<article class="solve reveal" aria-label="Problem 3 solved">
+				<header class="solve__head">
+					<p class="num">Problem 3 · AI without trust</p>
+					<h3>Guardrails you can see</h3>
+				</header>
+				<div class="solve__pair">
+					<figure class="solve__side solve__side--before">
+						<div class="ui ui--canvas" aria-hidden="true">
+							<div class="node">Data in</div><div class="edge"></div>
+							<div class="node node--box">?</div><div class="edge"></div>
+							<div class="node">Campaign out</div>
+						</div>
+						<figcaption><b>Before</b> A black box.</figcaption>
+					</figure>
+					<span class="solve__arrow" aria-hidden="true">→</span>
+					<figure class="solve__side">
+						<div class="ui ui--canvas" aria-hidden="true">
+							<div class="node">Trigger</div><div class="edge"></div>
+							<div class="node node--ai">AI agent · shows why</div><div class="edge"></div>
+							<div class="node node--guard">Guardrail · limits &amp; approval</div><div class="edge"></div>
+							<div class="node">Channels</div>
+						</div>
+						<figcaption><b>After</b> Every step visible, checkable and reversible.</figcaption>
+					</figure>
 				</div>
-				<div class="feature__visual" aria-hidden="true">
-					<div class="ui ui--canvas">
-						<div class="node">Trigger</div><div class="edge"></div>
-						<div class="node node--ai">AI agent</div><div class="edge"></div>
-						<div class="node node--guard">Guardrail</div><div class="edge"></div>
-						<div class="node">Channels</div>
-					</div>
-				</div>
-			</div>
+				<p class="solve__result"><strong>Self-serve</strong> marketers build, audit &amp; launch</p>
+			</article>
 
-			<div class="feature feature--flip reveal">
-				<div class="feature__text">
-					<p class="num">04</p>
-					<h3>Loyalty &amp; segmentation</h3>
-					<p>Same patterns, extended across the suite.</p>
-				</div>
-				<div class="feature__visual" aria-hidden="true">
-					<div class="ui ui--seg">
-						<span style="--s:46%"></span><span style="--s:28%"></span><span style="--s:16%"></span><span style="--s:10%"></span>
-					</div>
-				</div>
-			</div>
+			<p class="solve__then reveal">Then we scaled the same patterns to <b>loyalty</b> and <b>segmentation</b>.</p>
 		</section>
 
 		<!-- 05 Design system -->
