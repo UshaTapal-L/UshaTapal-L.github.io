@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Magik Case Study — Usha Tapal</title>
+	<meta name="description" content="How Usha Tapal redesigned Magik, a telecom marketing platform, around a Decision-First UX framework: AI recommendations instead of raw telemetry, cutting task time by 30%.">
+	<meta name="author" content="Usha Tapal">
+	<link rel="canonical" href="https://ushatapal-l.github.io/magik.html">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Magik — Designing decisions, not dashboards">
+	<meta property="og:description" content="A case study in AI-native enterprise UX for telecom marketing. Task time down 30%, campaigns built 30% faster.">
+	<meta property="og:url" content="https://ushatapal-l.github.io/magik.html">
+	<meta property="og:image" content="https://ushatapal-l.github.io/images/avatar.jpg">
+	<meta name="theme-color" content="#f6f4f0" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#151413" media="(prefers-color-scheme: dark)">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script>document.documentElement.classList.add("js")</script>
+
+	<!--
+		NDA NOTE: everything on this page is written from the public résumé story and drawn as
+		abstract diagrams — no client data, competitor names, internal people or real screens.
+		To add real visuals, export frames from Figma, replace client/customer data with dummy
+		data, save them in images/magik/ and use the <figure class="shot"> pattern shown in the
+		"Solution" section comment.
+	-->
+</head>
+
+<body class="study">
+	<a class="skip" href="#main">Skip to content</a>
+
+	<header class="nav" id="top">
+		<div class="container nav__inner">
+			<a class="brand" href="index.html" aria-label="Usha Tapal, home">UT<span>.</span></a>
+			<nav aria-label="Primary">
+				<ul class="nav__links">
+					<li><a href="index.html#work">All work</a></li>
+					<li><a href="resume.pdf">Résumé</a></li>
+					<li><a href="index.html#contact" class="btn btn--small">Let's talk</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+
+		<!-- Title -->
+		<section class="container study__hero">
+			<p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Case study · AI-native enterprise UX · Telecom</p>
+			<h1 class="reveal">Magik: designing <em>decisions</em>,<br>not dashboards.</h1>
+			<p class="lead reveal">How I turned a legacy telemetry platform into an AI-driven marketing product that tells
+				telecom campaign managers what to do next, instead of handing them more data to interpret.</p>
+
+			<dl class="study__facts reveal">
+				<div><dt>Role</dt><dd>Product Designer: research, IA, interaction &amp; UI, design system</dd></div>
+				<div><dt>Company</dt><dd>6D Technologies</dd></div>
+				<div><dt>Timeline</dt><dd>2025 – present</dd></div>
+				<div><dt>Users</dt><dd>Campaign &amp; CVM managers at global telecom operators</dd></div>
+				<div><dt>Worked with</dt><dd>PMs, frontend engineers, data scientists, QA</dd></div>
+				<div><dt>Tools</dt><dd>Figma, FigJam, Claude, Figma AI</dd></div>
+			</dl>
+		</section>
+
+		<!-- Impact -->
+		<section class="container stats" aria-label="Results">
+			<div class="stat reveal"><strong>30%</strong><span>less time to complete core tasks</span></div>
+			<div class="stat reveal"><strong>30%</strong><span>faster to build and launch a multi-channel campaign</span></div>
+			<div class="stat reveal"><strong>4</strong><span>global telecom operators using the product</span></div>
+			<div class="stat reveal"><strong>4</strong><span>continents: Middle East, Africa, Asia, Europe</span></div>
+		</section>
+
+		<!-- TL;DR -->
+		<section class="section container narrow" aria-labelledby="tldr">
+			<h2 class="kicker reveal" id="tldr">The short version</h2>
+			<p class="big reveal">Campaign managers didn't need more charts. They needed to know <em>which customers
+				to target, with what offer, and why</em>. I designed a “Decision-First” framework that turns streams of
+				telemetry into plain-language recommendations, wrapped in guardrails so non-technical users can trust
+				and control the AI that acts on them.</p>
+		</section>
+
+		<!-- 01 Context -->
+		<section class="section container" aria-labelledby="ctx">
+			<h2 class="section__title reveal" id="ctx"><span>01</span> Context</h2>
+			<div class="split">
+				<div class="prose reveal">
+					<p>Telecom operators run thousands of marketing campaigns a year: data bundles for heavy users,
+						win-back offers for customers about to leave, loyalty rewards for high-value subscribers. This is
+						<strong>Customer Value Management (CVM)</strong>, and it lives on top of huge volumes of
+						network and usage data.</p>
+					<p>Magik was 6D's platform for this work. It was built as a <strong>telemetry tool</strong>:
+						powerful, but it showed users data and expected them to work out the decision themselves. The
+						business goal was to move it to an <strong>autonomous, AI-driven marketing application</strong>,
+						serving operators across the Middle East, Africa, Asia and Europe.</p>
+				</div>
+				<aside class="callout reveal">
+					<p class="callout__label">My brief</p>
+					<p>Redesign Magik so that AI does the heavy analysis, while marketers stay confidently in control of
+						what goes out to millions of subscribers.</p>
+				</aside>
+			</div>
+		</section>
+
+		<!-- 02 Problem -->
+		<section class="section container" aria-labelledby="prob">
+			<h2 class="section__title reveal" id="prob"><span>02</span> The problem</h2>
+			<div class="grid grid--3">
+				<article class="card reveal">
+					<h3>Data first, decision last</h3>
+					<p>Users had to read dense telemetry, filter it, build a segment and only then decide on a campaign.
+						The insight was there, buried several screens deep.</p>
+				</article>
+				<article class="card reveal">
+					<h3>Multi-step logic, by hand</h3>
+					<p>Building a campaign meant stitching together audience rules, offers, channels and timing. Every
+						step was a chance to make a costly mistake at operator scale.</p>
+				</article>
+				<article class="card reveal">
+					<h3>AI without trust</h3>
+					<p>Moving to AI-driven campaigns raised a new question: how does a non-technical marketer
+						understand, check and override what the AI proposes?</p>
+				</article>
+			</div>
+			<p class="hmw reveal"><span>How might we</span> help campaign managers act on the right opportunity in
+				minutes, while the AI does the analysis and the human keeps the final say?</p>
+		</section>
+
+		<!-- 03 Research -->
+		<section class="section container" aria-labelledby="res">
+			<h2 class="section__title reveal" id="res"><span>03</span> Research</h2>
+			<div class="grid grid--4 methods">
+				<div class="skill reveal">
+					<h3>Stakeholder interviews</h3>
+					<p>With product, data science and client-facing teams, to understand goals and constraints.</p>
+				</div>
+				<div class="skill reveal">
+					<h3>Personas</h3>
+					<p>Built around campaign managers: their daily jobs, pressures and where they lose time.</p>
+				</div>
+				<div class="skill reveal">
+					<h3>Competitor IA study</h3>
+					<p>Mapped how CVM, martech and analytics products structure navigation and campaign flows.</p>
+				</div>
+				<div class="skill reveal">
+					<h3>AI-assisted desk research</h3>
+					<p>Used AI tools to synthesize industry sources quickly, then validated themes with users.</p>
+				</div>
+			</div>
+
+			<h3 class="sub reveal">What we learned</h3>
+			<ol class="insights">
+				<li class="reveal"><span>01</span><div><strong>Users think in goals, not metrics.</strong>
+					“Reduce churn in prepaid users” is the job; the telemetry is just evidence.</div></li>
+				<li class="reveal"><span>02</span><div><strong>Most time goes on interpretation.</strong> The slow part
+					isn't launching a campaign, it's figuring out which one to launch.</div></li>
+				<li class="reveal"><span>03</span><div><strong>Trust needs a “why”.</strong> Users accept AI suggestions
+					when they can see the reasoning and change the inputs.</div></li>
+				<li class="reveal"><span>04</span><div><strong>Competitors still lead with dashboards.</strong> Very few
+					products made the recommendation itself the main interface, which was our opening.</div></li>
+			</ol>
+		</section>
+
+		<!-- 04 Framework -->
+		<section class="section container" aria-labelledby="fw">
+			<h2 class="section__title reveal" id="fw"><span>04</span> The Decision-First framework</h2>
+			<p class="intro reveal">I flipped the order of the experience. Instead of starting with data and ending with
+				a decision, every screen starts with the decision and keeps the data one click away as evidence.</p>
+
+			<figure class="diagram reveal" aria-labelledby="fw-cap">
+				<div class="flowcompare">
+					<div class="flowrow">
+						<p class="flowrow__label">Before · data-first</p>
+						<ol class="flow flow--muted">
+							<li>Open dashboards</li><li>Read telemetry</li><li>Filter &amp; compare</li><li>Build segment</li><li>Pick offer &amp; channel</li><li>Decide</li>
+						</ol>
+					</div>
+					<div class="flowrow">
+						<p class="flowrow__label">After · decision-first</p>
+						<ol class="flow">
+							<li><b>See recommendation</b><small>in plain language</small></li><li><b>Check the why</b><small>evidence on demand</small></li><li><b>Adjust or approve</b><small>human in control</small></li>
+						</ol>
+					</div>
+				</div>
+				<figcaption id="fw-cap">Six manual steps became three, with the AI doing the analysis in between.</figcaption>
+			</figure>
+
+			<div class="grid grid--3 principles">
+				<article class="card reveal">
+					<p class="num">Principle 1</p>
+					<h3>Lead with the action</h3>
+					<p>Each recommendation reads like a sentence: who, what offer, which channel, expected outcome.</p>
+				</article>
+				<article class="card reveal">
+					<p class="num">Principle 2</p>
+					<h3>Evidence on demand</h3>
+					<p>Progressive disclosure keeps charts and telemetry behind the recommendation, not in front of it.</p>
+				</article>
+				<article class="card reveal">
+					<p class="num">Principle 3</p>
+					<h3>Guardrails, not black boxes</h3>
+					<p>Visible limits, previews and approvals make the AI's actions predictable and reversible.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- 05 Solution -->
+		<section class="section container" aria-labelledby="sol">
+			<h2 class="section__title reveal" id="sol"><span>05</span> Solution</h2>
+
+			<!--
+				REAL SCREENS: add one sanitized screenshot under each feature like this:
+				<figure class="shot"><img src="images/magik/decision-home.png" alt="Decision home showing three AI recommendations" loading="lazy"><figcaption>Decision home. Data is illustrative.</figcaption></figure>
+			-->
+
+			<div class="feature reveal">
+				<div class="feature__text">
+					<p class="num">Feature 1</p>
+					<h3>A decision home, not a data dump</h3>
+					<p>The enterprise dashboard opens on a short list of AI recommendations ranked by business impact.
+						Each one explains itself in natural language and links to its supporting data.</p>
+				</div>
+				<div class="feature__visual" aria-hidden="true">
+					<div class="ui">
+						<div class="ui__rec ui__rec--top"><i></i><span></span><span class="s"></span><b>Review</b></div>
+						<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
+						<div class="ui__rec"><i></i><span></span><span class="s"></span><b>Review</b></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="feature feature--flip reveal">
+				<div class="feature__text">
+					<p class="num">Feature 2</p>
+					<h3>AI-assisted campaign creation</h3>
+					<p>AI agents model likely customer behaviour and draft the campaign: audience, offer, channel and
+						timing. Marketers edit a ready-made plan instead of building from a blank form.</p>
+				</div>
+				<div class="feature__visual" aria-hidden="true">
+					<div class="ui ui--steps">
+						<div class="ui__step is-done"><i></i><span></span></div>
+						<div class="ui__step is-done"><i></i><span></span></div>
+						<div class="ui__step is-active"><i></i><span></span></div>
+						<div class="ui__step"><i></i><span></span></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="feature reveal">
+				<div class="feature__text">
+					<p class="num">Feature 3</p>
+					<h3>Low-code AI-agent workspace with guardrails</h3>
+					<p>A visual canvas where non-technical users build, audit and deploy multi-channel campaigns.
+						Guardrails show limits, conflicts and approvals before anything reaches subscribers.</p>
+				</div>
+				<div class="feature__visual" aria-hidden="true">
+					<div class="ui ui--canvas">
+						<div class="node">Trigger</div><div class="edge"></div>
+						<div class="node node--ai">AI agent</div><div class="edge"></div>
+						<div class="node node--guard">Guardrail</div><div class="edge"></div>
+						<div class="node">Channels</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="feature feature--flip reveal">
+				<div class="feature__text">
+					<p class="num">Feature 4</p>
+					<h3>Loyalty &amp; segmentation, same patterns</h3>
+					<p>The framework extends into loyalty management: AI-informed programme setup, customer segmentation
+						and reward optimisation all use the same recommendation-first patterns.</p>
+				</div>
+				<div class="feature__visual" aria-hidden="true">
+					<div class="ui ui--seg">
+						<span style="--s:46%"></span><span style="--s:28%"></span><span style="--s:16%"></span><span style="--s:10%"></span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 06 Design system -->
+		<section class="section container" aria-labelledby="dls">
+			<h2 class="section__title reveal" id="dls"><span>06</span> Design system</h2>
+			<div class="split">
+				<div class="prose reveal">
+					<p>An AI product that changes quickly needs a stable base. I built and run Magik's centralized,
+						<strong>tokenized design system in Figma</strong>, covering components, typography and colour,
+						so designers and engineers share one source of truth.</p>
+					<p>Building it as tokens meant decisions like colour or spacing could change in one place and flow
+						through every product in the CVM suite, which cut implementation back-and-forth between design
+						and engineering.</p>
+				</div>
+				<figure class="diagram diagram--tokens reveal" aria-labelledby="tok-cap">
+					<ol class="tokens">
+						<li><b>Foundations</b><span>colour, type, spacing, radius</span></li>
+						<li><b>Semantic tokens</b><span>surface, text, success, risk</span></li>
+						<li><b>Components</b><span>recommendation card, stepper, node</span></li>
+						<li><b>Patterns</b><span>decision home, campaign builder</span></li>
+					</ol>
+					<figcaption id="tok-cap">Each layer builds on the one below it.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<!-- 07 Impact -->
+		<section class="section container" aria-labelledby="imp">
+			<h2 class="section__title reveal" id="imp"><span>07</span> Impact</h2>
+			<div class="grid grid--2">
+				<article class="card card--impact reveal">
+					<strong>30%</strong>
+					<p>Reduction in task completion time after moving core workflows to Decision-First.</p>
+				</article>
+				<article class="card card--impact reveal">
+					<strong>30%</strong>
+					<p>Faster for non-technical users to build, audit and deploy multi-channel campaigns in the agent
+						workspace.</p>
+				</article>
+			</div>
+			<p class="intro reveal">Beyond the numbers, the design system and the framework gave the wider CVM suite a
+				shared way to present AI, so new AI features now ship with consistent patterns instead of one-off
+				screens.</p>
+		</section>
+
+		<!-- 08 Reflection -->
+		<section class="section container narrow" aria-labelledby="ref">
+			<h2 class="section__title reveal" id="ref"><span>08</span> What I learned</h2>
+			<ul class="learn">
+				<li class="reveal"><strong>Design the decision before the data.</strong> Once we agreed on the decision a
+					screen supports, deciding what data to show became easy.</li>
+				<li class="reveal"><strong>Trust is a UX problem.</strong> Explanations, previews and undo did more for
+					AI adoption than accuracy alone.</li>
+				<li class="reveal"><strong>Systems make speed possible.</strong> The token-based design system let a
+					small team keep up with a fast-moving AI roadmap.</li>
+			</ul>
+		</section>
+
+		<!-- Next -->
+		<section class="contact container" aria-labelledby="next-title">
+			<div class="contact__card reveal">
+				<h2 id="next-title">Want the full walkthrough?</h2>
+				<p>I'm happy to walk through the real screens and research in an interview. Some details are under NDA, so
+					they aren't shown here.</p>
+				<div class="hero__cta">
+					<a class="btn btn--light" href="mailto:usha.tapal@gmail.com?subject=Magik%20case%20study">Email me</a>
+					<a class="btn btn--ghost-light" href="index.html#work">More work</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer container">
+		<p>© <span id="year">2026</span> Usha Tapal. Designed &amp; built by me.</p>
+		<a href="#top">Back to top ↑</a>
+	</footer>
+
+	<script src="assets/js/site.js" defer></script>
+</body>
+
+</html>
