@@ -208,6 +208,34 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .case__steps { display: grid; gap: 12px; font-size: 16px; color: var(--muted); }
 .case__steps strong { color: var(--text); }
 
+/* Impact stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-bottom: 24px; }
+.stat { padding: 22px 0 0; border-top: 2px solid var(--text); }
+.stat strong { display: block; font: 400 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--accent); }
+.stat span { display: block; margin-top: 10px; font-size: 15px; color: var(--muted); }
+
+/* Case visual variants + mock details */
+.case__visual--green { background: linear-gradient(140deg, #0f9d75 0%, #7fd6a8 100%); }
+.case__visual--amber { background: linear-gradient(140deg, #f0782a 0%, #f7c35c 100%); }
+.case:nth-of-type(even) .mock { transform: rotate(3deg); }
+.mock__body--dash { display: grid; grid-template-columns: 48px 1fr; gap: 12px; }
+.mock__side { border-radius: 8px; background: #1f1a3a; }
+.mock__main { display: grid; gap: 10px; }
+.mock__kpi { height: 38px; border-radius: 8px; background: #ece8ff; }
+.mock__chart { display: flex; align-items: flex-end; gap: 6px; height: 90px; padding: 8px; border-radius: 8px; background: #f6f4ff; }
+.mock__chart b { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(#6b4eff, #c86bfa); }
+.mock__row--2 { grid-template-columns: 1.6fr 1fr; }
+.mock__block--ring { background: conic-gradient(#0f9d75 0 68%, #dcefe5 68% 100%); border-radius: 50%; width: 56px; justify-self: center; }
+.mock__block--thin { height: 28px; background: #e6f4ec; }
+.case__visual--green .mock__block--wide { background: linear-gradient(90deg, #e6f4ec, #f1faf4); }
+.case__visual--green .mock__block:not(.mock__block--ring):not(.mock__block--wide):not(.mock__block--thin) { background: #e6f4ec; }
+.mock__bubble { height: 34px; width: 72%; border-radius: 14px 14px 14px 4px; background: #fdf0e3; }
+.mock__bubble--me { justify-self: end; width: 55%; border-radius: 14px 14px 4px 14px; background: #f0782a; }
+.case__impact { padding: 12px 14px; border-radius: 10px; background: var(--accent-soft); color: var(--text) !important; }
+.more { margin-top: 28px; text-align: center; color: var(--muted); }
+.more a { color: var(--accent); font-weight: 600; }
+.timeline__date { margin-top: 4px; font-size: 14px; color: var(--muted); }
+
 /* Experience */
 .timeline { display: grid; gap: 20px; }
 .timeline__item {
@@ -265,6 +293,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 	.hero { grid-template-columns: 1fr; padding-top: 56px; gap: 48px; }
 	.hero__portrait { width: 260px; order: -1; justify-self: start; }
 	.grid--3 { grid-template-columns: 1fr; }
+	.stats { grid-template-columns: repeat(2, 1fr); }
 	.grid--4, .process { grid-template-columns: repeat(2, 1fr); }
 	.case { grid-template-columns: 1fr; }
 	.case__visual { min-height: 260px; }
@@ -283,7 +312,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Print: Ctrl/Cmd+P → "Save as PDF" gives a clean one-page-style résumé */
 @media print {
-	.nav, .skip, .hero__portrait, .case__visual, .hero__cta, .footer, .contact .hero__cta { display: none !important; }
+	.nav, .skip, .hero__portrait, .case__visual, .hero__cta, .more, .footer, .contact .hero__cta { display: none !important; }
 	body { background: #fff; color: #000; font-size: 11pt; }
 	.reveal { opacity: 1 !important; transform: none !important; }
 	.hero { display: block; padding: 0 0 12pt; }
