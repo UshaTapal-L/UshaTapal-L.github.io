@@ -265,6 +265,25 @@ p { margin: 0 0 1em; }
 .proj__art--shot:hover .sticker { transform: rotate(-8deg) scale(1.15); }
 .proj__detail b { font-weight: 600; }
 
+/* Project film */
+.proj__art--film { margin: 0; }
+.film { position: relative; border-radius: 18px; overflow: hidden; background: #0f4660; box-shadow: 0 24px 50px rgba(20,33,28,.25); aspect-ratio: 16 / 9; }
+.film__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.film__btn {
+  position: absolute; left: 14px; bottom: 14px; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+  display: grid; place-items: center; background: rgba(255,255,255,.92); color: #0f4660; box-shadow: 0 6px 16px rgba(0,0,0,.2);
+  transition: transform .4s var(--spring);
+}
+.film__btn:hover { transform: scale(1.1); }
+.film__btn .i-pause { display: none; }
+.film__btn[data-state="playing"] .i-play { display: none; }
+.film__btn[data-state="playing"] .i-pause { display: block; }
+.film__cap { margin-top: 10px; font-size: 13px; font-weight: 600; opacity: .7; }
+.proj__art--film .sticker { top: -14px; right: -10px; }
+.proj__art--film:hover .sticker { transform: rotate(-8deg) scale(1.15); }
+.detail-shot { margin: 8px 0 4px; }
+.detail-shot .browser { box-shadow: 0 10px 24px rgba(20,33,28,.15); border-radius: 12px; }
+
 /* ---------- Studio ---------- */
 .studio { background: #0f2e25; color: #f7f3ec; padding: 96px 0 72px; margin-top: 56px; position: relative; }
 .studio__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }

@@ -78,6 +78,31 @@
     });
   }
 
+  // Project films: play silently while on screen, with a play/pause button.
+  document.querySelectorAll('.film').forEach(function (wrap) {
+    var v = wrap.querySelector('video'), btn = wrap.querySelector('.film__btn');
+    var userPaused = reduce; // with reduced motion, wait for the viewer to press play
+    function sync() {
+      var playing = !v.paused;
+      btn.dataset.state = playing ? 'playing' : 'paused';
+      btn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+    }
+    function play() { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+    btn.addEventListener('click', function () {
+      if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); }
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !userPaused) play();
+          else if (!e.isIntersecting) v.pause();
+        });
+      }, { threshold: 0.35 }).observe(wrap);
+    }
+    sync();
+  });
+
   // Floating avatar waves once after a few seconds.
   var buddy = document.querySelector('.buddy');
   if (buddy && !reduce) {
