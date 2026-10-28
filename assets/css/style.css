@@ -253,6 +253,18 @@ p { margin: 0 0 1em; }
 .proj__art--phone:hover .sticker { transform: rotate(-8deg) scale(1.15); }
 .badge-lock { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; background: #14211c; color: #fff; padding: 5px 12px; border-radius: 999px; margin-bottom: 12px; }
 
+/* Project screenshot in a browser frame */
+.proj__art--shot { margin: 0; }
+.browser { border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 24px 50px rgba(20,33,28,.2); }
+.browser__bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #eef2f4; }
+.browser__bar i { width: 10px; height: 10px; border-radius: 50%; background: #d3dadd; }
+.browser__bar i:nth-child(1) { background: #ff6159; } .browser__bar i:nth-child(2) { background: #ffbd2e; } .browser__bar i:nth-child(3) { background: #28c941; }
+.browser__bar span { margin-left: 10px; font-size: 12px; color: #5d6b65; }
+.browser img, .browser video { display: block; width: 100%; height: auto; }
+.sticker--teal { background: #0f4660; color: #fff; top: -14px; right: -10px; font-size: 20px; }
+.proj__art--shot:hover .sticker { transform: rotate(-8deg) scale(1.15); }
+.proj__detail b { font-weight: 600; }
+
 /* ---------- Studio ---------- */
 .studio { background: #0f2e25; color: #f7f3ec; padding: 96px 0 72px; margin-top: 56px; position: relative; }
 .studio__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
