@@ -216,3 +216,116 @@ details[open] summary::after { content: "–"; }
   .stats { gap: 24px; }
   .footer { flex-direction: column; gap: 8px; }
 }
+
+/* ---------- Locked case card (home page) ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.case__media--phone {
+  background: linear-gradient(160deg, #e3f4e8, #f4efe3);
+  display: grid; place-items: center; padding: 28px 0; text-decoration: none;
+}
+.mini-phone {
+  width: 150px; height: 304px; border-radius: 30px; background: #141414; padding: 7px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+.mini-phone__screen {
+  height: 100%; border-radius: 24px; position: relative; overflow: hidden;
+  background: linear-gradient(170deg, #0fae4a 0%, #0b7a35 55%, #0a3d22 100%);
+  display: grid; place-items: center; color: #fff; text-align: center;
+}
+.mini-phone__screen::before {
+  content: ""; position: absolute; top: 7px; left: 50%; transform: translateX(-50%);
+  width: 46px; height: 13px; border-radius: 8px; background: #000;
+}
+.mini-phone__lock { display: grid; justify-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: .03em; }
+.mini-phone__lock svg { width: 34px; height: 34px; }
+.badge-lock {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600;
+  background: var(--ink); color: var(--bg); padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+}
+.case__cta { margin: 6px 0 18px; }
+
+/* ---------- Password page ---------- */
+.nav__back { margin-left: auto; text-decoration: none; color: var(--muted); font-size: 15px; }
+.nav__back:hover { color: var(--ink); }
+.lock { max-width: 520px; margin: 0 auto; padding: 96px 0 120px; text-align: center; }
+.lock[hidden] { display: none; }
+.lock__icon {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 24px; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent);
+}
+.lock h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 5vw, 44px); margin-bottom: 14px; }
+.lock .lede { margin: 0 auto 28px; }
+.lock__form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.lock__form input {
+  font: inherit; padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--line);
+  background: var(--surface); color: var(--ink); min-width: 0; flex: 1 1 220px; max-width: 280px;
+}
+.lock__form input:focus { outline: none; border-color: var(--accent); }
+.lock__form .btn { cursor: pointer; font: inherit; font-weight: 600; }
+.lock__form .btn:disabled { opacity: .6; cursor: wait; }
+.lock__msg { min-height: 1.6em; margin-top: 14px; color: var(--muted); font-size: 15px; }
+.lock__ask { font-size: 15px; }
+.lock__ask a { color: var(--accent); }
+
+/* ---------- Case study layout ---------- */
+.cs { display: grid; grid-template-columns: auto 1fr; gap: 64px; padding: 48px 0 96px; align-items: start; }
+.cs__phone { position: sticky; top: 88px; display: grid; justify-items: center; }
+.cs__hint { font-size: 14px; color: var(--muted); max-width: 300px; text-align: center; margin-top: 16px; }
+.cs__text h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.4vw, 46px); letter-spacing: -.01em; margin-bottom: 18px; }
+.cs__text h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; margin: 48px 0 14px; }
+.cs__text h3 { font-size: 17px; font-weight: 600; margin: 22px 0 8px; }
+.cs__facts { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.cs__facts li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.cs__facts span { display: block; font-weight: 400; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.cs__list { padding-left: 20px; }
+.cs__list li { margin-bottom: 8px; }
+.cs__decisions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cs__decisions > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.cs__decisions h3 { margin-top: 0; color: var(--accent); }
+.cs__decisions p { margin: 0; color: var(--muted); font-size: 15px; }
+.cs__note { font-size: 14px; color: var(--muted); background: var(--accent-soft); padding: 10px 14px; border-radius: 10px; }
+
+/* ---------- iPhone frame (iPhone 15 Pro size: 393 x 852) ---------- */
+.iphone-fit { position: relative; }
+.iphone {
+  position: relative; width: 417px; padding: 12px; border-radius: 64px;
+  background: linear-gradient(145deg, #3a3a3c, #1c1c1e);
+  box-shadow: inset 0 0 0 2px #55555a, 0 30px 70px rgba(0,0,0,.25);
+  transform-origin: top left;
+}
+.iphone__screen {
+  position: relative; width: 393px; height: 852px; border-radius: 52px; overflow: hidden;
+  background: #f6f8f6; box-shadow: 0 0 0 2px #000;
+}
+.iphone__status {
+  position: absolute; inset: 0 0 auto 0; height: 54px; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; padding: 6px 30px 0 46px;
+  color: #111; background: #f6f8f6;
+}
+.iphone__time { font: 600 16px/1 -apple-system, "SF Pro Text", "Inter", sans-serif; }
+.iphone__icons { display: inline-flex; gap: 6px; align-items: center; }
+.iphone__icons svg { fill: currentColor; }
+.iphone__island {
+  position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+  width: 124px; height: 36px; border-radius: 20px; background: #000;
+}
+.iphone iframe { position: absolute; top: 54px; left: 0; width: 393px; height: 798px; border: 0; background: #fff; }
+.iphone__home {
+  position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); z-index: 3;
+  width: 134px; height: 5px; border-radius: 3px; background: #111; pointer-events: none;
+}
+.iphone__btn { position: absolute; width: 4px; border-radius: 2px; background: #2c2c2e; }
+.iphone__btn--action { left: -3px; top: 150px; height: 32px; }
+.iphone__btn--up { left: -3px; top: 210px; height: 60px; }
+.iphone__btn--down { left: -3px; top: 285px; height: 60px; }
+.iphone__btn--power { right: -3px; top: 240px; height: 96px; }
+
+@media (max-width: 960px) {
+  .cs { grid-template-columns: 1fr; gap: 40px; padding-top: 32px; }
+  .cs__phone { position: static; }
+  .cs__facts { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .cs__decisions { grid-template-columns: 1fr; }
+  .lock { padding: 64px 0 96px; }
+}
