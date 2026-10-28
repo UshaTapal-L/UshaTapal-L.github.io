@@ -196,68 +196,32 @@
         </div>
       </article>
 
-      <!-- Verity (ESG) -->
-      <article class="proj proj--sky reveal">
-        <figure class="proj__art proj__art--film">
-          <div class="film">
-            <video class="film__video" src="images/work/verity-film.mp4" poster="images/work/verity-film-poster.jpg" muted loop playsinline preload="metadata" aria-label="Verity motion film: from 140+ scattered BRSR questions to a filed report, showing meter capture, bill auto-fill, anomaly detection, Copilot, forecasting and approval"></video>
-            <button class="film__btn" type="button" aria-label="Play video" data-state="paused">
-              <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              <svg class="i-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
-            </button>
+      <!-- Verity (ESG, locked) -->
+      <article class="proj proj--sky reveal" id="verity">
+        <a class="proj__art proj__art--laptop tilt" href="work/verity.html" aria-label="Open the password-protected Verity case study">
+          <div class="mini-laptop" aria-hidden="true">
+            <div class="mini-laptop__lid">
+              <div class="mini-laptop__screen">
+                <span class="mini-phone__glow"></span>
+                <div class="mini-phone__lock">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  Verity
+                </div>
+              </div>
+            </div>
+            <div class="mini-laptop__base"></div>
           </div>
-          <figcaption class="film__cap">Motion film · 68 s</figcaption>
           <span class="sticker sticker--teal">AI<br>Copilot</span>
-        </figure>
+        </a>
         <div class="proj__body">
+          <span class="badge-lock">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Password protected
+          </span>
           <p class="proj__meta"><span class="num">03</span> Verity · ESG SaaS · BRSR + GRI reporting</p>
           <h3>Verity: ESG intelligence for BRSR + GRI reporting</h3>
-          <p>Indian listed companies must file BRSR every year, and many also report to GRI. Verity brings every question, owner, datapoint and piece of evidence into one place, with an AI Copilot that drafts answers and a person who always approves them.</p>
-          <ul class="outcomes">
-            <li><strong>500</strong> questions, one deadline: a monthly view shows readiness, owners and evidence gaps at a glance</li>
-            <li><strong>4</strong> roles, one filing: separate homes for the ESG lead, data owner, CFO and external assurer</li>
-            <li><strong>1 photo</strong> becomes a datapoint: Copilot reads a meter (48,213 kWh) and the supervisor confirms</li>
-          </ul>
-          <details>
-            <summary>Read the case study</summary>
-            <div class="proj__detail">
-              <h4>My role</h4>
-              <p>Product designer covering UX, UI and the design system, for the BRSR Core and GRI frameworks. Delivered 12 screens and an interactive prototype.</p>
-              <h4>The challenge</h4>
-              <ul>
-                <li><b>Scattered data:</b> energy, water and HR data lived in spreadsheets across every site.</li>
-                <li><b>Unclear ownership:</b> nobody knew who answered which BRSR question, or by when.</li>
-                <li><b>Hard to assure:</b> auditors couldn't trace a reported value back to its evidence.</li>
-              </ul>
-              <h4>Who I designed for</h4>
-              <ul>
-                <li><b>ESG lead:</b> "Show me what's late before it's a problem."</li>
-                <li><b>Data owner:</b> "Just tell me which number, and where."</li>
-                <li><b>CFO, approver:</b> "If I can't trace it, I won't sign it."</li>
-                <li><b>External assurer:</b> "One click from value to evidence."</li>
-              </ul>
-              <h4>The journey: capture, review, approve</h4>
-              <ul>
-                <li><b>Data owner</b> photographs a meter or uploads a bill; Copilot extracts the value and maps it to the right BRSR question, ready to submit.</li>
-                <li><b>ESG lead</b> tracks the monthly close, sees anomalies explained, asks Copilot to remind overdue owners, and bulk-approves reviewed answers.</li>
-                <li><b>CFO</b> reviews themes with a Copilot risk summary, checks the FY30 net-zero gap, and signs off the filing for XBRL.</li>
-                <li><b>Assurer</b> follows each value from source to AI draft to approval, with AI sampling that flags variances.</li>
-              </ul>
-              <h4>Home: the ESG lead's monthly view</h4>
-              <figure class="detail-shot">
-                <div class="browser">
-                  <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>verity · Overview</span></div>
-                  <img src="images/work/verity-home.jpg" alt="Verity overview dashboard: an AI Copilot summary of the September close, disclosure progress across BRSR and GRI, month-close checklist and tasks with reminders" width="1400" height="874" loading="lazy">
-                </div>
-              </figure>
-              <h4>Key screens</h4>
-              <p>Overview, energy topic, BRSR filing, sites, net-zero targets, suppliers (Scope 3), assurance, mobile capture, my questions, CFO home, Copilot and Evidence Hub.</p>
-              <h4>Guiding principle</h4>
-              <p>Copilot suggests, a person approves. Nothing is filed or sent to suppliers without human sign-off, and every AI draft shows its sources.</p>
-              <h4>Design system</h4>
-              <p>Calm, clinical and trustworthy: a deep teal palette with clear status colours, and a type scale built for dense numbers and long disclosures.</p>
-            </div>
-          </details>
+          <p>One place for every BRSR and GRI filing: every question, owner, datapoint and piece of evidence, with an AI Copilot that drafts answers and a person who always approves them. Designed for four roles, from the plant floor to the CFO's sign-off.</p>
+          <p class="proj__cta"><a class="btn btn--green magnetic" href="work/verity.html">View case study &amp; motion film →</a></p>
           <ul class="tags"><li>AI Copilot</li><li>BRSR + GRI</li><li>Dashboards</li><li>Design system</li></ul>
         </div>
       </article>

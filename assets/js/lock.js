@@ -15,6 +15,8 @@
     return a;
   }
 
+  var pageKey = null;
+
   async function decrypt(pw) {
     var data = bytes(document.getElementById('payload').textContent);
     var salt = data.slice(0, 16), iv = data.slice(16, 28), ct = data.slice(28);
@@ -23,20 +25,47 @@
       { name: 'PBKDF2', salt: salt, iterations: ITER, hash: 'SHA-256' },
       base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
     var gz = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, ct);
+    pageKey = key;
     var stream = new Blob([gz]).stream().pipeThrough(new DecompressionStream('gzip'));
     return JSON.parse(await new Response(stream).text());
   }
 
-  function fitPhone() {
-    var fit = document.querySelector('.iphone-fit');
-    if (!fit) return;
-    var phone = fit.firstElementChild;
-    var w = phone.offsetWidth, h = phone.offsetHeight;
-    var scale = Math.min(1, fit.parentElement.clientWidth / w, (window.innerHeight - 110) / h);
-    scale = Math.max(scale, 0.55);
-    phone.style.transform = 'scale(' + scale + ')';
-    fit.style.width = w * scale + 'px';
-    fit.style.height = h * scale + 'px';
+  // Encrypted media files (video, images) sit next to the page as base64 text of iv|ciphertext.
+  async function loadAsset(asset) {
+    var res = await fetch(asset.file);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var buf = bytes(await res.text());
+    var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, pageKey, buf.slice(12));
+    return URL.createObjectURL(new Blob([plain], { type: asset.type }));
+  }
+
+  // Scale device frames (iPhone, MacBook) to fit the space they have.
+  function fitDevices() {
+    document.querySelectorAll('.iphone-fit, .device-fit').forEach(function (fit) {
+      var dev = fit.firstElementChild;
+      var w = dev.offsetWidth, h = dev.offsetHeight;
+      var isPhone = fit.classList.contains('iphone-fit');
+      var scale = Math.min(1, fit.parentElement.clientWidth / w, (window.innerHeight - 110) / h, isPhone ? 1 : 1000 / w);
+      scale = Math.max(scale, isPhone ? 0.55 : 0.2);
+      dev.style.transform = 'scale(' + scale + ')';
+      fit.style.width = w * scale + 'px';
+      fit.style.height = h * scale + 'px';
+    });
+  }
+
+  function wireVideoToggles() {
+    document.querySelectorAll('[data-video-toggle]').forEach(function (b) {
+      var v = document.querySelector('[data-enc-src="film"]');
+      if (!v) return;
+      function sync() {
+        var playing = !v.paused;
+        b.dataset.state = playing ? 'playing' : 'paused';
+        b.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+      }
+      v.addEventListener('play', sync); v.addEventListener('pause', sync);
+      b.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+      sync();
+    });
   }
 
   function show(data) {
@@ -44,9 +73,21 @@
     content.innerHTML = data.body;
     document.getElementById('lock').hidden = true;
     content.hidden = false;
-    document.getElementById('app-frame').srcdoc = data.app;
-    fitPhone();
-    window.addEventListener('resize', fitPhone);
+    var frame = document.getElementById('app-frame');
+    if (frame && data.app) frame.srcdoc = data.app;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    content.querySelectorAll('[data-enc-src]').forEach(function (el) {
+      var asset = data.assets && data.assets[el.getAttribute('data-enc-src')];
+      if (!asset) return;
+      if (el.tagName === 'VIDEO' && reduce) el.removeAttribute('autoplay');
+      loadAsset(asset).then(function (url) {
+        el.src = url;
+        if (el.tagName === 'VIDEO' && !reduce) { var p = el.play(); if (p && p.catch) p.catch(function () {}); }
+      }).catch(function () {});
+    });
+    wireVideoToggles();
+    fitDevices();
+    window.addEventListener('resize', fitDevices);
     window.scrollTo(0, 0);
   }
 

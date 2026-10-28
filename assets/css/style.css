@@ -454,6 +454,74 @@ p { margin: 0 0 1em; }
 .iphone__btn--down { left: -3px; top: 285px; height: 60px; }
 .iphone__btn--power { right: -3px; top: 240px; height: 96px; }
 
+/* ---------- Verity case study (work/verity.html) ---------- */
+.vcs { padding: 40px 0 96px; animation: dropIn .8s var(--ease); }
+.vcs__intro { max-width: 860px; margin: 0 auto 36px; text-align: center; }
+.vcs__intro h1 { font-family: var(--display); font-weight: 800; font-size: clamp(36px, 5vw, 62px); letter-spacing: -.04em; line-height: 1.02; color: var(--green); margin-bottom: 18px; text-wrap: balance; }
+.vcs__intro .lede { margin: 0 auto; }
+.vcs__device { display: grid; justify-items: center; margin-bottom: 56px; }
+.vcs__controls { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.vcs__controls .cs__hint { margin: 0; text-align: left; max-width: none; }
+.film__btn--inline { position: static; width: 38px; height: 38px; background: var(--surface); color: var(--green); box-shadow: 0 0 0 1px var(--line); }
+.vcs__body { max-width: 900px; margin: 0 auto; }
+.vcs__body h2 { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -.03em; margin: 64px 0 14px; text-wrap: balance; }
+.vcs__body > p { color: var(--muted); font-size: 18px; max-width: 65ch; }
+.vcs .cs__decisions h3 { font-family: var(--display); font-size: 20px; margin: 0 0 6px; }
+
+.personas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.persona { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+.persona__av { flex: none; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; background: #0f4660; color: #fff; }
+.persona b { display: block; font-family: var(--display); font-size: 18px; }
+.persona small { display: block; color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.persona q { font-family: var(--hand); font-size: 22px; line-height: 1.2; color: var(--green); quotes: "\201C" "\201D"; }
+
+.flows { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.flow { border-radius: 18px; padding: 18px 20px; color: #14211c; }
+.flow:nth-child(1) { background: var(--peach); } .flow:nth-child(2) { background: var(--mint); } .flow:nth-child(3) { background: var(--lilac); } .flow:nth-child(4) { background: var(--sky); }
+.flow__who { display: inline-block; font-size: 13px; font-weight: 700; background: #14211c; color: #fff; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+.flow ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; }
+
+.screens { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.screens li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-weight: 600; font-size: 15px; transition: transform .4s var(--spring); }
+.screens li:hover { transform: translateY(-4px) rotate(-1deg); }
+.screens b { display: block; font-family: var(--display); color: var(--green-2); font-size: 13px; }
+
+.principle { margin: 64px 0 0; border-radius: 28px; padding: 44px 36px; text-align: center; color: #fff; background: radial-gradient(120% 140% at 50% 0%, #1e6c8a 0%, #0f4660 55%, #0b3346 100%); }
+.principle .eyebrow { color: #9fd8ef; }
+.principle__text { font-family: var(--display); font-weight: 800; font-size: clamp(32px, 4.6vw, 54px); letter-spacing: -.04em; line-height: 1.05; margin-bottom: 14px; }
+.principle__text em { font-style: normal; color: #7fe0c4; }
+.principle p:last-child { margin: 0; color: #cfe6ef; }
+
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+.swatches span { border-radius: 16px; min-height: 110px; padding: 14px; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; font-size: 13px; font-family: ui-monospace, Menlo, monospace; }
+.swatches b { font-family: var(--sans); font-size: 14px; }
+
+/* MacBook frame: 1280 x 800 screen */
+.device-fit { position: relative; }
+.macbook { width: 1480px; transform-origin: top left; }
+.macbook__lid { position: relative; width: 1316px; margin: 0 auto; padding: 28px 18px 18px; border-radius: 34px 34px 0 0; background: #0d0d0f; box-shadow: inset 0 0 0 2px #2a2a2e, 0 30px 70px rgba(0,0,0,.25); }
+.macbook__cam { position: absolute; top: 11px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #2b3036; box-shadow: inset 0 0 0 2px #15181b; }
+.macbook__screen { position: relative; width: 1280px; height: 800px; overflow: hidden; border-radius: 6px; background: #0f3e52; }
+.macbook__video, .macbook__screen iframe { display: block; width: 100%; height: 100%; border: 0; object-fit: contain; background: #0f3e52; }
+.macbook__base { position: relative; height: 26px; border-radius: 0 0 22px 22px; background: linear-gradient(#e4e6ea, #b7bbc2 70%, #8f949b); box-shadow: 0 18px 30px rgba(0,0,0,.18); }
+.macbook__base::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(#9aa0a8, #d7dade); border-radius: 2px; }
+.macbook__base span { position: absolute; top: 0; left: 50%; width: 220px; margin-left: -110px; height: 12px; border-radius: 0 0 14px 14px; background: #a9aeb6; }
+
+/* Locked laptop on the home card */
+.proj__art--laptop { display: grid; place-items: center; padding: 40px 0; text-decoration: none; }
+.mini-laptop { width: min(100%, 420px); animation: float 5s ease-in-out infinite; }
+.mini-laptop__lid { background: #111; border-radius: 16px 16px 0 0; padding: 10px 10px 8px; box-shadow: 0 24px 40px rgba(20,33,28,.25); }
+.mini-laptop__screen { position: relative; aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; display: grid; place-items: center; color: #fff; background: radial-gradient(120% 120% at 30% 0%, #3d87a6 0%, #12506b 50%, #0b3346 100%); }
+.mini-laptop__base { height: 12px; margin: 0 -22px; border-radius: 0 0 12px 12px; background: linear-gradient(#e4e6ea, #a9aeb6); }
+.proj__art--laptop:hover .sticker { transform: rotate(-8deg) scale(1.15); }
+.proj__art--laptop .sticker { top: 4%; right: 6%; }
+
+@media (max-width: 760px) {
+  .personas, .flows { grid-template-columns: 1fr; }
+  .screens, .swatches { grid-template-columns: 1fr 1fr; }
+  .principle { padding: 32px 20px; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
   .fan { grid-template-columns: 1fr 1fr; gap: 20px 0; margin: 40px 0 0; }
