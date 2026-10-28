@@ -62,6 +62,7 @@
           ? 'Your browser is too old to open this page. Please try a recent Chrome, Safari or Edge.'
           : 'That password didn\'t work. Please try again.';
         input.select();
+        form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
       }
     } finally {
       btn.disabled = false;
