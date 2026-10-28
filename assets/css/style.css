@@ -454,7 +454,7 @@ p { margin: 0 0 1em; }
 .iphone__btn--down { left: -3px; top: 285px; height: 60px; }
 .iphone__btn--power { right: -3px; top: 240px; height: 96px; }
 
-/* ---------- Verity case study (work/verity.html) ---------- */
+/* ---------- RIU case study (work/riu.html) ---------- */
 .vcs { padding: 40px 0 96px; animation: dropIn .8s var(--ease); }
 .vcs__intro { max-width: 860px; margin: 0 auto 36px; text-align: center; }
 .vcs__intro h1 { font-family: var(--display); font-weight: 800; font-size: clamp(36px, 5vw, 62px); letter-spacing: -.04em; line-height: 1.02; color: var(--green); margin-bottom: 18px; text-wrap: balance; }
@@ -495,6 +495,9 @@ p { margin: 0 0 1em; }
 .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
 .swatches span { border-radius: 16px; min-height: 110px; padding: 14px; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; font-size: 13px; font-family: ui-monospace, Menlo, monospace; }
 .swatches b { font-family: var(--sans); font-size: 14px; }
+
+.film--case { margin: 8px 0 0; }
+.cs__hint--wide { max-width: 640px; margin: 18px auto 0; }
 
 /* MacBook frame: 1280 x 800 screen */
 .device-fit { position: relative; }
