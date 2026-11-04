@@ -7,7 +7,7 @@
   // Nav: background on scroll + active link.
   var nav = document.querySelector('.nav');
   var links = document.querySelectorAll('.nav__pill a');
-  var sections = ['top', 'work', 'studio', 'about'].map(function (id) { return document.getElementById(id); });
+  var sections = ['top', 'work', 'approach', 'studio', 'about'].map(function (id) { return document.getElementById(id); });
   function onScroll() {
     if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 10);
     var current = 'top';
