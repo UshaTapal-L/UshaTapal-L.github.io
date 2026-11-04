@@ -28,7 +28,6 @@
         <a href="#top" class="is-active">Home</a>
         <a href="#work">Work</a>
         <a href="#approach">Approach</a>
-        <a href="#studio">Studio</a>
         <a href="#about">About</a>
       </nav>
       <div class="nav__actions">
@@ -49,64 +48,67 @@
       <div class="wrap">
         <div class="hero__panel">
           <canvas class="sketch" aria-hidden="true"></canvas>
-          <p class="hand sketch__hint" aria-hidden="true">psst… move your mouse to sketch ✎</p>
-          <h1 class="hero__title" aria-label="Hi, I'm Usha. Product Designer and Architect of interfaces.">
-            <span class="line" aria-hidden="true"><span class="w">Hi,</span> <span class="w">I'm</span> <span class="w"><span class="hw">Usha</span>.</span></span>
-            <span class="line line--grad" aria-hidden="true"><span class="w">Product</span> <span class="w">Designer</span> <span class="w">&amp;</span> <span class="w">Architect</span></span>
-            <span class="line line--small" aria-hidden="true"><span class="w">of</span> <span class="w">interfaces.</span></span>
-          </h1>
-          <p class="hero__sub reveal">
-            I design AI-native enterprise products at
-            <span class="chip chip--green"><i></i>6D Technologies</span>
-            for telecom operators like
-            <span class="chip"><i style="background:#e4002b"></i>Etisalat</span>
-            <span class="chip"><i style="background:#ffcb05"></i>MTN</span>
-            and
-            <span class="chip"><i style="background:#13b04b"></i>Smart</span>.
-          </p>
-
-          <!-- Fanned cards -->
-          <div class="fan" aria-label="Explore">
-            <a class="fan__card fan__card--peach" href="#work" style="--r:-6deg; --x:-6%; --i:0">
-              <h2>Recent work</h2>
-              <p>AI, telecom, ESG</p>
-              <span class="fan__btn">See projects →</span>
-            </a>
-            <div class="fan__card fan__card--photo" style="--r:3deg; --x:-2%; --i:1">
-              <img src="images/avatar.jpg" alt="Usha Tapal smiling" width="165" height="165">
-              <span class="tape" aria-hidden="true"></span>
-              <p class="hand">Hi! I'm based in Bengaluru 👋</p>
-              <span class="status"><span class="dot"></span> Open to product design roles</span>
+          <div class="hero__intro">
+            <div class="hero__text">
+              <h1 class="hero__title"><span class="w">Hi,</span> <span class="w">I'm</span> <span class="w"><span class="hw">Usha</span>.</span></h1>
+              <p class="hero__role reveal">Product designer for AI-native enterprise products.<br>Trained as an architect.</p>
+              <ul class="hero__facts reveal" aria-label="At a glance">
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Bengaluru</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Product designer since 2022</li>
+                <li class="hero__open"><span class="dot"></span>Open to roles</li>
+              </ul>
+              <div class="hero__cta reveal">
+                <a class="btn btn--green magnetic" href="resume/Usha_Tapal_Resume.pdf" download>Download resume ↓</a>
+                <a class="btn btn--ghost magnetic" href="#work">See work</a>
+              </div>
             </div>
-            <a class="fan__card fan__card--lilac" href="#work" style="--r:-3deg; --x:2%; --i:2">
-              <h2>AI products</h2>
-              <p>Agents, assistants, copilots</p>
-              <span class="fan__btn">See AI work →</span>
-            </a>
-            <a class="fan__card fan__card--sky" href="#studio" style="--r:5deg; --x:6%; --i:3">
-              <h2>The studio</h2>
-              <p>Click around inside</p>
-              <span class="fan__btn">Enter studio →</span>
-            </a>
+            <figure class="hero__photo">
+              <img src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165">
+              <span class="tape" aria-hidden="true"></span>
+              <figcaption class="hand">Clients: Etisalat · MTN · Smart</figcaption>
+            </figure>
           </div>
+
+          <ol class="journey-cards" aria-label="My journey">
+            <li>
+              <a class="jcard" href="#approach" style="--i:0">
+                <span class="jcard__year">2017–22</span>
+                <svg class="jcard__art jcard__art--bp" viewBox="0 0 120 70" aria-hidden="true"><rect x="8" y="8" width="104" height="54"/><path d="M8 34h46M54 8v54M54 44h58M84 44v18"/><path d="M26 34a8 8 0 0 1 8-8"/></svg>
+                <b>Architect</b>
+                <span class="jcard__line">B.Arch: space, structure, flow</span>
+                <span class="jcard__proof">Structure first</span>
+              </a>
+            </li>
+            <li>
+              <a class="jcard" href="#about" style="--i:1">
+                <span class="jcard__year">2022–23</span>
+                <svg class="jcard__art" viewBox="0 0 120 70" aria-hidden="true"><rect x="8" y="8" width="104" height="54" rx="6"/><rect x="16" y="16" width="40" height="8" rx="2"/><rect x="16" y="30" width="88" height="24" rx="3" stroke-dasharray="4 3"/><rect x="66" y="16" width="38" height="8" rx="4"/></svg>
+                <b>UX designer</b>
+                <span class="jcard__line">Trainee → consultant</span>
+                <span class="jcard__proof">Web · WCAG 2.1 AA</span>
+              </a>
+            </li>
+            <li>
+              <a class="jcard" href="#riu" style="--i:2">
+                <span class="jcard__year">2024</span>
+                <svg class="jcard__art" viewBox="0 0 120 70" aria-hidden="true"><rect x="8" y="8" width="104" height="54" rx="6"/><path d="M8 20h104"/><rect x="18" y="44" width="10" height="12"/><rect x="34" y="36" width="10" height="20"/><rect class="hl" x="50" y="28" width="10" height="28"/><rect x="66" y="40" width="10" height="16"/><path d="M84 52l8-10 8 4 8-14"/></svg>
+                <b>0 → 1 ESG</b>
+                <span class="jcard__line">RIU reporting platform</span>
+                <span class="jcard__proof"><strong>40%</strong> higher satisfaction</span>
+              </a>
+            </li>
+            <li>
+              <a class="jcard jcard--now" href="#work" style="--i:3">
+                <span class="jcard__year">2025 → now</span>
+                <svg class="jcard__art" viewBox="0 0 120 70" aria-hidden="true"><rect x="44" y="6" width="32" height="58" rx="6"/><path class="hl-stroke" d="M60 22l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M16 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM100 38l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></svg>
+                <b>AI products</b>
+                <span class="jcard__line">6D Technologies · telcos</span>
+                <span class="jcard__proof"><strong>30%</strong> faster tasks</span>
+              </a>
+            </li>
+          </ol>
         </div>
       </div>
-    </section>
-
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee-wrap" aria-hidden="true"><div class="marquee">
-      <div class="marquee__track">
-        <span>Curious</span><b>✦</b><span>AI agents</span><b>✦</b><span>Playful</span><b>✦</b><span>Design systems</span><b>✦</b><span>Fast &amp; hands-on</span><b>✦</b><span>Dashboards</span><b>✦</b><span>Sketching</span><b>✦</b><span>0 → 1 products</span><b>✦</b><span>Travel</span><b>✦</b><span>Plants</span><b>✦</b>
-        <span>Curious</span><b>✦</b><span>AI agents</span><b>✦</b><span>Playful</span><b>✦</b><span>Design systems</span><b>✦</b><span>Fast &amp; hands-on</span><b>✦</b><span>Dashboards</span><b>✦</b><span>Sketching</span><b>✦</b><span>0 → 1 products</span><b>✦</b><span>Travel</span><b>✦</b><span>Plants</span><b>✦</b>
-      </div>
-    </div></div>
-
-    <!-- ============ STATS ============ -->
-    <section class="wrap stats reveal" aria-label="Highlights">
-      <div class="stat stat--peach"><strong data-count="30">30</strong><span>% faster tasks</span></div>
-      <div class="stat stat--mint"><strong data-count="40">40</strong><span>% higher satisfaction</span></div>
-      <div class="stat stat--lilac"><strong data-count="35">35</strong><span>% fewer steps</span></div>
-      <div class="stat stat--sky"><strong data-count="25">25</strong><span>% better onboarding</span></div>
     </section>
 
     <!-- ============ WORK ============ -->
@@ -190,6 +192,7 @@
           <h3>Smart Dealer: AI-first app for dealers</h3>
           <p>An AI-first iPhone app for phone-shop dealers, from research to prototype in half a day.</p>
           <p class="proj__cta"><a class="btn btn--green magnetic" href="work/smart-dealer.html">View case study &amp; prototype →</a></p>
+          <p class="proj__pw">Password protected · <a href="mailto:usha.tapal@gmail.com?subject=Portfolio%20password%20request">ask me for access</a></p>
           <ul class="tags"><li>AI assistant</li><li>iOS</li><li>Rapid prototyping</li><li>Telecom retail</li></ul>
         </div>
       </article>
@@ -220,6 +223,7 @@
           <h3>RIU: AI-first ESG reporting</h3>
           <p>One place for every BRSR + GRI filing. AI drafts, a person approves.</p>
           <p class="proj__cta"><a class="btn btn--green magnetic" href="work/riu.html">View case study &amp; prototype →</a></p>
+          <p class="proj__pw">Password protected · <a href="mailto:usha.tapal@gmail.com?subject=Portfolio%20password%20request">ask me for access</a></p>
           <ul class="tags"><li>AI Copilot</li><li>BRSR + GRI</li><li>Dashboards</li><li>Design system</li></ul>
         </div>
       </article>
@@ -351,234 +355,6 @@
       </div>
     </section>
 
-    <!-- ============ STUDIO ============ -->
-    <section class="studio" id="studio" aria-labelledby="studio-h">
-      <div class="wrap">
-        <div class="studio__head">
-          <div>
-            <p class="kicker kicker--light">The studio</p>
-            <h2 id="studio-h" class="display display--light">Welcome to my <span class="hw">studio</span><span class="g">.</span></h2>
-            <p class="studio__lede">Click around and see what you find.</p>
-          </div>
-          <div class="studio__ctrl">
-            <button class="pill-btn" id="hints-btn" type="button" aria-pressed="false">Hints</button>
-            <p class="studio__count" aria-live="polite"><span id="found">0</span> of <span id="total">6</span> discovered</p>
-          </div>
-        </div>
-
-        <div class="room">
-          <svg class="room__svg" viewBox="0 0 1200 640" role="group" aria-label="Illustrated design studio. Each object opens part of my story.">
-            <defs>
-              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a4fe0"/><stop offset="1" stop-color="#1c37b0"/></linearGradient>
-              <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4a33"/><stop offset="1" stop-color="#4e3524"/></linearGradient>
-              <radialGradient id="lampglow" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#fff3c4" stop-opacity=".55"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>
-              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9b0"/><stop offset="1" stop-color="#bfe3ff"/></linearGradient>
-            </defs>
-            <rect width="1200" height="520" fill="url(#wall)"/>
-            <rect y="520" width="1200" height="120" fill="url(#floor)"/>
-            <rect y="514" width="1200" height="8" fill="#111111"/>
-            <!-- window -->
-            <g>
-              <rect x="70" y="70" width="190" height="230" rx="10" fill="#111111"/>
-              <rect x="82" y="82" width="166" height="206" rx="6" fill="url(#sky)"/>
-              <circle class="sun" cx="200" cy="140" r="26" fill="#ffcb6b"/>
-              <g class="cloud"><ellipse cx="130" cy="200" rx="34" ry="12" fill="#fff" opacity=".85"/><ellipse cx="150" cy="192" rx="22" ry="12" fill="#fff" opacity=".85"/></g>
-              <rect x="163" y="82" width="4" height="206" fill="#111111"/>
-              <rect x="82" y="183" width="166" height="4" fill="#111111"/>
-              <polygon points="82,288 248,288 300,520 40,520" fill="#ffe7b8" opacity=".06"/>
-            </g>
-
-            <!-- shelf + plant -->
-            <rect x="320" y="150" width="330" height="16" rx="3" fill="#f2c94c"/>
-            <g class="plant">
-              <path d="M370 150 l8 -48 h44 l8 48z" fill="#e8795a"/>
-              <g fill="#5fbf82">
-                <path class="leaf" d="M392 104 c-20 -30 -46 -34 -60 -26 c18 2 38 12 60 26z"/>
-                <path class="leaf" d="M400 102 c4 -36 24 -54 40 -56 c-10 14 -22 32 -40 56z"/>
-                <path class="leaf" d="M405 104 c26 -18 50 -14 62 -4 c-18 0 -40 2 -62 4z"/>
-              </g>
-              <g class="vine" fill="none" stroke="#3f9e66" stroke-width="3" stroke-linecap="round">
-                <path d="M382 150 c-6 40 -2 80 -14 120"/>
-                <path d="M420 150 c8 34 0 70 10 100"/>
-              </g>
-              <g fill="#7fd39d"><ellipse cx="372" cy="200" rx="9" ry="5"/><ellipse cx="368" cy="240" rx="9" ry="5"/><ellipse cx="426" cy="190" rx="9" ry="5"/><ellipse cx="430" cy="230" rx="9" ry="5"/></g>
-            </g>
-
-            <!-- OBJ: blueprint frame (architecture story) -->
-            <g class="obj" data-obj="blueprint" tabindex="0" role="button" aria-label="Framed blueprint: from architecture to UX">
-              <rect class="obj__hit" x="470" y="40" width="130" height="112" rx="6"/>
-              <rect x="476" y="46" width="118" height="100" rx="4" fill="#f7f3ec"/>
-              <rect x="484" y="54" width="102" height="84" fill="#2a5d8f"/>
-              <g stroke="#cfe6ff" stroke-width="1.5" fill="none" opacity=".9">
-                <rect x="496" y="66" width="44" height="34"/><rect x="540" y="66" width="34" height="58"/><rect x="496" y="100" width="44" height="24"/>
-                <path d="M496 82 h20 M560 66 v20"/>
-              </g>
-              <text x="535" y="134" text-anchor="middle" font-size="9" fill="#cfe6ff" font-family="Inter, sans-serif" letter-spacing="1">B.ARCH</text>
-              <circle class="obj__ring" cx="535" cy="96" r="70"/>
-            </g>
-
-            <!-- OBJ: cork board (process) -->
-            <g class="obj" data-obj="process" tabindex="0" role="button" aria-label="Cork board: how I work">
-              <rect class="obj__hit" x="310" y="228" width="260" height="170" rx="8"/>
-              <rect x="316" y="234" width="248" height="158" rx="6" fill="#b8875a"/>
-              <rect x="324" y="242" width="232" height="142" rx="4" fill="#d6a874"/>
-              <g font-family="Caveat, cursive" font-size="17" fill="#1b2a24" text-anchor="middle">
-                <g class="note" style="--r:-4deg"><rect x="336" y="254" width="62" height="54" fill="#ffd9b0"/><text x="367" y="286">Research</text></g>
-                <g class="note" style="--r:3deg"><rect x="410" y="252" width="62" height="54" fill="#ddd5ff"/><text x="441" y="284">Map it</text></g>
-                <g class="note" style="--r:-2deg"><rect x="484" y="256" width="62" height="54" fill="#bfe3ff"/><text x="515" y="288">Sketch</text></g>
-                <g class="note" style="--r:2deg"><rect x="360" y="318" width="62" height="54" fill="#cdeedd"/><text x="391" y="350">Prototype</text></g>
-                <g class="note" style="--r:-3deg"><rect x="440" y="320" width="62" height="54" fill="#fff0b8"/><text x="471" y="352">Test &amp; ship</text></g>
-              </g>
-              <g fill="#e4002b"><circle cx="367" cy="258" r="3"/><circle cx="441" cy="256" r="3"/><circle cx="515" cy="260" r="3"/><circle cx="391" cy="322" r="3"/><circle cx="471" cy="324" r="3"/></g>
-              <circle class="obj__ring" cx="440" cy="313" r="100"/>
-            </g>
-
-            <!-- bookshelf -->
-            <g class="obj" data-obj="books" tabindex="0" role="button" aria-label="Bookshelf: education and learning">
-              <rect class="obj__hit" x="960" y="120" width="180" height="400" rx="6"/>
-              <rect x="966" y="126" width="168" height="394" rx="4" fill="#f2c94c"/>
-              <rect x="976" y="136" width="148" height="374" fill="#d9a92e"/>
-              <g fill="#f2c94c"><rect x="976" y="226" width="148" height="8"/><rect x="976" y="326" width="148" height="8"/><rect x="976" y="426" width="148" height="8"/></g>
-              <g>
-                <rect x="986" y="168" width="14" height="58" fill="#ff5c8a"/><rect x="1002" y="160" width="12" height="66" fill="#e8795a"/><rect x="1016" y="172" width="16" height="54" fill="#f7f3ec"/><rect x="1034" y="164" width="12" height="62" fill="#2a5d8f"/>
-                <rect x="1062" y="190" width="40" height="36" rx="2" fill="#c96b4b" transform="rotate(-8 1082 208)"/>
-                <rect x="986" y="270" width="12" height="56" fill="#9b8cff"/><rect x="1000" y="262" width="16" height="64" fill="#ff5c8a"/><rect x="1018" y="274" width="12" height="52" fill="#ffcb6b"/>
-                <circle cx="1080" cy="300" r="20" fill="#5fa8d3"/><path d="M1068 292 q10 -6 18 2 q4 10 -6 16" fill="#5fbf82"/><rect x="1078" y="320" width="4" height="6" fill="#6b4a33"/><rect x="1068" y="324" width="24" height="4" fill="#6b4a33"/>
-                <rect x="986" y="372" width="70" height="54" rx="3" fill="#f7f3ec"/><text x="1021" y="398" text-anchor="middle" font-size="10" font-family="Inter, sans-serif" font-weight="600" fill="#ff5c8a">MCA</text><text x="1021" y="412" text-anchor="middle" font-size="8" font-family="Inter, sans-serif" fill="#556">2024–26</text>
-                <rect x="1066" y="378" width="12" height="48" fill="#e8795a"/><rect x="1080" y="370" width="14" height="56" fill="#1b2a24"/><rect x="1096" y="380" width="12" height="46" fill="#cdeedd"/>
-                <rect x="990" y="470" width="110" height="40" fill="#c49428"/>
-              </g>
-              <circle class="obj__ring" cx="1050" cy="320" r="120"/>
-            </g>
-
-            <!-- lamp -->
-            <g>
-              <path d="M820 300 l40 -110 l40 20" fill="none" stroke="#1b2a24" stroke-width="6" stroke-linecap="round"/>
-              <path d="M880 196 l50 18 l-18 40 z" fill="#e8795a"/>
-              <polygon class="lampglow" points="905,240 760,440 1000,440" fill="url(#lampglow)"/>
-              <ellipse cx="820" cy="302" rx="22" ry="6" fill="#1b2a24"/>
-            </g>
-
-            <!-- desk -->
-            <rect x="560" y="440" width="420" height="16" rx="4" fill="#f7f3ec"/>
-            <rect x="580" y="456" width="12" height="64" fill="#d8d0c4"/>
-            <rect x="948" y="456" width="12" height="64" fill="#d8d0c4"/>
-
-            <!-- OBJ: laptop (work) -->
-            <g class="obj" data-obj="work" tabindex="0" role="button" aria-label="Laptop: selected work">
-              <rect class="obj__hit" x="610" y="300" width="210" height="146" rx="8"/>
-              <rect x="624" y="306" width="182" height="120" rx="8" fill="#1b2a24"/>
-              <rect x="632" y="314" width="166" height="104" rx="4" fill="#f7f3ec"/>
-              <rect x="640" y="322" width="40" height="88" rx="3" fill="#cdeedd"/>
-              <rect x="688" y="322" width="102" height="20" rx="3" fill="#ffd9b0"/>
-              <polyline class="chartline" points="692,400 708,388 724,394 740,370 756,378 772,356 786,362" fill="none" stroke="#0d5c45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect class="cursor-blink" x="694" y="328" width="2" height="9" fill="#1b2a24"/>
-              <path d="M604 426 h222 l-12 14 h-198z" fill="#d8d0c4"/>
-              <circle class="obj__ring" cx="715" cy="372" r="96"/>
-            </g>
-
-            <!-- OBJ: phone (smart dealer) -->
-            <g class="obj" data-obj="phone" tabindex="0" role="button" aria-label="Phone: Smart Dealer app (password protected)">
-              <rect class="obj__hit" x="836" y="372" width="56" height="72" rx="8"/>
-              <g transform="rotate(-14 864 410)">
-                <rect x="848" y="376" width="34" height="64" rx="7" fill="#1b2a24"/>
-                <rect x="851" y="380" width="28" height="56" rx="5" fill="#13b04b"/>
-                <rect x="859" y="402" width="12" height="9" rx="2" fill="none" stroke="#fff" stroke-width="1.6"/>
-                <path d="M861 402 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="#fff" stroke-width="1.6"/>
-              </g>
-              <circle class="obj__ring" cx="864" cy="408" r="44"/>
-            </g>
-
-            <!-- OBJ: mug (contact) -->
-            <g class="obj" data-obj="contact" tabindex="0" role="button" aria-label="Coffee mug: let's talk">
-              <rect class="obj__hit" x="900" y="360" width="60" height="84" rx="8"/>
-              <g class="steam" fill="none" stroke="#f7f3ec" stroke-width="3" stroke-linecap="round" opacity=".7">
-                <path d="M918 386 c-6 -10 6 -16 0 -26"/>
-                <path d="M932 386 c-6 -10 6 -16 0 -26" style="animation-delay:.8s"/>
-              </g>
-              <rect x="906" y="392" width="40" height="48" rx="6" fill="#ffd9b0"/>
-              <path d="M946 402 q14 0 14 12 q0 12 -14 12" fill="none" stroke="#ffd9b0" stroke-width="5"/>
-              <text x="926" y="422" text-anchor="middle" font-size="14" font-family="Caveat, cursive" fill="#ff5c8a">hi!</text>
-              <circle class="obj__ring" cx="928" cy="410" r="46"/>
-            </g>
-
-            <!-- chair + rug -->
-            <ellipse cx="760" cy="590" rx="300" ry="34" fill="#ffd23f" opacity=".3"/>
-            <g>
-              <rect x="690" y="470" width="90" height="16" rx="8" fill="#ff5c8a"/>
-              <rect x="696" y="400" width="78" height="76" rx="14" fill="#ff7ea2"/>
-              <rect x="731" y="486" width="8" height="70" fill="#1b2a24"/>
-              <path d="M700 572 l35 -16 l35 16" fill="none" stroke="#1b2a24" stroke-width="6" stroke-linecap="round"/>
-            </g>
-          </svg>
-          <p class="room__toast" id="room-toast" role="status" aria-live="polite"></p>
-        </div>
-
-        <ul class="room__list" aria-label="Studio objects">
-          <li><button type="button" data-open="work">💻 Laptop · Selected work</button></li>
-          <li><button type="button" data-open="phone">📱 Phone · Smart Dealer</button></li>
-          <li><button type="button" data-open="blueprint">📐 Blueprint · Architecture to UX</button></li>
-          <li><button type="button" data-open="process">📌 Cork board · How I work</button></li>
-          <li><button type="button" data-open="books">📚 Bookshelf · Education</button></li>
-          <li><button type="button" data-open="contact">☕ Mug · Let's talk</button></li>
-        </ul>
-      </div>
-
-      <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
-        <button class="sheet__close" type="button" aria-label="Close">×</button>
-        <div id="sheet-body"></div>
-      </dialog>
-
-      <!-- Content for each studio object -->
-      <template id="t-work">
-        <p class="kicker">On the laptop</p>
-        <h3 id="sheet-title">Selected work</h3>
-        <p>Four projects: an AI marketing suite for telecom operators, an AI-first dealer app for Smart, an ESG reporting platform and an AI customer success tool.</p>
-        <a class="btn btn--green" href="#work" data-close>See the projects →</a>
-      </template>
-      <template id="t-phone">
-        <p class="kicker">On the phone</p>
-        <h3 id="sheet-title">Smart Dealer app</h3>
-        <p>An AI-first iPhone app for Smart's mobile retailers, with an "Ask Smart" assistant and predictive smart actions. Designed in a half-day sprint. The case study and live prototype are password protected.</p>
-        <a class="btn btn--green" href="work/smart-dealer.html">Open case study 🔒</a>
-      </template>
-      <template id="t-blueprint">
-        <p class="kicker">On the wall</p>
-        <h3 id="sheet-title">From architecture to UX</h3>
-        <p>I trained as an architect (B.Arch, 2017–2022). Designing buildings taught me to think about structure, flow and how people move through a space.</p>
-        <p>In 2022 I moved into UI/UX, and I now use the same thinking on dense enterprise dashboards and AI workflows: information architecture first, pixels second.</p>
-      </template>
-      <template id="t-process">
-        <p class="kicker">On the cork board</p>
-        <h3 id="sheet-title">How I work</h3>
-        <ol class="steps">
-          <li><b>Research</b> Stakeholder interviews, personas and AI-assisted desk research.</li>
-          <li><b>Map it</b> Journeys, information architecture and the decisions users need to make.</li>
-          <li><b>Sketch</b> Wireframes and flows, explored fast.</li>
-          <li><b>Prototype</b> High-fidelity Figma prototypes built on a tokenized design system.</li>
-          <li><b>Test &amp; ship</b> Usability tests, then design QA on built screens with engineers.</li>
-        </ol>
-      </template>
-      <template id="t-books">
-        <p class="kicker">On the bookshelf</p>
-        <h3 id="sheet-title">Education</h3>
-        <ul class="steps">
-          <li><b>Master of Computer Applications (MCA)</b> Jain University, Bengaluru · 2024 – 2026</li>
-          <li><b>UI/UX &amp; Visual Design Executive Program</b> Skillto Education · 2022 – 2023</li>
-          <li><b>Bachelor of Architecture (B.Arch)</b> BGS School of Architecture &amp; Planning · 2017 – 2022</li>
-        </ul>
-      </template>
-      <template id="t-contact">
-        <p class="kicker">Coffee's ready</p>
-        <h3 id="sheet-title">Let's talk</h3>
-        <p>I'm open to product design roles in Bengaluru or remote. Email is the fastest way to reach me.</p>
-        <p class="sheet__links">
-          <a class="btn btn--green" href="mailto:usha.tapal@gmail.com">usha.tapal@gmail.com</a>
-          <a class="btn btn--ghost" href="tel:+919980158546">+91 99801 58546</a>
-        </p>
-      </template>
-    </section>
-
     <!-- ============ ABOUT / EXPERIENCE ============ -->
     <section class="section wrap" id="about" aria-labelledby="about-h">
       <div class="section__head reveal">
@@ -655,15 +431,6 @@
         </ol>
       </div>
 
-      <div class="bento reveal" id="skills">
-        <div class="bento__item bento__item--peach"><h3>Product &amp; interaction</h3><ul class="minichips"><li>Enterprise UX</li><li>0 → 1</li><li>IA</li><li>Dashboards</li><li>Mobile</li></ul></div>
-        <div class="bento__item bento__item--mint"><h3>AI product design</h3><ul class="minichips"><li>AI agents</li><li>Assistants</li><li>Guardrails</li><li>Low-code</li></ul></div>
-        <div class="bento__item bento__item--lilac"><h3>Design systems</h3><ul class="minichips"><li>Tokens</li><li>Handoff</li><li>Design QA</li><li>WCAG 2.1 AA</li></ul></div>
-        <div class="bento__item bento__item--sky"><h3>Research</h3><ul class="minichips"><li>Interviews</li><li>Journeys</li><li>Usability</li><li>A/B tests</li></ul></div>
-        <div class="bento__item bento__item--butter bento__item--wide"><h3>Tools</h3>
-          <ul class="toolchips"><li>Figma</li><li>Figma AI</li><li>Framer</li><li>Adobe XD</li><li>Photoshop</li><li>Illustrator</li><li>Miro</li><li>Notion</li><li>Claude</li><li>Claude Code</li><li>Gemini</li><li>HTML/CSS</li><li>JavaScript</li><li>React</li></ul>
-        </div>
-      </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
@@ -685,10 +452,7 @@
     </section>
   </main>
 
-  <a class="buddy" href="mailto:usha.tapal@gmail.com" aria-label="Email Usha">
-    <img src="images/avatar.jpg" alt="" width="56" height="56">
-    <span class="buddy__bubble">Say hi 👋</span>
-  </a>
+
 
   <script src="assets/js/main.js"></script>
 </body>
