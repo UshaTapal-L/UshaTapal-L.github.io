@@ -26,6 +26,7 @@
       </a>
       <nav class="nav__pill" aria-label="Primary">
         <a href="#top" class="is-active">Home</a>
+        <a href="#agent">AI demo</a>
         <a href="#work">Work</a>
         <a href="#e2e">Approach</a>
         <a href="#about">About</a>
@@ -51,7 +52,7 @@
           <div class="hero__intro">
             <div class="hero__text">
               <h1 class="hero__title"><span class="w">Hi,</span> <span class="w">I'm</span> <span class="w"><span class="hw">Usha</span>.</span></h1>
-              <p class="hero__role reveal">Product designer for AI-native enterprise products, from business goals to shipped frontend.<br>Trained as an architect.</p>
+              <p class="hero__role reveal">AI UX/CX designer for enterprise products. I design AI agents end to end, from system architecture to shipped UI.<br>Trained as an architect.</p>
               <ul class="hero__facts reveal" aria-label="At a glance">
                 <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Bengaluru</li>
                 <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Product designer since 2022</li>
@@ -106,6 +107,66 @@
               </a>
             </li>
           </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AI AGENT DEMO ============ -->
+    <section class="section wrap" id="agent" aria-labelledby="agent-h">
+      <div class="section__head reveal">
+        <p class="kicker">AI agent design · live</p>
+        <h2 id="agent-h" class="display">I design how AI agents think, act and hand over<span class="g">.</span></h2>
+      </div>
+
+      <div class="agent reveal">
+        <!-- Architecture -->
+        <div class="arch-map" aria-label="Agent architecture">
+          <p class="arch-map__label">Architecture <span>lights up as the agent works</span></p>
+          <div class="amap">
+            <div class="anode anode--user" data-node="user"><b>You</b><small>Intent</small></div>
+            <div class="amap__row">
+              <div class="anode anode--core" data-node="planner"><b>Copilot planner</b><small>Plans steps</small></div>
+              <div class="anode anode--mem" data-node="memory"><b>Memory</b><small id="mem-text">Empty</small></div>
+            </div>
+            <div class="amap__row amap__row--3">
+              <div class="anode" data-node="evidence"><b>Evidence Hub</b><small>Reads bills</small></div>
+              <div class="anode" data-node="calc"><b>Calculator</b><small>BRSR maths</small></div>
+              <div class="anode" data-node="tasks"><b>Tasks</b><small>Reminders</small></div>
+            </div>
+            <div class="anode anode--guard" data-node="guard"><b>Guardrails</b><small>Sources · confidence ≥ 80%</small></div>
+            <div class="anode anode--human" data-node="human"><b>Human approval</b><small>Approve · edit · reject</small></div>
+          </div>
+          <div class="patterns">
+            <p class="patterns__head">Patterns explored <b><span id="pat-count">0</span>/7</b></p>
+            <ul>
+              <li data-pat="stream">Streaming</li>
+              <li data-pat="tools">Tool transparency</li>
+              <li data-pat="confidence">Confidence + sources</li>
+              <li data-pat="approval">Human approval</li>
+              <li data-pat="override">User override</li>
+              <li data-pat="memory">Multi-turn memory</li>
+              <li data-pat="error">Error recovery</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copilot -->
+        <div class="copilot" role="region" aria-label="RIU Copilot demo">
+          <div class="copilot__top">
+            <span class="copilot__logo" aria-hidden="true">✦</span>
+            <div><b>RIU Copilot</b><small>Vardhan Industries · FY 2025–26</small></div>
+            <span class="copilot__badge">Fictional data</span>
+          </div>
+          <div class="copilot__log" id="copilot-log" aria-live="polite">
+            <div class="msg msg--bot"><p>Hi Marci. I can draft BRSR answers from your evidence, compare years and chase late data. Pick a task below or type one.</p></div>
+          </div>
+          <div class="copilot__chips" id="copilot-chips"></div>
+          <form class="copilot__input" id="copilot-form" autocomplete="off">
+            <label class="sr-only" for="copilot-text">Ask Copilot</label>
+            <input id="copilot-text" type="text" placeholder="Ask about any metric…">
+            <button class="btn btn--green btn--small" type="submit" id="copilot-send">Send</button>
+            <button class="copilot__stop" type="button" id="copilot-stop" hidden>■ Stop</button>
+          </form>
         </div>
       </div>
     </section>
@@ -482,5 +543,6 @@
 
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/agent.js"></script>
 </body>
 </html>
