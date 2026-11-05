@@ -4,8 +4,8 @@
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  var links = document.querySelectorAll('.s-nav a');
-  var ids = ['work', 'agent', 'practice', 'about', 'contact'];
+  var links = document.querySelectorAll('.g-nav a');
+  var ids = ['work', 'agent', 'about'];
   function onScroll() {
     var current = '';
     ids.forEach(function (id) { var s = document.getElementById(id); if (s && s.getBoundingClientRect().top < 140) current = id; });
