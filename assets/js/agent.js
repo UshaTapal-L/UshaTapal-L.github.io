@@ -87,8 +87,8 @@
   function meta(msg, confidence, sources) {
     var low = confidence < 80;
     var m = el('div', 'meta' + (low ? ' meta--low' : ''));
-    m.appendChild(el('span', 'conf', (low ? '⚠ ' : '') + 'Confidence ' + confidence + '%'));
-    sources.forEach(function (s) { m.appendChild(el('span', 'src', '📎 ' + s)); });
+    m.appendChild(el('span', 'conf', 'Confidence ' + confidence + '%'));
+    sources.forEach(function (s) { m.appendChild(el('span', 'src', 'Source: ' + s)); });
     msg.appendChild(m);
     pattern('confidence');
     scroll();
@@ -143,7 +143,7 @@
         return endTurn([{ key: 'energy', label: 'Draft the P6 energy answer' }, { key: 'scope2', label: 'Draft Scope 2 emissions' }]);
       }
       node('memory', 'active'); pattern('memory');
-      var note = el('div', 'memnote', '🧠 Using context: <b>' + memText.textContent + '</b> from earlier');
+      var note = el('div', 'memnote', 'Using context: <b>' + memText.textContent + '</b> from earlier');
       m.appendChild(note); scroll();
       await wait(600); node('memory', 'done');
       node('planner', 'done');
