@@ -24,10 +24,8 @@
     <div class="g-wrap g-head__in">
       <a class="g-mark" href="#top">USHA TAPAL</a>
       <nav class="g-nav" aria-label="Primary">
-        <a href="#work" data-go="work">Work</a>
-        <a href="#work" data-go="ai">AI</a>
-        <a href="#work" data-go="about">About</a>
-        <a href="resume/Usha_Tapal_Resume.pdf" download>Resume</a>
+        <a href="#contact">Contact</a>
+        <a href="resume/Usha_Tapal_Resume.pdf" download>Résumé ↓</a>
       </nav>
     </div>
   </header>
@@ -38,17 +36,12 @@
       <div class="g-hero__text">
         <p class="g-hi">Hi! I'm</p>
         <h1 class="g-name">Usha Tapal</h1>
-        <p class="g-tag">An <b><i>AI-native product designer</i></b> who thinks like an <b><i>architect</i></b>: structure first, people always.</p>
-        <p class="g-click">Click to view my work!</p>
-        <ul class="g-pills">
-          <li><a href="#work" data-go="work">Industry work</a></li>
-          <li><a href="#work" data-go="ai">AI demo</a></li>
-          <li><a href="#work" data-go="about">About me</a></li>
-          <li><a href="#work" data-go="side">Side quests</a></li>
-        </ul>
+        <p class="g-tag">An <b><i>AI-native product designer</i></b> who thinks like an <b><i>architect</i></b>.</p>
+        <p class="g-now">Product Designer at <b>6D Technologies</b> · Bengaluru · open to roles</p>
       </div>
-      <div class="g-shapes" aria-hidden="true">
+      <div class="g-shapes">
         <span class="g-dots g-dots--hero"></span>
+        <img class="g-heroph" src="images/avatar.jpg" alt="" width="165" height="165">
         <svg class="g-shape g-arch" viewBox="0 0 200 260"><path d="M0 260 V100 A100 100 0 0 1 200 100 V260 Z"/></svg>
         <svg class="g-shape g-quarter" viewBox="0 0 200 200"><path d="M0 200 V0 A200 200 0 0 1 200 200 Z"/></svg>
         <svg class="g-shape g-stair" viewBox="0 0 180 180"><path d="M0 180 V135 H45 V90 H90 V45 H135 V0 H180 V180 Z"/></svg>
@@ -67,19 +60,8 @@
         <button type="button" data-filter="side" aria-pressed="false">Side quests</button>
       </div>
 
+      <div class="b-tray">
       <div class="bento" id="bento">
-        <!-- intro -->
-        <div class="tile t-2x1 tile--intro" data-cat="about">
-          <img class="g-wavy" src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165">
-          <p><span class="t-hey">Hello!</span><br>I'm Usha, an architect turned AI product designer, currently at <b>6D Technologies</b> in Bengaluru.</p>
-        </div>
-        <a class="tile t-1x1 tile--icon tile--mail" data-cat="about" href="mailto:usha.tapal@gmail.com" aria-label="Email Usha">
-          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="14" width="48" height="36" rx="6"/><path d="M10 18l22 17 22-17"/></svg>
-          <span>Say hello</span>
-        </a>
-        <a class="tile t-1x1 tile--icon tile--li" data-cat="about" href="https://www.linkedin.com/in/usha-tapal-0325b6144/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <b>in</b><span>LinkedIn ↗</span>
-        </a>
 
         <!-- RIU -->
         <a class="tile t-2x2 tile--shot tile--sky" data-cat="work ai" href="work/riu.html" aria-label="RIU case study">
@@ -93,16 +75,16 @@
           <img class="t-phone" src="images/work/smart-home.jpg" alt="Smart Dealer app home screen with the Ask Smart assistant" width="480" height="974" loading="lazy">
           <span class="t-kpi"><b>½ day</b> build</span>
         </a>
-        <!-- principle -->
-        <div class="tile t-1x2 tile--quote" data-cat="about ai">
+
+        <div class="tile t-1x2 tile--quote" data-cat="about">
           <span class="t-q" aria-hidden="true">“</span>
-          <p>AI drafts. <mark>A person approves.</mark></p>
-          <span class="t-cap">My design principle</span>
+          <p>Structure first, then flow, <mark>then surface.</mark></p>
+          <span class="t-cap">What architecture taught me</span>
         </div>
 
         <!-- Copilot demo -->
         <div class="tile t-full tile--agent" data-cat="ai" id="agent">
-          <div class="t-agent-head"><span class="t-label">RIU Copilot · live demo</span><p>I design how AI agents think, act and hand over. Try it: every state is designed.</p></div>
+          <div class="t-agent-head"><span class="t-label">RIU Copilot · live demo</span><p>Try it: every AI state is designed.</p></div>
           <div class="agent">
         <!-- Architecture -->
         <div class="arch-map" aria-label="Agent architecture">
@@ -170,11 +152,6 @@
           <svg class="g-illo" viewBox="0 0 200 140" aria-hidden="true"><rect x="20" y="16" width="100" height="22" rx="11" class="t"/><rect x="80" y="54" width="100" height="22" rx="11" class="c2"/><rect x="20" y="92" width="120" height="22" rx="11" class="t"/></svg>
           <span class="t-kpi"><b>+25%</b> onboarding</span>
         </div>
-        <!-- resume -->
-        <a class="tile t-1x1 tile--icon tile--cv" data-cat="about" href="resume/Usha_Tapal_Resume.pdf" download>
-          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 6h22l12 12v40H16z"/><path d="M38 6v12h12M24 32h18M24 40h18M24 48h12"/></svg>
-          <span>Résumé ↓</span>
-        </a>
 
         <!-- architecture -> ux -->
         <div class="tile t-2x1 tile--arch" data-cat="about">
@@ -202,33 +179,6 @@
           <p><b>Circulation</b> becomes <b>user flows</b></p>
         </div></div>
         </div>
-        <div class="tile t-2x1 tile--quote tile--quote-wide" data-cat="about">
-          <span class="t-q" aria-hidden="true">“</span>
-          <p>Structure first, then flow, <mark>then surface.</mark></p>
-          <span class="t-cap">What architecture taught me</span>
-        </div>
-
-        <!-- built & live -->
-        <div class="tile t-2x1 tile--built" data-cat="work">
-          <span class="t-label">Built &amp; live</span>
-          <ul>
-            <li><a href="work/riu.html">RIU web prototype<span>Claude Design</span></a></li>
-            <li><a href="work/smart-dealer.html">Smart Dealer iPhone prototype<span>½-day build</span></a></li>
-            <li><a href="#agent">RIU Copilot agent demo<span>HTML · JS</span></a></li>
-            <li><a href="work/riu.html">RIU motion film<span>68 s</span></a></li>
-            <li><a href="#top">This website<span>HTML · CSS · JS · Claude Code</span></a></li>
-          </ul>
-        </div>
-        <!-- experience -->
-        <div class="tile t-2x1 tile--exp" data-cat="about" id="about">
-          <span class="t-label">Experience</span>
-          <ol>
-            <li><em>2025 →</em><b>Product Designer</b><span>6D Technologies</span></li>
-            <li><em>2024 – 25</em><b>Product Designer</b><span>zeeproc · RIU.ai</span></li>
-            <li><em>2022 – 23</em><b>UX/UI Designer</b><span>Supercode · FindPro.ai</span></li>
-            <li><em>2017 – 22</em><b>B.Arch</b><span>BGS School of Architecture</span></li>
-          </ol>
-        </div>
 
         <!-- side quests -->
         <div class="tile t-1x1 tile--side tile--sketch" data-cat="side">
@@ -243,10 +193,19 @@
           <svg viewBox="0 0 160 110" aria-hidden="true"><path d="M58 70h44l-6 32H64z"/><path d="M80 70V40"/><path class="leaf" d="M80 50c-20 0-28-16-28-26 16 0 28 10 28 26z"/><path class="leaf" d="M80 44c0-18 12-28 28-28 0 14-12 28-28 28z"/></svg>
           <span>Plant parent</span>
         </div>
-        <div class="tile t-1x1 tile--side tile--blr" data-cat="side about">
-          <svg viewBox="0 0 160 110" aria-hidden="true"><path d="M80 98S52 66 52 46a28 28 0 0 1 56 0c0 20-28 52-28 52z"/><circle cx="80" cy="46" r="10"/></svg>
-          <span>Based in Bengaluru</span>
+      </div>
+      <div class="bento bento--auto">
+        <!-- experience -->
+        <div class="tile t-full tile--exp" data-cat="about" id="about">
+          <span class="t-label">Experience</span>
+          <ol>
+            <li><em>2025 →</em><b>Product Designer</b><span>6D Technologies</span></li>
+            <li><em>2024 – 25</em><b>Product Designer</b><span>zeeproc · RIU.ai</span></li>
+            <li><em>2022 – 23</em><b>UX/UI Designer</b><span>Supercode · FindPro.ai</span></li>
+            <li><em>2017 – 22</em><b>B.Arch</b><span>BGS School of Architecture</span></li>
+          </ol>
         </div>
+      </div>
       </div>
     </section>
 
@@ -257,10 +216,6 @@
         <h2 id="contact-h"><a href="mailto:usha.tapal@gmail.com">Let's <span class="g-behind">Connect!<svg class="g-shape g-arch g-arch--sm" viewBox="0 0 200 260" aria-hidden="true"><path d="M0 260 V100 A100 100 0 0 1 200 100 V260 Z"/></svg></span></a></h2>
         <p class="g-mail"><a href="mailto:usha.tapal@gmail.com">usha.tapal@gmail.com</a> · <a href="tel:+919980158546">+91 99801 58546</a></p>
       </div>
-      <div class="g-marquee" aria-hidden="true"><div class="g-marquee__track">
-        <span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span>
-        <span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span><span>Based in Bengaluru</span>
-      </div></div>
       <div class="g-wrap g-foot">
         <span>Updated <span id="year">2026</span></span>
         <span class="g-social"><a href="https://www.linkedin.com/in/usha-tapal-0325b6144/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/ushatapal" target="_blank" rel="noopener">Behance</a><a href="#top">Top ↑</a></span>
