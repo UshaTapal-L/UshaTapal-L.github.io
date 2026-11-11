@@ -4,8 +4,8 @@
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  var links = document.querySelectorAll('.g-nav a');
-  var ids = ['work', 'agent', 'about'];
+  var links = [];
+  var ids = [];
   function onScroll() {
     var current = '';
     ids.forEach(function (id) { var s = document.getElementById(id); if (s && s.getBoundingClientRect().top < 140) current = id; });
@@ -25,4 +25,21 @@
     }, { rootMargin: '0px 0px -10% 0px' });
     items.forEach(function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
   }
+
+  // Bento filter: pills show one category; nav and hero links can preselect one.
+  var tiles = Array.prototype.slice.call(document.querySelectorAll('.bento .tile'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.b-filter button'));
+  function applyFilter(cat) {
+    buttons.forEach(function (b) { var on = b.dataset.filter === cat; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on); });
+    tiles.forEach(function (t) {
+      var show = cat === 'all' || (' ' + t.dataset.cat + ' ').indexOf(' ' + cat + ' ') > -1;
+      var was = !t.classList.contains('is-hidden');
+      t.classList.toggle('is-hidden', !show);
+      if (show && !was && !reduce) { t.classList.remove('is-pop'); void t.offsetWidth; t.classList.add('is-pop'); }
+    });
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { applyFilter(b.dataset.filter); }); });
+  document.querySelectorAll('[data-go]').forEach(function (a) {
+    a.addEventListener('click', function () { applyFilter(a.dataset.go); });
+  });
 })();

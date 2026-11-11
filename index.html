@@ -24,9 +24,9 @@
     <div class="g-wrap g-head__in">
       <a class="g-mark" href="#top">USHA TAPAL</a>
       <nav class="g-nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#agent">AI demo</a>
-        <a href="#about">About</a>
+        <a href="#work" data-go="work">Work</a>
+        <a href="#work" data-go="ai">AI</a>
+        <a href="#work" data-go="about">About</a>
         <a href="resume/Usha_Tapal_Resume.pdf" download>Resume</a>
       </nav>
     </div>
@@ -41,10 +41,10 @@
         <p class="g-tag">An <b><i>AI-native product designer</i></b> who thinks like an <b><i>architect</i></b>: structure first, people always.</p>
         <p class="g-click">Click to view my work!</p>
         <ul class="g-pills">
-          <li><a href="#work">Industry work</a></li>
-          <li><a href="#built">Built &amp; live</a></li>
-          <li><a href="#agent">AI demo</a></li>
-          <li><a href="#how">Architecture → UX</a></li>
+          <li><a href="#work" data-go="work">Industry work</a></li>
+          <li><a href="#work" data-go="ai">AI demo</a></li>
+          <li><a href="#work" data-go="about">About me</a></li>
+          <li><a href="#work" data-go="side">Side quests</a></li>
         </ul>
       </div>
       <div class="g-shapes" aria-hidden="true">
@@ -56,78 +56,54 @@
       </div>
     </section>
 
-    <!-- INDUSTRY WORK -->
-    <section class="g-sec g-wrap" id="work" aria-labelledby="work-h">
-      <div class="g-bar"><h2 id="work-h">Industry Work</h2><span>2023 – Present</span></div>
-      <div class="g-grid">
-        <article class="g-card">
-          <a class="g-card__media g-card__media--sky" href="work/riu.html" aria-label="RIU case study">
-            <img class="g-shot g-shot--web" src="images/work/riu-dashboard.jpg" alt="RIU dashboard with the AI Copilot summary of the monthly close" width="1100" height="687" loading="lazy">
-          </a>
-          <div class="g-card__head"><h3>RIU · ESG Copilot</h3><span class="g-tagpill">Live prototype</span><span class="g-tagpill">Locked</span><em>2024</em></div>
-          <p>An AI-first ESG reporting platform: Copilot drafts BRSR answers from evidence, a person always approves. <b>+40% satisfaction.</b></p>
-        </article>
-        <article class="g-card">
-          <a class="g-card__media g-card__media--mint" href="work/smart-dealer.html" aria-label="Smart Dealer case study">
-            <img class="g-shot g-shot--phone" src="images/work/smart-home.jpg" alt="Smart Dealer app home screen with the Ask Smart assistant" width="480" height="974" loading="lazy">
-          </a>
-          <div class="g-card__head"><h3>Smart Dealer</h3><span class="g-tagpill">iPhone prototype</span><span class="g-tagpill">Locked</span><em>2025</em></div>
-          <p>An AI-first app for Smart Axiata's phone-shop dealers, with an Ask Smart assistant. <b>Research to prototype in ½ day.</b></p>
-        </article>
-        <article class="g-card">
-          <div class="g-card__media g-card__media--peach">
-            <svg class="g-illo" viewBox="0 0 400 260" aria-hidden="true"><rect x="40" y="30" width="320" height="200" rx="14" class="w"/><rect x="56" y="48" width="70" height="164" rx="8" class="t"/><rect x="138" y="48" width="206" height="34" rx="8" class="t"/><path d="M150 190 L190 150 L222 166 L262 118 L300 134 L330 100" class="c"/><circle cx="330" cy="100" r="6" class="d"/></svg>
-          </div>
-          <div class="g-card__head"><h3>Magik CVM · 6D</h3><span class="g-tagpill">Client work</span><em>Present</em></div>
-          <p>AI marketing and customer value suite for telecom operators, with AI agents for campaigns and loyalty. <b>−30% task time.</b></p>
-          <details class="g-more">
-            <summary>Case study</summary>
-            <div class="proj__detail">
-              <h4>The problem</h4>
-              <p>Campaign managers at telecom operators had to read raw telemetry and multi-step business logic to decide which customers to target. The old tool showed data but didn't help people act on it.</p>
-              <h4>My role</h4>
-              <p>Product designer on the CVM suite, working with product managers, front-end engineers, data scientists and QA, for clients including Etisalat, BICS, Smart Communications and MTN Ghana.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Interviewed stakeholders and campaign managers, built personas, and used AI tools to synthesise secondary research.</li>
-                <li>Created a "decision-first" framework: every screen leads with a recommended action in plain language, with the supporting data one level down.</li>
-                <li>Designed AI-agent surfaces for predictive customer modelling and AI-assisted campaign creation, with guardrails so non-technical users can build, check and deploy multi-channel campaigns safely.</li>
-                <li>Extended the suite into loyalty management: programme setup, customer segmentation and rewards optimisation.</li>
-                <li>Built and maintained a tokenized design system (components, type, colour) and reviewed built screens against the designs.</li>
-              </ul>
-              <h4>Results</h4>
-              <p>Task completion time dropped by 30%, and campaigns were built and deployed 30% faster.</p>
-            </div>
-          </details>
-        </article>
-        <article class="g-card">
-          <div class="g-card__media g-card__media--lilac">
-            <svg class="g-illo" viewBox="0 0 400 260" aria-hidden="true"><rect x="70" y="30" width="260" height="200" rx="14" class="w"/><rect x="90" y="52" width="140" height="30" rx="15" class="t"/><rect x="170" y="96" width="140" height="30" rx="15" class="c2"/><rect x="90" y="140" width="170" height="30" rx="15" class="t"/><circle cx="104" cy="200" r="4" class="d2"/><circle cx="118" cy="200" r="4" class="d2"/><circle cx="132" cy="200" r="4" class="d2"/></svg>
-          </div>
-          <div class="g-card__head"><h3>zeeproc</h3><span class="g-tagpill">Consulting</span><em>2024 – 25</em></div>
-          <p>Customer success platform with AI agents that spot upsell chances and a conversational onboarding flow. <b>+25% onboarding.</b></p>
-        </article>
+    <!-- BENTO -->
+    <section class="b-sec g-wrap" id="work" aria-labelledby="bento-h">
+      <h2 id="bento-h" class="sr-only">Work, AI, about and side quests</h2>
+      <div class="b-filter" role="group" aria-label="Filter tiles">
+        <button type="button" class="is-on" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="work" aria-pressed="false">Work</button>
+        <button type="button" data-filter="ai" aria-pressed="false">AI</button>
+        <button type="button" data-filter="about" aria-pressed="false">About</button>
+        <button type="button" data-filter="side" aria-pressed="false">Side quests</button>
       </div>
-    </section>
 
-    <!-- BUILT -->
-    <section class="g-sec g-wrap" id="built" aria-labelledby="built-h">
-      <div class="g-bar"><h2 id="built-h">Built &amp; Live</h2><span>Things you can click</span></div>
-      <ul class="g-built">
-        <li><a href="work/riu.html"><b>RIU web prototype</b><span>Claude Design · locked</span></a></li>
-        <li><a href="work/smart-dealer.html"><b>Smart Dealer iPhone prototype</b><span>½-day build · locked</span></a></li>
-        <li><a href="#agent"><b>RIU Copilot agent demo</b><span>HTML · JS · below ↓</span></a></li>
-        <li><a href="work/riu.html"><b>RIU motion film</b><span>68 s · locked</span></a></li>
-        <li><a href="#top"><b>This website</b><span>HTML · CSS · JS · Claude Code</span></a></li>
-      </ul>
-      <p class="g-note">Locked work contains client material. <a href="mailto:usha.tapal@gmail.com?subject=Portfolio%20access">Ask me for access</a>.</p>
-    </section>
+      <div class="bento" id="bento">
+        <!-- intro -->
+        <div class="tile t-2x1 tile--intro" data-cat="about">
+          <img class="g-wavy" src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165">
+          <p><span class="t-hey">Hello!</span><br>I'm Usha, an architect turned AI product designer, currently at <b>6D Technologies</b> in Bengaluru.</p>
+        </div>
+        <a class="tile t-1x1 tile--icon tile--mail" data-cat="about" href="mailto:usha.tapal@gmail.com" aria-label="Email Usha">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="14" width="48" height="36" rx="6"/><path d="M10 18l22 17 22-17"/></svg>
+          <span>Say hello</span>
+        </a>
+        <a class="tile t-1x1 tile--icon tile--li" data-cat="about" href="https://www.linkedin.com/in/usha-tapal-0325b6144/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <b>in</b><span>LinkedIn ↗</span>
+        </a>
 
-    <!-- AGENT -->
-    <section class="g-sec g-wrap" id="agent" aria-labelledby="agent-h">
-      <div class="g-bar"><h2 id="agent-h">AI Agent Demo</h2><span>Interactive · fictional data</span></div>
-      <p class="g-intro">I design how AI agents think, act and hand over. Try the RIU Copilot: every state is designed.</p>
-      <div class="agent reveal">
+        <!-- RIU -->
+        <a class="tile t-2x2 tile--shot tile--sky" data-cat="work ai" href="work/riu.html" aria-label="RIU case study">
+          <span class="t-label">RIU · ESG Copilot <i><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Live prototype</i></span>
+          <img class="t-web" src="images/work/riu-dashboard.jpg" alt="RIU dashboard with the AI Copilot summary of the monthly close" width="1100" height="687" loading="lazy">
+          <span class="t-kpi"><b>+40%</b> satisfaction</span>
+        </a>
+        <!-- Smart Dealer -->
+        <a class="tile t-1x2 tile--shot tile--mint" data-cat="work ai" href="work/smart-dealer.html" aria-label="Smart Dealer case study">
+          <span class="t-label">Smart Dealer <i><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> iPhone</i></span>
+          <img class="t-phone" src="images/work/smart-home.jpg" alt="Smart Dealer app home screen with the Ask Smart assistant" width="480" height="974" loading="lazy">
+          <span class="t-kpi"><b>½ day</b> build</span>
+        </a>
+        <!-- principle -->
+        <div class="tile t-1x2 tile--quote" data-cat="about ai">
+          <span class="t-q" aria-hidden="true">“</span>
+          <p>AI drafts. <mark>A person approves.</mark></p>
+          <span class="t-cap">My design principle</span>
+        </div>
+
+        <!-- Copilot demo -->
+        <div class="tile t-full tile--agent" data-cat="ai" id="agent">
+          <div class="t-agent-head"><span class="t-label">RIU Copilot · live demo</span><p>I design how AI agents think, act and hand over. Try it: every state is designed.</p></div>
+          <div class="agent">
         <!-- Architecture -->
         <div class="arch-map" aria-label="Agent architecture">
           <p class="arch-map__label">Architecture <span>lights up as the agent works</span></p>
@@ -180,15 +156,30 @@
       </div>
 
     
-    </section>
+        </div>
 
-    <!-- HOW -->
-    <section class="g-sec g-wrap" id="how" aria-labelledby="how-h">
-      <div class="g-bar"><h2 id="how-h">Architecture → UX</h2><span>How I think</span></div>
-      <div class="arch reveal">
-        <div class="arch__legend" aria-hidden="true"><span class="arch__tag arch__tag--bp">B.Arch</span><span class="arch__arrow">→</span><span class="arch__tag arch__tag--ui">Product</span></div>
+        <!-- Magik -->
+        <div class="tile t-2x1 tile--peach tile--illo" data-cat="work ai">
+          <span class="t-label">Magik CVM · 6D</span>
+          <svg class="g-illo" viewBox="0 0 400 200" aria-hidden="true"><rect x="30" y="20" width="340" height="170" rx="14" class="w"/><rect x="46" y="36" width="70" height="138" rx="8" class="t"/><rect x="128" y="36" width="226" height="30" rx="8" class="t"/><path d="M140 160 L184 122 L218 138 L262 92 L302 108 L340 76" class="c"/><circle cx="340" cy="76" r="6" class="d"/></svg>
+          <span class="t-kpi"><b>−30%</b> task time</span>
+        </div>
+        <!-- zeeproc -->
+        <div class="tile t-1x1 tile--lilac tile--illo" data-cat="work ai">
+          <span class="t-label">zeeproc</span>
+          <svg class="g-illo" viewBox="0 0 200 140" aria-hidden="true"><rect x="20" y="16" width="100" height="22" rx="11" class="t"/><rect x="80" y="54" width="100" height="22" rx="11" class="c2"/><rect x="20" y="92" width="120" height="22" rx="11" class="t"/></svg>
+          <span class="t-kpi"><b>+25%</b> onboarding</span>
+        </div>
+        <!-- resume -->
+        <a class="tile t-1x1 tile--icon tile--cv" data-cat="about" href="resume/Usha_Tapal_Resume.pdf" download>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 6h22l12 12v40H16z"/><path d="M38 6v12h12M24 32h18M24 40h18M24 48h12"/></svg>
+          <span>Résumé ↓</span>
+        </a>
 
-        <div class="arch__pair">
+        <!-- architecture -> ux -->
+        <div class="tile t-2x1 tile--arch" data-cat="about">
+          <span class="t-label">Architecture → UX</span>
+          <div class="arch arch--tile"><div class="arch__pair">
           <svg class="arch__bp" viewBox="0 0 120 90" role="img" aria-label="Architectural floor plan">
             <rect x="10" y="10" width="100" height="70"/><path d="M10 45h45M55 10v70M55 55h55M85 55v25"/><path class="door" d="M30 45a8 8 0 0 1 8-8"/>
           </svg>
@@ -199,9 +190,7 @@
             <path d="M24 52v10M60 52v10M96 52v10"/><rect x="14" y="62" width="20" height="9" rx="2"/><rect x="50" y="62" width="20" height="9" rx="2"/><rect x="86" y="62" width="20" height="9" rx="2"/>
           </svg>
           <p><b>Floor plans</b> become <b>information architecture</b></p>
-        </div>
-
-        <div class="arch__pair">
+        </div><div class="arch__pair">
           <svg class="arch__bp" viewBox="0 0 120 90" role="img" aria-label="Circulation path through rooms">
             <rect x="10" y="10" width="100" height="70"/><path d="M45 10v30M45 55v25M80 10v45"/><path class="flow" d="M20 70 C40 70 40 48 60 48 S 95 30 98 20"/><circle class="flow-dot" cx="98" cy="20" r="3"/>
           </svg>
@@ -211,77 +200,54 @@
             <rect x="74" y="11" width="24" height="14" rx="4"/><rect x="74" y="38" width="24" height="14" rx="4"/><rect x="74" y="65" width="24" height="14" rx="4"/><circle class="flow-dot" cx="108" cy="45" r="3"/><path class="flow" d="M98 45h7"/>
           </svg>
           <p><b>Circulation</b> becomes <b>user flows</b></p>
+        </div></div>
+        </div>
+        <div class="tile t-2x1 tile--quote tile--quote-wide" data-cat="about">
+          <span class="t-q" aria-hidden="true">“</span>
+          <p>Structure first, then flow, <mark>then surface.</mark></p>
+          <span class="t-cap">What architecture taught me</span>
         </div>
 
-        <div class="arch__pair">
-          <svg class="arch__bp" viewBox="0 0 120 90" role="img" aria-label="Structural column grid">
-            <path d="M10 15h100M10 45h100M10 75h100M20 8v74M60 8v74M100 8v74"/>
-            <g class="cols"><rect x="17" y="12" width="6" height="6"/><rect x="57" y="12" width="6" height="6"/><rect x="97" y="12" width="6" height="6"/><rect x="17" y="42" width="6" height="6"/><rect x="57" y="42" width="6" height="6"/><rect x="97" y="42" width="6" height="6"/><rect x="17" y="72" width="6" height="6"/><rect x="57" y="72" width="6" height="6"/><rect x="97" y="72" width="6" height="6"/></g>
-          </svg>
-          <span class="arch__to" aria-hidden="true">→</span>
-          <svg class="arch__ui" viewBox="0 0 120 90" role="img" aria-label="Design system components on a grid">
-            <path class="grid" d="M10 10v70M30 10v70M50 10v70M70 10v70M90 10v70M110 10v70"/>
-            <rect class="fill" x="10" y="14" width="40" height="12" rx="6"/><rect x="60" y="14" width="40" height="12" rx="6"/>
-            <rect x="10" y="34" width="60" height="38" rx="5"/><path d="M18 44h30M18 52h40M18 60h22"/><circle class="fill" cx="90" cy="44" r="8"/><rect x="78" y="58" width="24" height="6" rx="3"/>
-          </svg>
-          <p><b>Structural grids</b> become <b>design systems</b></p>
+        <!-- built & live -->
+        <div class="tile t-2x1 tile--built" data-cat="work">
+          <span class="t-label">Built &amp; live</span>
+          <ul>
+            <li><a href="work/riu.html">RIU web prototype<span>Claude Design</span></a></li>
+            <li><a href="work/smart-dealer.html">Smart Dealer iPhone prototype<span>½-day build</span></a></li>
+            <li><a href="#agent">RIU Copilot agent demo<span>HTML · JS</span></a></li>
+            <li><a href="work/riu.html">RIU motion film<span>68 s</span></a></li>
+            <li><a href="#top">This website<span>HTML · CSS · JS · Claude Code</span></a></li>
+          </ul>
+        </div>
+        <!-- experience -->
+        <div class="tile t-2x1 tile--exp" data-cat="about" id="about">
+          <span class="t-label">Experience</span>
+          <ol>
+            <li><em>2025 →</em><b>Product Designer</b><span>6D Technologies</span></li>
+            <li><em>2024 – 25</em><b>Product Designer</b><span>zeeproc · RIU.ai</span></li>
+            <li><em>2022 – 23</em><b>UX/UI Designer</b><span>Supercode · FindPro.ai</span></li>
+            <li><em>2017 – 22</em><b>B.Arch</b><span>BGS School of Architecture</span></li>
+          </ol>
         </div>
 
-        <div class="arch__pair">
-          <svg class="arch__bp" viewBox="0 0 120 90" role="img" aria-label="Site analysis with sun path and wind">
-            <path d="M15 80 L25 35 L95 30 L105 80 Z"/><path class="sunpath" d="M20 30 Q60 -8 100 30"/><circle class="sun-dot" cx="60" cy="11" r="4"/>
-            <path class="wind" d="M30 55h25M34 63h30M28 71h20"/>
-          </svg>
-          <span class="arch__to" aria-hidden="true">→</span>
-          <svg class="arch__ui" viewBox="0 0 120 90" role="img" aria-label="User research personas and insight clusters">
-            <circle cx="22" cy="24" r="10"/><path d="M8 48c2-8 8-11 14-11s12 3 14 11"/>
-            <rect class="note n1" x="50" y="12" width="24" height="18" rx="2"/><rect class="note n2" x="80" y="12" width="24" height="18" rx="2"/>
-            <rect class="note n3" x="50" y="38" width="24" height="18" rx="2"/><rect class="note n4" x="80" y="38" width="24" height="18" rx="2"/>
-            <rect class="note n1" x="65" y="64" width="24" height="18" rx="2"/>
-          </svg>
-          <p><b>Site analysis</b> becomes <b>user research</b></p>
+        <!-- side quests -->
+        <div class="tile t-1x1 tile--side tile--sketch" data-cat="side">
+          <svg viewBox="0 0 160 110" aria-hidden="true"><rect x="20" y="20" width="84" height="74" rx="4"/><path d="M30 76 C 44 40, 60 90, 74 52 S 92 40, 96 70"/><path d="M118 18 l14 14 -40 40 -18 4 4 -18 z"/></svg>
+          <span>Always sketching</span>
         </div>
-      </div>
-
-
-      
-      <ul class="g-flow">
-        <li><b>Business</b><span>Goals, KPIs, telecom CVM, BRSR + GRI</span></li>
-        <li><b>Stakeholders</b><span>PMs, engineers, data science, QA</span></li>
-        <li><b>Design</b><span>Research, IA, design systems</span></li>
-        <li><b>Build</b><span>Prototypes, HTML/CSS/JS, design QA</span></li>
-      </ul>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="g-sec g-wrap" id="about" aria-labelledby="about-h">
-      <div class="g-about">
-        <div class="g-blob">
-          <div class="g-blob__top">
-            <img class="g-wavy" src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165">
-            <h2 id="about-h">Structure first, people always.</h2>
-          </div>
-          <p>Hi! I'm Usha, an architect turned AI product designer in Bengaluru. I design AI-native products for telecom operators and ESG teams, from research and information architecture to prototypes and design systems.</p>
-          <a class="g-btn" href="resume/Usha_Tapal_Resume.pdf" download>Download resume ↓</a>
+        <div class="tile t-1x1 tile--side tile--travel" data-cat="side">
+          <svg viewBox="0 0 160 110" aria-hidden="true"><path class="route" d="M18 90 C 50 90, 40 50, 76 52 S 120 20, 140 22"/><circle cx="18" cy="90" r="5"/><path d="M128 10 L150 24 L134 30 Z"/></svg>
+          <span>Collecting places</span>
         </div>
-        <div class="g-venn" aria-label="Venn diagram: architecture, product and AI overlap at me">
-          <span class="g-dots"></span>
-          <svg viewBox="-10 -6 340 300" role="img" aria-label="Architecture, Product and AI circles overlapping, with me in the centre">
-            <circle cx="120" cy="110" r="78"/><circle cx="200" cy="110" r="78"/><circle cx="160" cy="180" r="78"/>
-            <path class="hl" d="M160 128 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0"/>
-            <text x="70" y="20" text-anchor="middle">ARCHITECTURE</text><text x="252" y="20" text-anchor="middle">PRODUCT</text><text x="160" y="284" text-anchor="middle">AI</text><text x="160" y="134" class="me" text-anchor="middle">ME</text>
-          </svg>
-          <a href="#about-more" class="g-link">See my experience ↓</a>
+        <div class="tile t-1x1 tile--side tile--plant" data-cat="side">
+          <svg viewBox="0 0 160 110" aria-hidden="true"><path d="M58 70h44l-6 32H64z"/><path d="M80 70V40"/><path class="leaf" d="M80 50c-20 0-28-16-28-26 16 0 28 10 28 26z"/><path class="leaf" d="M80 44c0-18 12-28 28-28 0 14-12 28-28 28z"/></svg>
+          <span>Plant parent</span>
+        </div>
+        <div class="tile t-1x1 tile--side tile--blr" data-cat="side about">
+          <svg viewBox="0 0 160 110" aria-hidden="true"><path d="M80 98S52 66 52 46a28 28 0 0 1 56 0c0 20-28 52-28 52z"/><circle cx="80" cy="46" r="10"/></svg>
+          <span>Based in Bengaluru</span>
         </div>
       </div>
-      <ol class="g-exp" id="about-more">
-        <li><em>2025 →</em><b>Product Designer</b><span>6D Technologies</span></li>
-        <li><em>2024 – 25</em><b>Product Designer, consultant</b><span>zeeproc</span></li>
-        <li><em>2024</em><b>Product Designer</b><span>RIU.ai</span></li>
-        <li><em>2023</em><b>Product Designer, consultant</b><span>FindPro.ai</span></li>
-        <li><em>2022 – 23</em><b>UX/UI Design Trainee</b><span>Supercode Design</span></li>
-        <li><em>2017 – 22</em><b>B.Arch</b><span>BGS School of Architecture</span></li>
-      </ol>
     </section>
 
     <!-- CONTACT -->
