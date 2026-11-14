@@ -486,3 +486,26 @@ body { margin: 0; background: var(--m-bg); }
 @media (max-width: 480px) { .sw .hx-id { margin-bottom: 22px; } .sw .hx-av { width: 54px; height: 54px; } .sw .hx-name { font-size: 24px; } .sw .hx-sticker { font-size: 15px; } }
 @media (max-width: 900px) { .sw .hx-br { display: none; } }
 @media (min-width: 901px) { .sw .m-hero:has(.hx) { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 48px; } }
+
+/* Smart Dealer tile shaped like the phone itself: bezel, island, screen that scrolls through the app on hover */
+.sw .s-3 { grid-column: span 3; } .sw .s-9 { grid-column: span 9; }
+.sw .m-card--cover.s-9 { min-height: 540px; }
+.sw .m-card--phone { min-height: 540px; padding: 9px; border-radius: 46px; background: #121614; color: #fff; gap: 0; box-shadow: inset 0 0 0 1.5px #2c322e, 0 1px 3px rgba(20,20,20,.1), 0 14px 30px -12px rgba(20,20,20,.3), 0 40px 70px -30px rgba(20,20,20,.45); }
+.sw .m-phone-scr { position: absolute; inset: 9px; border-radius: 38px; overflow: hidden; background: #f3f5f2; }
+.sw .m-phone-scr img { display: block; width: 100%; height: auto; transform: translateY(0); transition: transform 4.5s cubic-bezier(.45,0,.25,1); }
+.sw a.m-card--phone:hover .m-phone-scr img, .sw a.m-card--phone:focus-visible .m-phone-scr img { transform: translateY(calc(-100% + 520px)); }
+.sw .m-phone-cap { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px 12px 16px; border-radius: 22px; background: rgba(18,22,20,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.sw .m-phone-cap .m-meta { display: block; color: rgba(255,255,255,.6); font-size: 10px; }
+.sw .m-phone-cap h3 { color: #fff; font-size: 20px; margin-top: 2px; }
+.sw .m-card--phone .m-go { position: static; color: #fff; }
+@media (prefers-reduced-motion: reduce) { .sw .m-phone-scr img { transition: none; } }
+@media (max-width: 980px) {
+  .sw .s-9 { grid-column: 1 / -1; }
+  .sw .s-3 { grid-column: 1 / -1; justify-self: center; width: min(100%, 290px); }
+  .sw .m-card--cover.s-9 { min-height: 420px; }
+}
+@media (max-width: 640px) {
+  .sw .s-3, .sw .s-9 { grid-column: 1 / -1; }
+  .sw .m-card--phone { min-height: 560px; border-radius: 44px; padding: 9px; }
+  .sw .m-card--cover.s-9 { min-height: 320px; }
+}
