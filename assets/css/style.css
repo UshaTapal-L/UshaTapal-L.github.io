@@ -1236,3 +1236,71 @@ body { font-size: 16px; }
   .cx-end { flex-direction: column; }
   .cx-head h1 { font-size: 40px; }
 }
+
+/* ===== Annotated screen explorer (.ann): pins on the screen, arrows to notes ===== */
+.ai-rules { list-style: none; margin: 4px 0 28px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ai-rules li { padding: 14px 16px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 2px rgba(20,20,20,.05), 0 10px 24px -18px rgba(20,20,20,.3); font-size: 14px; line-height: 1.45; }
+.ai-rules b { display: block; font-size: 15px; }
+.ai-rules span { color: var(--muted); }
+.ann { border-radius: 24px; background: var(--surface); padding: 18px 22px 26px; box-shadow: 0 1px 3px rgba(20,20,20,.05), 0 30px 60px -36px rgba(20,20,20,.3); }
+.ann__tabs { display: flex; gap: 6px; flex-wrap: wrap; padding-bottom: 16px; margin-bottom: 22px; border-bottom: 1px solid var(--line); }
+.ann__tab { appearance: none; border: 0; background: transparent; font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
+.ann__tab:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.ann__tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.ann__tab:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.ann__panel { position: relative; display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.ann__panel--phone { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); justify-content: center; gap: 96px; }
+.ann__panel[hidden] { display: none; }
+.ann__lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
+.ann__lines path { fill: none; stroke: var(--green); stroke-width: 1.4; opacity: .55; transition: opacity .2s, stroke-width .2s; }
+.ann__lines path.is-hl { opacity: 1; stroke-width: 2.2; }
+.ann__frame { position: relative; border-radius: 12px; overflow: visible; }
+.ann__frame img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 0 1px var(--line), 0 18px 36px -22px rgba(20,20,20,.35); }
+.ann__fig--phone .ann__frame { padding: 6px; border-radius: 30px; background: #1b1720; box-shadow: 0 22px 40px -22px rgba(20,20,20,.5); }
+.ann__fig--phone .ann__frame img { border-radius: 24px; box-shadow: none; }
+.ann__pin { position: absolute; z-index: 3; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid #fff; background: var(--green); color: #fff; font: 700 12px/1 var(--sans); display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 25%, transparent), 0 4px 10px rgba(0,0,0,.25); transition: transform .25s var(--ease, ease); }
+.ann__pin.is-hl, .ann__pin:hover, .ann__pin:focus-visible { transform: scale(1.18); outline: none; }
+@media (prefers-reduced-motion: no-preference) { .ann__pin::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--green); opacity: 0; animation: ann-ping 2.4s ease-out infinite; } }
+@keyframes ann-ping { 0% { opacity: .6; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.5); } }
+.ann__fig--phone .ann__frame .ann__pin { margin-left: -13px; }
+.ann__why { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 12px; padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--green) 8%, transparent); font-size: 14px; line-height: 1.5; }
+.ann__ai-ic { width: 16px; height: 16px; flex: none; fill: var(--green); margin-top: 2px; }
+.ann__notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.ann__note { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 7px 8px; border-radius: 12px; outline: none; transition: background .2s; }
+.ann__note.is-hl, .ann__note:focus-visible { background: color-mix(in srgb, var(--green) 7%, transparent); }
+.ann__num { width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; margin-top: 2px; }
+.ann__note .cx-ux { font-size: 10px; padding: 3px 8px; }
+.ann__note b { display: block; font-size: 15px; margin: 5px 0 1px; }
+.ann__how { display: block; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.ann__ai { display: flex; gap: 6px; align-items: flex-start; margin-top: 6px; font-size: 13px; line-height: 1.45; color: var(--ink); }
+.ann__ai b { display: inline; margin: 0; font-size: inherit; color: var(--green); }
+@media (max-width: 900px) {
+  .ai-rules { grid-template-columns: 1fr; }
+  .ann { padding: 14px 14px 20px; }
+  .ann__tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -4px; margin-right: -4px; }
+  .ann__tab { flex: none; }
+  .ann__panel, .ann__panel--phone { grid-template-columns: 1fr; gap: 20px; }
+  .ann__panel--phone .ann__fig { max-width: 260px; margin: 0 auto; width: 100%; }
+  .ann__pin { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 11px; }
+}
+
+/* Annotated screens, quieter: three short notes, slim "why AI" line, light arrows, still pins */
+.ai-line { margin: -4px 0 22px; font-size: 16px; color: var(--muted); max-width: 60ch; }
+.ann__why { display: block; margin: 0 0 14px; padding: 0 0 14px 0; border-radius: 0; background: none; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.5; color: var(--muted); }
+.ann__why b { color: var(--ink); }
+.ann__notes { gap: 2px; }
+.ann__t { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; }
+.ann__note .ann__t b { display: inline; margin: 0; font-size: 15px; }
+.ann__note .cx-ux { font-size: 10px; padding: 2px 8px; }
+.ann__note .cx-ux::before { display: none; }
+.ann__how { margin-top: 3px; }
+.ann__ai { display: flex; align-items: center; gap: 5px; margin-top: 4px; font-size: 12.5px; font-weight: 600; color: var(--green); }
+.ann__ai .ann__ai-ic { width: 12px; height: 12px; margin: 0; }
+.ann__lines path { stroke-width: 1; opacity: .4; }
+.ann__lines path.is-hl { opacity: 1; stroke-width: 1.6; }
+.ann__pin { width: 22px; height: 22px; margin: -11px 0 0 -11px; font-size: 11px; box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 20%, transparent), 0 3px 8px rgba(0,0,0,.2); }
+.ann__pin::after { display: none; }
+.ann__num { width: 22px; height: 22px; font-size: 11px; }
+.ann__note { grid-template-columns: 22px 1fr; padding: 10px 8px; }
+.ann__panel { gap: 56px; }
+.ann__panel--phone { gap: 80px; }
