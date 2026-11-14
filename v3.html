@@ -163,61 +163,49 @@
         <div class="tile m-card m-card--ink s-7" data-cat="ai" id="agent">
           <span class="m-meta">05 / Live AI demo</span>
           <h3>Talk to the <br><em>RIU Copilot.</em></h3>
-          <p class="m-inkline">Streaming, memory, errors and human approval. Every AI state, designed.</p>
+          <p class="m-inkline">Not a chatbot. An AI teammate that works inside the report: it plans, reads evidence, drafts, and waits for your call.</p>
           <button type="button" class="m-try" aria-expanded="false" aria-controls="agent-body">Try it live →</button>
           <div class="m-agent" id="agent-body" hidden>
-          <div class="agent">
-        <!-- Architecture -->
-        <div class="arch-map" aria-label="Agent architecture">
-          <p class="arch-map__label">Architecture <span>lights up as the agent works</span></p>
-          <div class="amap">
-            <div class="anode anode--user" data-node="user"><b>You</b><small>Intent</small></div>
-            <div class="amap__row">
-              <div class="anode anode--core" data-node="planner"><b>Copilot planner</b><small>Plans steps</small></div>
-              <div class="anode anode--mem" data-node="memory"><b>Memory</b><small id="mem-text">Empty</small></div>
-            </div>
-            <div class="amap__row amap__row--3">
-              <div class="anode" data-node="evidence"><b>Evidence Hub</b><small>Reads bills</small></div>
-              <div class="anode" data-node="calc"><b>Calculator</b><small>BRSR maths</small></div>
-              <div class="anode" data-node="tasks"><b>Tasks</b><small>Reminders</small></div>
-            </div>
-            <div class="anode anode--guard" data-node="guard"><b>Guardrails</b><small>Sources · confidence ≥ 80%</small></div>
-            <div class="anode anode--human" data-node="human"><b>Human approval</b><small>Approve · edit · reject</small></div>
-          </div>
-          <div class="patterns">
-            <p class="patterns__head">Patterns explored <b><span id="pat-count">0</span>/7</b></p>
-            <ul>
-              <li data-pat="stream">Streaming</li>
-              <li data-pat="tools">Tool transparency</li>
-              <li data-pat="confidence">Confidence + sources</li>
-              <li data-pat="approval">Human approval</li>
-              <li data-pat="override">User override</li>
-              <li data-pat="memory">Multi-turn memory</li>
-              <li data-pat="error">Error recovery</li>
-            </ul>
-          </div>
-        </div>
+          <div class="ws" data-ws>
+            <header class="ws__bar">
+              <span class="ws__logo" aria-hidden="true">R</span>
+              <p class="ws__crumb"><span>BRSR FY 2025–26</span><b>Principle 6 · Environment</b></p>
+              <div class="ws__report" aria-label="Report progress"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15"/><circle class="ws__ring" cx="18" cy="18" r="15" pathLength="100"/></svg><span><b data-ws-pct>58%</b> filed</span></div>
+              <span class="ws__tag">Fictional data</span>
+            </header>
 
-        <!-- Copilot -->
-        <div class="copilot" role="region" aria-label="RIU Copilot demo">
-          <div class="copilot__top">
-            <span class="copilot__logo" aria-hidden="true">✦</span>
-            <div><b>RIU Copilot</b><small>Vardhan Industries · FY 2025–26</small></div>
-            <span class="copilot__badge">Fictional data</span>
+            <ol class="ws__pipe" aria-label="How the Copilot works">
+              <li data-node="intent">Intent</li><li data-node="plan">Plan</li><li data-node="evidence">Evidence</li><li data-node="calc">Calculate</li><li data-node="guard">Guardrails</li><li data-node="human">You decide</li>
+            </ol>
+
+            <div class="ws__body">
+              <nav class="ws__tasks" aria-label="Copilot tasks">
+                <p class="ws__label">Copilot can</p>
+                <button type="button" class="ws-task" data-task="energy"><b>Draft P6 energy answer</b><small data-status>To do</small></button>
+                <button type="button" class="ws-task" data-task="scope2"><b>Draft Scope 2 emissions</b><small data-status>To do</small></button>
+                <button type="button" class="ws-task" data-task="compare" disabled><b>Compare with last year</b><small data-status>Needs a draft first</small></button>
+                <button type="button" class="ws-task" data-task="late"><b>Chase late data</b><small data-status>3 overdue</small></button>
+                <div class="ws__states"><p class="ws__label">AI states shown <b data-ws-count>0</b>/7</p><ul>
+                  <li data-pat="stream">Streaming</li><li data-pat="tools">Tool steps</li><li data-pat="conf">Confidence</li><li data-pat="human">Approval</li><li data-pat="override">Edit &amp; stop</li><li data-pat="memory">Memory</li><li data-pat="error">Recovery</li></ul></div>
+              </nav>
+
+              <section class="ws__canvas" aria-live="polite">
+                <div class="ws-empty">
+                  <span class="ws-empty__spark" aria-hidden="true">✦</span>
+                  <p><b>Pick a task.</b> The Copilot works right inside the report: it plans, reads evidence, fills the answer and waits for you.</p>
+                </div>
+              </section>
+            </div>
+
+            <form class="ws__cmd" autocomplete="off">
+              <span class="ws__cmd-ic" aria-hidden="true">✦</span>
+              <label class="sr-only" for="ws-input">Ask the Copilot</label>
+              <input id="ws-input" type="text" placeholder="Ask Copilot… try “what’s late?” or “draft scope 2”">
+              <button type="button" class="ws__stop" hidden>■ Stop</button>
+              <button type="submit" class="ws__go" aria-label="Send">↵</button>
+            </form>
           </div>
-          <div class="copilot__log" id="copilot-log" aria-live="polite">
-            <div class="msg msg--bot"><p>Hi Marci. I can draft BRSR answers from your evidence, compare years and chase late data. Pick a task below or type one.</p></div>
           </div>
-          <div class="copilot__chips" id="copilot-chips"></div>
-          <form class="copilot__input" id="copilot-form" autocomplete="off">
-            <label class="sr-only" for="copilot-text">Ask Copilot</label>
-            <input id="copilot-text" type="text" placeholder="Ask about any metric…">
-            <button class="btn btn--green btn--small" type="submit" id="copilot-send">Send</button>
-            <button class="copilot__stop" type="button" id="copilot-stop" hidden>■ Stop</button>
-          </form>
-        </div>
-      </div>
-        </div>
         </div>
 
         <div class="tile m-card m-card--yellow s-5" data-cat="arch">

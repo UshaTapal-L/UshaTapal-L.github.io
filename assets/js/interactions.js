@@ -111,7 +111,7 @@
     tryBtn.setAttribute('aria-expanded', String(!open));
     body.hidden = open; card.classList.toggle('is-open', !open);
     tryBtn.textContent = open ? 'Try it live →' : 'Close demo ×';
-    if (!open) { card.style.transform = ''; card.classList.remove('has-glare'); card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); var first = body.querySelector('.chip-btn'); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 500); }
+    if (!open) { card.style.transform = ''; card.classList.remove('has-glare'); card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); var first = body.querySelector('.ws-task'); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 500); }
   });
 
   // 9. Motion: reveal tiles and headlines as they enter, staggered left to right.

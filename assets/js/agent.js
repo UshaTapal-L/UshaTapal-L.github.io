@@ -1,294 +1,274 @@
-// RIU Copilot demo: a scripted agent that shows the design of AI states
-// (streaming, tool calls, confidence + sources, human approval, overrides,
-// multi-turn memory, error recovery) and lights up an architecture map.
+// RIU Copilot workspace: the Copilot works inside a real RIU screen instead of a chat.
+// It plans, reads evidence, fills the answer field by field, shows confidence and
+// sources, and always waits for a person. Seven AI states are shown along the way:
+// streaming, tool steps, confidence, approval, edit & stop, memory and recovery.
 (function () {
-  var log = document.getElementById('copilot-log');
-  if (!log) return;
-  var chipsEl = document.getElementById('copilot-chips');
-  var form = document.getElementById('copilot-form');
-  var input = document.getElementById('copilot-text');
-  var sendBtn = document.getElementById('copilot-send');
-  var stopBtn = document.getElementById('copilot-stop');
-  var memText = document.getElementById('mem-text');
+  var ws = document.querySelector('[data-ws]');
+  if (!ws) return;
+  var canvas = ws.querySelector('.ws__canvas');
+  var form = ws.querySelector('.ws__cmd'), input = ws.querySelector('#ws-input');
+  var stopBtn = ws.querySelector('.ws__stop');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var ctx = { metric: null };
-  var busy = false, stopped = false;
-  var seen = {};
+  var busy = false, stopped = false, runId = 0;
+  var memory = null, pct = 58, seen = {};
 
   // ---------- helpers ----------
+  function $(sel, root) { return (root || ws).querySelector(sel); }
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
-  function scroll() { log.scrollTop = log.scrollHeight; }
   function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
-
+  function alive(id) { return id === runId && !stopped; }
+  function pattern(k) {
+    if (seen[k]) return; seen[k] = true;
+    var li = $('.ws__states li[data-pat="' + k + '"]'); if (li) li.classList.add('is-on');
+    $('[data-ws-count]').textContent = Object.keys(seen).length;
+  }
   function node(id, state) {
-    var n = document.querySelector('.anode[data-node="' + id + '"]');
-    if (!n) return;
-    n.classList.remove('is-active', 'is-done', 'is-error');
+    var n = $('.ws__pipe [data-node="' + id + '"]'); if (!n) return;
+    n.classList.remove('is-active', 'is-done', 'is-warn');
     if (state) n.classList.add('is-' + state);
   }
-  function resetNodes() { document.querySelectorAll('.anode').forEach(function (n) { n.classList.remove('is-active', 'is-done', 'is-error'); }); }
-
-  function pattern(key) {
-    if (seen[key]) return;
-    seen[key] = true;
-    var li = document.querySelector('.patterns li[data-pat="' + key + '"]');
-    if (li) li.classList.add('is-done');
-    document.getElementById('pat-count').textContent = Object.keys(seen).length;
+  function resetPipe() { ws.querySelectorAll('.ws__pipe li').forEach(function (n) { n.classList.remove('is-active', 'is-done', 'is-warn'); }); }
+  function task(key, status, state) {
+    var t = $('.ws-task[data-task="' + key + '"]'); if (!t) return;
+    t.querySelector('[data-status]').textContent = status;
+    t.dataset.state = state || '';
   }
-
-  function setMemory(text) { memText.textContent = text; node('memory', 'done'); }
-
-  function userMsg(text) { log.appendChild(el('div', 'msg msg--user', '<p></p>')).querySelector('p').textContent = text; scroll(); }
-
-  function botMsg() { var m = el('div', 'msg msg--bot'); log.appendChild(m); scroll(); return m; }
-
-  async function step(msg, label, nodeId, ms) {
-    var row = el('div', 'tool', '<span class="tool__spin" aria-hidden="true"></span><span></span>');
-    row.lastChild.textContent = label;
-    msg.appendChild(row); scroll();
-    node(nodeId, 'active'); pattern('tools');
-    await wait(ms || 700);
-    if (stopped) { row.classList.add('is-stopped'); node(nodeId, null); return false; }
-    row.classList.add('is-done'); node(nodeId, 'done');
-    return true;
+  function setPct(v) {
+    pct = Math.min(100, v);
+    $('[data-ws-pct]').textContent = pct + '%';
+    $('.ws__ring').style.strokeDasharray = pct + ' 100';
   }
-
-  async function stream(msg, text) {
-    var p = el('p', 'stream'); msg.appendChild(p);
-    var words = text.split(' ');
-    pattern('stream');
-    for (var i = 0; i < words.length; i++) {
-      if (stopped) { p.appendChild(el('span', 'stream__cut', ' … stopped. I kept what I had so far.')); pattern('override'); return false; }
-      p.appendChild(document.createTextNode((i ? ' ' : '') + words[i]));
-      if (i % 3 === 0) scroll();
-      await wait(45);
+  function toast(text) {
+    var t = el('div', 'ws-toast', text); ws.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('is-on'); });
+    setTimeout(function () { t.classList.remove('is-on'); setTimeout(function () { t.remove(); }, 400); }, 2400);
+  }
+  async function typeInto(target, text, id, speed) {
+    target.textContent = ''; target.classList.add('is-typing');
+    for (var i = 0; i < text.length; i++) {
+      if (!alive(id)) { target.classList.remove('is-typing'); return false; }
+      target.textContent += text[i];
+      if (i % 2 === 0) await wait(speed || 22);
     }
-    scroll();
+    target.classList.remove('is-typing');
     return true;
   }
-
-  function actions(msg, list) {
-    var row = el('div', 'acts');
+  async function streamWords(target, text, id) {
+    target.textContent = ''; target.classList.add('is-typing'); pattern('stream');
+    var w = text.split(' ');
+    for (var i = 0; i < w.length; i++) {
+      if (!alive(id)) { target.classList.remove('is-typing'); return false; }
+      target.textContent += (i ? ' ' : '') + w[i];
+      await wait(55);
+    }
+    target.classList.remove('is-typing');
+    return true;
+  }
+  async function planStep(card, idx, nodeId, ms, id) {
+    var li = card.querySelectorAll('.ws-plan li')[idx];
+    li.classList.add('is-run'); node(nodeId, 'active'); pattern('tools');
+    await wait(ms);
+    if (!alive(id)) { li.classList.remove('is-run'); li.classList.add('is-stop'); node(nodeId, null); return false; }
+    li.classList.remove('is-run'); li.classList.add('is-done'); node(nodeId, 'done');
+    return true;
+  }
+  function meter(card, value) {
+    var m = card.querySelector('.ws-conf'); m.hidden = false;
+    var low = value < 80; m.classList.toggle('is-low', low);
+    requestAnimationFrame(function () { m.querySelector('i').style.width = value + '%'; });
+    var n = m.querySelector('b'), v = 0;
+    var t = setInterval(function () { v = Math.min(value, v + 4); n.textContent = v + '%'; if (v >= value) clearInterval(t); }, reduce ? 0 : 18);
+    pattern('conf');
+  }
+  function actions(card, list) {
+    var row = card.querySelector('.ws-acts'); row.innerHTML = ''; row.hidden = false;
     list.forEach(function (a) {
-      var b = el('button', 'act' + (a.primary ? ' act--primary' : ''), a.label);
-      b.type = 'button';
-      b.addEventListener('click', function () {
-        if (busy) return;
-        row.querySelectorAll('button').forEach(function (x) { x.disabled = true; });
-        b.classList.add('is-picked');
-        a.run(msg);
-      });
+      var b = el('button', 'ws-btn' + (a.primary ? ' ws-btn--primary' : ''), a.label); b.type = 'button';
+      b.addEventListener('click', function () { if (busy) return; row.querySelectorAll('button').forEach(function (x) { x.disabled = true; }); a.run(); });
       row.appendChild(b);
     });
-    msg.appendChild(row); scroll();
+  }
+  function begin(key, label) {
+    runId++; busy = true; stopped = false; resetPipe();
+    stopBtn.hidden = false; ws.classList.add('is-busy');
+    ws.querySelectorAll('.ws-task').forEach(function (t) { t.classList.toggle('is-current', t.dataset.task === key); });
+    task(key, 'Copilot is working…', 'run');
+    node('intent', 'done');
+    canvas.innerHTML = '';
+    return runId;
+  }
+  function end() { busy = false; stopBtn.hidden = true; ws.classList.remove('is-busy'); }
+  function stopped_(card, key, resume) {
+    pattern('override'); end(); task(key, 'Stopped by you', 'warn');
+    var s = el('div', 'ws-note ws-note--stop', '<b>Stopped.</b> I kept what I had drafted. Nothing was filed.');
+    card.appendChild(s);
+    actions(card, [{ label: 'Resume', primary: true, run: resume }]);
   }
 
-  function meta(msg, confidence, sources) {
-    var low = confidence < 80;
-    var m = el('div', 'meta' + (low ? ' meta--low' : ''));
-    m.appendChild(el('span', 'conf', 'Confidence ' + confidence + '%'));
-    sources.forEach(function (s) { m.appendChild(el('span', 'src', 'Source: ' + s)); });
-    msg.appendChild(m);
-    pattern('confidence');
-    scroll();
+  function qCard(code, title, fields) {
+    var f = fields.map(function (x) { return '<div class="ws-field"><span>' + x[0] + '</span><output data-f="' + x[1] + '"></output></div>'; }).join('');
+    return el('article', 'ws-q',
+      '<header><span class="ws-q__code">' + code + '</span><span class="ws-q__core">BRSR Core</span><span class="ws-q__ai" hidden>✦ AI draft</span></header>' +
+      '<h4>' + title + '</h4>' +
+      '<ol class="ws-plan"></ol>' +
+      '<div class="ws-ev"></div>' +
+      '<div class="ws-fields">' + f + '</div>' +
+      '<p class="ws-narr" hidden></p>' +
+      '<div class="ws-conf" hidden><span>Confidence</span><span class="ws-conf__bar"><i></i></span><b>0%</b></div>' +
+      '<div class="ws-srcs"></div>' +
+      '<div class="ws-acts" hidden></div>');
+  }
+  function plan(card, steps) { card.querySelector('.ws-plan').innerHTML = steps.map(function (s) { return '<li><i aria-hidden="true"></i>' + s + '</li>'; }).join(''); }
+  function evidence(card, docs) {
+    var box = card.querySelector('.ws-ev');
+    docs.forEach(function (d, i) { var e = el('span', 'ws-doc', '<i aria-hidden="true">' + d[0] + '</i>' + d[1]); e.style.animationDelay = (i * 0.12) + 's'; box.appendChild(e); });
+  }
+  function sources(card, list) { card.querySelector('.ws-srcs').innerHTML = list.map(function (s) { return '<span>↗ ' + s + '</span>'; }).join(''); }
+  function approve(card, key, by) {
+    pattern('human'); node('human', 'done');
+    var st = el('div', 'ws-stamp', '<b>Approved</b>' + (by || 'Marci · ESG lead · just now'));
+    card.appendChild(st); card.classList.add('is-approved');
+    setPct(pct + 3); task(key, 'Approved ✓', 'done');
   }
 
-  function chips(list) {
-    chipsEl.innerHTML = '';
-    list.forEach(function (c) {
-      var b = el('button', 'chip-btn', c.label); b.type = 'button';
-      b.addEventListener('click', function () { if (!busy) run(c.key, c.label); });
-      chipsEl.appendChild(b);
-    });
-  }
-
-  function startTurn() { busy = true; stopped = false; resetNodes(); stopBtn.hidden = false; sendBtn.disabled = true; chipsEl.classList.add('is-busy'); }
-  function endTurn(next) { busy = false; stopBtn.hidden = true; sendBtn.disabled = false; chipsEl.classList.remove('is-busy'); chips(next || defaultChips()); }
-
-  function defaultChips() {
-    var c = [{ key: 'energy', label: 'Draft the P6 energy answer' }, { key: 'scope2', label: 'Draft Scope 2 emissions' }, { key: 'late', label: "What's late this month?" }];
-    if (ctx.metric) c.splice(1, 0, { key: 'compare', label: 'Compare with last year' });
-    return c;
-  }
-
-  // ---------- scenarios ----------
-  var scenarios = {
-    energy: async function () {
-      var m = botMsg();
-      node('user', 'done'); node('planner', 'active'); await wait(400); node('planner', 'done');
-      if (!await step(m, 'Reading 6 electricity bills and 2 fuel invoices', 'evidence', 900)) return endTurn();
-      if (!await step(m, 'Calculating energy intensity per ₹ of turnover', 'calc', 700)) return endTurn();
-      if (!await step(m, 'Checking sources and confidence', 'guard', 500)) return endTurn();
-      var draft = 'Total energy consumed in H1 was 2.84 lakh GJ, of which 26% came from renewable sources. Energy intensity per rupee of turnover fell 3.1% year on year.';
-      var ok = await stream(m, draft);
-      ctx.metric = 'energy'; setMemory('P6 · Energy · H1');
-      if (!ok) return endTurn();
-      meta(m, 92, ['6 electricity bills', '2 fuel invoices']);
-      node('human', 'active');
-      actions(m, [
-        { label: 'Approve', primary: true, run: approveDraft },
-        { label: 'Edit', run: editDraft },
-        { label: 'Reject', run: rejectDraft }
+  // ---------- tasks ----------
+  var tasks = {
+    energy: async function resumeEnergy() {
+      var id = begin('energy');
+      var c = qCard('P6-E.1', 'Total energy consumption and intensity per rupee of turnover', [['Total energy', 'total'], ['Intensity', 'int'], ['Renewable share', 'ren']]);
+      canvas.appendChild(c);
+      plan(c, ['Read 6 electricity bills and 2 fuel invoices', 'Calculate intensity per ₹ of turnover', 'Check sources and confidence']);
+      node('plan', 'done');
+      evidence(c, [['⚡', 'Electricity bills ×6'], ['⛽', 'Fuel invoices ×2'], ['₹', 'FY25 ledger']]);
+      if (!await planStep(c, 0, 'evidence', 1000, id)) return stopped_(c, 'energy', resumeEnergy);
+      c.querySelector('.ws-q__ai').hidden = false;
+      if (!await typeInto(c.querySelector('[data-f="total"]'), '2,84,120 GJ', id)) return stopped_(c, 'energy', resumeEnergy);
+      if (!await planStep(c, 1, 'calc', 800, id)) return stopped_(c, 'energy', resumeEnergy);
+      if (!await typeInto(c.querySelector('[data-f="int"]'), '0.0021 GJ / ₹', id)) return stopped_(c, 'energy', resumeEnergy);
+      if (!await typeInto(c.querySelector('[data-f="ren"]'), '26%', id)) return stopped_(c, 'energy', resumeEnergy);
+      var narr = c.querySelector('.ws-narr'); narr.hidden = false;
+      if (!await streamWords(narr, 'Total energy in H1 was 2.84 lakh GJ, 26% from renewables. Intensity per rupee of turnover fell 3.1% year on year.', id)) return stopped_(c, 'energy', resumeEnergy);
+      if (!await planStep(c, 2, 'guard', 600, id)) return stopped_(c, 'energy', resumeEnergy);
+      meter(c, 92); sources(c, ['6 electricity bills', '2 fuel invoices', 'FY25 ledger']);
+      node('human', 'active'); task('energy', 'Needs your review', 'review');
+      memory = 'P6 · Energy · H1';
+      var cmp = $('.ws-task[data-task="compare"]'); cmp.disabled = false; task('compare', 'Ready', '');
+      end();
+      actions(c, [
+        { label: 'Approve', primary: true, run: function () { approve(c, 'energy'); } },
+        { label: 'Edit', run: function () { editNarr(c); } },
+        { label: 'Reject', run: function () { reject(c); } }
       ]);
-      endTurn();
-    },
-
-    compare: async function () {
-      var m = botMsg();
-      node('user', 'done');
-      if (!ctx.metric) {
-        node('planner', 'active'); await wait(300); node('planner', 'done');
-        await stream(m, "Compare which metric? We haven't looked at one yet. Pick one and I'll remember it for follow-ups.");
-        return endTurn([{ key: 'energy', label: 'Draft the P6 energy answer' }, { key: 'scope2', label: 'Draft Scope 2 emissions' }]);
-      }
-      node('memory', 'active'); pattern('memory');
-      var note = el('div', 'memnote', 'Using context: <b>' + memText.textContent + '</b> from earlier');
-      m.appendChild(note); scroll();
-      await wait(600); node('memory', 'done');
-      node('planner', 'done');
-      if (!await step(m, 'Fetching FY 2024–25 energy data', 'evidence', 700)) return endTurn();
-      if (!await step(m, 'Comparing year on year', 'calc', 600)) return endTurn();
-      var ok = await stream(m, 'Compared with FY 2024–25, renewable share rose from 21% to 26%, and energy intensity per rupee of turnover fell 3.1% because turnover grew faster than consumption.');
-      if (ok) meta(m, 88, ['FY 2024–25 BRSR', 'H1 bills']);
-      endTurn();
     },
 
     scope2: async function () {
-      var m = botMsg();
-      node('user', 'done'); node('planner', 'active'); await wait(400); node('planner', 'done');
-      if (!await step(m, 'Reading electricity bills for 5 sites', 'evidence', 800)) return endTurn();
-      if (!await step(m, 'Looking up supplier emission factors', 'calc', 800)) return endTurn();
-      node('guard', 'error');
-      ctx.metric = 'scope2'; setMemory('P6 · Scope 2');
-      var err = el('div', 'errcard',
-        '<b>I stopped before drafting.</b>' +
-        '<p>The supplier emission factor is missing for 2 of 5 sites, so a market-based Scope 2 figure would be a guess.</p>');
-      m.appendChild(err);
-      meta(m, 41, ['3 of 5 supplier factors']);
-      pattern('error');
-      actions(m, [
-        { label: 'Request factor from supplier', primary: true, run: requestSupplier },
-        { label: 'Use location-based and flag it', run: useLocation }
+      var id = begin('scope2');
+      var c = qCard('P6-E.7', 'Scope 2 emissions (location-based)', [['Scope 2', 'sc2'], ['Grid factor', 'gf'], ['Sites covered', 'sites']]);
+      canvas.appendChild(c);
+      plan(c, ['Pull meter readings from Evidence Hub', 'Apply CEA grid emission factor', 'Check coverage before filing']);
+      node('plan', 'done');
+      // Recovery: the first call fails and retries on its own.
+      var li = c.querySelectorAll('.ws-plan li')[0]; li.classList.add('is-run'); node('evidence', 'active'); pattern('tools');
+      await wait(900); if (!alive(id)) return stopped_(c, 'scope2', tasks.scope2);
+      li.classList.remove('is-run'); li.classList.add('is-err'); node('evidence', 'warn'); pattern('error');
+      var note = el('div', 'ws-note ws-note--err', '<b>Evidence Hub didn’t respond.</b> Retrying in <span>3</span>s…'); c.querySelector('.ws-plan').after(note);
+      for (var s = 3; s > 0; s--) { note.querySelector('span').textContent = s; await wait(600); }
+      note.innerHTML = '<b>Reconnected.</b> Nothing was lost.'; note.className = 'ws-note ws-note--ok';
+      li.classList.remove('is-err'); li.classList.add('is-done'); node('evidence', 'done');
+      evidence(c, [['⚡', 'Meter readings · 4 sites'], ['📄', 'CEA factor v19']]);
+      c.querySelector('.ws-q__ai').hidden = false;
+      if (!await typeInto(c.querySelector('[data-f="sc2"]'), '18,420 tCO₂e', id)) return stopped_(c, 'scope2', tasks.scope2);
+      if (!await planStep(c, 1, 'calc', 700, id)) return stopped_(c, 'scope2', tasks.scope2);
+      await typeInto(c.querySelector('[data-f="gf"]'), '0.716 kg / kWh', id);
+      await typeInto(c.querySelector('[data-f="sites"]'), '3 of 4', id);
+      var li3 = c.querySelectorAll('.ws-plan li')[2]; li3.classList.add('is-run'); node('guard', 'active');
+      await wait(700); li3.classList.remove('is-run'); li3.classList.add('is-warn'); node('guard', 'warn');
+      meter(c, 64); sources(c, ['Meter readings · 3 sites', 'CEA factor v19']);
+      c.querySelector('[data-f="sites"]').closest('.ws-field').classList.add('is-gap');
+      var g = el('div', 'ws-note ws-note--warn', '<b>Below 80% confidence, so I won’t file this.</b> Noida meter M-07 is missing Aug–Sep.');
+      c.querySelector('.ws-conf').after(g);
+      node('human', 'active'); task('scope2', 'Blocked: data gap', 'warn');
+      end();
+      actions(c, [
+        { label: 'Ask Rahul for readings', primary: true, run: function () { toast('Request sent to Rahul · Noida plant'); task('scope2', 'Waiting on Rahul', 'warn'); pattern('human'); node('human', 'done'); g.innerHTML = '<b>Request sent.</b> I’ll redraft when Rahul uploads the readings.'; } },
+        { label: 'Use estimate, flagged', run: function () { c.querySelector('[data-f="sites"]').textContent = '4 of 4 · 1 estimated'; c.querySelector('[data-f="sites"]').closest('.ws-field').classList.replace('is-gap', 'is-est'); g.remove(); approve(c, 'scope2', 'Marci · with 1 flagged estimate'); } }
       ]);
-      endTurn();
+    },
+
+    compare: async function () {
+      var id = begin('compare');
+      var c = el('article', 'ws-q ws-cmp',
+        '<header><span class="ws-q__code">Compare</span><span class="ws-mem">✦ Remembered: ' + (memory || 'P6 · Energy') + '</span></header>' +
+        '<h4>FY 2024–25 vs FY 2025–26 · H1</h4>' +
+        '<div class="ws-bars">' +
+        [['Total energy', 2.95, 2.84, 'lakh GJ', 3.2], ['Intensity', 2.17, 2.10, '×10⁻³ GJ/₹', 2.4], ['Renewable share', 19, 26, '%', 30]].map(function (r) {
+          return '<div class="ws-bar"><span>' + r[0] + '</span><div><i class="was" style="--w:' + (r[1] / r[4] * 100) + '%"></i><i class="now" style="--w:' + (r[2] / r[4] * 100) + '%"></i></div><b>' + r[1] + ' → ' + r[2] + ' <small>' + r[3] + '</small></b></div>';
+        }).join('') + '</div>' +
+        '<p class="ws-legend"><i class="was"></i>Last year <i class="now"></i>This year</p>' +
+        '<p class="ws-narr"></p><div class="ws-acts" hidden></div>');
+      canvas.appendChild(c); pattern('memory'); node('plan', 'done');
+      node('evidence', 'active'); await wait(500); node('evidence', 'done'); node('calc', 'active');
+      requestAnimationFrame(function () { c.classList.add('is-drawn'); });
+      await wait(900); node('calc', 'done'); node('guard', 'done');
+      if (!await streamWords(c.querySelector('.ws-narr'), 'Intensity fell 3.1% while renewables rose 7 points, mostly from the new rooftop solar at the Pune plant.', id)) return stopped_(c, 'compare', tasks.compare);
+      node('human', 'active'); task('compare', 'Ready to add', 'review'); end();
+      actions(c, [{ label: 'Add to the P6 answer', primary: true, run: function () { approve(c, 'compare', 'Added to P6-E.1 · just now'); toast('Comparison added to the P6 answer'); } }]);
     },
 
     late: async function () {
-      var m = botMsg();
-      node('user', 'done'); node('planner', 'active'); await wait(400); node('planner', 'done');
-      if (!await step(m, 'Checking owners and due dates', 'tasks', 800)) return endTurn();
-      var ok = await stream(m, '3 items need attention this month:');
-      if (!ok) return endTurn();
-      var ul = el('ul', 'late',
-        '<li><b>Ananya Rao</b> · differently-abled headcount <em class="bad">overdue 3 days</em></li>' +
-        '<li><b>Vikram Shah</b> · Manesar near-miss <em class="warn">due today</em></li>' +
-        '<li><b>Rahul Mehta</b> · Noida diesel log <em>due in 2 days</em></li>');
-      m.appendChild(ul); scroll();
-      ctx.metric = ctx.metric || null;
-      actions(m, [
-        { label: 'Draft reminders', primary: true, run: draftReminders },
-        { label: 'Not now', run: function () { reply('OK. I will not message anyone.'); } }
-      ]);
-      endTurn();
-    },
-
-    fallback: async function () {
-      var m = botMsg();
-      node('user', 'done'); node('planner', 'active'); await wait(300); node('planner', 'done');
-      await stream(m, "That's outside what I can do in this demo. I won't guess. Here's what I can help with:");
-      endTurn();
+      var id = begin('late');
+      var rows = [['RM', 'Rahul Mehta', 'Noida meter M-07', 12], ['PS', 'Priya Shah', 'Waste manifests · 2 sites', 8], ['LMS', 'HR · LMS', 'Training export', 5]];
+      var c = el('article', 'ws-q ws-late',
+        '<header><span class="ws-q__code">September close</span><span class="ws-q__core">3 overdue</span></header>' +
+        '<h4>Late data, with reminders drafted</h4><ul class="ws-people">' +
+        rows.map(function (r) { return '<li><span class="ws-av">' + r[0] + '</span><div><b>' + r[1] + '</b><small>' + r[2] + '</small><p class="ws-draft"></p></div><em>' + r[3] + ' days late</em></li>'; }).join('') +
+        '</ul><div class="ws-acts" hidden></div>');
+      canvas.appendChild(c); node('plan', 'done'); node('evidence', 'active'); pattern('tools');
+      var lis = c.querySelectorAll('.ws-people li');
+      for (var i = 0; i < lis.length; i++) { lis[i].classList.add('is-in'); await wait(250); }
+      node('evidence', 'done'); node('calc', 'done'); node('guard', 'done');
+      var msgs = ['Hi Rahul, could you log the Aug–Sep readings for meter M-07? It’s the last gap in Scope 2.', 'Hi Priya, the waste manifests for Pune and Noida are still missing for September.', 'Hi team, please share the September LMS training export for P5.'];
+      for (var j = 0; j < lis.length; j++) { if (!await streamWords(lis[j].querySelector('.ws-draft'), msgs[j], id)) return stopped_(c, 'late', tasks.late); }
+      node('human', 'active'); task('late', '3 reminders drafted', 'review'); end();
+      actions(c, [{ label: 'Send all 3', primary: true, run: function () {
+        lis.forEach(function (l, k) { setTimeout(function () { l.classList.add('is-sent'); l.querySelector('em').textContent = 'Sent ✓'; }, k * 220); });
+        pattern('human'); node('human', 'done'); task('late', 'Reminders sent ✓', 'done'); toast('3 reminders sent');
+      } }]);
     }
   };
 
-  // ---------- follow-up actions ----------
-  async function reply(text, nodes) {
-    busy = true;
-    var m = botMsg();
-    (nodes || []).forEach(function (n) { node(n, 'done'); });
-    await stream(m, text);
-    busy = false;
-    return m;
-  }
-
-  async function approveDraft() {
-    node('human', 'done'); pattern('approval');
-    await reply('Approved by you. Queued for CFO sign-off. Nothing is filed until Arvind signs.', ['guard']);
-    chips(defaultChips());
-  }
-
-  function editDraft(msg) {
+  function editNarr(c) {
     pattern('override');
-    var p = msg.querySelector('.stream');
-    var box = el('div', 'editbox');
-    var ta = el('textarea'); ta.value = p.textContent; ta.rows = 4; ta.setAttribute('aria-label', 'Edit the draft');
-    var save = el('button', 'act act--primary', 'Save edit'); save.type = 'button';
-    box.appendChild(ta); box.appendChild(save);
-    p.replaceWith(box); ta.focus();
-    save.addEventListener('click', async function () {
-      var np = el('p', 'stream'); np.textContent = ta.value; box.replaceWith(np);
-      node('human', 'done');
-      await reply('Got it. I will use your version and log it in the audit trail as "edited by Marci".', ['guard']);
-      chips(defaultChips());
-    });
+    var narr = c.querySelector('.ws-narr'), old = narr.textContent;
+    var ta = el('textarea', 'ws-edit'); ta.value = old; ta.rows = 3; narr.replaceWith(ta); ta.focus();
+    actions(c, [{ label: 'Save & approve', primary: true, run: function () {
+      var p = el('p', 'ws-narr'); p.textContent = ta.value; ta.replaceWith(p);
+      if (ta.value.trim() !== old.trim()) { var d = el('p', 'ws-was'); d.innerHTML = '<span>Edited by you</span> AI draft kept in history'; p.after(d); }
+      approve(c, 'energy');
+    } }]);
   }
-
-  async function rejectDraft() {
-    pattern('override'); node('human', 'done');
-    await reply('Discarded. Want me to redraft using only metered data?');
-    chips([{ key: 'energy', label: 'Redraft the energy answer' }].concat(defaultChips().slice(1)));
-  }
-
-  async function requestSupplier() {
-    node('tasks', 'active');
-    var m = await reply('I drafted a request to the power supplier for the missing factors. Send it?', []);
-    node('tasks', 'done'); node('human', 'active');
-    actions(m, [
-      { label: 'Send request', primary: true, run: async function () { node('human', 'done'); pattern('approval'); await reply('Sent. I will draft Scope 2 as soon as the factors arrive.'); chips(defaultChips()); } },
-      { label: 'Cancel', run: async function () { await reply('Cancelled. Nothing was sent.'); chips(defaultChips()); } }
+  function reject(c) {
+    pattern('override');
+    var r = el('div', 'ws-note', '<b>What should change?</b>'); c.querySelector('.ws-acts').before(r);
+    actions(c, [
+      { label: 'Use calendar year', run: function () { r.remove(); tasks.energy(); } },
+      { label: 'Exclude diesel back-up', run: function () { r.remove(); tasks.energy(); } }
     ]);
   }
 
-  async function useLocation() {
-    node('calc', 'done');
-    await reply('Drafted with the location-based figure (5,660 tCO₂e) and flagged it as "market-based pending" for the assurer.');
-    chips(defaultChips());
-  }
-
-  async function draftReminders() {
-    var m = await reply('Reminders drafted for Ananya, Vikram and Rahul. Send all 3?', ['tasks']);
-    node('human', 'active');
-    actions(m, [
-      { label: 'Send 3 reminders', primary: true, run: async function () { node('human', 'done'); pattern('approval'); await reply('Sent. I will check back on Friday.'); chips(defaultChips()); } },
-      { label: 'Not now', run: async function () { await reply('OK. Saved as drafts.'); chips(defaultChips()); } }
-    ]);
-  }
-
-  // ---------- routing ----------
-  function route(text) {
-    var t = text.toLowerCase();
-    if (/(compare|last year|previous|vs\.?|versus)/.test(t)) return 'compare';
-    if (/(scope ?2|emission|carbon|co2)/.test(t)) return 'scope2';
-    if (/(late|overdue|remind|pending|due)/.test(t)) return 'late';
-    if (/(energy|p6|electric|power|renewable)/.test(t)) return 'energy';
-    return 'fallback';
-  }
-
-  function run(key, label) {
-    if (busy) return;
-    userMsg(label);
-    startTurn();
-    scenarios[key]().catch(function () { endTurn(); });
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = input.value.trim();
-    if (!v || busy) return;
-    input.value = '';
-    run(route(v), v);
+  // ---------- wiring ----------
+  ws.querySelectorAll('.ws-task').forEach(function (t) {
+    t.addEventListener('click', function () { if (!busy && !t.disabled) tasks[t.dataset.task](); });
   });
   stopBtn.addEventListener('click', function () { stopped = true; });
-
-  chips(defaultChips());
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = input.value.toLowerCase().trim(); if (!q || busy) return;
+    input.value = '';
+    var key = /late|overdue|remind|chase/.test(q) ? 'late' : /scope|emission|co2|carbon/.test(q) ? 'scope2' : /compare|last year|yoy|trend/.test(q) ? 'compare' : /energy|p6|draft|power|electric/.test(q) ? 'energy' : null;
+    if (key === 'compare' && !memory) key = 'energy';
+    if (key) { node('intent', 'done'); tasks[key](); }
+    else toast('I can draft answers, compare years or chase late data.');
+  });
+  setPct(58);
 })();
