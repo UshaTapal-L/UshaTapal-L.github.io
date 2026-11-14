@@ -142,6 +142,26 @@
     });
   }
 
+
+  // "All work" links return to whichever home version opened the case study (main, v2 or v3).
+  var HOME_KEY = 'portfolio-home';
+  try {
+    var ref = document.referrer ? new URL(document.referrer) : null;
+    if (ref && ref.origin === location.origin) {
+      var m = ref.pathname.match(/\/(index|v2|v3)\.html$/) || (/\/$/.test(ref.pathname) ? ['', 'index'] : null);
+      if (m) sessionStorage.setItem(HOME_KEY, m[1] + '.html');
+    }
+  } catch (e) {}
+  function fixHomeLinks(root) {
+    var home = null;
+    try { home = sessionStorage.getItem(HOME_KEY); } catch (e) {}
+    if (!home || home === 'index.html') return;
+    root.querySelectorAll('a[href^="../index.html"]').forEach(function (a) {
+      a.setAttribute('href', a.getAttribute('href').replace('../index.html', '../' + home));
+    });
+  }
+  fixHomeLinks(document);
+
   function show(data) {
     var content = document.getElementById('content');
     content.innerHTML = data.body;
@@ -162,6 +182,7 @@
     wireVideoToggles();
     wireToc();
     wireAnn();
+    fixHomeLinks(content);
     fitDevices();
     window.addEventListener('resize', fitDevices);
     window.scrollTo(0, 0);
