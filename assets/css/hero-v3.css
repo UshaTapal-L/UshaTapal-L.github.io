@@ -34,8 +34,9 @@
 .sw .hx-role { margin-top: 8px; font-size: 14px; color: var(--m-mute); }
 .sw .hx-lead { font-size: clamp(30px, 3.1vw, 44px); font-weight: 500; line-height: 1.18; letter-spacing: -.022em; color: var(--m-ink); }
 .sw .hx-lead em { font-family: var(--m-serif); font-weight: 400; letter-spacing: 0; color: var(--m-plum); font-size: 1.12em; }
-.sw .hx-sticker { display: inline-flex; align-items: center; gap: 8px; margin: 36px 0 44px; padding: 8px 14px; border-radius: 10px; background: var(--m-yellow); color: var(--m-plum); font-size: 14px; font-weight: 600; letter-spacing: .005em; transform: rotate(-1.5deg); box-shadow: 0 1px 2px rgba(36,29,38,.08), 0 10px 20px -10px rgba(36,29,38,.3); }
-.sw .hx-sticker span { color: var(--m-coral); }
+.sw .hx-sticker { display: flex; align-items: center; gap: 14px; margin: 30px 0 40px; font-size: 17px; font-weight: 500; color: var(--m-ink); letter-spacing: -.005em; }
+.sw .hx-sticker::before { content: ""; width: 28px; height: 2px; border-radius: 2px; background: var(--m-coral); flex: none; }
+.sw .hx-sticker span { color: var(--m-coral); margin-left: -8px; }
 .sw .hx-cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 .sw .hx-link { font-weight: 600; font-size: 15px; color: var(--m-ink); text-decoration: none; border-bottom: 2px solid var(--m-coral); padding-bottom: 2px; transition: color .2s; }
 .sw .hx-link:hover { color: var(--m-coral); }
@@ -46,7 +47,7 @@
   .js .sw .hx-cta { animation: hx-up .6s cubic-bezier(.22,1,.36,1) 1.05s both; }
 }
 @keyframes hx-up { from { opacity: 0; transform: translateY(18px); } }
-@keyframes hx-stick { from { opacity: 0; transform: rotate(-10deg) scale(.7); } }
-@media (max-width: 480px) { .sw .hx-id { margin-bottom: 22px; } .sw .hx-av { width: 54px; height: 54px; } .sw .hx-name { font-size: 24px; } .sw .hx-sticker { font-size: 14px; } }
+@keyframes hx-stick { from { opacity: 0; transform: translateX(-12px); } }
+@media (max-width: 480px) { .sw .hx-id { margin-bottom: 22px; } .sw .hx-av { width: 54px; height: 54px; } .sw .hx-name { font-size: 24px; } .sw .hx-sticker { font-size: 15px; } }
 @media (max-width: 900px) { .sw .hx-br { display: none; } }
 @media (min-width: 901px) { .sw .m-hero:has(.hx) { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 48px; } }
