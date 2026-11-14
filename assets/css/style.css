@@ -1304,3 +1304,4 @@ body { font-size: 16px; }
 .ann__note { grid-template-columns: 22px 1fr; padding: 10px 8px; }
 .ann__panel { gap: 56px; }
 .ann__panel--phone { gap: 80px; }
+.cx-facts__wide { grid-column: 1 / -1; }
