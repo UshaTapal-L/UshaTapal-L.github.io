@@ -285,3 +285,41 @@ body { margin: 0; background: var(--m-bg); }
   .sw *, .sw *::before, .sw *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .sw.js-reveal .reveal:not(.is-in) { opacity: 1; transform: none; }
 }
+
+/* ---------- interactions ---------- */
+.sw .m-hint { font-weight: 500; letter-spacing: .06em; color: var(--m-coral); text-transform: none; }
+.sw .iso-ball { cursor: pointer; outline: none; }
+.sw .iso-ball:focus-visible { stroke: var(--m-coral); stroke-width: 4; }
+.sw .iso-ball.is-rolling { animation: none !important; }
+.sw .m-hero__art .m-iso, .sw .m-dots { transition: transform .4s cubic-bezier(.22,1,.36,1); }
+.sw .m-card.has-glare::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.45), transparent 45%); opacity: 0; transition: opacity .3s; }
+.sw .m-card.has-glare:hover::after { opacity: 1; }
+.sw .m-card.has-glare { transition: transform .25s ease-out, box-shadow .3s; will-change: transform; }
+.sw .m-quests { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.sw .m-quests .m-pill { font: 600 14px/1 var(--m-sans); border: 0; cursor: pointer; color: var(--m-ink); transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .2s; }
+.sw .m-quests .m-pill:hover { transform: translateY(-3px) rotate(-2deg); }
+.sw .m-quests .m-pill[aria-expanded="true"] { box-shadow: inset 0 0 0 2px var(--m-plum); }
+.sw .m-doodle { flex-basis: 100%; display: grid; place-items: center; padding: 18px; border-radius: 22px; background: #fff; }
+.sw .m-doodle[hidden] { display: none; }
+.sw .m-doodle svg { width: min(100%, 260px); height: auto; fill: none; stroke: var(--m-plum); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.sw .m-doodle svg path, .sw .m-doodle svg rect, .sw .m-doodle svg circle { stroke-dasharray: 420; stroke-dashoffset: 0; animation: m-draw 1.4s ease both; }
+@keyframes m-draw { from { stroke-dashoffset: 420; } }
+.sw .m-doodle.is-sketch { background: var(--m-peach); } .sw .m-doodle.is-travel { background: var(--m-blue); } .sw .m-doodle.is-plant { background: var(--m-mint); }
+.sw .m-journey { position: relative; overflow: hidden; }
+.sw .m-journey__bar { position: absolute; left: 24px; right: 24px; top: 58px; height: 2px; background: #d9d1c4; }
+.sw .m-journey__bar i { position: absolute; inset: 0; background: var(--m-coral); transform-origin: left; transform: scaleX(0); transition: transform .2s linear; }
+.sw .m-journey ol { padding-top: 14px; }
+.sw .m-journey li { position: relative; transition: border-color .3s, transform .35s cubic-bezier(.34,1.56,.64,1); }
+.sw .m-journey li::before { content: ""; position: absolute; left: -6px; top: -21px; width: 11px; height: 11px; border-radius: 50%; background: #d9d1c4; transition: background .3s, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.sw .m-journey li.is-lit { border-left-color: var(--m-coral); }
+.sw .m-journey li.is-lit::before { background: var(--m-coral); transform: scale(1.25); }
+.sw .m-journey li:hover { transform: translateY(-3px); }
+.sw .m-mailrow { display: inline-flex; align-items: center; gap: 12px; }
+.sw .m-copy { font: 600 13px/1 var(--m-sans); padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--m-plum); background: transparent; color: var(--m-plum); cursor: pointer; transition: background .2s, color .2s; }
+.sw .m-copy:hover { background: var(--m-plum); color: #fff; }
+.sw .m-toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom, 0px)); z-index: 60; margin: 0; padding: 10px 18px; border-radius: 999px; background: var(--m-plum); color: #fff; font-size: 14px; font-weight: 600; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; transition: opacity .25s, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.sw .m-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.sw .m-cursor { position: fixed; left: -7px; top: -7px; z-index: 70; width: 14px; height: 14px; border-radius: 50%; background: var(--m-coral); mix-blend-mode: multiply; pointer-events: none; opacity: 0; transition: opacity .2s, width .25s, height .25s, left .25s, top .25s; }
+.sw .m-cursor.is-on { opacity: .55; }
+.sw .m-cursor.is-link { width: 40px; height: 40px; left: -20px; top: -20px; opacity: .25; }
+@media (hover: none), (pointer: coarse) { .sw .m-cursor { display: none; } }
