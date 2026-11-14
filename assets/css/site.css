@@ -441,3 +441,22 @@ body { margin: 0; background: var(--m-bg); }
 .sw .m-card--smart .m-meta { color: rgba(36,29,38,.6); }
 .sw .m-card--smart .m-cover::after { background: linear-gradient(180deg, rgba(243,245,241,.92) 0%, rgba(243,245,241,0) 40%); }
 .sw .m-card--smart .m-cover img { object-position: 60% 0%; }
+
+/* Card depth: a hairline edge, a top highlight and layered soft shadows so each card lifts off the page */
+.sw .m-card {
+  border: 1px solid rgba(36,29,38,.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    0 1px 2px rgba(36,29,38,.05),
+    0 6px 14px -4px rgba(36,29,38,.07),
+    0 24px 48px -18px rgba(36,29,38,.16);
+}
+.sw .m-card--cover:not(.m-card--smart), .sw .m-card--ink { border-color: rgba(0,0,0,.25); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(20,20,20,.1), 0 8px 18px -6px rgba(20,20,20,.18), 0 30px 60px -22px rgba(20,20,20,.35); }
+.sw .m-card--smart { background: linear-gradient(180deg, #f6f8f4, #eef3ec); }
+.sw a.m-card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    0 2px 4px rgba(36,29,38,.06),
+    0 12px 24px -6px rgba(36,29,38,.10),
+    0 40px 70px -24px rgba(36,29,38,.24);
+}
