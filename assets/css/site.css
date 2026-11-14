@@ -357,3 +357,65 @@ body { margin: 0; background: var(--m-bg); }
 /* fewer extras */
 .sw .m-meta { letter-spacing: .1em; }
 .sw .m-card--mint .m-serif { font-size: 24px; }
+
+/* ============================================================
+   Motion design: "building the page"
+   Everything is visible without JS; motion runs only with JS
+   and when the visitor has not asked for reduced motion.
+   ============================================================ */
+.sw .m-iso g { transform-box: fill-box; }
+@media (prefers-reduced-motion: no-preference) {
+  /* 1. opening sequence */
+  .js .sw .m-ch { display: inline-block; animation: mo-rise .9s cubic-bezier(.2,.9,.25,1.15) both; animation-delay: calc(.08s + var(--i) * .06s); }
+  .js .sw .m-name__last i.m-ch { animation-name: mo-dot; animation-delay: 1.05s; }
+  .js .sw .m-hi, .js .sw .m-tag, .js .sw .m-punch, .js .sw .m-role, .js .sw .m-btn { animation: mo-up .8s cubic-bezier(.22,1,.36,1) both; }
+  .js .sw .m-hi { animation-delay: 0s; } .js .sw .m-tag { animation-delay: .9s; } .js .sw .m-punch { animation-delay: 1.05s; } .js .sw .m-role { animation-delay: 1.2s; } .js .sw .m-btn { animation-delay: 1.35s; }
+  .js .sw .iso-shadow { transform-origin: center; animation: mo-shadow .9s cubic-bezier(.22,1,.36,1) .2s both; }
+  .js .sw .iso-step { animation: mo-drop .7s cubic-bezier(.34,1.56,.64,1) both; animation-delay: calc(.35s + var(--i) * .12s); }
+  .js .sw .iso-note { animation: mo-up .6s ease both 1.15s; }
+  .js .sw .iso-ballwrap .iso-ball { animation: mo-balldrop 1s cubic-bezier(.3,0,.4,1) 1.2s both, m-bounce 2.6s cubic-bezier(.45,0,.55,1) 3s infinite; }
+  .js .sw .iso-cursor { animation: mo-cursor 1.1s cubic-bezier(.22,1,.36,1) 1.45s both; }
+  .js .sw .m-hero__art figcaption { animation: mo-up .6s ease 2s both; }
+
+  /* 2. cards reveal like drawings being unrolled */
+  .js .sw .tile:not(.is-in) { clip-path: inset(0 0 100% 0 round 26px); }
+  .js .sw .tile { transition: clip-path 1s cubic-bezier(.77,0,.18,1), transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; transition-delay: var(--d, 0s), 0s, 0s; }
+  .js .sw .tile.is-in { clip-path: inset(0 0 0 0 round 26px); }
+  .js .sw .tile:not(.is-in) > * { opacity: 0; transform: translateY(24px); }
+  .js .sw .tile > * { transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); transition-delay: calc(var(--d, 0s) + .35s); }
+  .js .sw .tile.m-away:not(.is-in) { clip-path: none; }
+
+  /* 3. construction details */
+  .js .sw .iso-wall { transform-origin: 50% 100%; transform: scaleY(0); }
+  .js .sw .is-in .iso-wall { animation: mo-wall .6s cubic-bezier(.34,1.56,.64,1) both; animation-delay: calc(.9s + var(--i) * .12s); }
+  .js .sw .iso-disc, .js .sw .iso-checker { opacity: 0; }
+  .js .sw .is-in .iso-disc { animation: mo-pop .6s cubic-bezier(.34,1.56,.64,1) 1.6s both; }
+  .js .sw .is-in .iso-checker { animation: mo-pop .5s cubic-bezier(.34,1.56,.64,1) 1.8s both; }
+  .js .sw .m-card--peach .g-illo .c { stroke-dasharray: 400; stroke-dashoffset: 400; }
+  .js .sw .m-card--peach.is-in .g-illo .c { animation: mo-line 1.4s cubic-bezier(.65,0,.35,1) 1s forwards; }
+  .js .sw .m-card--peach .g-illo .d { opacity: 0; }
+  .js .sw .m-card--peach.is-in .g-illo .d { animation: mo-pop .4s cubic-bezier(.34,1.56,.64,1) 2.3s both; }
+  .js .sw .m-card--lilac .g-illo rect { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); }
+  .js .sw .m-card--lilac.is-in .g-illo rect { animation: mo-bubble .5s cubic-bezier(.34,1.56,.64,1) both; }
+  .js .sw .m-card--lilac.is-in .g-illo rect:nth-of-type(1) { animation-delay: 1s; } .js .sw .m-card--lilac.is-in .g-illo rect:nth-of-type(2) { animation-delay: 1.35s; transform-origin: right center; } .js .sw .m-card--lilac.is-in .g-illo rect:nth-of-type(3) { animation-delay: 1.7s; }
+
+  /* 4. headlines rise word by word */
+  .js .sw .m-word { display: inline-block; }
+  .js .sw [data-words]:not(.is-in) .m-word { opacity: 0; transform: translateY(60%) rotate(4deg); }
+  .js .sw [data-words] .m-word { transition: opacity .6s ease, transform .9s cubic-bezier(.2,.9,.25,1.15); transition-delay: calc(var(--i, 0) * .1s); }
+}
+@keyframes mo-rise { from { opacity: 0; transform: translateY(70%) rotate(6deg); } }
+@keyframes mo-dot { 0% { opacity: 0; transform: translateY(-120px); } 60% { opacity: 1; transform: translateY(0) scale(1.3, .7); } 80% { transform: translateY(-14px); } 100% { transform: none; } }
+@keyframes mo-up { from { opacity: 0; transform: translateY(18px); } }
+@keyframes mo-shadow { from { opacity: 0; transform: scaleX(.3); } }
+@keyframes mo-drop { from { opacity: 0; transform: translateY(-90px); } }
+@keyframes mo-balldrop { 0% { opacity: 0; transform: translateY(-160px); } 55% { opacity: 1; transform: translateY(0); } 70% { transform: translateY(-34px); } 85% { transform: translateY(0); } 92% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
+@keyframes mo-cursor { 0% { opacity: 0; transform: translate(80px, 50px); } 70% { opacity: 1; transform: translate(0, 0) scale(1); } 85% { transform: scale(.9); } 100% { transform: scale(1); } }
+@keyframes mo-wall { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes mo-pop { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+@keyframes mo-line { to { stroke-dashoffset: 0; } }
+@keyframes mo-bubble { to { transform: scaleX(1); } }
+
+/* parallax inside cards (set from JS) */
+.sw .m-media--web img { transform: translateY(var(--py, 0px)); }
+.sw a.m-card:hover .m-media--web img { transform: translateY(calc(var(--py, 0px) - 8px)); }
