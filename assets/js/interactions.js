@@ -110,6 +110,7 @@
     var open = tryBtn.getAttribute('aria-expanded') === 'true';
     tryBtn.setAttribute('aria-expanded', String(!open));
     body.hidden = open; card.classList.toggle('is-open', !open);
+    var grid = card.closest('.bento'); if (grid) grid.classList.toggle('is-flow', !open);
     tryBtn.textContent = open ? 'Try it live →' : 'Close demo ×';
     if (!open) { card.style.transform = ''; card.classList.remove('has-glare'); card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); var first = body.querySelector('.ws-task'); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 500); }
   });

@@ -766,3 +766,22 @@ body { margin: 0; background: var(--m-bg); }
 .sw .m-card--phone .m-go { color: var(--chip); }
 .sw a.m-card--phone:hover .m-phone-scr img, .sw a.m-card--phone:focus-visible .m-phone-scr img { transform: translateY(calc(-100% + 470px)); }
 @media (max-width: 640px) { .sw .m-card--phone { border-radius: 26px; } }
+
+/* Lego layout (desktop): tall and wide tiles interlock with no gaps.
+   Rows 1–2: Smart (tall) | RIU + NutraScan / zeeproc (wide)
+   Rows 3–4: Copilot / Magik + Architecture↔UX | What architecture taught me (tall)
+   Falls back to the auto grid when a filter is on or the Copilot demo is open. */
+@media (min-width: 981px) {
+  .sw .bento:not(.is-filtered):not(.is-flow) > .tile { grid-column: auto; grid-row: auto; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > a[href*="smart-dealer"] { grid-column: 1 / span 3; grid-row: 1 / span 2; min-height: 0; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > a[href="work/riu.html"] { grid-column: 4 / span 6; grid-row: 1; min-height: 440px; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > a[href*="nutrascan"] { grid-column: 10 / span 3; grid-row: 1; min-height: 0; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > .m-card--zee { grid-column: 4 / span 9; grid-row: 2; min-height: 330px; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > #agent { grid-column: 1 / span 7; grid-row: 3; min-height: 300px; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > .m-card--yellow { grid-column: 8 / span 5; grid-row: 3 / span 2; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > .m-card--peach { grid-column: 1 / span 4; grid-row: 4; min-height: 330px; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > .m-card--sand { grid-column: 5 / span 3; grid-row: 4; min-height: 330px; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > .m-away { grid-column: 1 / -1; grid-row: 5; }
+  .sw .bento:not(.is-filtered):not(.is-flow) > a.m-card--phone[href*="smart-dealer"]:hover .m-phone-scr img { transform: translateY(calc(-100% + 720px)); }
+}
+.sw .m-card--zee .m-cover img { object-position: 60% 35%; }

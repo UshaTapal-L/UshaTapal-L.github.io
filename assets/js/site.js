@@ -29,7 +29,9 @@
   // Bento filter: pills show one category; nav and hero links can preselect one.
   var tiles = Array.prototype.slice.call(document.querySelectorAll('.bento .tile'));
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.b-filter button'));
+  var bento = document.querySelector('.bento');
   function applyFilter(cat) {
+    if (bento) bento.classList.toggle('is-filtered', cat !== 'all');
     buttons.forEach(function (b) { var on = b.dataset.filter === cat; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on); });
     tiles.forEach(function (t) {
       var show = cat === 'all' || (' ' + t.dataset.cat + ' ').indexOf(' ' + cat + ' ') > -1;
