@@ -101,12 +101,15 @@
       el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); el.style.transform = 'translate(' + (e.clientX - r.left - r.width / 2) * .25 + 'px,' + (e.clientY - r.top - r.height / 2) * .35 + 'px)'; });
       el.addEventListener('pointerleave', function () { el.style.transform = ''; });
     });
-    var cur = document.querySelector('.m-cursor');
-    if (cur) {
-      var tx = 0, ty = 0, cx = 0, cy = 0;
-      document.addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; cur.classList.add('is-on'); var t = e.target.closest && e.target.closest('a,button,[role=button],input'); cur.classList.toggle('is-link', !!t); });
-      document.addEventListener('pointerleave', function () { cur.classList.remove('is-on'); });
-      (function loop() { cx += (tx - cx) * .2; cy += (ty - cy) * .2; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(loop); })();
-    }
   }
+  // 8. Copilot card opens the live demo in place.
+  var tryBtn = document.querySelector('.m-try');
+  if (tryBtn) tryBtn.addEventListener('click', function () {
+    var card = tryBtn.closest('.m-card'), body = document.getElementById('agent-body');
+    var open = tryBtn.getAttribute('aria-expanded') === 'true';
+    tryBtn.setAttribute('aria-expanded', String(!open));
+    body.hidden = open; card.classList.toggle('is-open', !open);
+    tryBtn.textContent = open ? 'Try it live →' : 'Close demo ×';
+    if (!open) { card.style.transform = ''; card.classList.remove('has-glare'); card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); var first = body.querySelector('.chip-btn'); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 500); }
+  });
 })();
