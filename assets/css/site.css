@@ -513,3 +513,42 @@ body { margin: 0; background: var(--m-bg); }
 .sw .m-card--cover.s-6 { min-height: 540px; }
 @media (max-width: 980px) { .sw .s-6 { grid-column: 1 / -1; } .sw .m-card--cover.s-6 { min-height: 420px; } .sw .m-card--phone.s-3 { grid-column: span 6; justify-self: center; } }
 @media (max-width: 640px) { .sw .m-card--phone.s-3 { grid-column: 1 / -1; } .sw .m-card--cover.s-6 { min-height: 320px; } }
+
+/* What architecture taught me: two projects, built → plan wipe, architecture → product translations */
+.sw .m-quote--sm { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1; margin: 10px 0 18px; }
+.sw .ax { margin-top: auto; display: grid; gap: 14px; }
+.sw .ax__stage { position: relative; aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; background: #2b2230; box-shadow: 0 1px 2px rgba(36,29,38,.1), 0 18px 34px -18px rgba(36,29,38,.45); }
+.sw .ax__slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .7s ease; }
+.sw .ax__slide.is-on { opacity: 1; }
+.sw .ax__built { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
+.sw .ax__plan { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fbf6ee; padding: 14px; clip-path: inset(0 100% 0 0); }
+.sw .ax__slide[data-i="1"] .ax__plan { background: #2b2230; padding: 0; object-fit: cover; }
+.sw .ax__slide figcaption { position: absolute; left: 12px; bottom: 12px; right: auto; max-width: calc(100% - 24px); z-index: 2; padding: 8px 12px; border-radius: 12px; background: rgba(36,29,38,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: rgba(255,255,255,.75); font-size: 12px; }
+.sw .ax__slide figcaption b { display: block; color: #fff; font-size: 15px; letter-spacing: -.01em; }
+.sw .ax__map { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.sw .ax__map[hidden] { display: none; }
+.sw .ax__map li { display: grid; grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr); align-items: center; gap: 8px; font-size: 13.5px; line-height: 1.3; padding: 8px 12px; border-radius: 12px; background: rgba(255,255,255,.55); }
+.sw .ax__map span { color: #5a4b3b; }
+.sw .ax__map i { font-style: normal; color: var(--m-coral); font-weight: 700; text-align: center; }
+.sw .ax__map b { color: var(--m-plum); }
+.sw .ax__nav { display: flex; gap: 8px; }
+.sw .ax__nav button { flex: 1; appearance: none; border: 0; background: none; padding: 0; font: 600 12px/1.2 var(--m-sans); color: rgba(75,45,79,.6); text-align: left; cursor: pointer; }
+.sw .ax__nav button[aria-selected="true"] { color: var(--m-plum); }
+.sw .ax__nav i { display: block; height: 3px; border-radius: 3px; margin-bottom: 6px; background: rgba(75,45,79,.18); overflow: hidden; position: relative; }
+.sw .ax__nav i::after { content: ""; position: absolute; inset: 0; background: var(--m-plum); transform: scaleX(0); transform-origin: left; }
+.sw .ax__nav button[aria-selected="true"] i::after { transform: scaleX(1); }
+.sw .ax__nav button:focus-visible { outline: 2px solid var(--m-coral); outline-offset: 4px; border-radius: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .sw .ax.is-play .ax__slide.is-on .ax__built { animation: ax-kb 7s ease-out both; }
+  .sw .ax.is-play .ax__slide.is-on .ax__plan { animation: ax-wipe 7s cubic-bezier(.7,0,.2,1) both; }
+  .sw .ax.is-play .ax__nav button[aria-selected="true"] i::after { animation: ax-bar 7s linear both; }
+  .sw .ax.is-play .ax__map:not([hidden]) li { animation: ax-in .5s cubic-bezier(.22,1,.36,1) both; }
+  .sw .ax.is-play .ax__map:not([hidden]) li:nth-child(2) { animation-delay: .1s; }
+  .sw .ax.is-play .ax__map:not([hidden]) li:nth-child(3) { animation-delay: .2s; }
+  .sw .ax.is-play.is-paused .ax__nav button[aria-selected="true"] i::after { animation-play-state: paused; }
+}
+/* Plan first, then the build reveals: structure first, then the surface. */
+@keyframes ax-wipe { 0%, 18% { clip-path: inset(0 0 0 0); } 42%, 100% { clip-path: inset(0 0 0 100%); } }
+@keyframes ax-kb { from { transform: scale(1.14) translate(2%, 1%); } to { transform: scale(1.02) translate(0, 0); } }
+@keyframes ax-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ax-in { from { opacity: 0; transform: translateY(8px); } }

@@ -159,3 +159,38 @@
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
   frame();
 })();
+
+// 11. Architecture card: each project opens on its plan, wipes to the build, then moves on.
+(function () {
+  var ax = document.querySelector('[data-ax]');
+  if (!ax) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides = ax.querySelectorAll('.ax__slide'), maps = ax.querySelectorAll('.ax__map'), tabs = ax.querySelectorAll('[data-ax-go]');
+  var cur = 0;
+  function show(i) {
+    cur = i;
+    slides.forEach(function (s, j) { s.classList.toggle('is-on', j === i); });
+    maps.forEach(function (m, j) { m.hidden = j !== i; });
+    tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i); });
+    // restart the CSS animations on the newly shown slide
+    ax.classList.remove('is-play'); void ax.offsetWidth; if (!reduce) ax.classList.add('is-play');
+  }
+  function next() { show((cur + 1) % slides.length); }
+  var visible = false;
+  // The active progress bar drives the timing, so hovering (which pauses the bar) pauses the slideshow too.
+  tabs.forEach(function (t) {
+    t.querySelector('i').addEventListener('animationend', function (e) { if (e.animationName === 'ax-bar' && visible) next(); });
+    t.addEventListener('click', function (e) { e.stopPropagation(); show(+t.dataset.axGo); });
+  });
+  ax.addEventListener('mouseenter', function () { ax.classList.add('is-paused'); });
+  ax.addEventListener('mouseleave', function () { ax.classList.remove('is-paused'); });
+  // Position check (the tiles' reveal clip-path hides them from IntersectionObserver).
+  function check() {
+    var r = ax.getBoundingClientRect(), on = r.bottom > 80 && r.top < window.innerHeight - 80;
+    if (on && !visible) { visible = true; show(cur); }
+    else if (!on && visible) { visible = false; }
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  check();
+})();
