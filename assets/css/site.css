@@ -744,3 +744,25 @@ body { margin: 0; background: var(--m-bg); }
 /* zeeproc tile: full-bleed dark cover, like RIU */
 .sw .m-card--zee { background: #140d33; }
 .sw .m-card--zee .m-cover img { object-position: 50% 100%; }
+
+/* Phone tiles without a device frame: just the app screen, rounded, with soft depth */
+.sw .m-card--phone { padding: 0; background: #f3f5f2; border-radius: 34px;
+  box-shadow: 0 1px 3px rgba(20,20,20,.08), 0 14px 30px -14px rgba(20,20,20,.22), 0 40px 70px -34px rgba(20,20,20,.32); }
+.sw .m-phone-scr { inset: 0; border-radius: 34px; }
+.sw .m-phone-cap { left: 12px; right: 12px; bottom: 12px; border-radius: 22px; }
+@media (max-width: 640px) { .sw .m-card--phone { padding: 0; border-radius: 30px; } .sw .m-phone-scr { border-radius: 30px; } }
+
+/* Phone tiles, arranged like a showcase: tinted panel, floating screen cut at the bottom, label chip on top */
+.sw .m-card--phone { border-radius: 30px; overflow: hidden; }
+.sw a.m-card--phone[href*="smart-dealer"] { background: #e3f1e6; --chip: #12a14a; }
+.sw a.m-card--phone[href*="nutrascan"] { background: #ece7dc; --chip: #0B4141; }
+.sw .m-card--phone .m-phone-scr { inset: 70px 22px -40px 22px; border-radius: 26px; background: #fff;
+  box-shadow: 0 1px 2px rgba(20,20,20,.08), 0 18px 34px -16px rgba(20,20,20,.35); }
+.sw .m-card--phone .m-phone-cap { top: 18px; left: 18px; right: 18px; bottom: auto; padding: 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; border-radius: 0; }
+.sw .m-card--phone .m-phone-cap > span:first-child { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 10px; background: var(--chip); box-shadow: 0 8px 16px -8px rgba(0,0,0,.45); }
+.sw .m-card--phone .m-phone-cap > span:first-child::before { content: "✦"; color: #fff; font-size: 13px; }
+.sw .m-card--phone .m-phone-cap .m-meta { display: none; }
+.sw .m-card--phone .m-phone-cap h3 { margin: 0; font-size: 15px; letter-spacing: -.01em; color: #fff; }
+.sw .m-card--phone .m-go { color: var(--chip); }
+.sw a.m-card--phone:hover .m-phone-scr img, .sw a.m-card--phone:focus-visible .m-phone-scr img { transform: translateY(calc(-100% + 470px)); }
+@media (max-width: 640px) { .sw .m-card--phone { border-radius: 26px; } }
