@@ -22,12 +22,18 @@
     var li = $('.ws__states li[data-pat="' + k + '"]'); if (li) li.classList.add('is-on');
     $('[data-ws-count]').textContent = Object.keys(seen).length;
   }
+  // Lights a step in both the phone pipeline strip and the architecture diagram.
   function node(id, state) {
-    var n = $('.ws__pipe [data-node="' + id + '"]'); if (!n) return;
-    n.classList.remove('is-active', 'is-done', 'is-warn');
-    if (state) n.classList.add('is-' + state);
+    ws.querySelectorAll('[data-node="' + id + '"]').forEach(function (n) {
+      n.classList.remove('is-active', 'is-done', 'is-warn');
+      if (state) n.classList.add('is-' + state);
+    });
+    ws.querySelectorAll('.ws-e[data-to="' + id + '"]').forEach(function (e) {
+      e.classList.remove('is-flow', 'is-lit', 'is-warn');
+      if (state) e.classList.add(state === 'active' ? 'is-flow' : state === 'warn' ? 'is-warn' : 'is-lit');
+    });
   }
-  function resetPipe() { ws.querySelectorAll('.ws__pipe li').forEach(function (n) { n.classList.remove('is-active', 'is-done', 'is-warn'); }); }
+  function resetPipe() { ws.querySelectorAll('[data-node], .ws-e').forEach(function (n) { n.classList.remove('is-active', 'is-done', 'is-warn', 'is-flow', 'is-lit'); }); }
   function task(key, status, state) {
     var t = $('.ws-task[data-task="' + key + '"]'); if (!t) return;
     t.querySelector('[data-status]').textContent = status;
@@ -151,7 +157,7 @@
       if (!await planStep(c, 2, 'guard', 600, id)) return stopped_(c, 'energy', resumeEnergy);
       meter(c, 92); sources(c, ['6 electricity bills', '2 fuel invoices', 'FY25 ledger']);
       node('human', 'active'); task('energy', 'Needs your review', 'review');
-      memory = 'P6 · Energy · H1';
+      memory = 'P6 · Energy · H1'; node('memory', 'done');
       var cmp = $('.ws-task[data-task="compare"]'); cmp.disabled = false; task('compare', 'Ready', '');
       end();
       actions(c, [
@@ -206,7 +212,7 @@
         }).join('') + '</div>' +
         '<p class="ws-legend"><i class="was"></i>Last year <i class="now"></i>This year</p>' +
         '<p class="ws-narr"></p><div class="ws-acts" hidden></div>');
-      canvas.appendChild(c); pattern('memory'); node('plan', 'done');
+      canvas.appendChild(c); pattern('memory'); node('plan', 'done'); node('memory', 'active'); await wait(500); node('memory', 'done');
       node('evidence', 'active'); await wait(500); node('evidence', 'done'); node('calc', 'active');
       requestAnimationFrame(function () { c.classList.add('is-drawn'); });
       await wait(900); node('calc', 'done'); node('guard', 'done');
@@ -223,10 +229,10 @@
         '<h4>Late data, with reminders drafted</h4><ul class="ws-people">' +
         rows.map(function (r) { return '<li><span class="ws-av">' + r[0] + '</span><div><b>' + r[1] + '</b><small>' + r[2] + '</small><p class="ws-draft"></p></div><em>' + r[3] + ' days late</em></li>'; }).join('') +
         '</ul><div class="ws-acts" hidden></div>');
-      canvas.appendChild(c); node('plan', 'done'); node('evidence', 'active'); pattern('tools');
+      canvas.appendChild(c); node('plan', 'done'); node('tasks', 'active'); node('evidence', 'active'); pattern('tools');
       var lis = c.querySelectorAll('.ws-people li');
       for (var i = 0; i < lis.length; i++) { lis[i].classList.add('is-in'); await wait(250); }
-      node('evidence', 'done'); node('calc', 'done'); node('guard', 'done');
+      node('evidence', 'done'); node('tasks', 'done'); node('guard', 'done');
       var msgs = ['Hi Rahul, could you log the Aug–Sep readings for meter M-07? It’s the last gap in Scope 2.', 'Hi Priya, the waste manifests for Pune and Noida are still missing for September.', 'Hi team, please share the September LMS training export for P5.'];
       for (var j = 0; j < lis.length; j++) { if (!await streamWords(lis[j].querySelector('.ws-draft'), msgs[j], id)) return stopped_(c, 'late', tasks.late); }
       node('human', 'active'); task('late', '3 reminders drafted', 'review'); end();
