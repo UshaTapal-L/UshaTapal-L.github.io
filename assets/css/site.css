@@ -423,3 +423,14 @@ body { margin: 0; background: var(--m-bg); }
 /* tagline punchline */
 .sw .m-punch { font-family: var(--m-serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.2; color: var(--m-plum); margin: -4px 0 22px; padding-left: 16px; border-left: 3px solid var(--m-coral); }
 .sw .m-punch em { color: var(--m-coral); }
+
+/* RIU cover card: full-bleed mockup */
+.sw .m-card--cover { background: #141414; color: #fff; min-height: 420px; }
+.sw .m-card--cover .m-meta { color: rgba(255,255,255,.65); position: relative; z-index: 2; }
+.sw .m-card--cover h3, .sw .m-card--cover .m-go { position: relative; z-index: 2; color: #fff; }
+.sw .m-card--cover .m-go { position: absolute; }
+.sw .m-cover { position: absolute; inset: 0; z-index: 0; }
+.sw .m-cover img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; transform: scale(1.02) translateY(var(--py, 0px)); transition: transform .8s cubic-bezier(.22,1,.36,1); }
+.sw .m-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 38%); }
+.sw a.m-card--cover:hover .m-cover img { transform: scale(1.06) translateY(var(--py, 0px)); }
+.sw .m-card--cover .m-chip { color: var(--m-ink); }

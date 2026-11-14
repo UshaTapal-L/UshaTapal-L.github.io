@@ -139,7 +139,7 @@
 
   // 10. Scroll rolls the ball down the stairs; card screens drift slightly.
   var wrap = document.querySelector('.iso-ballwrap'), hero = document.querySelector('.m-hero');
-  var media = Array.prototype.slice.call(document.querySelectorAll('.m-media--web img'));
+  var media = Array.prototype.slice.call(document.querySelectorAll('.m-media--web img, .m-cover img'));
   var ticking = false;
   function frame() {
     ticking = false;

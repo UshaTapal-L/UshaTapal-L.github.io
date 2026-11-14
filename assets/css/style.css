@@ -1158,3 +1158,8 @@ body { font-size: 16px; }
   .reveal { opacity: 1; transform: none; }
   .marquee__track { animation: none; }
 }
+
+/* RIU case study cover mockup */
+.rcs__cover { margin: 40px 0 0; border-radius: 28px; overflow: hidden; background: #141414; box-shadow: 0 30px 60px rgba(20,20,20,.18); }
+.rcs__cover img { display: block; width: 100%; height: auto; max-height: 720px; object-fit: cover; object-position: 60% 40%; }
+@media (max-width: 600px) { .rcs__cover { border-radius: 18px; margin-top: 24px; } }
