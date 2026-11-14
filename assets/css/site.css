@@ -434,3 +434,10 @@ body { margin: 0; background: var(--m-bg); }
 .sw .m-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 38%); }
 .sw a.m-card--cover:hover .m-cover img { transform: scale(1.06) translateY(var(--py, 0px)); }
 .sw .m-card--cover .m-chip { color: var(--m-ink); }
+
+/* Smart Dealer cover: phones sit right of centre in the mockup */
+.sw .m-card--smart { background: #f3f5f1; color: var(--m-ink); }
+.sw .m-card--smart h3, .sw .m-card--smart .m-go { color: var(--m-ink); }
+.sw .m-card--smart .m-meta { color: rgba(36,29,38,.6); }
+.sw .m-card--smart .m-cover::after { background: linear-gradient(180deg, rgba(243,245,241,.92) 0%, rgba(243,245,241,0) 40%); }
+.sw .m-card--smart .m-cover img { object-position: 60% 0%; }
