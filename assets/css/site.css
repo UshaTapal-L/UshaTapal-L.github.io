@@ -459,3 +459,30 @@ body { margin: 0; background: var(--m-bg); }
     0 12px 24px -6px rgba(36,29,38,.10),
     0 40px 70px -24px rgba(36,29,38,.24);
 }
+
+/* Hero intro (all versions): identity on one row, one lead line, a sticker, two actions. One sans family; a single italic accent. */
+.sw .hx { max-width: 640px; }
+.sw .hx-id { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; }
+.sw .hx-av { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 4px #fff, 0 8px 18px -6px rgba(36,29,38,.35); }
+.sw .hx-name { font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1; color: var(--m-plum); }
+.sw .hx-name i { font-style: normal; color: var(--m-coral); }
+.sw .hx-role { margin-top: 8px; font-size: 14px; color: var(--m-mute); }
+.sw .hx-lead { font-size: clamp(30px, 3.1vw, 44px); font-weight: 500; line-height: 1.18; letter-spacing: -.022em; color: var(--m-ink); }
+.sw .hx-lead em { font-family: var(--m-serif); font-weight: 400; letter-spacing: 0; color: var(--m-plum); font-size: 1.12em; }
+.sw .hx-sticker { display: flex; align-items: center; gap: 14px; margin: 30px 0 40px; font-size: 17px; font-weight: 500; color: var(--m-ink); letter-spacing: -.005em; }
+.sw .hx-sticker::before { content: ""; width: 28px; height: 2px; border-radius: 2px; background: var(--m-coral); flex: none; }
+.sw .hx-sticker span { color: var(--m-coral); margin-left: -8px; }
+.sw .hx-cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.sw .hx-link { font-weight: 600; font-size: 15px; color: var(--m-ink); text-decoration: none; border-bottom: 2px solid var(--m-coral); padding-bottom: 2px; transition: color .2s; }
+.sw .hx-link:hover { color: var(--m-coral); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .sw .hx-id { animation: hx-up .6s cubic-bezier(.22,1,.36,1) .1s both; }
+  .js .sw .hx-lead { animation: hx-up .7s cubic-bezier(.22,1,.36,1) .25s both; }
+  .js .sw .hx-sticker { animation: hx-stick .6s cubic-bezier(.34,1.56,.64,1) .9s both; }
+  .js .sw .hx-cta { animation: hx-up .6s cubic-bezier(.22,1,.36,1) 1.05s both; }
+}
+@keyframes hx-up { from { opacity: 0; transform: translateY(18px); } }
+@keyframes hx-stick { from { opacity: 0; transform: translateX(-12px); } }
+@media (max-width: 480px) { .sw .hx-id { margin-bottom: 22px; } .sw .hx-av { width: 54px; height: 54px; } .sw .hx-name { font-size: 24px; } .sw .hx-sticker { font-size: 15px; } }
+@media (max-width: 900px) { .sw .hx-br { display: none; } }
+@media (min-width: 901px) { .sw .m-hero:has(.hx) { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 48px; } }
