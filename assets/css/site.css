@@ -741,9 +741,6 @@ body { margin: 0; background: var(--m-bg); }
 @media (max-width: 1100px) { .sw .ws__body { grid-template-columns: 200px minmax(0, 1fr); } .sw .ws__arch { display: none; } .sw .ws__pipe { display: flex; } }
 @media (max-width: 760px) { .sw .ws__body { grid-template-columns: 1fr; } }
 
-/* zeeproc tile: product shot bleeding off the bottom-right */
-.sw .m-card--zee { padding-bottom: 0; }
-.sw .m-zee { position: relative; margin: 14px -24px 0 0; flex: 1; min-height: 190px; overflow: hidden; border-radius: 16px 0 0 0; }
-.sw .m-zee img { position: absolute; left: 0; top: 0; width: 125%; max-width: none; height: auto; transition: transform .7s cubic-bezier(.22,1,.36,1); }
-.sw a.m-card--zee:hover .m-zee img { transform: translate(-4%, -4%) scale(1.02); }
-.sw .m-card--zee .m-chip { position: absolute; left: 24px; bottom: 18px; z-index: 2; }
+/* zeeproc tile: full-bleed dark cover, like RIU */
+.sw .m-card--zee { background: #140d33; }
+.sw .m-card--zee .m-cover img { object-position: 50% 100%; }
