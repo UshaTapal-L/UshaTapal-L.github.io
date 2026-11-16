@@ -60,5 +60,37 @@
     if (rooms[0]) rooms[0].classList.add('is-on');
   }
 
+
+  // Hero desk: drag objects; scatter or tidy them
+  var desk = document.querySelector('[data-desk]');
+  if (desk) {
+    var obs = desk.querySelectorAll('.ob');
+    obs.forEach(function (o) {
+      var sx, sy, ox, oy, id = null;
+      o.addEventListener('pointerdown', function (e) {
+        id = e.pointerId; o.setPointerCapture(id); o.classList.add('is-drag');
+        sx = e.clientX; sy = e.clientY; ox = parseFloat(o.style.getPropertyValue('--dx')) || 0; oy = parseFloat(o.style.getPropertyValue('--dy')) || 0;
+      });
+      o.addEventListener('pointermove', function (e) {
+        if (id !== e.pointerId) return;
+        o.style.setProperty('--dx', (ox + e.clientX - sx) + 'px'); o.style.setProperty('--dy', (oy + e.clientY - sy) + 'px');
+      });
+      function end(e) { if (id !== e.pointerId) return; id = null; o.classList.remove('is-drag'); }
+      o.addEventListener('pointerup', end); o.addEventListener('pointercancel', end);
+    });
+    var sc = document.querySelector('[data-scatter]'), td = document.querySelector('[data-tidy]');
+    if (sc) sc.addEventListener('click', function () {
+      obs.forEach(function (o) {
+        o.style.setProperty('--dx', Math.round(Math.random() * 120 - 60) + 'px'); o.style.setProperty('--dy', Math.round(Math.random() * 90 - 45) + 'px');
+        o.style.setProperty('--r', Math.round(Math.random() * 30 - 15) + 'deg');
+      });
+      sc.classList.add('is-on'); td.classList.remove('is-on');
+    });
+    if (td) td.addEventListener('click', function () {
+      obs.forEach(function (o) { o.style.setProperty('--dx', '0px'); o.style.setProperty('--dy', '0px'); o.style.setProperty('--r', '0deg'); });
+      td.classList.add('is-on'); sc.classList.remove('is-on');
+    });
+  }
+
   var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 })();
