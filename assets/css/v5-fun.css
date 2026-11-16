@@ -1,0 +1,53 @@
+/* Version 5 fun layer: cursor, stickers, bouncy motion, surprises */
+.cur { display: none !important; } /* replaced by the fun cursor */
+
+/* soft colour blobs drifting behind sections */
+.lt-work, .pr, .jr, .pg { position: relative; isolation: isolate; }
+.blob { position: absolute; z-index: -1; width: 380px; height: 380px; border-radius: 50%; filter: blur(60px); opacity: .45; pointer-events: none; }
+.blob--a { background: #dce8c9; } .blob--b { background: #f7d9de; } .blob--c { background: #f2e2b8; }
+@media (prefers-reduced-motion: no-preference) { .blob { animation: blob 18s ease-in-out infinite alternate; } }
+@keyframes blob { to { transform: translate(60px, -40px) scale(1.15); } }
+
+/* stickers you can drag */
+.stk { position: absolute; left: var(--x); top: var(--y); z-index: 6; appearance: none; border: 0; padding: 0; background: none; cursor: grab; touch-action: none;
+  transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(var(--r)); filter: drop-shadow(0 8px 10px rgba(46,59,47,.22)); transition: transform .35s cubic-bezier(.34,1.6,.64,1); }
+.stk svg { display: block; width: 100%; height: auto; }
+.stk:hover { transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(calc(var(--r) * -1)) scale(1.08); }
+.stk.is-drag { transition: none; cursor: grabbing; transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(0deg) scale(1.12); }
+.stk:focus-visible { outline: 2px solid var(--rose); outline-offset: 4px; border-radius: 12px; }
+.stk::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; background: #fff; z-index: -1; opacity: .9; }
+.stk--cookie { width: 86px; } .stk--cup { width: 82px; } .stk--star { width: 74px; }
+.stk--badge { width: 110px; height: 110px; border-radius: 50%; background: var(--rose); color: #fff; display: grid; place-items: center; text-align: center; font: 500 13px/1.2 var(--sans); }
+.stk--badge::before { display: none; }
+.stk--badge b { font: italic 400 20px/1 var(--serif); }
+@media (prefers-reduced-motion: no-preference) { .stk--badge { animation: spin 14s linear infinite; } .stk--badge.is-drag, .stk--badge:hover { animation: none; } }
+@keyframes spin { to { rotate: 360deg; } }
+.stk-say { position: absolute; z-index: 90; pointer-events: none; padding: 7px 12px; border-radius: 12px; background: var(--ink); color: #fff; font: 500 13px/1 var(--sans); white-space: nowrap; transform: translate(-50%, -130%); animation: say 1.6s ease forwards; }
+@keyframes say { 0% { opacity: 0; transform: translate(-50%, -100%) scale(.8); } 15% { opacity: 1; transform: translate(-50%, -130%) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -160%); } }
+@media (max-width: 700px) { .stk { transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(var(--r)) scale(.72); } .stk--cup { left: auto; right: 4%; } .stk--star { left: auto; right: 4%; top: 2%; } }
+
+/* bouncy: squishy buttons, wiggly tiles, letter hover */
+.lt-btn, .hx4-ghost, .lt-copy, .pg-filter button, .cp-tabs button { transition: transform .25s cubic-bezier(.34,1.8,.64,1); }
+.lt-btn:active, .hx4-ghost:active, .lt-copy:active { transform: scale(.92); }
+@media (hover: hover) {
+  a.bx-t:hover { transform: translateY(-8px) rotate(-.6deg) !important; }
+  a.bx-t:nth-child(even):hover { transform: translateY(-8px) rotate(.6deg) !important; }
+  .pg-i:hover { transform: rotate(0deg) translateY(-8px) scale(1.04); }
+}
+.bl { display: inline-block; transition: transform .35s cubic-bezier(.34,2,.64,1), color .2s; }
+.bl:hover { transform: translateY(-.12em) rotate(-6deg); color: var(--rose); }
+.ct { font-variant-numeric: tabular-nums; }
+
+/* fun cursor */
+.fc { position: fixed; left: 0; top: 0; z-index: 95; pointer-events: none; transform: translate(var(--cx, -100px), var(--cy, -100px)); }
+.fc i { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: var(--rose); transition: transform .25s cubic-bezier(.34,1.6,.64,1), opacity .2s; }
+.fc b { position: absolute; left: 0; top: 0; padding: 8px 14px; border-radius: 99px; background: var(--ink); color: #fff; font: 500 13px/1 var(--sans); white-space: nowrap; transform: translate(14px, 14px) scale(0); transform-origin: 0 0; transition: transform .25s cubic-bezier(.34,1.6,.64,1); }
+.fc.has-label b { transform: translate(14px, 14px) scale(1); }
+.fc.has-label i { transform: scale(.5); }
+.fc.is-down i { transform: scale(1.8); opacity: .5; }
+@media (hover: none), (pointer: coarse) { .fc { display: none; } }
+
+/* confetti + sprinkles */
+.cf { position: fixed; z-index: 96; pointer-events: none; width: 8px; height: 12px; border-radius: 2px; left: 0; top: 0; }
+.toast5 { position: fixed; left: 50%; bottom: 28px; z-index: 97; transform: translateX(-50%); padding: 12px 18px; border-radius: 14px; background: var(--ink); color: #fff; font: 500 15px var(--sans); box-shadow: 0 16px 30px -14px rgba(0,0,0,.5); animation: say 3.2s ease forwards; }
+.lt-work, .pr, .jr, .pg { overflow-x: clip; } body.lt { overflow-x: clip; } @media (max-width: 700px) { .blob { width: 240px; height: 240px; } }

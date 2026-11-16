@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/css/v5-compact.css">
   <link rel="stylesheet" href="assets/css/v5-hero.css">
   <link rel="stylesheet" href="assets/css/v5-hero4.css">
+  <link rel="stylesheet" href="assets/css/v5-fun.css">
 </head>
 <body class="lt" data-fx-doorway>
   <a class="lt-skip" href="#main">Skip to content</a>
@@ -44,7 +45,7 @@
       <div class="hx4" data-hx4 aria-roledescription="carousel" aria-label="About Usha, four ways">
         <!-- 1: one sentence with pictures -->
         <div class="hx4-s hx4-a is-on" role="group" aria-roledescription="slide" aria-label="1 of 4">
-          <h1 id="hi-h" class="hx4-sent">I’m Usha <span class="chip r"><img src="images/avatar.jpg" alt=""></span>, an architect <span class="chip"><img src="images/work/arch/first-floor-plan.jpg" alt=""></span> who now designs <em>calm</em> AI products <span class="chip"><img src="images/work/nutrascan/cover.jpg" alt=""></span>.</h1>
+          <h1 id="hi-h" class="hx4-sent" data-egg>I’m Usha <span class="chip r"><img src="images/avatar.jpg" alt=""></span>, an architect <span class="chip"><img src="images/work/arch/first-floor-plan.jpg" alt=""></span> who now designs <em>calm</em> AI products <span class="chip"><img src="images/work/nutrascan/cover.jpg" alt=""></span>.</h1>
           <p class="hx4-sub">Product designer at 6D Technologies, Bengaluru.</p>
         </div>
         <!-- 2: plan becomes product -->
@@ -61,7 +62,7 @@
         <div class="hx4-s hx4-d" role="group" aria-roledescription="slide" aria-label="4 of 4">
           <div class="hx4-card">
             <img src="images/avatar.jpg" alt="Usha Tapal">
-            <div><p class="hx4-hi">Hi, I’m Usha</p><p class="hx4-sub">Architect turned product designer. I make chaotic things calm, and a little fun.</p></div>
+            <div><p class="hx4-hi" data-egg>Hi, I’m Usha</p><p class="hx4-sub">Architect turned product designer. I make chaotic things calm, and a little fun.</p></div>
             <div class="hx4-row"><div><b>4+</b>years</div><div><b>+40%</b>RIU</div><div><b>−30%</b>Magik</div></div>
             <div class="hx4-go"><a class="lt-btn" href="#work">See my work ↓</a><a class="hx4-ghost" href="#contact">Say hello</a></div>
           </div>
@@ -77,6 +78,7 @@
     <section class="lt-work" id="work" aria-labelledby="work-h">
       <div class="lt-work__top"><span>Selected work, 2022 to now</span><span>Product design · UX</span></div>
       <span class="lt-rule" aria-hidden="true"></span>
+      <button type="button" class="stk stk--cookie" style="--x:82%;--y:10%;--r:-12deg" aria-label="Cookie sticker: click for sprinkles" data-say="sprinkles!"><svg viewBox="0 0 100 92" aria-hidden="true"><path d="M50 88C10 60 2 38 12 20 22 4 42 6 50 22 58 6 78 4 88 20c10 18 2 40-38 68z" fill="#d9a066"/><path d="M50 62C34 50 32 40 38 34c4-4 9-2 12 4 3-6 8-8 12-4 6 6 4 16-12 28z" fill="#b8323f"/><g fill="#a4703d"><circle cx="26" cy="30" r="2.5"/><circle cx="74" cy="28" r="2.5"/><circle cx="70" cy="56" r="2"/><circle cx="30" cy="54" r="2"/></g></svg></button>
       <h2 class="lt-work__h" id="work-h"><em>W</em>ork</h2>
 
       <div class="bx">
@@ -106,6 +108,7 @@
 
     <!-- PROCESS: how I work -->
     <section class="pr" id="process" aria-labelledby="pr-h">
+      <button type="button" class="stk stk--cup" style="--x:6%;--y:8%;--r:8deg" aria-label="Coffee sticker" data-say="coffee break ☕︎"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" fill="#efe4d3"/><circle cx="60" cy="60" r="40" fill="#fffaf2"/><circle cx="60" cy="60" r="33" fill="#8b5a3c"/><path d="M60 72c-14-9-16-20-8-23 4-1 7 1 8 5 1-4 4-6 8-5 8 3 6 14-8 23z" fill="#ead6ba"/></svg></button>
       <header class="pr-head">
         <span class="lt-label">How I work</span>
         <h2 id="pr-h" data-rise>Research first. <span class="dd-ring"><em>Then</em><svg viewBox="0 0 200 90" aria-hidden="true"><path class="dd-l" d="M100 8C46 4 8 22 10 46s48 38 96 36 86-16 84-40S148 2 84 10"/></svg></span> strategy. Then screens.</h2>
@@ -120,7 +123,8 @@
     </section>
 
     <!-- JOURNAL: about me and my story, a book that opens and closes -->
-    <section class="jr" id="about" aria-labelledby="jr-h">
+    <section class="jr" data-cur="read" id="about" aria-labelledby="jr-h">
+      <button type="button" class="stk stk--badge" style="--x:80%;--y:6%;--r:10deg" aria-label="Badge: open to new work" data-say="let’s talk!"><span>open to<br><b>new work</b></span></button>
       <header class="jr-head">
         <span class="lt-label">About me</span>
         <h2 id="jr-h" data-rise>My <em>journal</em></h2>
@@ -208,11 +212,12 @@
 
     <!-- PLAYGROUND: the creative side -->
     <section class="pg" id="playground" aria-labelledby="pg-h">
+      <button type="button" class="stk stk--star" style="--x:10%;--y:10%;--r:-8deg" aria-label="Star sticker" data-say="you found a star"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4l13 30 32 3-24 21 7 32-28-17-28 17 7-32L5 37l32-3z" fill="#f2c94c" stroke="#d9a62c" stroke-width="3" stroke-linejoin="round"/></svg></button>
       <header class="pg-head">
         <span class="lt-label">Playground</span>
         <h2 id="pg-h" data-rise>Things I make <em>for fun.</em><span class="dd dd--stars" aria-hidden="true"><svg viewBox="0 0 80 60"><path class="dd-l" d="M20 6l4 12 12 1-10 7 4 12-10-8-10 8 4-12-10-7 12-1z"/><path class="dd-l" d="M62 30l2 7 7 1-6 4 2 7-5-4-6 4 2-7-6-4 7-1z"/></svg></span></h2>
       </header>
-      <div class="pg-wall pg-strip" tabindex="0" aria-label="Playground pieces, scroll sideways">
+      <div data-cur="play" class="pg-wall pg-strip" tabindex="0" aria-label="Playground pieces, scroll sideways">
         <figure class="pg-i" data-cat="motion" style="--r:-1.5deg"><video src="media/verity-film.mp4" poster="media/verity-film.jpg" muted loop playsinline preload="none" aria-label="Verity: a product motion film for an ESG reporting app" width="960" height="540"></video><span class="pg-play" aria-hidden="true">▶</span><figcaption>Verity, a product film</figcaption></figure>
         
         <figure class="pg-i" data-cat="motion" style="--r:1.5deg"><video src="media/smart-splash.mp4" poster="media/smart-splash.jpg" muted loop playsinline preload="none" aria-label="Smart Dealer app splash animation" width="390" height="844"></video><span class="pg-play" aria-hidden="true">▶</span><figcaption>Smart Dealer splash</figcaption></figure>
@@ -241,5 +246,6 @@
   <script src="assets/js/v2-light.js"></script>
   <script src="assets/js/v2-creative.js"></script>
   <script src="assets/js/v5-hero4.js"></script>
+  <script src="assets/js/v5-fun.js"></script>
 </body>
 </html>
