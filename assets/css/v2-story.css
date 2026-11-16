@@ -1,0 +1,122 @@
+/* Version 2, coffee & sage: palette from Usha's moodboards, plus the story chapters.
+   Loaded after v2-light.css; re-points tokens and adds the story section. */
+:root {
+  --bg: #f6f0e6;        /* cream */
+  --paper: #fffaf2;
+  --ink: #3b2a22;       /* espresso */
+  --mute: #7a6658;
+  --line: #e6dccb;
+  --rose: #9a5f24;      /* caramel, deep enough for text */
+  --rose-soft: #d9a9a0; /* blush */
+  --pistachio: #8a9a7b; /* sage */
+  --mist: #efe4d3;      /* latte */
+  --caramel: #b9803f;
+  --fx-ink: #3b2a22; --fx-paper: #f6f0e6; --fx-stone: #efe4d3; --fx-coral: #9a5f24;
+}
+body.lt { background: var(--bg); }
+.lt-label { color: var(--rose); }
+
+/* tiles and blocks that had matcha colours */
+.bx--smart { background: #e7e8dc; }
+.bx--riu { background: #f2e2db; }
+.bx--nutra { background: #f2e7d6; }
+.bx--zee { background: #3b2a22; }
+.bx--arch { background: #ece2d2; }
+.bx--home { background: #e6e7da; }
+.lt-book { box-shadow: 0 0 0 1px var(--line), 0 0 0 6px #3b2a22, 0 40px 70px -40px rgba(59,42,34,.5);
+  background: radial-gradient(circle, rgba(59,42,34,.15) 1px, transparent 1.4px) 0 0 / 22px 22px, var(--paper); }
+.lt-today { background: #f7f0e4; }
+.lt-today i { background: #efe5d5; }
+.lt-file svg path[fill="#b9d3a1"] { fill: #c9b79c; }
+.lt-file svg path[fill="#cfe2bb"] { fill: #dccbb0; }
+.lt-foot { background: #3b2a22; color: #f6efe4; }
+.lt-foot__word { color: var(--caramel); opacity: .25; }
+.lt-btn { background: var(--ink); }
+.ob--note { background: #f3d9d2; }
+.ob--plant figcaption, .ob--ill figcaption { margin-top: 6px; }
+.ob--ill { width: clamp(90px, 8vw, 120px); filter: drop-shadow(0 10px 12px rgba(59,42,34,.18)); }
+.ob--ill svg { display: block; width: 100%; height: auto; }
+.ob--cookie { width: clamp(76px, 6.5vw, 96px); }
+
+/* ---------- story ---------- */
+.st { padding: clamp(110px, 13vw, 190px) var(--gut) clamp(80px, 10vw, 140px); max-width: 1240px; margin: 0 auto; }
+.st-head { text-align: center; display: grid; gap: 18px; justify-items: center; margin-bottom: clamp(90px, 11vw, 160px); }
+.st-head h2 { font: 500 clamp(52px, 8vw, 116px)/.95 var(--sans); letter-spacing: -.045em; }
+.st-head h2 em { color: var(--rose); letter-spacing: -.01em; font-size: 1.06em; }
+.st-head p { max-width: 34ch; font-size: clamp(19px, 1.8vw, 23px); color: var(--mute); text-wrap: balance; }
+.st-ch { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.st-ch + .st-ch { margin-top: clamp(120px, 14vw, 200px); }
+.st-ch--flip .st-text { order: 2; }
+.st-text { display: grid; gap: 18px; align-content: center; }
+.st-n { font: italic 400 22px/1 var(--serif); color: var(--rose); }
+.st-text h3 { font: 500 clamp(32px, 3.6vw, 48px)/1.05 var(--sans); letter-spacing: -.03em; }
+.st-text p { font-size: 18px; line-height: 1.7; color: var(--mute); max-width: 46ch; }
+.st-sign { margin-top: clamp(110px, 12vw, 170px) !important; text-align: center; font: 500 clamp(24px, 2.8vw, 36px)/1.25 var(--sans); letter-spacing: -.02em; text-wrap: balance; }
+.st-sign em { color: var(--rose); }
+
+/* moodboard boards: linen with pinned and taped pieces */
+.st-board { position: relative; min-height: 520px; border-radius: 26px; padding: 28px;
+  background: radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,.55), transparent 60%), #ece2d3;
+  box-shadow: inset 0 0 0 1px rgba(59,42,34,.06); }
+.pn { position: absolute; margin: 0; background: var(--paper); padding: 10px 10px 0; box-shadow: 0 16px 30px -18px rgba(59,42,34,.55); transform: rotate(var(--r, 0deg)); transition: transform .5s cubic-bezier(.34,1.4,.64,1); }
+.pn:hover { transform: rotate(0deg) scale(1.03); z-index: 3; }
+.pn img { display: block; width: 100%; height: auto; }
+.pn figcaption { padding: 10px 2px 12px; font: 400 15px/1.2 var(--fx-draft); letter-spacing: .03em; color: var(--mute); }
+.pn::before { content: ""; position: absolute; left: 50%; top: -11px; width: 74px; height: 22px; margin-left: -37px; background: rgba(233,214,181,.85); transform: rotate(-3deg); }
+.pn-note { position: absolute; padding: 16px 18px; background: #fffdf7; font: 400 18px/1.35 var(--fx-draft); letter-spacing: .03em; color: var(--rose); max-width: 200px;
+  background-image: repeating-linear-gradient(transparent 0 25px, rgba(59,42,34,.10) 25px 26px); box-shadow: 0 14px 24px -16px rgba(59,42,34,.5); transform: rotate(3deg); }
+.pn-note::before { content: ""; position: absolute; left: 50%; top: -7px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--caramel); box-shadow: 0 2px 3px rgba(0,0,0,.25); }
+
+.st-board--a .pn-1 { left: 5%; top: 7%; width: 36%; --r: -3deg; }
+.st-board--a .pn-2 { right: 5%; top: 6%; width: 50%; --r: 3deg; }
+.st-board--a .pn-3 { right: 9%; bottom: 7%; width: 46%; --r: -2deg; }
+.st-board--b .pn-1 { left: 5%; top: 8%; width: 60%; --r: -2deg; }
+.st-board--b .pn-2 { right: 5%; top: 18%; width: 30%; --r: 4deg; }
+.st-board--b .pn-note { left: 12%; bottom: 7%; }
+.st-board--c { display: grid; place-items: center; }
+.st-route { width: 100%; height: auto; overflow: visible; }
+.st-route .rt { fill: none; stroke: var(--rose); stroke-width: 2; stroke-dasharray: 6 8; stroke-linecap: round; }
+.st-route .stop circle { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.st-route .stop--end circle { fill: var(--rose); stroke: var(--rose); }
+.st-route text { font: 400 21px/1 var(--fx-draft); letter-spacing: .03em; fill: var(--ink); text-anchor: middle; }
+.st-board--d .sk-i { position: absolute; margin: 0; display: grid; justify-items: center; gap: 8px; }
+.st-board--d svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 14px rgba(59,42,34,.18)); }
+.st-board--d figcaption { font: 400 15px/1.2 var(--fx-draft); letter-spacing: .03em; color: var(--mute); text-align: center; white-space: nowrap; }
+.sk-cup { left: 8%; top: 8%; width: 22%; }
+.sk-cake { left: 40%; top: 12%; width: 26%; }
+.sk-whisk { right: 10%; top: 6%; width: 9%; transform: rotate(18deg); }
+.sk-gift { left: 12%; bottom: 10%; width: 20%; }
+.sk-plant { right: 12%; bottom: 8%; width: 18%; }
+.st-board--d .pn-note--d { left: 42%; bottom: 14%; transform: rotate(-3deg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .st-ch:not(.in) .st-board > * { opacity: 0; transform: translateY(18px) rotate(var(--r, 0deg)); }
+  .st-board > * { transition: opacity .7s ease, transform .9s cubic-bezier(.22,1,.36,1); }
+  .st-board > *:nth-child(2) { transition-delay: .12s; } .st-board > *:nth-child(3) { transition-delay: .24s; }
+  .st-board > *:nth-child(4) { transition-delay: .36s; } .st-board > *:nth-child(5) { transition-delay: .48s; } .st-board > *:nth-child(6) { transition-delay: .6s; }
+  .st-route .rt { stroke-dashoffset: 0; }
+}
+.st-board--d .sk-whisk { --r: 18deg; }
+
+@media (max-width: 900px) {
+  .st-ch, .st-ch--flip { grid-template-columns: 1fr; gap: 36px; }
+  .st-ch--flip .st-text { order: 0; }
+  .st-board { min-height: 0; aspect-ratio: 5 / 4; padding: 16px; }
+  .st-board--c { aspect-ratio: auto; padding: 28px 16px; }
+  .pn figcaption, .st-board--d figcaption { font-size: 12px; }
+  .pn-note { font-size: 14px; max-width: 150px; padding: 10px 12px; }
+  .st-route text { font-size: 26px; }
+}
+.st-ch--flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.st-board--d .pn-note--d { left: 38%; bottom: 9%; }
+.sk-gift { left: 8%; }
+.sk-plant { right: 6%; }
+@media (max-width: 900px) { .st-ch--flip { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .st-board--a, .st-board--b, .st-board--d { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 16px; padding: 26px 16px; align-items: start; }
+  .st-board--a .pn, .st-board--b .pn, .st-board--b .pn-note, .st-board--d .sk-i, .st-board--d .pn-note { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: auto; }
+  .st-board--a .pn-2, .st-board--b .pn-1 { grid-column: 1 / -1; }
+  .st-board--d .sk-whisk { display: none; }
+  .st-board--d .sk-i svg { max-width: 110px; margin: 0 auto; }
+  .st-board--b .pn-note, .st-board--d .pn-note { align-self: center; }
+}

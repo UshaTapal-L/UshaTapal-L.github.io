@@ -33,7 +33,7 @@
 
 
   // Work: sketch-to-screen and redline notes play once each project is in view
-  var items = document.querySelectorAll('.lt-item, .bx-t');
+  var items = document.querySelectorAll('.lt-item, .bx-t, .st-ch');
   if (reduce || !('IntersectionObserver' in window)) items.forEach(function (i) { i.classList.add('in'); });
   else {
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.35 });
