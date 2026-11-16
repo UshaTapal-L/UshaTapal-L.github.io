@@ -54,3 +54,4 @@
 .bp-hint, .bp-title, .bp-dim { opacity: clamp(0, calc((var(--left, 1) - .9) * 10), 1); transition: opacity .2s; }
 .bp-title { bottom: 28px; right: max(150px, calc(50vw - 560px)); }
 @media (max-width: 700px) { .bp-hint { bottom: 40px; font-size: 15px; } }
+.bp-pct { right: auto; left: max(var(--gut), calc(50vw - 600px)); }

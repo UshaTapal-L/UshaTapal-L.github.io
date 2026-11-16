@@ -7,7 +7,7 @@
     var l = document.createElement('div'); l.className = 'bp-layer'; l.setAttribute('aria-hidden', 'true');
     l.innerHTML = '<span class="bp-tag"><b>SHEET ' + s.dataset.sheet + '</b>' + s.dataset.sheetName.toUpperCase() + '</span><span class="bp-pct"></span><span class="bp-edge"></span>';
     if (i === 0) l.innerHTML += '<span class="bp-dim">USHA TAPAL · 1 : 1</span><span class="bp-hint">SCROLL TO BUILD ↓</span>' +
-      '<span class="bp-title"><span>PROJECT</span><span>PORTFOLIO</span><span>DRAWN BY</span><span>USHA TAPAL</span><span>SCALE</span><span>1 : 1</span><span>DATE</span><span>2026</span></span>';
+      '<span class="bp-title" style="bottom:28px"><span>PROJECT</span><span>PORTFOLIO</span><span>DRAWN BY</span><span>USHA TAPAL</span><span>SCALE</span><span>1 : 1</span><span>DATE</span><span>2026</span></span>';
     s.appendChild(l); s._l = l; s._p = 0; s._pct = l.querySelector('.bp-pct');
   });
   var forced = false;
