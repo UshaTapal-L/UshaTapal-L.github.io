@@ -1,0 +1,76 @@
+/* Version 2: walk through my house. The portfolio as a floor plan. */
+.hs { padding: clamp(90px, 11vw, 160px) var(--gut) clamp(40px, 6vw, 80px); max-width: 1240px; margin: 0 auto; }
+.hs-head { text-align: center; display: grid; gap: 14px; justify-items: center; margin-bottom: clamp(36px, 5vw, 64px); }
+.hs-head h2 { font: 500 clamp(44px, 6.6vw, 96px)/1 var(--sans); letter-spacing: -.045em; }
+.hs-head h2 em { color: var(--rose); letter-spacing: -.01em; }
+.hs-hint { font: 400 20px/1 var(--fx-draft); letter-spacing: .03em; color: var(--rose); }
+.hs-stage { position: relative; border-radius: 28px; overflow: hidden; background: var(--paper);
+  box-shadow: 0 0 0 1px var(--line), 0 40px 70px -40px rgba(46,59,47,.5); }
+.hs-plan { transition: transform 1.1s cubic-bezier(.65,0,.35,1); transform-origin: 50% 50%; }
+.hs.is-zoom .hs-plan { transform: scale(var(--z, 2)); }
+.hs-svg { display: block; width: 100%; height: auto; }
+.hs-fl { stroke: none; }
+.hs-room { cursor: pointer; outline: none; }
+.hs-room .hs-fl { transition: fill-opacity .3s; }
+.hs-room::after { content: none; }
+.hs-room rect.hs-fl + * { pointer-events: none; }
+.hs-room:hover .hs-tint, .hs-room:focus-visible .hs-tint { opacity: 1; }
+.hs-room text { font: 400 30px/1 var(--fx-draft); letter-spacing: .04em; fill: var(--ink); text-anchor: middle; transition: fill .2s; pointer-events: none; }
+.hs-room text.s { font: italic 400 22px/1 var(--serif); letter-spacing: 0; fill: var(--mute); }
+.hs-room:hover text:not(.s), .hs-room:focus-visible text:not(.s), .hs-room.is-on text:not(.s) { fill: var(--rose); }
+.hs-room:focus-visible .hs-fl { stroke: var(--rose); stroke-width: 4; }
+/* room tints via a highlight layer drawn by the floor's own fill + overlay */
+.hs-room .hs-fl { fill-opacity: 1; }
+.hs-room[data-room="studio"]:hover .hs-fl, .hs-room[data-room="studio"].is-on .hs-fl { fill: #eef3e6; }
+.hs-room[data-room="library"]:hover .hs-fl, .hs-room[data-room="library"].is-on .hs-fl { fill: #f6e8ec; }
+.hs-room[data-room="kitchen"]:hover .hs-fl, .hs-room[data-room="kitchen"].is-on .hs-fl { fill: #f4ecdd; }
+.hs-room[data-room="garden"]:hover .hs-fl, .hs-room[data-room="garden"].is-on .hs-fl { fill: #e3ecdc; }
+.hs-fl--garden { fill-opacity: 1; }
+/* furniture */
+.hs-furn > * , .hs-furn rect, .hs-furn circle, .hs-furn path { fill: #fffdf8; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.hs-furn .ink { fill: var(--ink); }
+.hs-furn .board { fill: #f3efe4; }
+.hs-furn .t1 { fill: #f3e4e8; } .hs-furn .t2 { fill: #e3ecdc; } .hs-furn .t3 { fill: #f4ecdd; } .hs-furn .t4 { fill: #2e3b2f; }
+.hs-furn .leaf { fill: #9fbf91; stroke: #5f7d58; }
+.hs-furn .shelf { fill: #f4ecdd; } .hs-furn .lines { fill: none; stroke-width: 1.5; }
+.hs-furn .table { fill: #fffaf2; }
+.hs-furn .counter { fill: #ece6d9; }
+.hs-furn .cake { fill: #f3e2c7; stroke-width: 1.5; } .hs-furn .cherry { fill: #c0392b; stroke: none; }
+.hs-furn .pool { fill: #cfe3ea; stroke: #8fb3c4; }
+.hs-furn .path { fill: none; stroke: #c9c3b6; stroke-width: 14; stroke-linecap: round; stroke-dasharray: 2 18; }
+.hs-furn .bench { fill: #e9cfa7; }
+.hs-furn .easel { fill: none; stroke: var(--rose); stroke-width: 3; }
+/* walls */
+.hs-walls { pointer-events: none; }
+.hs-walls path { fill: none; stroke: var(--ink); stroke-width: 6; stroke-linecap: square; }
+.hs-walls .out { stroke-width: 12; }
+.hs-walls .gap path { stroke: var(--paper); stroke-width: 14; stroke-linecap: butt; }
+.hs-walls .door path { stroke: var(--rose); stroke-width: 2; stroke-dasharray: 3 5; }
+.hs-walls .entry { font: 400 20px/1 var(--fx-draft); letter-spacing: .06em; fill: var(--rose); text-anchor: middle; }
+.hs-walls .north circle { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.hs-walls .north path { fill: var(--ink); stroke: none; }
+/* the little me */
+.hs-me circle { fill: var(--rose); }
+.hs-me .halo { fill: rgba(184,80,107,.25); }
+@media (prefers-reduced-motion: no-preference) { .hs-me .halo { animation: hs-pulse 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; } }
+@keyframes hs-pulse { 50% { transform: scale(1.5); opacity: .4; } }
+/* room card */
+.hs-card { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); width: min(460px, calc(100% - 32px)); padding: 22px 24px; border-radius: 20px;
+  background: rgba(255,253,248,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 24px 50px -24px rgba(46,59,47,.55); display: grid; gap: 8px; text-align: left; }
+.hs-card:not([hidden]) { animation: hs-card .5s cubic-bezier(.22,1,.36,1); }
+@keyframes hs-card { from { opacity: 0; transform: translate(-50%, 16px); } }
+.hs-card__n { font: 400 15px/1 var(--fx-draft); letter-spacing: .06em; color: var(--rose); }
+.hs-card__t { font: italic 400 40px/1 var(--serif); }
+.hs-card__s { color: var(--mute); font-size: 16px; }
+.hs-card__b { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 6px; }
+.hs-back { appearance: none; border: 0; background: none; cursor: pointer; font: 500 15px var(--sans); color: var(--mute); text-decoration: underline; text-underline-offset: 3px; }
+.room-tag { color: var(--rose); }
+@media (max-width: 700px) {
+  .hs-room text { font-size: 36px; }
+  .hs-room text.s { display: none; }
+  .hs-card { position: relative; left: auto; bottom: auto; transform: none; width: auto; margin: 0; border-radius: 0 0 28px 28px; }
+  .hs-card:not([hidden]) { animation: none; }
+}
+.hs-stage { max-width: 980px; margin: 0 auto; }
+.hs-furn .canvas { fill: #f3e4e8; stroke: var(--rose); }
+.hs-stage { max-width: min(980px, 115vh); }
