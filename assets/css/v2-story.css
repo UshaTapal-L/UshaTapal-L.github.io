@@ -1,41 +1,9 @@
-/* Version 2, coffee & sage: palette from Usha's moodboards, plus the story chapters.
-   Loaded after v2-light.css; re-points tokens and adds the story section. */
-:root {
-  --bg: #f6f0e6;        /* cream */
-  --paper: #fffaf2;
-  --ink: #3b2a22;       /* espresso */
-  --mute: #7a6658;
-  --line: #e6dccb;
-  --rose: #9a5f24;      /* caramel, deep enough for text */
-  --rose-soft: #d9a9a0; /* blush */
-  --pistachio: #8a9a7b; /* sage */
-  --mist: #efe4d3;      /* latte */
-  --caramel: #b9803f;
-  --fx-ink: #3b2a22; --fx-paper: #f6f0e6; --fx-stone: #efe4d3; --fx-coral: #9a5f24;
-}
-body.lt { background: var(--bg); }
-.lt-label { color: var(--rose); }
-
-/* tiles and blocks that had matcha colours */
-.bx--smart { background: #e7e8dc; }
-.bx--riu { background: #f2e2db; }
-.bx--nutra { background: #f2e7d6; }
-.bx--zee { background: #3b2a22; }
-.bx--arch { background: #ece2d2; }
-.bx--home { background: #e6e7da; }
-.lt-book { box-shadow: 0 0 0 1px var(--line), 0 0 0 6px #3b2a22, 0 40px 70px -40px rgba(59,42,34,.5);
-  background: radial-gradient(circle, rgba(59,42,34,.15) 1px, transparent 1.4px) 0 0 / 22px 22px, var(--paper); }
-.lt-today { background: #f7f0e4; }
-.lt-today i { background: #efe5d5; }
-.lt-file svg path[fill="#b9d3a1"] { fill: #c9b79c; }
-.lt-file svg path[fill="#cfe2bb"] { fill: #dccbb0; }
-.lt-foot { background: #3b2a22; color: #f6efe4; }
-.lt-foot__word { color: var(--caramel); opacity: .25; }
-.lt-btn { background: var(--ink); }
-.ob--note { background: #f3d9d2; }
-.ob--plant figcaption, .ob--ill figcaption { margin-top: 6px; }
-.ob--ill { width: clamp(90px, 8vw, 120px); filter: drop-shadow(0 10px 12px rgba(59,42,34,.18)); }
+/* Version 2: story chapters. Palette stays matcha & rose (tokens from v2-light.css). */
+:root { --caramel: #b8506b; }
+.lt-foot__word { color: var(--pistachio); }
+.ob--ill { width: clamp(90px, 8vw, 120px); filter: drop-shadow(0 10px 12px rgba(46,59,47,.18)); }
 .ob--ill svg { display: block; width: 100%; height: auto; }
+.ob--ill figcaption, .ob--plant figcaption { margin-top: 6px; }
 .ob--cookie { width: clamp(76px, 6.5vw, 96px); }
 
 /* ---------- story ---------- */
@@ -56,15 +24,15 @@ body.lt { background: var(--bg); }
 
 /* moodboard boards: linen with pinned and taped pieces */
 .st-board { position: relative; min-height: 520px; border-radius: 26px; padding: 28px;
-  background: radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,.55), transparent 60%), #ece2d3;
-  box-shadow: inset 0 0 0 1px rgba(59,42,34,.06); }
-.pn { position: absolute; margin: 0; background: var(--paper); padding: 10px 10px 0; box-shadow: 0 16px 30px -18px rgba(59,42,34,.55); transform: rotate(var(--r, 0deg)); transition: transform .5s cubic-bezier(.34,1.4,.64,1); }
+  background: radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,.55), transparent 60%), #ece6d9;
+  box-shadow: inset 0 0 0 1px rgba(46,59,47,.06); }
+.pn { position: absolute; margin: 0; background: var(--paper); padding: 10px 10px 0; box-shadow: 0 16px 30px -18px rgba(46,59,47,.55); transform: rotate(var(--r, 0deg)); transition: transform .5s cubic-bezier(.34,1.4,.64,1); }
 .pn:hover { transform: rotate(0deg) scale(1.03); z-index: 3; }
 .pn img { display: block; width: 100%; height: auto; }
 .pn figcaption { padding: 10px 2px 12px; font: 400 15px/1.2 var(--fx-draft); letter-spacing: .03em; color: var(--mute); }
-.pn::before { content: ""; position: absolute; left: 50%; top: -11px; width: 74px; height: 22px; margin-left: -37px; background: rgba(233,214,181,.85); transform: rotate(-3deg); }
+.pn::before { content: ""; position: absolute; left: 50%; top: -11px; width: 74px; height: 22px; margin-left: -37px; background: rgba(233,207,167,.75); transform: rotate(-3deg); }
 .pn-note { position: absolute; padding: 16px 18px; background: #fffdf7; font: 400 18px/1.35 var(--fx-draft); letter-spacing: .03em; color: var(--rose); max-width: 200px;
-  background-image: repeating-linear-gradient(transparent 0 25px, rgba(59,42,34,.10) 25px 26px); box-shadow: 0 14px 24px -16px rgba(59,42,34,.5); transform: rotate(3deg); }
+  background-image: repeating-linear-gradient(transparent 0 25px, rgba(46,59,47,.10) 25px 26px); box-shadow: 0 14px 24px -16px rgba(46,59,47,.5); transform: rotate(3deg); }
 .pn-note::before { content: ""; position: absolute; left: 50%; top: -7px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--caramel); box-shadow: 0 2px 3px rgba(0,0,0,.25); }
 
 .st-board--a .pn-1 { left: 5%; top: 7%; width: 36%; --r: -3deg; }
@@ -80,7 +48,7 @@ body.lt { background: var(--bg); }
 .st-route .stop--end circle { fill: var(--rose); stroke: var(--rose); }
 .st-route text { font: 400 21px/1 var(--fx-draft); letter-spacing: .03em; fill: var(--ink); text-anchor: middle; }
 .st-board--d .sk-i { position: absolute; margin: 0; display: grid; justify-items: center; gap: 8px; }
-.st-board--d svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 14px rgba(59,42,34,.18)); }
+.st-board--d svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 14px rgba(46,59,47,.18)); }
 .st-board--d figcaption { font: 400 15px/1.2 var(--fx-draft); letter-spacing: .03em; color: var(--mute); text-align: center; white-space: nowrap; }
 .sk-cup { left: 8%; top: 8%; width: 22%; }
 .sk-cake { left: 40%; top: 12%; width: 26%; }
