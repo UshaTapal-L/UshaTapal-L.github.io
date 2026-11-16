@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/css/v5-build.css">
   <link rel="stylesheet" href="assets/css/v5-compact.css">
   <link rel="stylesheet" href="assets/css/v5-hero.css">
+  <link rel="stylesheet" href="assets/css/v5-hero4.css">
 </head>
 <body class="lt bp-site" data-fx-doorway>
   <a class="lt-skip" href="#main">Skip to content</a>
@@ -41,24 +42,36 @@
   <main id="main">
     <!-- HERO: a desk you can rearrange -->
     <section class="h5" id="top" aria-labelledby="hi-h" data-sheet="A-00" data-sheet-name="Site plan · Hello">
-      <div class="h5-text">
-        <p class="h5-eyebrow"><span class="h5-dot" aria-hidden="true"></span>Product designer · 6D Technologies, Bengaluru</p>
-        <h1 id="hi-h" class="h5-name">Usha<br>Tapal</h1>
-        <p class="h5-line">AI product designer who thinks like an <em>architect.</em></p>
-        <div class="h5-cta">
-          <a class="lt-btn" href="#work">See my work ↓</a>
-          <a class="h5-link" href="#about">My story</a>
+      <div class="hx4" data-hx4 aria-roledescription="carousel" aria-label="About Usha, four ways">
+        <!-- 1: one sentence with pictures -->
+        <div class="hx4-s hx4-a is-on" role="group" aria-roledescription="slide" aria-label="1 of 4">
+          <h1 id="hi-h" class="hx4-sent">I’m Usha <span class="chip r"><img src="images/avatar.jpg" alt=""></span>, an architect <span class="chip"><img src="images/work/arch/first-floor-plan.jpg" alt=""></span> who now designs <em>calm</em> AI products <span class="chip"><img src="images/work/nutrascan/cover.jpg" alt=""></span>.</h1>
+          <p class="hx4-sub">Product designer at 6D Technologies, Bengaluru.</p>
         </div>
-        <ul class="h5-facts" aria-label="Quick facts">
-          <li><b>4+</b><span>years in product</span></li>
-          <li><b>+40%</b><span>satisfaction, RIU</span></li>
-          <li><b>−30%</b><span>task time, Magik</span></li>
-        </ul>
+        <!-- 2: plan becomes product -->
+        <div class="hx4-s hx4-b" role="group" aria-roledescription="slide" aria-label="2 of 4">
+          <div class="hx4-bt"><p class="hx4-name">Usha<br>Tapal</p><p class="hx4-lead">I used to draw buildings. Now I design products.</p></div>
+          <div class="hx4-cmp" data-cmp><img src="images/work/nutrascan/cover.jpg" alt="NutraScan app screens"><img class="top" src="images/work/arch/first-floor-plan.jpg" alt="A floor plan I drew"><span class="tg l">my plan</span><span class="tg r">my product</span><span class="ln" aria-hidden="true"></span><input type="range" min="0" max="100" value="50" aria-label="Compare my plan and my product"></div>
+        </div>
+        <!-- 3: bold poster -->
+        <div class="hx4-s hx4-c" role="group" aria-roledescription="slide" aria-label="3 of 4">
+          <div><p class="hx4-big">Complex work,<br>made <em>calm.</em></p><p class="hx4-who">Usha Tapal · AI product designer</p><div class="hx4-k"><span>+40% satisfaction</span><span>−30% task time</span><span>+25% onboarding</span></div></div>
+          <div class="hx4-ph"><img src="images/work/nutrascan/home.jpg" alt="NutraScan app home screen"></div>
+        </div>
+        <!-- 4: intro card -->
+        <div class="hx4-s hx4-d" role="group" aria-roledescription="slide" aria-label="4 of 4">
+          <div class="hx4-card">
+            <img src="images/avatar.jpg" alt="Usha Tapal">
+            <div><p class="hx4-hi">Hi, I’m Usha</p><p class="hx4-sub">Architect turned product designer. I make chaotic things calm, and a little fun.</p></div>
+            <div class="hx4-row"><div><b>4+</b>years</div><div><b>+40%</b>RIU</div><div><b>−30%</b>Magik</div></div>
+            <div class="hx4-go"><a class="lt-btn" href="#work">See my work ↓</a><a class="hx4-ghost" href="#contact">Say hello</a></div>
+          </div>
+        </div>
+        <div class="hx4-nav">
+          <button type="button" class="hx4-dot is-on" aria-label="Show slide 1"><i></i></button><button type="button" class="hx4-dot" aria-label="Show slide 2"><i></i></button><button type="button" class="hx4-dot" aria-label="Show slide 3"><i></i></button><button type="button" class="hx4-dot" aria-label="Show slide 4"><i></i></button>
+          <button type="button" class="hx4-pause" aria-label="Pause">❚❚</button>
+        </div>
       </div>
-      <figure class="h5-vis">
-        <img src="images/work/riu-mockup.jpg" alt="RIU, an ESG reporting platform I designed, on a laptop" width="1600" height="1275">
-        <figcaption><span>Now showing</span> RIU, ESG Copilot</figcaption>
-      </figure>
     </section>
 
     <!-- WORK -->
@@ -232,5 +245,6 @@
   <script src="assets/js/v2-light.js"></script>
   <script src="assets/js/v2-creative.js"></script>
   <script src="assets/js/v5-build.js"></script>
+  <script src="assets/js/v5-hero4.js"></script>
 </body>
 </html>
