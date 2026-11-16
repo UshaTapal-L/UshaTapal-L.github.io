@@ -49,10 +49,6 @@
     <section class="lt-about" id="about" aria-labelledby="about-h">
       <h2 class="lt-label" id="about-h">About</h2>
       <p class="lt-big" data-reveal>I'm Usha. I studied architecture, so I still start every product with structure: who comes in, where they go next, and what they need to see on the way. Today I design AI tools for enterprise and mobile that people can check, question and trust.</p>
-      <figure class="lt-sheet">
-        <img src="images/work/arch/first-floor-plan.jpg" alt="My furniture layout for a first floor plan: three bedrooms, a multifunctional exercise area and a curved wall into the master bedroom" width="1600" height="1200" loading="lazy">
-        <figcaption>A first floor plan from my interior design portfolio. Scale 1:500.</figcaption>
-      </figure>
     </section>
 
     <!-- WORK -->
@@ -61,41 +57,63 @@
       <span class="lt-rule" aria-hidden="true"></span>
       <h2 class="lt-work__h" id="work-h"><em>W</em>ork</h2>
 
+      <div class="lt-plan">
+        <svg class="lt-plan__svg" viewBox="0 0 600 380" role="group" aria-label="My work drawn as a floor plan. Each room is a project.">
+          <a href="#p-riu" data-pv="riu"><rect class="rm" x="20" y="20" width="280" height="200"/><text x="160" y="126">RIU</text></a>
+          <a href="#p-smart" data-pv="smart"><rect class="rm" x="300" y="20" width="280" height="200"/><text x="440" y="126">Smart Dealer</text></a>
+          <a href="#p-zee" data-pv="zee"><rect class="rm" x="20" y="220" width="220" height="140"/><text x="130" y="296">zeeproc</text></a>
+          <a href="#p-nutra" data-pv="nutra"><rect class="rm" x="240" y="220" width="180" height="140"/><text x="330" y="296">NutraScan</text></a>
+          <a href="#p-enshrine" data-pv="enshrine"><rect class="rm" x="420" y="220" width="160" height="140"/><circle class="pool" cx="500" cy="262" r="22"/><text x="500" y="322">Enshrine</text></a>
+          <g class="walls" aria-hidden="true">
+            <rect class="out" x="20" y="20" width="560" height="340"/>
+            <path d="M300 20V150M300 190V220M20 220H120M160 220H460M500 220H580M240 220V300M240 340V360M420 220V250M420 290V360"/>
+            <g class="gap"><path d="M300 150V190M120 220H160M460 220H500M240 300V340M420 250V290M250 360H290"/></g>
+            <g class="door"><path d="M300 150A40 40 0 0 1 340 190"/><path d="M120 220A40 40 0 0 0 160 180"/><path d="M460 220A40 40 0 0 1 500 180"/><path d="M240 300A40 40 0 0 1 280 340"/><path d="M420 250A40 40 0 0 0 380 290"/><path d="M250 360A40 40 0 0 1 290 320"/></g>
+            <g class="north"><circle cx="556" cy="44" r="12"/><path d="M556 34L561 50L556 46L551 50Z"/></g>
+          </g>
+        </svg>
+        <aside class="lt-plan__pv" aria-hidden="true">
+          <span class="lt-img"><img src="images/work/riu-mockup.jpg" alt="" data-pv-img></span>
+          <p><b data-pv-t>RIU, ESG Copilot</b><span data-pv-m>Enterprise AI · Web app</span></p>
+          <p class="lt-plan__hint">Hover a room to look inside. Click to walk in.</p>
+        </aside>
+      </div>
+
       <ol class="lt-list">
-        <li class="lt-item">
-          <a href="work/riu.html" data-fx-door>
-            <span class="lt-img" style="--ar:1600/1275"><img src="images/work/riu-mockup.jpg" alt="RIU dashboard on a laptop, with the AI Copilot summary of the September close" width="1600" height="1275" loading="lazy"></span>
-            <h3>RIU, ESG Copilot</h3>
+        <li class="lt-item" id="p-riu">
+          <div class="lt-fig"><a class="lt-shot" href="work/riu.html" data-fx-door aria-label="RIU, ESG Copilot"><span class="lt-img" style="--ar:1600/1275"><img class="sk" src="images/work/sketch/riu.jpg" alt="" loading="lazy"><img class="fin" src="images/work/riu-mockup.jpg" alt="RIU dashboard on a laptop, with the AI Copilot summary of the September close" loading="lazy"></span></a>
+            <h3><a href="work/riu.html" data-fx-door>RIU, ESG Copilot</a></h3>
             <p>Enterprise AI · Web app · +40% satisfaction <span class="lt-lock">Locked</span></p>
-          </a>
-        </li>
-        <li class="lt-item">
-          <a href="work/smart-dealer.html" data-fx-door>
-            <span class="lt-img" style="--ar:1/1"><img src="images/work/smart-mockup.jpg" alt="Smart Dealer app screens for telecom retailers" width="1200" height="1200" loading="lazy"></span>
-            <h3>Smart Dealer</h3>
-            <p>Mobile AI · Android &amp; iOS app <span class="lt-lock">Locked</span></p>
-          </a>
-        </li>
-        <li class="lt-item">
-          <a href="work/nutrascan.html" data-fx-door>
-            <span class="lt-img" style="--ar:2400/1500"><img src="images/work/nutrascan/cover.jpg" alt="NutraScan app screens: mood check-in, fridge scan and meal plan" width="2400" height="1500" loading="lazy"></span>
-            <h3>NutraScan</h3>
-            <p>Mobile AI · Concept · Android &amp; iOS app</p>
-          </a>
-        </li>
-        <li class="lt-item">
-          <a href="work/zeeproc.html" data-fx-door>
-            <span class="lt-img" style="--ar:1000/1200"><img src="images/work/zeeproc-card.jpg" alt="zeeproc agent review dashboard on a laptop" width="1000" height="1200" loading="lazy"></span>
-            <h3>zeeproc</h3>
-            <p>Agentic AI · Customer success · +25% onboarding <span class="lt-lock">Locked</span></p>
-          </a>
-        </li>
-        <li class="lt-item lt-item--arch">
-          <div>
-            <span class="lt-img" style="--ar:1130/646"><img src="images/work/arch/enshrine.jpg" alt="Enshrine: a sunken reading space around a water body, with brick shelves and children studying" width="1130" height="646" loading="lazy"></span>
-            <h3>Enshrine</h3>
-            <p>Architecture thesis · A tiny library in Mattur, the Sanskrit village. Living with the community taught me user research.</p>
           </div>
+          <ul class="lt-notes" aria-label="Design notes"><li style="--y:22%;--d:0"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>AI drafts the answer. <br>A person signs off.</span></li><li style="--y:62%;--d:1"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Every number links back <br>to its evidence.</span></li></ul>
+        </li>
+        <li class="lt-item" id="p-smart">
+          <div class="lt-fig"><a class="lt-shot" href="work/smart-dealer.html" data-fx-door aria-label="Smart Dealer"><span class="lt-img" style="--ar:1/1"><img class="sk" src="images/work/sketch/smart.jpg" alt="" loading="lazy"><img class="fin" src="images/work/smart-mockup.jpg" alt="Smart Dealer app home screen for telecom retailers" loading="lazy"></span></a>
+            <h3><a href="work/smart-dealer.html" data-fx-door>Smart Dealer</a></h3>
+            <p>Mobile AI · Android &amp; iOS app <span class="lt-lock">Locked</span></p>
+          </div>
+          <ul class="lt-notes" aria-label="Design notes"><li style="--y:20%;--d:0"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Balance and target first: <br>what dealers check daily.</span></li><li style="--y:58%;--d:1"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Ask Smart: say it instead <br>of digging through menus.</span></li></ul>
+        </li>
+        <li class="lt-item" id="p-nutra">
+          <div class="lt-fig"><a class="lt-shot" href="work/nutrascan.html" data-fx-door aria-label="NutraScan"><span class="lt-img" style="--ar:2400/1500"><img class="sk" src="images/work/sketch/nutra.jpg" alt="" loading="lazy"><img class="fin" src="images/work/nutrascan/cover.jpg" alt="NutraScan app screens: mood check-in, fridge scan and meal plan" loading="lazy"></span></a>
+            <h3><a href="work/nutrascan.html" data-fx-door>NutraScan</a></h3>
+            <p>Mobile AI · Concept · Android &amp; iOS app</p>
+          </div>
+          <ul class="lt-notes" aria-label="Design notes"><li style="--y:18%;--d:0"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Start with mood,<br>not calories.</span></li><li style="--y:60%;--d:1"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Scan the fridge, cook <br>from what is already there.</span></li></ul>
+        </li>
+        <li class="lt-item" id="p-zee">
+          <div class="lt-fig"><a class="lt-shot" href="work/zeeproc.html" data-fx-door aria-label="zeeproc"><span class="lt-img" style="--ar:1000/1200"><img class="sk" src="images/work/sketch/zee.jpg" alt="" loading="lazy"><img class="fin" src="images/work/zeeproc-card.jpg" alt="zeeproc agent review dashboard on a laptop" loading="lazy"></span></a>
+            <h3><a href="work/zeeproc.html" data-fx-door>zeeproc</a></h3>
+            <p>Agentic AI · Customer success · +25% onboarding <span class="lt-lock">Locked</span></p>
+          </div>
+          <ul class="lt-notes" aria-label="Design notes"><li style="--y:24%;--d:0"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Agents do the follow-ups. <br>People review in one queue.</span></li><li style="--y:64%;--d:1"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Each agent action shows <br>why it was taken.</span></li></ul>
+        </li>
+        <li class="lt-item" id="p-enshrine">
+          <div class="lt-fig"><div class="lt-shot"><span class="lt-img" style="--ar:1130/646"><img class="sk" src="images/work/sketch/enshrine.jpg" alt="" loading="lazy"><img class="fin" src="images/work/arch/enshrine.jpg" alt="Enshrine: a sunken reading space around a water body, with brick shelves and children studying" loading="lazy"></span></div>
+            <h3>Enshrine</h3>
+            <p>Architecture thesis · A tiny library in Mattur, the Sanskrit village</p>
+          </div>
+          <ul class="lt-notes" aria-label="Design notes"><li style="--y:20%;--d:0"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Lived in the village <br>before drawing a line.</span></li><li style="--y:62%;--d:1"><svg viewBox="0 0 120 40" aria-hidden="true"><path class="a" d="M116 22 C 84 26, 52 4, 8 18"/><path class="h" d="M17 11 L7 18 L17 25"/></svg><span>Local brick, so the <br>community could build it.</span></li></ul>
         </li>
       </ol>
       <p class="lt-note">Locked case studies contain client work. <a href="mailto:usha.tapal@gmail.com?subject=Portfolio%20access">Ask me for access</a>.</p>

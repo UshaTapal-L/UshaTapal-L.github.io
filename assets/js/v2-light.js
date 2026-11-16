@@ -31,5 +31,34 @@
     });
   });
 
+
+  // Work: sketch-to-screen and redline notes play once each project is in view
+  var items = document.querySelectorAll('.lt-item');
+  if (reduce || !('IntersectionObserver' in window)) items.forEach(function (i) { i.classList.add('in'); });
+  else {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.35 });
+    items.forEach(function (i) { io.observe(i); });
+  }
+
+  // Work plan: hover a room to preview the project
+  var pv = document.querySelector('.lt-plan__pv');
+  if (pv) {
+    var img = pv.querySelector('[data-pv-img]'), t = pv.querySelector('[data-pv-t]'), m = pv.querySelector('[data-pv-m]'), cur = 'riu';
+    var rooms = document.querySelectorAll('.lt-plan__svg a');
+    function show(k, a) {
+      rooms.forEach(function (r) { r.classList.toggle('is-on', r === a); });
+      if (k === cur) return; cur = k;
+      var item = document.getElementById('p-' + k); if (!item) return;
+      var fin = item.querySelector('.fin');
+      img.classList.add('is-fade');
+      setTimeout(function () { img.src = fin.getAttribute('src'); t.textContent = item.querySelector('h3').textContent; m.textContent = item.querySelector('.lt-fig > p').firstChild.textContent.trim(); img.classList.remove('is-fade'); }, 180);
+    }
+    rooms.forEach(function (a) {
+      a.addEventListener('mouseenter', function () { show(a.dataset.pv, a); });
+      a.addEventListener('focus', function () { show(a.dataset.pv, a); });
+    });
+    if (rooms[0]) rooms[0].classList.add('is-on');
+  }
+
   var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 })();
