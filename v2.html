@@ -17,8 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="stylesheet" href="assets/css/hero-v2.css">
+  <link rel="stylesheet" href="assets/css/fun.css">
 </head>
-<body>
+<body class="fx-type" data-fx-trail data-fx-chain data-fx-doorway>
 <div class="sw">
   <a class="m-skip" href="#main">Skip to content</a>
   <p class="m-toast" role="status" aria-live="polite"></p>
@@ -49,8 +50,8 @@
         <p class="hx-lead">AI-native product designer<br class="hx-br"> who thinks like an <em class="m-ul">architect.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 50 4, 110 18, 197 8"/></svg></em></p>
         <p class="hx-sticker">Strong foundations. <span>Zero hallucinations.</span></p>
         <div class="hx-cta">
-          <a class="m-btn" href="#work">Explore work ↓</a>
-          <a class="hx-link" href="#contact">Say hello →</a>
+          <a class="m-btn" href="#work" data-fx-stamp="LET'S GO!"><svg class="fx-door" viewBox="0 0 24 24" aria-hidden="true"><path class="fx-door__wall" d="M1 19h4M19 19h4"/><path class="fx-door__arc" d="M19 19A14 14 0 0 0 5 5"/><line class="fx-door__leaf" x1="5" y1="19" x2="19" y2="19"/></svg> Explore work ↓</a>
+          <a class="hx-link" href="#contact"><svg class="fx-door" viewBox="0 0 24 24" aria-hidden="true"><path class="fx-door__wall" d="M1 19h4M19 19h4"/><path class="fx-door__arc" d="M19 19A14 14 0 0 0 5 5"/><line class="fx-door__leaf" x1="5" y1="19" x2="19" y2="19"/></svg> Say hello →</a>
         </div>
       </div>
       <figure class="bp-art" aria-label="The same layout as an architectural blueprint and as an app screen. Drag the handle to compare.">
@@ -132,6 +133,7 @@
         </div>
       </div>
 
+      <div class="fx-workline" data-fx-measure="#work-h" data-fx-label="4 projects" data-fx-people="walker,tsquare,dog,balloon"></div>
       <div class="bento">
         <a class="tile m-card m-card--blue m-card--cover s-6" data-cat="ai" href="work/riu.html">
           <span class="m-meta">01 / Enterprise AI &amp; ESG</span>
@@ -285,7 +287,7 @@
       <div class="m-journey">
         <span class="m-journey__bar" aria-hidden="true"><i></i></span>
         <h2 id="journey-h" class="m-meta">The journey so far</h2>
-        <ol>
+        <ol data-fx-roofs>
           <li><em>2025 → now</em><b>Product Designer</b><span>6D Technologies</span></li>
           <li><em>2024 — 25</em><b>Product Designer</b><span>RIU.ai · zeeproc</span></li>
           <li><em>2022 — 23</em><b>UX/UI Design</b><span>Supercode · FindPro.ai</span></li>
@@ -299,13 +301,14 @@
       <div class="m-wrap">
         <div class="m-contact__top">
           <h2 id="contact-h" data-words><a href="mailto:usha.tapal@gmail.com" aria-label="Let’s connect"><span class="m-word" aria-hidden="true">Let’s</span> <em class="m-word" style="--i:1" aria-hidden="true">connect.</em></a></h2>
-          <span class="m-mailrow"><a class="m-mail" href="mailto:usha.tapal@gmail.com">usha.tapal@gmail.com ↗</a><button type="button" class="m-copy" data-copy="usha.tapal@gmail.com">Copy</button></span>
+          <span class="m-mailrow"><a class="m-mail" href="mailto:usha.tapal@gmail.com">usha.tapal@gmail.com ↗</a><button type="button" class="m-copy" data-copy="usha.tapal@gmail.com" data-fx-stamp="COPIED!">Copy</button></span>
         </div>
+        <div class="fx-sunbox" data-fx-pergola></div>
         <div class="m-contact__row">
           <p class="m-serif">Spatial thinking. Digital clarity.</p>
           <p class="m-links"><a href="tel:+919980158546">+91 99801 58546</a><a href="https://www.linkedin.com/in/usha-tapal-0325b6144/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://www.behance.net/ushatapal" target="_blank" rel="noopener">Behance ↗</a><span>Bengaluru, India</span></p>
         </div>
-        <footer class="m-foot"><span>Usha Tapal / Product designer</span><span>Portfolio / <span id="year">2026</span></span></footer>
+        <footer class="m-foot"><span>Usha Tapal / Product designer</span><button type="button" data-fx-compass>BACK TO NORTH</button><span>Portfolio / <span id="year">2026</span></span></footer>
       </div>
     </section>
   </main>
@@ -314,5 +317,6 @@
   <script src="assets/js/agent.js"></script>
   <script src="assets/js/interactions.js"></script>
   <script src="assets/js/hero-v2.js"></script>
+  <script src="assets/js/fun.js"></script>
 </body>
 </html>
