@@ -41,3 +41,20 @@ body { background: var(--m-bg); }
 .sw .m-contact h2 { font-size: clamp(64px, 10vw, 136px); letter-spacing: -.02em; }
 .sw .hx-lead em { color: var(--m-coral); }
 .sw .m-logo b { font-size: 30px; }
+
+/* Plain labels: sentence case, normal spacing, no tiny tracked capitals */
+.sw .m-meta, .sw .m-logo span, .sw .m-hero__art figcaption, .sw .m-journey em, .sw .m-foot,
+.sw .bp-tag, .sw .bp-art figcaption, .sw .m-chip, .sw .b-filter button, .sw .hx-role {
+  font-family: var(--m-sans); text-transform: none; letter-spacing: 0;
+}
+.sw .m-meta, .sw .m-journey em, .sw .m-foot, .sw .bp-art figcaption, .sw .hx-role { font-size: 13px; font-weight: 500; }
+.sw .bp-tag { font-size: 12px; font-weight: 600; padding: 6px 12px; }
+.sw .m-foot a { color: inherit; text-decoration: none; }
+.sw .m-foot a:hover { color: var(--m-coral); }
+
+/* Hero: my real floor plan against a real product screen */
+.sw .bp { background: #fff; }
+.sw .bp-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.sw .bp-img--plan { object-position: center; }
+.sw .bp-img--ui { clip-path: inset(0 0 0 var(--split)); object-position: left center; }
+.sw .bp-tag--r { background: var(--m-ink); }
