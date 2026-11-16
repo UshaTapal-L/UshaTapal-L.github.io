@@ -1,0 +1,34 @@
+/* Version 5: shorter page. Tighter section spacing, a sideways playground strip,
+   résumé moved into the footer. */
+.lt-desk { min-height: min(88vh, 820px); }
+.lt-work { padding-top: 40px; padding-bottom: 80px; }
+.lt-rule { display: none; }
+.lt .lt-work__h { font-size: clamp(80px, 13vw, 190px); margin: 28px 0 56px; }
+.bx { grid-template-rows: 360px 360px auto; gap: 20px; }
+.bx--magik, .bx--ds { min-height: 340px; }
+.lt .lt-note { margin-top: 36px; }
+.mq { margin-top: 0; padding: 18px 0; }
+.pr, .jr, .pg { padding-top: clamp(70px, 8vw, 110px); padding-bottom: 0; }
+.pr-head, .jr-head, .pg-head { margin-bottom: clamp(32px, 4vw, 56px); }
+.cp, .pr-ai { margin-top: clamp(44px, 5vw, 70px); }
+.cp-box { max-height: 460px; }
+.jr-cover { width: min(360px, 100%); }
+.jr-pg { min-height: 520px; }
+/* playground as a sideways strip */
+.pg-strip { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 18px 4px 28px; columns: auto; scrollbar-width: thin; }
+.pg-strip .pg-i { flex: none; width: auto; scroll-snap-align: start; margin: 0; }
+.pg-strip .pg-i img, .pg-strip .pg-i video { height: 300px; width: auto; max-width: none; }
+.pg-strip .pg-i.is-out { display: none; }
+.pg-strip:focus-visible { outline: 2px solid var(--rose); outline-offset: 4px; }
+.lt-foot__in { padding-top: clamp(60px, 7vw, 100px); }
+.lt-cvbtn { text-decoration: none; border-bottom: 0 !important; padding: 6px 14px !important; }
+@media (max-width: 1100px) { .bx { grid-template-rows: none; grid-auto-rows: 340px; } }
+@media (max-width: 700px) {
+  .bx { grid-auto-rows: auto; }
+  .bx-phone { height: 340px; }
+  .bx-img { aspect-ratio: 16 / 10; }
+  .mg-card--b, .ds-type { display: none; }
+  .pg-strip .pg-i img, .pg-strip .pg-i video { height: 230px; }
+  .jr-pg { min-height: 0; }
+  .pr-steps { gap: 22px; }
+}
