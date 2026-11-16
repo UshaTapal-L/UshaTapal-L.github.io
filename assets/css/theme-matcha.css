@@ -1,0 +1,43 @@
+/* Version 2 theme: Matcha & rose palette, Instrument Serif headings.
+   Loaded after site.css, hero-v2.css and fun.css; only re-points tokens and heading type. */
+:root {
+  --m-bg: #fbfcf8;
+  --m-ink: #2e3b2f;
+  --m-mute: #5f6b58;
+  --m-line: #dfe6d6;
+  --m-plum: #2e3b2f;      /* heading colour: matcha ink */
+  --m-coral: #b8506b;     /* accent: deep rose, readable on the light ground */
+  --m-rose: #e4889c;      /* soft rose for fills */
+  --m-blue: #e6eee4;
+  --m-mint: #eef3e6;
+  --m-yellow: #dce8c9;    /* pistachio */
+  --m-peach: #f7e1e6;     /* rose tint */
+  --m-lilac: #f3e6ea;
+  --m-sand: #eef0e8;
+  --g-sky: #d6e4cf; --g-mustard: #b9d3a1; --g-mint: #dce8c9; --g-peach: #f7e1e6; --g-lilac: #f3e6ea; --g-skytint: #f1f5ea;
+  --fx-ink: #2e3b2f; --fx-paper: #fbfcf8; --fx-stone: #e7ecdd; --fx-coral: #b8506b; --fx-terra: #7e9b6b;
+  --fx-sage: #b9d3a1; --fx-pencil: #5f6b58; --fx-sky: #f1f5ea;
+}
+body { background: var(--m-bg); }
+
+/* Headings: Instrument Serif regular, italic for the accent words */
+.sw .hx-name,
+.sw .m-sec__head h2,
+.sw .m-card h3,
+.sw .m-contact h2,
+.sw .m-logo b {
+  font-family: var(--m-serif);
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+.sw .m-sec__head h2 { font-size: clamp(38px, 4.2vw, 54px); line-height: 1; }
+.sw .m-sec__head h2 .m-word:last-child { font-style: italic; color: var(--m-coral); }
+.sw .m-card h3 { font-size: 30px; line-height: 1.02; }
+.sw .m-card--mint h3 { font-size: 40px; }
+.sw .m-card--ink h3 { font-size: clamp(38px, 4vw, 54px); }
+.sw .m-card h3 em { font-style: italic; }
+.sw .hx-name { font-size: 32px; }
+.sw .hx-name i { font-style: italic; }
+.sw .m-contact h2 { font-size: clamp(64px, 10vw, 136px); letter-spacing: -.02em; }
+.sw .hx-lead em { color: var(--m-coral); }
+.sw .m-logo b { font-size: 30px; }
