@@ -1,0 +1,56 @@
+/* Version 5: blueprint to building.
+   Each section has a blueprint layer on top (a backdrop filter that turns the real section
+   into a drafting sheet). As you scroll, the layer retreats upward: the building rises. */
+:root { --bp: #1f3d63; --bp-line: rgba(220,235,255,.22); --bp-ink: #e8f1ff; }
+.bp-site [data-sheet] { position: relative; }
+.bp-layer { position: absolute; top: 0; left: calc(50% - 50vw); width: 100vw; height: calc(var(--left, 1) * 100%); z-index: 20; pointer-events: none; overflow: hidden;
+  -webkit-backdrop-filter: grayscale(1) invert(1) sepia(1) saturate(3.2) hue-rotate(178deg) brightness(.92) contrast(1.05);
+  backdrop-filter: grayscale(1) invert(1) sepia(1) saturate(3.2) hue-rotate(178deg) brightness(.92) contrast(1.05);
+  background:
+    linear-gradient(var(--bp-line) 1px, transparent 1px) 0 0 / 120px 120px,
+    linear-gradient(90deg, var(--bp-line) 1px, transparent 1px) 0 0 / 120px 120px,
+    linear-gradient(rgba(220,235,255,.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(220,235,255,.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    rgba(31,61,99,.28); }
+.bp-layer.is-gone { display: none; }
+/* the construction line riding the bottom edge */
+.bp-edge { position: absolute; left: 0; right: 0; bottom: 0; height: 0; border-bottom: 2px dashed #f2c46d; }
+.bp-edge::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 18px; background: repeating-linear-gradient(-45deg, #f2c46d 0 10px, #2b2a28 10px 20px); opacity: .9; }
+.bp-tag { position: absolute; left: max(var(--gut), calc(50vw - 600px)); top: 22px; display: flex; gap: 12px; align-items: center; font: 400 15px/1 var(--fx-draft); letter-spacing: .12em; color: var(--bp-ink); }
+.bp-tag b { padding: 6px 10px; border: 1.5px solid var(--bp-ink); font-weight: 400; }
+.bp-pct { position: absolute; right: max(var(--gut), calc(50vw - 600px)); bottom: 26px; font: 400 15px/1 var(--fx-draft); letter-spacing: .1em; color: #f2c46d; }
+/* hero title block, like the corner of a drawing sheet */
+.bp-title { position: absolute; right: max(var(--gut), calc(50vw - 640px)); bottom: 90px; display: grid; grid-template-columns: auto auto; border: 1.5px solid var(--bp-ink); color: var(--bp-ink); font: 400 13px/1 var(--fx-draft); letter-spacing: .1em; }
+.bp-title span { padding: 9px 12px; border-bottom: 1px solid rgba(232,241,255,.5); }
+.bp-title span:nth-child(odd) { border-right: 1px solid rgba(232,241,255,.5); opacity: .7; }
+.bp-title span:nth-last-child(-n+2) { border-bottom: 0; }
+.bp-hint { position: absolute; left: 50%; bottom: 110px; transform: translateX(-50%); font: 400 18px/1 var(--fx-draft); letter-spacing: .14em; color: #f2c46d; white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) { .bp-hint { animation: bp-nudge 1.6s ease-in-out infinite; } }
+@keyframes bp-nudge { 50% { transform: translate(-50%, 6px); } }
+/* dimension line around the hero name */
+.bp-dim { position: absolute; left: 50%; top: 120px; width: min(560px, 80vw); transform: translateX(-50%); color: var(--bp-ink); font: 400 13px/1 var(--fx-draft); letter-spacing: .12em; text-align: center; }
+.bp-dim::before { content: ""; display: block; height: 10px; margin-bottom: 8px; border-left: 1.5px solid; border-right: 1.5px solid; background: linear-gradient(var(--bp-ink), var(--bp-ink)) center / 100% 1.5px no-repeat; }
+/* switch */
+.bp-switch { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: max(18px, env(safe-area-inset-bottom, 0px)); z-index: 60; display: inline-flex; align-items: center; gap: 10px;
+  appearance: none; border: 0; cursor: pointer; padding: 10px 16px 10px 12px; border-radius: 99px; background: var(--paper); color: var(--ink); font: 500 14px var(--sans);
+  box-shadow: 0 0 0 1px var(--line), 0 12px 26px -14px rgba(46,59,47,.5); }
+.bp-switch__dot { width: 30px; height: 18px; border-radius: 99px; background: var(--mist); position: relative; transition: background .2s; }
+.bp-switch__dot::after { content: ""; position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: transform .2s; }
+.bp-switch[aria-pressed="true"] .bp-switch__dot { background: var(--bp); }
+.bp-switch[aria-pressed="true"] .bp-switch__dot::after { transform: translateX(12px); }
+.bp-site.is-blueprint .bp-layer { --left: 1 !important; display: block !important; transition: height .6s cubic-bezier(.65,0,.35,1); }
+/* built stamp in the footer */
+.bp-stamp { position: absolute; right: max(var(--gut), 4vw); top: 60px; padding: 12px 18px; border: 3px double #e4889c; border-radius: 10px; color: #e4889c; transform: rotate(-10deg) scale(1.6); opacity: 0;
+  font: 400 30px/1 var(--fx-draft); letter-spacing: .12em; text-align: center; transition: transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; }
+.bp-stamp small { display: block; margin-top: 6px; font-size: 13px; letter-spacing: .16em; }
+.bp-site.is-built .bp-stamp { opacity: 1; transform: rotate(-10deg) scale(1); }
+.lt-foot { position: relative; }
+@media (max-width: 700px) {
+  .bp-title { display: none; }
+  .bp-stamp { top: 24px; font-size: 22px; }
+  .bp-tag { font-size: 13px; }
+}
+/* hero notes fade out as soon as building starts */
+.bp-hint, .bp-title, .bp-dim { opacity: clamp(0, calc((var(--left, 1) - .9) * 10), 1); transition: opacity .2s; }
+.bp-title { bottom: 28px; right: max(150px, calc(50vw - 560px)); }
+@media (max-width: 700px) { .bp-hint { bottom: 40px; font-size: 15px; } }
