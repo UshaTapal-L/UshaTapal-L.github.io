@@ -61,34 +61,76 @@
   }
 
 
-  // Hero desk: drag objects; scatter or tidy them
+  // Hero desk: messy on load, tidies itself as you scroll (chaos to calm).
+  // Drag anything; a click (no drag) triggers that object's surprise.
   var desk = document.querySelector('[data-desk]');
   if (desk) {
-    var obs = desk.querySelectorAll('.ob');
+    var obs = Array.prototype.slice.call(desk.querySelectorAll('.ob'));
+    var hero = desk.closest('.lt-desk'), hint = document.querySelector('[data-hint]');
+    var mode = null; // null = follow scroll, 1 = forced tidy, 0 = forced mess
     obs.forEach(function (o) {
-      var sx, sy, ox, oy, id = null;
+      o._x = parseFloat(o.style.getPropertyValue('--x')); o._y = parseFloat(o.style.getPropertyValue('--y'));
+      o._r = parseFloat(o.style.getPropertyValue('--r')); o._cx = +o.dataset.cx; o._cy = +o.dataset.cy;
+    });
+    function place(p) {
+      var e = p * p * (3 - 2 * p);
+      obs.forEach(function (o) {
+        o.style.setProperty('--x', (o._x + (o._cx - o._x) * e) + '%');
+        o.style.setProperty('--y', (o._y + (o._cy - o._y) * e) + '%');
+        o.style.setProperty('--r', (o._r * (1 - e)) + 'deg');
+      });
+      if (hint) hint.textContent = e > .98 ? 'All tidy · click things' : (e < .02 ? 'Scroll to tidy up · click things' : 'Tidying up…');
+    }
+    var lastP = -1;
+    function onScroll() {
+      if (mode !== null) return;
+      var p = reduce ? 1 : Math.max(0, Math.min(1, scrollY / (hero.offsetHeight * 0.45)));
+      if (Math.abs(p - lastP) < .002) return; lastP = p; place(p);
+    }
+    desk.classList.add('is-live');
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // surprises
+    function say(o, i) { var c = o.querySelector('[data-say]'); if (!c) return; var l = c.dataset.say.split('|'); c.textContent = l[i % l.length]; }
+    var acts = {
+      plan: function (o) { o._n = (o._n || 0) + 1; o.classList.toggle('is-alt', o._n % 2 === 1); say(o, o._n); },
+      swap: function (o) { o._n = (o._n || 0) + 1; o.classList.toggle('is-alt', o._n % 2 === 1); say(o, o._n); },
+      flip: function (o) { o.classList.toggle('is-flipped'); },
+      cup: function (o) { o.classList.remove('is-steam'); void o.offsetWidth; o.classList.add('is-steam'); say(o, 1); clearTimeout(o._t); o._t = setTimeout(function () { say(o, 0); }, 3200); },
+      cookie: function (o) { o._n = ((o._n || 0) + 1) % 4; o.dataset.bites = o._n; say(o, o._n); },
+      plant: function (o) { o._n = ((o._n || 0) + 1) % 4; o.dataset.leaves = o._n; say(o, o._n); }
+    };
+    obs.forEach(function (o) {
+      var sx, sy, ox, oy, id = null, moved = false;
+      o.setAttribute('tabindex', '0'); o.setAttribute('role', 'button');
       o.addEventListener('pointerdown', function (e) {
-        id = e.pointerId; o.setPointerCapture(id); o.classList.add('is-drag');
+        id = e.pointerId; o.setPointerCapture(id); moved = false;
         sx = e.clientX; sy = e.clientY; ox = parseFloat(o.style.getPropertyValue('--dx')) || 0; oy = parseFloat(o.style.getPropertyValue('--dy')) || 0;
       });
       o.addEventListener('pointermove', function (e) {
         if (id !== e.pointerId) return;
-        o.style.setProperty('--dx', (ox + e.clientX - sx) + 'px'); o.style.setProperty('--dy', (oy + e.clientY - sy) + 'px');
+        var dx = e.clientX - sx, dy = e.clientY - sy;
+        if (!moved && Math.abs(dx) + Math.abs(dy) > 5) { moved = true; o.classList.add('is-drag'); }
+        if (moved) { o.style.setProperty('--dx', (ox + dx) + 'px'); o.style.setProperty('--dy', (oy + dy) + 'px'); }
       });
-      function end(e) { if (id !== e.pointerId) return; id = null; o.classList.remove('is-drag'); }
+      function end(e) {
+        if (id !== e.pointerId) return; id = null; o.classList.remove('is-drag');
+        if (!moved && e.type === 'pointerup' && acts[o.dataset.o]) acts[o.dataset.o](o);
+      }
       o.addEventListener('pointerup', end); o.addEventListener('pointercancel', end);
+      o.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && acts[o.dataset.o]) { e.preventDefault(); acts[o.dataset.o](o); } });
     });
     var sc = document.querySelector('[data-scatter]'), td = document.querySelector('[data-tidy]');
     if (sc) sc.addEventListener('click', function () {
-      obs.forEach(function (o) {
-        o.style.setProperty('--dx', Math.round(Math.random() * 120 - 60) + 'px'); o.style.setProperty('--dy', Math.round(Math.random() * 90 - 45) + 'px');
-        o.style.setProperty('--r', Math.round(Math.random() * 30 - 15) + 'deg');
-      });
+      mode = 0;
+      obs.forEach(function (o) { o.style.setProperty('--dx', Math.round(Math.random() * 120 - 60) + 'px'); o.style.setProperty('--dy', Math.round(Math.random() * 80 - 40) + 'px'); });
+      place(0); if (hint) hint.textContent = 'A little chaos is good';
       sc.classList.add('is-on'); td.classList.remove('is-on');
     });
     if (td) td.addEventListener('click', function () {
-      obs.forEach(function (o) { o.style.setProperty('--dx', '0px'); o.style.setProperty('--dy', '0px'); o.style.setProperty('--r', '0deg'); });
-      td.classList.add('is-on'); sc.classList.remove('is-on');
+      mode = 1;
+      obs.forEach(function (o) { o.style.setProperty('--dx', '0px'); o.style.setProperty('--dy', '0px'); });
+      place(1); td.classList.add('is-on'); sc.classList.remove('is-on');
     });
   }
 
