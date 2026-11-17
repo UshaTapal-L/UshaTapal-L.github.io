@@ -1,0 +1,12 @@
+/* Version 12: one drafting line draws itself down the page as you scroll.
+   It turns into a floor plan, a user flow and a rising chart along the way. */
+.line-svg { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; z-index: 40; overflow: visible; }
+.line-svg .ln { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.line-svg .tip { fill: var(--accent); }
+.line-svg .tip-halo { fill: color-mix(in srgb, var(--accent) 22%, transparent); }
+.line-svg .lbl { font: 500 12px var(--font); fill: var(--mute); letter-spacing: .02em; opacity: 0; transition: opacity .6s; }
+.line-svg .lbl.on { opacity: 1; }
+body { position: relative; }
+@media (prefers-reduced-motion: no-preference) { .line-svg .tip-halo { animation: halo 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; } }
+@keyframes halo { 50% { transform: scale(1.8); opacity: .3; } }
+.reel-pin { background: var(--bg); z-index: 45; }
