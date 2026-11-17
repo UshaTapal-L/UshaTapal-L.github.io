@@ -180,3 +180,10 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var
 }
 .hi { overflow-x: clip; } body { overflow-x: clip; }
 .p2 img { height: auto; aspect-ratio: 16 / 10; }
+/* less "AI": no sparkle widget, a human comment instead */
+.fr-ai small { color: var(--mute); font-weight: 500; }
+.fr-ai .who { display: flex; }
+.fr-ai .who i { width: 3.4cqw; height: 3.4cqw; border-radius: 50%; display: grid; place-items: center; font: 600 1.5cqw/1 var(--sans); font-style: normal; color: #fff; background: var(--rose); box-shadow: 0 0 0 .4cqw var(--mist); }
+.fr-ai .who i + i { background: var(--ink); margin-left: -1cqw; }
+.fr-ai em { font: 500 1.6cqw/1 var(--sans); color: var(--ink); text-decoration: underline; text-underline-offset: .4cqw; }
+.sec-h, .card h2 { letter-spacing: -.04em; }
