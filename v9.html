@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.documentElement.classList.replace("no-js","js");try{var t=localStorage.getItem("ushaos-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Usha OS</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Usha Tapal's portfolio as a little desktop: open folders, drag windows, switch day and night.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/v9.css">
+</head>
+<body>
+  <header class="bar">
+    <span class="bar-l"><b class="mark" aria-hidden="true">u</b><b>Usha OS</b><button type="button" data-open="about">About</button><button type="button" data-open="work">Work</button><button type="button" data-open="decisions">Decisions</button><button type="button" data-open="mail">Contact</button></span>
+    <span class="bar-r">
+      <span class="batt" title="Coffee level">☕ 82%</span>
+      <button type="button" class="theme" data-theme-toggle aria-label="Switch to dark mode"><span class="sun" aria-hidden="true">☀</span><span class="moon" aria-hidden="true">☾</span></button>
+      <span class="clock" data-clock>09:41</span>
+    </span>
+  </header>
+
+  <main class="desk" id="main" data-desk>
+    <p class="wall" aria-hidden="true">usha<br>tapal</p>
+
+    <!-- desktop icons -->
+    <div class="icons" data-icons>
+      <button type="button" class="ic" data-open="work" style="--x:8%;--y:14%;--r:-8deg"><span class="ic-g folder"><i></i></span><span>Work</span></button>
+      <button type="button" class="ic" data-open="about" style="--x:24%;--y:58%;--r:6deg"><span class="ic-g note"><i>Hi!</i></span><span>About me.txt</span></button>
+      <button type="button" class="ic" data-open="recipe" style="--x:70%;--y:12%;--r:10deg"><span class="ic-g card"><i>how</i></span><span>How I work</span></button>
+      <button type="button" class="ic" data-open="photos" style="--x:82%;--y:48%;--r:-5deg"><span class="ic-g photo"><img src="images/work/arch/kottayam.jpg" alt=""></span><span>Playground</span></button>
+      <button type="button" class="ic" data-open="mail" style="--x:52%;--y:70%;--r:-12deg"><span class="ic-g mail"><i></i></span><span>Say hello</span></button>
+      <a class="ic" href="resume/Usha_Tapal_Resume.pdf" download style="--x:12%;--y:76%;--r:4deg"><span class="ic-g pdf"><i>PDF</i></span><span>Résumé.pdf</span></a>
+      <button type="button" class="ic" data-open="decisions" style="--x:40%;--y:40%;--r:-3deg"><span class="ic-g log"><i>log</i></span><span>Decisions.log</span></button>
+      <button type="button" class="ic" data-open="lead" style="--x:64%;--y:52%;--r:7deg"><span class="ic-g note lead"><i>★</i></span><span>How I lead</span></button>
+      <button type="button" class="ic" data-open="trash" style="--x:88%;--y:78%;--r:3deg"><span class="ic-g trash"><i></i></span><span>Trash</span></button>
+    </div>
+
+    <!-- sticky -->
+    <p class="sticky" aria-hidden="true">messy desk?<br>I can fix that. <b>Tidy up</b> ↓</p>
+
+    <!-- WINDOWS -->
+    <section class="win" data-win="about" aria-label="About me" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>About me.txt</b></div>
+      <div class="wc about">
+        <img src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165">
+        <div>
+          <h1>Hi, I’m Usha.</h1>
+          <p>Product designer at 6D Technologies, Bengaluru. I own complex enterprise problems end to end: from research and strategy to the decisions that ship.</p>
+          <p>Trained as an architect, so I start with structure. Away from the screen, I bake.</p>
+          <div class="facts"><span><b>+40%</b> satisfaction</span><span><b>−30%</b> task time</span><span><b>+25%</b> onboarding</span></div>
+          <div class="btns"><button type="button" class="b1" data-open="work">See the work</button><button type="button" class="b2" data-open="decisions">Decisions I made</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="win wide" data-win="work" aria-label="Work folder" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>Work · 4 items</b></div>
+      <div class="wc files">
+        <button type="button" class="file" data-project="riu"><img src="images/work/clean/riu.jpg" alt=""><span>RIU.case</span></button>
+        <button type="button" class="file" data-project="smart"><img src="images/work/clean/smart.jpg" alt=""><span>Smart Dealer.case</span></button>
+        <button type="button" class="file" data-project="zee"><img src="images/work/zeeproc-wide.jpg" alt=""><span>zeeproc.case</span></button>
+        <button type="button" class="file" data-project="nutra"><img src="images/work/nutrascan/home.jpg" alt=""><span>NutraScan.case</span></button>
+        <p class="foot">Three of these are client work; <a href="mailto:usha.tapal@gmail.com?subject=Portfolio%20access">ask me for access</a>.</p>
+      </div>
+    </section>
+
+    <section class="win wide" data-win="preview" aria-label="Project preview" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b data-pv-name>Preview</b></div>
+      <div class="wc pv">
+        <img data-pv-img src="images/work/clean/riu.jpg" alt="">
+        <div class="pv-t">
+          <h2 data-pv-title>RIU</h2>
+          <dl class="pv-dl"><dt>My role</dt><dd data-pv-role></dd><dt>Problem</dt><dd data-pv-mess></dd><dt>Key decision</dt><dd data-pv-calm></dd></dl>
+          <p class="pv-res" data-pv-res></p>
+          <a class="b1" data-pv-link href="work/riu.html">Open the case study →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" data-win="recipe" aria-label="How I work" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>How I work</b></div>
+      <div class="wc recipe">
+        <h2>From problem to shipped</h2>
+        <ol>
+          <li><b>Frame the problem.</b> Stakeholder interviews and field visits until the real job is clear.</li>
+          <li><b>Let data argue.</b> Usage data and heuristic reviews over opinions.</li>
+          <li><b>Map every journey.</b> Happy paths, edge cases and hand-offs.</li>
+          <li><b>Decide, and write down why.</b> One clear direction, with the trade-off named.</li>
+          <li><b>Ship and measure.</b> Usability tests, then the metric that matters.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="win wide" data-win="photos" aria-label="Playground photos" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>Playground · things I make for fun</b></div>
+      <div class="wc photos">
+        <figure class="vid"><video src="media/verity-film.mp4" poster="media/verity-film.jpg" muted loop playsinline controls preload="none"></video><figcaption>Verity, a product film</figcaption></figure>
+        <figure><img src="images/work/arch/moodboard.jpg" alt="A Scandinavian living room moodboard" loading="lazy"><figcaption>a calm room</figcaption></figure>
+        <figure><img src="images/work/arch/first-floor-plan.jpg" alt="A floor plan I drew" loading="lazy"><figcaption>a plan I drew</figcaption></figure>
+        <figure><img src="images/work/arch/kottayam-axo.jpg" alt="Kottayam site from above" loading="lazy"><figcaption>Kottayam, from above</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="win" data-win="mail" aria-label="Write to Usha" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>New message</b></div>
+      <div class="wc mail">
+        <p><span>To:</span> <a href="mailto:usha.tapal@gmail.com">usha.tapal@gmail.com</a></p>
+        <p><span>Subject:</span> I have a messy product</p>
+        <p class="body hand">Hi Usha, we have a lot of chaos and would love some calm…</p>
+        <div class="btns"><button type="button" class="b1" data-copy="usha.tapal@gmail.com">Copy address</button><a class="b2" href="https://www.linkedin.com/in/usha-tapal-0325b6144/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="b2" href="https://www.behance.net/ushatapal" target="_blank" rel="noopener">Behance ↗</a></div>
+      </div>
+    </section>
+
+    <section class="win wide" data-win="decisions" aria-label="Decisions log" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>Decisions.log</b></div>
+      <div class="wc dec">
+        <p class="dec-intro">The calls I owned, what I traded off, and what happened.</p>
+        <ol class="dlog">
+          <li><span class="dl-p">RIU · 2024</span><b>Rebuilt navigation from usage data, not from the feature list.</b><span class="dl-t">Trade-off: some stakeholder-favourite pages moved down a level.</span><em>+40% user satisfaction</em></li>
+          <li><span class="dl-p">RIU field app</span><b>Cut the site-inspection flow to what works with gloves on, outdoors.</b><span class="dl-t">Trade-off: rare fields moved to a later sync step.</span><em>35% fewer steps</em></li>
+          <li><span class="dl-p">Magik CVM · 6D</span><b>Made the recommendation the main screen, and charts the supporting detail.</b><span class="dl-t">Trade-off: less room for dashboards some power users liked.</span><em>−30% task time</em></li>
+          <li><span class="dl-p">Magik agents · 6D</span><b>Put visible guardrails on AI agents so non-technical users could build and audit campaigns.</b><span class="dl-t">Trade-off: fewer free-form options at launch.</span><em>campaigns built 30% faster</em></li>
+          <li><span class="dl-p">zeeproc · 2025</span><b>Replaced form-based onboarding with a short conversational flow.</b><span class="dl-t">Trade-off: less data captured on day one.</span><em>+25% onboarding completion</em></li>
+          <li><span class="dl-p">6D design system</span><b>Built one tokenised design system before scaling new features.</b><span class="dl-t">Trade-off: slower first month, faster every month after.</span><em>smoother developer handoff</em></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="win" data-win="lead" aria-label="How I lead" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>How I lead</b></div>
+      <div class="wc lead-w">
+        <h2>Ownership, not hand-offs</h2>
+        <ul>
+          <li><b>I own the problem, not just the screens.</b> I sit with product managers, engineers and data scientists from framing to launch, and review built screens until they match.</li>
+          <li><b>I set the bar for quality.</b> I created usability-testing routines at zeeproc and run the design system at 6D.</li>
+          <li><b>I grow designers.</b> I mentor juniors on layout, components and visual consistency.</li>
+          <li><b>I make the call.</b> When data and opinions disagree, I decide, write down why, and measure it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="win" data-win="trash" aria-label="Trash" hidden>
+      <div class="tb"><span class="dots"><button type="button" class="x" aria-label="Close">×</button><i></i><i></i></span><b>Trash · 3 items</b></div>
+      <div class="wc trash">
+        <ul><li>47-open-tabs.zip</li><li>final_FINAL_v3.fig</li><li>who-approved-this.xlsx</li></ul>
+        <button type="button" class="b1" data-empty>Empty the chaos</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="dock" aria-label="Dock">
+    <button type="button" data-open="about" aria-label="About me"><span class="ic-g note"><i>Hi!</i></span></button>
+    <button type="button" data-open="work" aria-label="Work"><span class="ic-g folder"><i></i></span></button>
+    <button type="button" data-open="decisions" aria-label="Decisions log"><span class="ic-g log"><i>log</i></span></button>
+    <button type="button" data-open="recipe" aria-label="Process"><span class="ic-g card"><i>how</i></span></button>
+    <button type="button" data-open="photos" aria-label="Playground"><span class="ic-g photo"><img src="images/work/arch/kottayam.jpg" alt=""></span></button>
+    <button type="button" data-open="mail" aria-label="Say hello"><span class="ic-g mail"><i></i></span></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" class="tidy" data-tidy>Tidy up</button>
+  </nav>
+  <p class="toast" role="status" data-toast hidden></p>
+  <script src="assets/js/v9.js"></script>
+</body>
+</html>
