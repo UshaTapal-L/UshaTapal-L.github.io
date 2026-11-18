@@ -1,0 +1,82 @@
+/* Version 15: three home hero explorations. Inspired by a morphing rim-lit
+   ring behind a bold headline, on a ribbed-glass background. Matcha and rose. */
+@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+:root {
+  --bg: #f7f4ec; --paper: #fffdf8; --ink: #2e3b2f; --mute: #5f6b58; --line: #e2dccd;
+  --rose: #c2405f; --rose-2: #e46a85; --matcha: #6f9a5d; --matcha-2: #a9c98f;
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; --serif: "Instrument Serif", Georgia, serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.5 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, p, ul { margin: 0; }
+
+.jump { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(255,253,248,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--line); }
+.jump a { padding: 7px 12px; border-radius: 999px; font-size: 13px; text-decoration: none; color: var(--mute); }
+.jump a:hover { background: var(--ink); color: var(--paper); }
+
+/* shared hero */
+.hero { position: relative; min-height: 100svh; overflow: hidden; display: grid; place-items: center; padding: 120px 16px 90px;
+  background: repeating-linear-gradient(90deg, #faf8f2 0 16px, #f0ece2 24px, #faf8f2 34px); }
+.pill { position: absolute; top: 22px; left: 50%; translate: -50% 0; z-index: 5; display: flex; align-items: center; gap: 14px; padding: 6px 6px 6px 20px; border-radius: 999px; background: var(--paper); box-shadow: 0 10px 30px -12px rgba(46,59,47,.25); font-weight: 600; font-size: 15px; white-space: nowrap; }
+.pill a { color: var(--ink); text-decoration: none; }
+.pill a.dark { background: var(--ink); color: var(--paper); padding: 8px 16px; border-radius: 999px; }
+.pill i { width: 5px; height: 5px; background: var(--ink); transform: rotate(45deg); border-radius: 1px; opacity: .7; }
+.copy { position: relative; z-index: 3; max-width: 1080px; width: 100%; padding: 0 clamp(4px, 3vw, 40px); }
+.who { font-size: 15px; font-weight: 500; color: var(--mute); margin-bottom: 18px; }
+h1 { font: 600 clamp(40px, 6.4vw, 92px)/1.02 var(--sans); letter-spacing: -.04em; text-wrap: balance; }
+h1 em { font: italic 400 1.08em/1 var(--serif); letter-spacing: -.01em; color: var(--rose); }
+.hl { color: var(--rose); }
+.hl-m { color: var(--matcha); }
+.lede { margin-top: 18px; font-size: clamp(18px, 1.6vw, 21px); color: var(--mute); }
+.chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.chips li { padding: 8px 16px; border: 1px solid #cfc8b6; border-radius: 999px; background: rgba(255,253,248,.7); font-size: 14px; font-weight: 500; }
+.tag { position: absolute; left: 16px; bottom: 18px; z-index: 5; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.stage { position: absolute; inset: 0; pointer-events: none; perspective: 1200px; }
+
+/* the ring: conic colour, masked to a rim that fades inward, morphing outline */
+.ring { position: absolute; left: 50%; top: 56%; width: min(78vw, 980px); aspect-ratio: 1.55; translate: -50% -50%;
+  background: conic-gradient(from var(--a), var(--c) 0deg, var(--c2) 50deg, transparent 120deg, transparent 170deg, var(--c2) 230deg, var(--c) 280deg, transparent 340deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent 52%, rgba(0,0,0,.35) 78%, #000 100%); mask: radial-gradient(farthest-side, transparent 52%, rgba(0,0,0,.35) 78%, #000 100%);
+  border-radius: 50%; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.r-rose { --c: var(--rose); --c2: var(--rose-2); }
+.r-matcha { --c: var(--matcha); --c2: var(--matcha-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .ring { animation: spin 10s linear infinite, morph 14s ease-in-out infinite alternate; }
+}
+@keyframes spin { to { --a: 360deg; } }
+@keyframes morph {
+  0% { border-radius: 50%; scale: 1 .78; }
+  30% { border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; scale: .92 1; }
+  60% { border-radius: 44% 56% 40% 60% / 60% 44% 56% 40%; scale: 1.04 .66; }
+  100% { border-radius: 52% 48% 62% 38% / 42% 52% 48% 58%; scale: .96 .9; }
+}
+
+/* B: two rings orbit and blend */
+.h-b .ring { width: min(60vw, 760px); mix-blend-mode: multiply; }
+.h-b .r-matcha { margin-left: calc(-9vw + var(--px, 0px) * -1); animation-duration: 12s, 16s; }
+.h-b .r-rose { margin-left: calc(9vw + var(--px, 0px)); animation-direction: reverse, alternate; }
+.h-b .copy { text-align: center; }
+.h-b .chips { justify-content: center; }
+
+/* C: colour under ribbed glass, follows the cursor */
+.h-c { background: var(--bg); }
+.dot { position: absolute; left: 0; top: 0; width: 46vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; filter: blur(30px); will-change: transform; }
+.d1 { background: radial-gradient(closest-side, var(--rose-2), rgba(228,106,133,0) 70%); }
+.d2 { width: 38vmax; background: radial-gradient(closest-side, var(--matcha-2), rgba(169,201,143,0) 70%); }
+.glass { position: absolute; inset: 0; z-index: 2; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  background: repeating-linear-gradient(90deg, rgba(255,253,248,.55) 0, rgba(255,253,248,.05) 9px, rgba(255,253,248,.0) 14px, rgba(46,59,47,.05) 22px, rgba(255,253,248,.55) 30px); }
+
+@media (max-width: 700px) {
+  .pill { gap: 9px; font-size: 13px; padding-left: 14px; } .pill a.dark { padding: 7px 12px; }
+  .ring { width: 130vw; top: 50%; } .h-b .ring { width: 105vw; }
+  .jump { left: 50%; right: auto; translate: -50% 0; bottom: 12px; } .jump a { padding: 7px 9px; font-size: 12px; }
+  .tag { bottom: 70px; }
+}
+.jump a { white-space: nowrap; }
+.rl { position: absolute; top: 80%; z-index: 1; font: italic 400 clamp(18px, 1.7vw, 24px) var(--serif); }
+.rl-m { left: 22%; color: var(--matcha); } .rl-r { right: 20%; color: var(--rose); }
+@media (max-width: 700px) { .jump a { font-size: 11px; padding: 7px 8px; } .rl { top: 84%; } .rl-m { left: 8%; } .rl-r { right: 8%; } }
+.h-b .lede { max-width: 620px; margin-left: auto; margin-right: auto; }

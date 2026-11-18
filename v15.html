@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home Explorations</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/v15.css">
+</head>
+<body>
+  <nav class="jump" aria-label="Iterations"><a href="#a">A · Rose ring</a><a href="#b">B · Two rings</a><a href="#c">C · Ribbed glass</a></nav>
+
+  <!-- A: one rim-lit rose ring that turns and morphs; tilts toward the cursor -->
+  <section class="hero h-a" id="a" data-tilt>
+    <header class="pill"><a href="#a" class="on">Home</a><i></i><a href="#a">Work</a><i></i><a href="#a">About</a><i></i><a href="#a" class="dark">Contact</a></header>
+    <div class="stage"><div class="ring r-rose"></div></div>
+    <div class="copy">
+      <p class="who">Hi, I’m Usha · Product designer in Bengaluru</p>
+      <h1>I design with an architect’s <span class="hl">structure</span> and a baker’s <span class="hl">patience</span>.</h1>
+      <ul class="chips"><li>Architect turned product designer</li><li>Deep-dive researcher</li><li>Weekend baker</li></ul>
+    </div>
+    <p class="tag">Iteration A · Rose ring</p>
+  </section>
+
+  <!-- B: a matcha and a rose ring orbit each other; the cursor pulls them apart -->
+  <section class="hero h-b" id="b" data-pull>
+    <header class="pill"><a href="#b" class="on">Home</a><i></i><a href="#b">Work</a><i></i><a href="#b">About</a><i></i><a href="#b" class="dark">Contact</a></header>
+    <div class="stage"><div class="ring r-matcha" data-r="1"></div><div class="ring r-rose" data-r="-1"></div><span class="rl rl-m">the architect</span><span class="rl rl-r">the people person</span></div>
+    <div class="copy">
+      <p class="who">Hi, I’m Usha · Product designer</p>
+      <h1>Strategy that thinks.<br>Design that <em>feels.</em></h1>
+      <p class="lede">Deep research and journeys on one side. Friends, food and fun on the other. My work lives where they meet.</p>
+      <ul class="chips"><li>Research</li><li>Strategy</li><li>People</li><li>Joy</li></ul>
+    </div>
+    <p class="tag">Iteration B · Two rings</p>
+  </section>
+
+  <!-- C: colour follows the cursor behind a sheet of ribbed glass -->
+  <section class="hero h-c" id="c" data-glow>
+    <header class="pill"><a href="#c" class="on">Home</a><i></i><a href="#c">Work</a><i></i><a href="#c">About</a><i></i><a href="#c" class="dark">Contact</a></header>
+    <div class="stage"><span class="dot d1"></span><span class="dot d2"></span></div>
+    <div class="glass" aria-hidden="true"></div>
+    <div class="copy">
+      <p class="who">Hi, I’m Usha · Product designer</p>
+      <h1>I turn <em>chaos</em> into <span class="hl-m">calm</span>, clear products.</h1>
+      <p class="lede">I rearrange messy rooms for fun, and messy products for work. Move your cursor.</p>
+      <ul class="chips"><li>Enterprise</li><li>AI</li><li>Mobile</li></ul>
+    </div>
+    <p class="tag">Iteration C · Ribbed glass</p>
+  </section>
+
+  <script src="assets/js/v15.js"></script>
+</body>
+</html>
