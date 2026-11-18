@@ -22,3 +22,9 @@
 @media (max-width: 700px) { .rg { padding-top: 130px; } .rg-down { display: none; } }
 .rg .rg-lede { margin-top: 26px; line-height: 1.5; }
 .rg .rg-who { margin-bottom: 20px; line-height: 1.4; }
+
+/* let the glass run into the next section and fade out slowly */
+.rg { overflow: visible; }
+.rg-stage { overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%); mask-image: linear-gradient(to bottom, #000 60%, transparent 100%); }
+.rg-glass { bottom: -55vh; -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 85vh), rgba(0,0,0,.5) calc(100% - 45vh), transparent 100%); mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 85vh), rgba(0,0,0,.5) calc(100% - 45vh), transparent 100%); pointer-events: none; }
+.rg + section { position: relative; z-index: 1; }
