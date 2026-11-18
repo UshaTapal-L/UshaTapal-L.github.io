@@ -51,14 +51,45 @@
   wd.querySelector('[data-back]').addEventListener('click', close);
   addEventListener('keydown', function (e) { if (e.key === 'Escape' && !wd.hidden) { e.stopPropagation(); close(); } }, true);
 
-  // layout switch
-  wk.querySelectorAll('[data-mode]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var grid = b.dataset.mode === 'grid';
-      wk.classList.toggle('grid', grid);
-      wk.querySelectorAll('[data-mode]').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
-      paint();
-    });
-  });
+  // layout switch, kept soft: to Grid every card glides from its spot on the drum
+  // to its bento tile; back to Drum the bento fades and the drum turns into view.
+  var switching = false, EASE = 'cubic-bezier(.22,1,.36,1)';
+  function setMode(b) {
+    var grid = b.dataset.mode === 'grid';
+    if (switching || grid === wk.classList.contains('grid')) return;
+    wk.querySelectorAll('[data-mode]').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+    function apply() { wk.classList.toggle('grid', grid); paint(); }
+    if (reduce || !dr.animate) { apply(); return; }
+    switching = true;
+    var top0 = wk.getBoundingClientRect().top, h0 = dr.offsetHeight;
+    function settle() { var dy = wk.getBoundingClientRect().top - top0; if (Math.abs(dy) > 1) scrollBy(0, dy); }
+    function grow(dur) { var h1 = dr.offsetHeight; return dr.animate([{ height: h0 + 'px' }, { height: h1 + 'px' }], { duration: dur, easing: EASE }); }
+    if (grid) {
+      var first = cards.map(function (c, i) {
+        var a = ((i * step + rot) % 360 + 540) % 360 - 180;
+        return { r: c.getBoundingClientRect(), o: Math.abs(a) < 80 ? 1 : 0 };
+      });
+      apply(); settle();
+      var hA = grow(800);
+      cards.forEach(function (c, i) {
+        var f = first[i].r, l = c.getBoundingClientRect();
+        var dx = f.left - l.left, dy = f.top - l.top, sx = f.width / l.width, sy = f.height / l.height;
+        c.animate([
+          { transformOrigin: '0 0', transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')', opacity: first[i].o },
+          { transformOrigin: '0 0', transform: 'none', opacity: 1 }
+        ], { duration: 800, delay: i * 35, easing: EASE, fill: 'backwards' });
+      });
+      hA.finished.then(function () { switching = false; });
+    } else {
+      dr.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(12px)' }], { duration: 320, easing: 'ease' }).finished.then(function () {
+        dr.classList.remove('ease'); rot -= 50; apply(); settle();
+        var hA = grow(700);
+        dr.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, easing: 'ease' });
+        requestAnimationFrame(function () { requestAnimationFrame(function () { go(rot + 50, true); }); });
+        hA.finished.then(function () { switching = false; });
+      });
+    }
+  }
+  wk.querySelectorAll('[data-mode]').forEach(function (b) { b.addEventListener('click', function () { setMode(b); }); });
   paint();
 })();
