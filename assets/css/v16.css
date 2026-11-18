@@ -1,14 +1,14 @@
-/* Version 16: v14 plus my reading nook render, framed beside "How I work"
-   and added to the Playground spaces. */
-.pr-head--nook { position: relative; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "tag nook" "h nook"; align-items: center; justify-items: start; text-align: left; column-gap: clamp(32px, 6vw, 90px); row-gap: 18px; max-width: 1120px; margin-left: auto; margin-right: auto; }
-.pr-head--nook .room-tag { grid-area: tag; align-self: end; }
-.pr-head--nook h2 { grid-area: h; align-self: start; max-width: 12ch; }
-.nook { grid-area: nook; margin: 0; justify-self: end; width: min(100%, 420px); transform: rotate(1.5deg); }
-.nook img { width: 100%; height: auto; border-radius: 18px; box-shadow: 0 40px 70px -40px rgba(46,59,47,.6), 0 0 0 8px var(--paper), 0 0 0 9px var(--line); }
-.nook figcaption { margin-top: 18px; font: italic 400 19px/1.3 var(--serif); color: var(--mute); text-align: center; }
-@media (prefers-reduced-motion: no-preference) { .nook { transition: transform .5s cubic-bezier(.2,.8,.2,1); } .nook:hover { transform: rotate(0deg) scale(1.02); } }
+/* Version 16: v14 plus my reading nook render. Beside "How I work" it blends in
+   behind the heading and fades into the page, so it adds no height. It also
+   sits in the Playground spaces. */
+.pr-head--nook { position: relative; isolation: isolate; justify-items: start; text-align: left; max-width: 1120px; margin-left: auto; margin-right: auto; }
+.pr-head--nook h2 { max-width: 16ch; }
+.nook { position: absolute; z-index: -1; right: -4%; top: -90px; bottom: -90px; width: min(36%, 440px); margin: 0; pointer-events: none; }
+.nook img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 60%; border-radius: 0;
+  -webkit-mask-image: radial-gradient(closest-side, #000 30%, rgba(0,0,0,.55) 62%, transparent 100%); mask-image: radial-gradient(closest-side, #000 30%, rgba(0,0,0,.55) 62%, transparent 100%); }
+.nook figcaption { position: absolute; right: 6%; bottom: 4%; font: italic 400 16px/1.3 var(--serif); color: var(--mute); }
 @media (max-width: 800px) {
-  .pr-head--nook { grid-template-columns: 1fr; grid-template-areas: "tag" "h" "nook"; justify-items: center; text-align: center; }
+  .pr-head--nook { justify-items: center; text-align: center; }
   .pr-head--nook h2 { max-width: 16ch; }
-  .nook { justify-self: center; width: min(80%, 320px); margin-top: 18px; }
+  .nook { display: none; }
 }
