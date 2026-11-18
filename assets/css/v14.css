@@ -1,0 +1,22 @@
+/* Version 14: a section through a house I designed is the map.
+   Every room carries a clear numbered tag; one click takes you there. */
+.sx { position: relative; margin: 0 auto; max-width: 1180px; width: 100%; justify-self: center; }
+.sx img { width: 100%; height: auto; border-radius: 10px; }
+.sx figcaption { margin-top: 12px; font-size: 13px; letter-spacing: .04em; color: var(--mute); text-align: left; }
+.sx-svg { position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1620 / 593; height: auto; }
+.sx-room { cursor: pointer; outline: none; }
+.sx-hl { fill: var(--rose); fill-opacity: 0; stroke: var(--rose); stroke-opacity: 0; stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; mix-blend-mode: multiply; pointer-events: all; }
+.sx-tag rect { fill: var(--paper); stroke: var(--rose); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.sx-tag text { font: 500 22px var(--sans); fill: var(--ink); }
+.sx-tag .sx-n { fill: var(--rose); font-weight: 600; }
+.sx-room:hover .sx-hl, .sx-room:focus-visible .sx-hl, .sx-room.on .sx-hl { fill-opacity: .16; stroke-opacity: .9; }
+.sx-room:hover .sx-tag rect, .sx-room:focus-visible .sx-tag rect, .sx-room.on .sx-tag rect { fill: var(--rose); }
+.sx-room:hover .sx-tag text, .sx-room:hover .sx-tag .sx-n, .sx-room:focus-visible .sx-tag text, .sx-room:focus-visible .sx-tag .sx-n, .sx-room.on .sx-tag text, .sx-room.on .sx-tag .sx-n { fill: #fff; }
+@media (prefers-reduced-motion: no-preference) { .sx-hl, .sx-tag rect, .sx-tag text { transition: fill-opacity .15s, stroke-opacity .15s, fill .15s; } }
+
+.sx-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.sx-chips a { display: inline-flex; gap: 8px; align-items: baseline; padding: 10px 18px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); text-decoration: none; font-size: 15px; color: var(--ink); transition: border-color .15s, background .15s, color .15s; }
+.sx-chips b { color: var(--rose); font-weight: 600; font-size: 13px; }
+.sx-chips a:hover, .sx-chips a:focus-visible, .sx-chips a.on { border-color: var(--rose); background: var(--rose); color: #fff; }
+.sx-chips a:hover b, .sx-chips a:focus-visible b, .sx-chips a.on b { color: #fff; }
+@media (max-width: 700px) { .sx-tag { display: none; } .sx figcaption { text-align: center; } }
