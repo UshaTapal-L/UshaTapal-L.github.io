@@ -1,0 +1,24 @@
+/* Version 4 hero: ribbed glass. Rose and matcha light drift behind fluted glass
+   and follow the cursor; the headline is the story, chaos into calm. */
+.rg { position: relative; min-height: 100svh; margin-top: -70px; padding: 150px max(20px, 6vw) 110px; display: grid; align-items: center; overflow: hidden; background: var(--bg); isolation: isolate; }
+.rg-stage { position: absolute; inset: 0; pointer-events: none; }
+.rg-dot { position: absolute; left: 0; top: 0; width: 46vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; filter: blur(30px); will-change: transform; }
+.rg-d1 { background: radial-gradient(closest-side, #e46a85, rgba(228,106,133,0) 70%); }
+.rg-d2 { width: 38vmax; background: radial-gradient(closest-side, #a9c98f, rgba(169,201,143,0) 70%); }
+.rg-glass { position: absolute; inset: 0; z-index: 1; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  background: repeating-linear-gradient(90deg, rgba(255,253,248,.55) 0, rgba(255,253,248,.05) 9px, rgba(255,253,248,0) 14px, rgba(46,59,47,.05) 22px, rgba(255,253,248,.55) 30px); }
+.rg-copy { position: relative; z-index: 2; max-width: 1180px; width: 100%; margin: 0 auto; }
+.rg-who { font: 500 16px var(--sans); color: var(--mute); margin: 0 0 18px; }
+.rg h1 { margin: 0; font: 600 clamp(44px, 7vw, 104px)/1.02 var(--sans); letter-spacing: -.045em; color: var(--ink); text-wrap: balance; }
+.rg h1 em { font: italic 400 1.08em/1 var(--serif); letter-spacing: -.01em; color: var(--rose); }
+.rg-calm { color: #6f9a5d; }
+.rg-lede { margin: 22px 0 0; font-size: clamp(18px, 1.7vw, 22px); color: var(--mute); }
+.rg-chips { list-style: none; padding: 0; margin: 30px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.rg-chips li { padding: 9px 18px; border: 1px solid #cfc8b6; border-radius: 999px; background: rgba(255,253,248,.7); font: 500 15px var(--sans); }
+.rg-down { position: absolute; z-index: 2; left: 50%; bottom: 28px; translate: -50% 0; width: 26px; height: 42px; border: 1.5px solid var(--ink); border-radius: 14px; opacity: .55; }
+.rg-down span { position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--ink); }
+@media (prefers-reduced-motion: no-preference) { .rg-down span { animation: rgDown 1.8s ease-in-out infinite; } }
+@keyframes rgDown { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
+@media (max-width: 700px) { .rg { padding-top: 130px; } .rg-down { display: none; } }
+.rg .rg-lede { margin-top: 26px; line-height: 1.5; }
+.rg .rg-who { margin-bottom: 20px; line-height: 1.4; }
