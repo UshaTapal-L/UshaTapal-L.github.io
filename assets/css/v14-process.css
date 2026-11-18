@@ -59,3 +59,40 @@
   .pv-notes i { min-height: 70px; padding: 12px; font-size: 13px; }
   .pv-mx table { font-size: 13px; }
 }
+
+/* whole section fits one screen */
+.pr { padding-top: clamp(28px, 5vh, 60px); padding-bottom: clamp(28px, 5vh, 60px); min-height: 100svh; display: grid; align-content: center; }
+.pr .pr-head { gap: 6px; margin-bottom: clamp(18px, 3.5vh, 40px); }
+.pr .pr-head h2 { font-size: clamp(34px, min(5vw, 7vh), 72px); max-width: 22ch; }
+.ps-b { padding: clamp(9px, 1.6vh, 16px) 4px; font-size: clamp(17px, min(1.7vw, 2.6vh), 22px); }
+.pv { min-height: 0; padding: clamp(16px, 2.6vh, 26px); gap: 12px; }
+.pv-notes i { min-height: 0; padding: 12px 14px; font-size: 14px; }
+.pv > b { font-size: 18px; }
+.pv-flow svg { max-height: 26vh; }
+.pv-mx th, .pv-mx td { padding: 7px 8px; }
+.ps-p { gap: 10px; }
+.ps-d { margin-top: 4px; font-size: 16px; }
+.pr .pr-ai { margin-top: clamp(20px, 4vh, 44px); padding: clamp(18px, 2.6vh, 28px) clamp(22px, 3vw, 40px); border-radius: 22px; align-items: center; }
+.pr .pr-ai h3 { font-size: clamp(26px, 2.4vw, 34px); }
+.pr .pr-ai li { font-size: 15px; }
+@media (max-width: 800px) {
+  .pr { min-height: 0; }
+  .ps-list { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+  .ps-list::-webkit-scrollbar { display: none; }
+  .ps-b { white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 15px; gap: 8px; }
+  .ps-b.on { padding-left: 14px; background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .ps-b.on .ps-n { color: #f0a9bb; }
+  .pr .pr-ai { grid-template-columns: 1fr; gap: 14px; }
+  .pr .pr-ai ul { grid-template-columns: 1fr; gap: 10px; }
+}
+@media (max-height: 780px) and (min-width: 801px) {
+  .pr .pr-head h2 { font-size: clamp(30px, 6vh, 56px); }
+  .ps-d { display: none; }
+  .pv-notes i { padding: 9px 12px; font-size: 13px; }
+}
+@media (max-width: 800px) {
+  .pr .pr-head h2 { font-size: 32px; }
+  .ps-d { display: none; }
+  .pv { padding: 14px; } .pv-notes { gap: 8px; } .pv-notes i { padding: 9px; font-size: 12.5px; }
+  .pr .pr-ai { padding: 16px 18px; gap: 8px; } .pr .pr-ai ul { gap: 6px; } .pr .pr-ai li { font-size: 13.5px; }
+}

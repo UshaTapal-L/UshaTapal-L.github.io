@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>About Me Options</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/v17.css">
+</head>
+<body>
+  <nav class="jump" aria-label="Options"><a href="#a">1 · Journal pages</a><a href="#b">2 · Polaroids</a><a href="#c">3 · Clean split</a></nav>
+
+  <!-- OPTION 1: journal, one roomy page at a time -->
+  <section class="opt" id="a" aria-labelledby="a-h">
+    <header class="head"><span class="tag">03 · About me</span><h2 id="a-h">My <em>journal</em></h2></header>
+    <div class="jn" data-jn>
+      <div class="jn-book">
+        <span class="jn-band" aria-hidden="true"></span>
+        <article class="jn-pg" data-pg="0">
+          <div class="jn-txt">
+            <p class="jn-k">Page 1 · Hello</p>
+            <h3>Hello, I’m <em>Usha.</em></h3>
+            <p>Architect turned product designer, Bengaluru.</p>
+            <p class="scr">friendly, bold, always learning</p>
+          </div>
+          <figure class="jn-photo"><img src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165"><figcaption>me, Bengaluru</figcaption></figure>
+        </article>
+        <article class="jn-pg" data-pg="1" hidden>
+          <div class="jn-txt">
+            <p class="jn-k">Page 2 · My path</p>
+            <h3>From <em>buildings</em> to products.</h3>
+            <ol class="tl">
+              <li><b>2025 – now</b><span>6D Technologies</span></li>
+              <li><b>2024</b><span>RIU.ai</span></li>
+                            <li><b>2017 – 22</b><span>B.Arch</span></li>
+            </ol>
+          </div>
+          <figure class="jn-photo jn-photo--wide"><img src="images/work/arch/kottayam.jpg" alt="A building I designed in Kottayam" width="780" height="417"><figcaption>where structure began</figcaption></figure>
+        </article>
+        <article class="jn-pg" data-pg="2" hidden>
+          <div class="jn-txt">
+            <p class="jn-k">Page 3 · Off the clock</p>
+            <h3>Chaos, then <em>calm.</em></h3>
+            <p>I bake to unwind and rearrange rooms for fun.</p>
+            <p class="scr">friends · family · fun</p>
+          </div>
+          <figure class="jn-photo jn-photo--wide"><img src="images/work/arch/moodboard.jpg" alt="A calm living room moodboard I made" width="1400" height="828"><figcaption>a room I calmed down</figcaption></figure>
+        </article>
+        <div class="jn-nav"><button type="button" data-jn-prev aria-label="Previous page">‹</button><span data-jn-n>1 / 3</span><button type="button" data-jn-next aria-label="Next page">›</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTION 2: a strip of polaroids you swipe -->
+  <section class="opt" id="b" aria-labelledby="b-h">
+    <header class="head"><span class="tag">03 · About me</span><h2 id="b-h">A little about <em>me</em></h2><p class="lede">Swipe or drag through.</p></header>
+    <div class="pl" data-pl>
+      <figure class="pol" style="--r:-4deg"><img src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165"><figcaption><b>hello!</b>Usha, product designer in Bengaluru</figcaption></figure>
+      <figure class="pol" style="--r:3deg"><img src="images/work/arch/kottayam.jpg" alt="A building I designed" width="780" height="417"><figcaption><b>where I began</b>five years of architecture school</figcaption></figure>
+      <figure class="pol" style="--r:-2deg"><img src="images/work/sketch/riu.jpg" alt="A sketch of a product screen" width="1400" height="1115"><figcaption><b>what I make now</b>calm products from messy problems</figcaption></figure>
+      <figure class="pol" style="--r:4deg"><span class="pol-ill" aria-hidden="true"><svg viewBox="0 0 100 92"><path d="M50 88C10 60 2 38 12 20 22 4 42 6 50 22 58 6 78 4 88 20c10 18 2 40-38 68z" fill="#d9a066"/><path d="M50 62C34 50 32 40 38 34c4-4 9-2 12 4 3-6 8-8 12-4 6 6 4 16-12 28z" fill="#b8323f"/><g fill="#a4703d"><circle cx="26" cy="30" r="2.5"/><circle cx="74" cy="28" r="2.5"/><circle cx="70" cy="56" r="2"/><circle cx="30" cy="54" r="2"/></g></svg></span><figcaption><b>how I unwind</b>baking for the people I love</figcaption></figure>
+      <figure hidden class="pol" style="--r:-3deg"><img src="images/work/arch/moodboard.jpg" alt="A living room moodboard" width="1400" height="828"><figcaption><b>chaos → calm</b>I rearrange rooms for fun</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- OPTION 3: clean split, photo + story + timeline -->
+  <section class="opt" id="c" aria-labelledby="c-h">
+    <div class="sp">
+      <figure class="sp-photo"><img src="images/avatar.jpg" alt="Usha Tapal" width="165" height="165"><figcaption>Usha Tapal · Bengaluru</figcaption></figure>
+      <div class="sp-txt">
+        <span class="tag">03 · About me</span>
+        <h2 id="c-h">Architect turned <em>product designer.</em></h2>
+        <p>Structure from architecture, joy from baking.</p>
+        <ol class="tl tl--c">
+          <li><b>2025 – now</b><span>6D Technologies</span></li>
+          <li><b>2024</b><span>RIU.ai</span></li>
+                    <li><b>2017 – 22</b><span>B.Arch</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/v17.js"></script>
+</body>
+</html>
