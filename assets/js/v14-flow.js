@@ -22,3 +22,12 @@
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px' });
   heads.forEach(function (h) { h.classList.add('flow-in'); io.observe(h); });
 })();
+// Playground row: drag to scroll with a mouse; vertical wheel scrolls it sideways only while you hold Shift.
+(function () {
+  var w = document.querySelector('.pg-wall'); if (!w || !matchMedia('(pointer: fine)').matches) return;
+  var down = false, x0 = 0, s0 = 0, moved = false;
+  w.addEventListener('pointerdown', function (e) { down = true; moved = false; x0 = e.clientX; s0 = w.scrollLeft; });
+  addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - x0; if (Math.abs(dx) > 5) { moved = true; w.classList.add('drag'); } if (moved) w.scrollLeft = s0 - dx; });
+  addEventListener('pointerup', function () { down = false; w.classList.remove('drag'); });
+  w.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+})();

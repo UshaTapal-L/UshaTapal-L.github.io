@@ -27,3 +27,17 @@
 .jr:not(.is-open) .jr-book { position: absolute; top: 0; left: 0; right: 0; }
 .jr:not(.is-open) .jr-cover { align-self: start; }
 @media (max-width: 700px) { .jr-cover { width: min(340px, calc((100svh - 230px) * .75), 100%); } }
+
+/* Playground: one row you swipe or drag, fits one screen */
+.pg { padding-top: clamp(40px, 7vh, 80px); padding-bottom: clamp(30px, 5vh, 60px); max-width: none; }
+.pg .pg-head { margin-bottom: clamp(18px, 3vh, 34px); gap: 10px; }
+.pg .pg-head h2 { font-size: clamp(40px, min(6vw, 8vh), 88px); }
+.pg-wall { columns: auto; display: flex; gap: clamp(16px, 2vw, 26px); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; align-items: center;
+  margin: 0 calc(-1 * var(--gut)); padding: 18px max(var(--gut), calc(50vw - 600px)) 30px; cursor: grab; }
+.pg-wall::-webkit-scrollbar { display: none; }
+.pg-wall.drag { cursor: grabbing; scroll-snap-type: none; }
+.pg-col { display: contents; }
+.pg-wall .pg-i { flex: 0 0 auto; width: auto; margin: 0; break-inside: auto; scroll-snap-align: center; }
+.pg-wall .pg-i img, .pg-wall .pg-i video { height: clamp(200px, 36vh, 340px); width: auto; max-width: 60vw; object-fit: cover; user-select: none; -webkit-user-drag: none; }
+.pg-hint { margin-top: 2px; font-size: 14px; color: var(--mute); text-align: center; }
+@media (max-width: 700px) { .pg-wall .pg-i img, .pg-wall .pg-i video { height: 34vh; max-width: 72vw; } }
