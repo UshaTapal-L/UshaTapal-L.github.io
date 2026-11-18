@@ -28,3 +28,4 @@
 .rg-stage { overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%); mask-image: linear-gradient(to bottom, #000 60%, transparent 100%); }
 .rg-glass { bottom: -55vh; -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 85vh), rgba(0,0,0,.5) calc(100% - 45vh), transparent 100%); mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 85vh), rgba(0,0,0,.5) calc(100% - 45vh), transparent 100%); pointer-events: none; }
 .rg + section { position: relative; z-index: 1; }
+.rg .rg-lede { max-width: 680px; }
