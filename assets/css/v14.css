@@ -20,3 +20,13 @@
 .sx-chips a:hover, .sx-chips a:focus-visible, .sx-chips a.on { border-color: var(--rose); background: var(--rose); color: #fff; }
 .sx-chips a:hover b, .sx-chips a:focus-visible b, .sx-chips a.on b { color: #fff; }
 @media (max-width: 700px) { .sx-tag { display: none; } .sx figcaption { text-align: center; } }
+
+/* entering a room */
+.sx-fly { position: fixed; inset: 0; z-index: 1000; pointer-events: none; overflow: hidden; }
+.sx-fly img { position: absolute; max-width: none; border-radius: 10px; will-change: transform; }
+.sx-veil { position: absolute; inset: 0; background: var(--bg); opacity: 0; }
+.sx-name { position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; text-align: center; margin: 0; font: 500 clamp(48px, 8vw, 120px)/1 var(--sans); letter-spacing: -.045em; color: var(--ink); opacity: 0; }
+.sx-name b { font: italic 400 clamp(22px, 2.4vw, 32px)/1 var(--serif); letter-spacing: 0; color: var(--rose); }
+.sx-in { animation: sxIn .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes sxIn { from { opacity: .3; transform: translateY(60px) scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .sx-in { animation: none; } }
