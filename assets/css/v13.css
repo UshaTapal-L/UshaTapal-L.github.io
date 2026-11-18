@@ -8,44 +8,24 @@
 .lk-k { font-size: 15px; font-weight: 600; color: var(--rose); margin-bottom: 10px; }
 .look h2 em { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; color: var(--rose); letter-spacing: -.01em; padding-right: .04em; }
 .lk-hint { margin-top: 14px; color: var(--mute); font-size: 15px; letter-spacing: .02em; }
-.lk-draw { margin: clamp(30px, 5vw, 56px) auto 0; max-width: 800px; }
-.ax { width: 100%; height: auto; display: block; overflow: visible; }
-.ax .dots { fill-opacity: 1; }
-.ax pattern circle { fill: var(--faint); opacity: .55; }
-.ax polygon, .ax line { vector-effect: non-scaling-stroke; stroke-linejoin: round; }
-.ax .tp { fill: var(--slab); stroke: var(--stroke); stroke-width: 1; }
-.ax .sd1 { fill: var(--side1); stroke: var(--stroke); stroke-width: 1; }
-.ax .sd2 { fill: var(--side2); stroke: var(--stroke); stroke-width: 1; }
-.ax .wl { fill: var(--slab); stroke: var(--stroke); stroke-width: 1; }
-.ax .fx { fill: var(--bg2); stroke: var(--stroke); stroke-width: .8; }
-.ax .fx.s { fill: var(--side1); }
-.ax .sc { fill: var(--ink); stroke: var(--stroke); stroke-width: .6; }
-.ax .rg { fill: var(--tone-d); stroke: var(--stroke); stroke-width: .6; }
-.ax .ac { fill: var(--rose); stroke: none; }
-.ax .ac-ln { stroke: var(--rose); stroke-width: 1.4; stroke-dasharray: 4 4; }
-.ax .st { fill: var(--side2); stroke: var(--stroke); stroke-width: .6; }
-.ax .tr { fill: color-mix(in srgb, var(--accent) 45%, var(--slab)); stroke: var(--stroke); stroke-width: .7; }
-.ax .sk { fill: color-mix(in srgb, var(--accent) 10%, transparent); stroke: var(--stroke); stroke-width: .7; }
-.ax .ln { stroke: var(--stroke); stroke-width: .6; }
-.ax .gd { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 2 5; opacity: .45; }
-.ax .ld { stroke: var(--faint); stroke-width: 1; stroke-dasharray: 2 4; }
-.ax .lv { font: 600 15px var(--font); letter-spacing: .16em; fill: var(--mute); }
-.ax .nm { font: italic 400 28px "Instrument Serif", Georgia, serif; fill: var(--ink); }
-
-/* floors: explode on scroll, lift on hover, no delay on click */
-.ax .fl { cursor: pointer; outline: none; transform: translateY(calc(var(--i) * (1 - var(--e, 1)) * 70px - var(--lift, 0px))); }
-.ax .fl:hover, .ax .fl:focus-visible { --lift: 10px; }
-.ax .fl:hover .tp, .ax .fl:focus-visible .tp { fill: var(--rose-t); stroke: var(--rose); }
-.ax .fl:hover .wl, .ax .fl:focus-visible .wl { stroke: var(--rose); }
-.ax .fl:hover .lv, .ax .fl:focus-visible .lv { fill: var(--rose); }
+.lk-draw { margin: clamp(30px, 5vw, 56px) auto 0; max-width: 900px; }
+.ex { position: relative; margin: 0; }
+.ex img { width: 100%; height: auto; border-radius: 4px; }
+:root[data-theme="dark"] .ex img { filter: invert(.92) hue-rotate(180deg) contrast(.95); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ex img { filter: invert(.92) hue-rotate(180deg) contrast(.95); } }
+.ax { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ax .fl { cursor: pointer; outline: none; }
+.ax .hl { fill: var(--rose); fill-opacity: 0; stroke: var(--rose); stroke-opacity: 0; stroke-width: 1.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; mix-blend-mode: multiply; pointer-events: all; }
+:root[data-theme="dark"] .ax .hl { mix-blend-mode: screen; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ax .hl { mix-blend-mode: screen; } }
+.ax .fl:hover .hl, .ax .fl:focus-visible .hl { fill-opacity: .28; stroke-opacity: .9; }
+.ax .nm { font: italic 400 24px "Instrument Serif", Georgia, serif; fill: var(--mute); }
 .ax .fl:hover .nm, .ax .fl:focus-visible .nm { fill: var(--rose); }
-.ax .fl:hover .ld, .ax .fl:focus-visible .ld { stroke: var(--rose); stroke-dasharray: none; }
-.look.dim .ax .fl:not(:hover):not(:focus-visible) :is(.lv,.nm) { opacity: .4; }
-@media (prefers-reduced-motion: no-preference) { .ax .fl { transition: transform .22s cubic-bezier(.2,.7,.2,1), opacity .2s; } }
+@media (prefers-reduced-motion: no-preference) { .ax .hl { transition: fill-opacity .15s, stroke-opacity .15s; } .ax .nm { transition: fill .15s; } }
 
 .lk-chips { display: none; }
 @media (max-width: 700px) {
-  .ax .lv { display: none; } .ax .nm { font-size: 40px; }
+  .ax .nm { display: none; }
   .lk-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
   .lk-chips a { padding: 9px 15px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-size: 14px; color: var(--ink); }
 }

@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="assets/css/v2-story.css">
   <link rel="stylesheet" href="assets/css/v2-creative.css">
   <link rel="stylesheet" href="assets/css/v2-house.css">
+  <link rel="stylesheet" href="assets/css/v4-exploded.css">
 </head>
 <body class="lt" data-fx-doorway>
   <a class="lt-skip" href="#main">Skip to content</a>
@@ -65,79 +66,18 @@
       </div>
     </section>
 
-    <!-- HOUSE: walk through the portfolio like a floor plan -->
+    <!-- HOUSE: my exploded drawing, each floor is a section -->
     <section class="hs" id="house" aria-labelledby="hs-h">
       <header class="hs-head">
         <span class="lt-label">Welcome in</span>
         <h2 id="hs-h" data-rise>Have a look <em>around.</em></h2>
-        <p class="hs-hint">Pick a room. I’ll walk you there.</p>
+        <p class="hs-hint">Pick a floor. You’re there in one click.</p>
       </header>
-      <div class="hs-stage">
-        <div class="hs-plan">
-          <svg class="hs-svg" viewBox="0 0 1000 680" role="group" aria-label="A floor plan of my portfolio. Each room is a section.">
-            <defs>
-              <pattern id="grass" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M3 10l2-5 2 5M9 6l2-4 2 4" fill="none" stroke="#9fbf91" stroke-width="1"/></pattern>
-              <pattern id="tiles" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="rgba(46,59,47,.08)"/></pattern>
-              <pattern id="planks" width="80" height="18" patternUnits="userSpaceOnUse"><path d="M0 18H80M40 0v18" fill="none" stroke="rgba(46,59,47,.07)"/></pattern>
-            </defs>
-            <!-- rooms (clickable) -->
-            <a class="hs-room" href="#work" data-room="studio" data-c="280,200" data-name="The Studio" data-sub="Where the work happens" data-go="Step into the Studio">
-              <rect class="hs-fl" x="40" y="40" width="480" height="320" fill="url(#planks)"/>
-              <g class="hs-furn">
-                <rect x="80" y="90" width="200" height="70" rx="4"/><rect x="140" y="100" width="70" height="44" rx="3" class="ink"/><circle cx="175" cy="190" r="20"/>
-                <rect x="320" y="70" width="170" height="110" rx="4" class="board"/><rect x="334" y="84" width="64" height="40" class="t1"/><rect x="408" y="84" width="68" height="40" class="t2"/><rect x="334" y="132" width="44" height="36" class="t3"/><rect x="386" y="132" width="90" height="36" class="t4"/>
-                <circle cx="470" cy="320" r="18" class="leaf"/><circle cx="458" cy="306" r="10" class="leaf"/>
-              </g>
-              <text x="280" y="268">The Studio</text><text class="s" x="280" y="292">work</text>
-            </a>
-            <a class="hs-room" href="#process" data-room="library" data-c="740,170" data-name="The Library" data-sub="Research, journeys and strategy" data-go="Step into the Library">
-              <rect class="hs-fl" x="520" y="40" width="440" height="260" fill="url(#planks)"/>
-              <g class="hs-furn">
-                <rect x="540" y="56" width="400" height="30" rx="3" class="shelf"/><path class="lines" d="M560 56v30M574 56v30M596 56v30M612 56v30M640 56v30M660 56v30M690 56v30M712 56v30M740 56v30M770 56v30M786 56v30M810 56v30M836 56v30M860 56v30M884 56v30M910 56v30"/>
-                <circle cx="610" cy="210" r="26"/><circle cx="700" cy="200" r="34" class="table"/><rect x="684" y="188" width="18" height="24" class="t2"/><rect x="706" y="184" width="16" height="22" class="t1"/>
-                <rect x="860" y="170" width="70" height="90" rx="10"/>
-              </g>
-              <text x="790" y="130">The Library</text><text class="s" x="790" y="154">process</text>
-            </a>
-            <a class="hs-room" href="#about" data-room="kitchen" data-c="240,500" data-name="The Kitchen" data-sub="Baking, coffee and the story of me" data-go="Step into the Kitchen">
-              <rect class="hs-fl" x="40" y="360" width="400" height="280" fill="url(#tiles)"/>
-              <g class="hs-furn">
-                <path d="M56 376h360v40H96v208H56z" class="counter"/><circle cx="150" cy="396" r="9"/><circle cx="178" cy="396" r="9"/><circle cx="150" cy="396" r="3" class="ink"/><circle cx="178" cy="396" r="3" class="ink"/>
-                <rect x="240" y="382" width="50" height="28" rx="3" class="t3"/>
-                <circle cx="290" cy="540" r="44" class="table"/><path d="M276 532l26-8v20h-26z" class="cake"/><circle cx="296" cy="522" r="3" class="cherry"/>
-                <circle cx="230" cy="540" r="12"/><circle cx="350" cy="540" r="12"/>
-              </g>
-              <text x="270" y="455">The Kitchen</text><text class="s" x="270" y="479">about me</text>
-            </a>
-            <a class="hs-room" href="#playground" data-room="garden" data-c="720,470" data-name="The Garden" data-sub="Sketches, motion and things I make for fun" data-go="Step into the Garden">
-              <rect class="hs-fl hs-fl--garden" x="440" y="300" width="520" height="340" fill="url(#grass)"/>
-              <g class="hs-furn">
-                <circle cx="900" cy="350" r="34" class="leaf"/><circle cx="870" cy="380" r="22" class="leaf"/><circle cx="920" cy="590" r="30" class="leaf"/><circle cx="500" cy="350" r="24" class="leaf"/>
-                <circle cx="800" cy="540" r="36" class="pool"/>
-                <path d="M640 600l-6-36 6-34 10-30" class="path"/><rect x="560" y="420" width="70" height="20" rx="4" class="bench"/>
-                <path d="M704 400l16-46 16 46" class="easel"/><rect x="702" y="330" width="36" height="28" rx="2" class="canvas"/>
-              </g>
-              <text x="760" y="430">The Garden</text><text class="s" x="760" y="454">playground</text>
-            </a>
-            <!-- walls and doors (not clickable) -->
-            <g class="hs-walls" aria-hidden="true">
-              <path class="out" d="M40 40H960V640H660M600 640H40Z"/>
-              <path d="M520 40V130M520 190V300M40 360H160M220 360H440M440 360V460M440 520V640M520 300H700M760 300H960"/>
-              <g class="gap"><path d="M520 130V190M160 360H220M440 460V520M700 300H760M600 640H660"/></g>
-              <g class="door"><path d="M520 130A60 60 0 0 1 580 190"/><path d="M160 360A60 60 0 0 0 220 300"/><path d="M440 460A60 60 0 0 1 500 520"/><path d="M700 300A60 60 0 0 0 760 240"/><path d="M600 640A60 60 0 0 1 660 580"/></g>
-              <text class="entry" x="630" y="668">entry</text>
-              <g class="north"><circle cx="404" cy="604" r="16"/><path d="M404 590l7 22-7-5-7 5z"/></g>
-            </g>
-            <g class="hs-me" aria-hidden="true" transform="translate(630 660)"><circle r="13" class="halo"/><circle r="7"/></g>
-          </svg>
-        </div>
-        <div class="hs-card" aria-live="polite" hidden>
-          <span class="hs-card__n"></span>
-          <h3 class="hs-card__t"></h3>
-          <p class="hs-card__s"></p>
-          <div class="hs-card__b"><a class="lt-btn hs-go" href="#work">Step inside →</a><button type="button" class="hs-back">Back to the plan</button></div>
-        </div>
-      </div>
+<figure class="ex" data-ex>
+        <img src="images/work/arch/exploded-section.jpg" alt="Exploded axonometric of a campus building I designed, floor by floor" width="960" height="932" loading="lazy">
+        <svg class="ex-svg" viewBox="0 0 960 932" role="group" aria-label="Each floor of the drawing is a section of this portfolio."><a class="ex-fl" href="#contact" aria-label="Roof: Let’s talk"><polygon class="ex-hl" points="295,150 340,118 865,120 865,135 640,228 300,160"/><text class="ex-nm" x="858" y="180">Let’s talk</text></a><a class="ex-fl" href="#work" aria-label="Third floor: The work"><polygon class="ex-hl" points="298,215 420,175 560,232 800,272 800,345 680,375 560,385 470,392 298,392"/><text class="ex-nm" x="840" y="312">The work</text></a><a class="ex-fl" href="#process" aria-label="Second floor: How I work"><polygon class="ex-hl" points="298,398 470,385 560,398 590,470 790,420 800,470 640,532 555,542 420,525 298,500"/><text class="ex-nm" x="840" y="460">How I work</text></a><a class="ex-fl" href="#playground" aria-label="First floor: Playground"><polygon class="ex-hl" points="305,528 350,520 470,530 560,548 640,535 800,528 800,580 640,645 560,602 360,602 305,565"/><text class="ex-nm" x="840" y="568">Playground</text></a><a class="ex-fl" href="#about" aria-label="Ground floor: About me"><polygon class="ex-hl" points="60,680 300,605 360,605 560,605 640,648 800,600 920,620 900,810 650,890 300,820 70,700"/><text class="ex-nm" x="840" y="672">About me</text></a></svg>
+      </figure>
+      <nav class="ex-chips" aria-label="Floors"><a href="#contact">Let’s talk</a><a href="#work">The work</a><a href="#process">How I work</a><a href="#playground">Playground</a><a href="#about">About me</a></nav>
     </section>
 
     <!-- WORK -->
@@ -377,6 +317,6 @@
   <script src="assets/js/fun.js"></script>
   <script src="assets/js/v2-light.js"></script>
   <script src="assets/js/v2-creative.js"></script>
-  <script src="assets/js/v2-house.js"></script>
+  <script src="assets/js/v4-exploded.js"></script>
 </body>
 </html>
