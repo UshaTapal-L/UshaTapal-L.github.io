@@ -30,3 +30,13 @@
 .sx-in { animation: sxIn .7s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes sxIn { from { opacity: .3; transform: translateY(60px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .sx-in { animation: none; } }
+
+/* the way back */
+.sx-back { position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); z-index: 900; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px 11px 14px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 12px 34px -14px rgba(46,59,47,.35); font: 500 15px var(--sans); color: var(--ink); cursor: pointer; transform: translate(-50%, 140%); opacity: 0; pointer-events: none; transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s, background .15s, color .15s; }
+.sx-back.show { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.sx-back svg { width: 18px; height: 18px; fill: none; stroke: var(--rose); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sx-back em { font: italic 400 16px var(--serif); color: var(--rose); }
+.sx-back em:not(:empty)::before { content: "· "; color: var(--mute); font-style: normal; }
+.sx-back:hover { background: var(--rose); color: #fff; } .sx-back:hover svg { stroke: #fff; } .sx-back:hover em { color: #fff; }
+.sx-back, .sx-back * { white-space: nowrap; }
+@media (max-width: 520px) { .sx-back { font-size: 14px; padding: 10px 16px 10px 12px; } .sx-back em { font-size: 15px; } }
