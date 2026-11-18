@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="assets/css/v2-creative.css">
   <link rel="stylesheet" href="assets/css/v2-house.css">
   <link rel="stylesheet" href="assets/css/v14.css">
+  <link rel="stylesheet" href="assets/css/v4-hero.css">
 </head>
 <body class="lt" data-fx-doorway>
   <a class="lt-skip" href="#main">Skip to content</a>
@@ -38,32 +39,17 @@
   </header>
 
   <main id="main">
-    <!-- HERO: a desk you can rearrange -->
-    <section class="lt-desk" id="top" aria-labelledby="hi-h">
-      <div class="lt-desk__mid">
-        <h1 id="hi-h" class="lt-name">Usha Tapal</h1>
-        <p class="lt-role">Product designer at 6D Technologies, Bengaluru · trained architect</p>
-        <p class="lt-say">I research, map the journeys and design AI products that make complex work feel calm, <em>and a little fun.</em></p>
+    <!-- HERO: ribbed glass; colour follows the cursor (chaos to calm) -->
+    <section class="rg" id="top" aria-labelledby="hi-h" data-glow>
+      <div class="rg-stage" aria-hidden="true"><span class="rg-dot rg-d1"></span><span class="rg-dot rg-d2"></span></div>
+      <div class="rg-glass" aria-hidden="true"></div>
+      <div class="rg-copy">
+        <p class="rg-who">Hi, I’m Usha · Product designer at 6D Technologies, Bengaluru</p>
+        <h1 id="hi-h">I turn <em>chaos</em> into <span class="rg-calm">calm</span>, clear products.</h1>
+        <p class="rg-lede">I rearrange messy rooms for fun, and messy products for work.</p>
+        <ul class="rg-chips"><li>Enterprise</li><li>AI</li><li>Mobile</li><li>Trained architect</li></ul>
       </div>
-      <div class="lt-sun" aria-hidden="true"><span class="lt-sun__shade"></span><span class="lt-sun__win"></span></div>
-      <div class="lt-objs" data-desk>
-        <figure class="ob ob--sheet" data-o="plan" style="--x:8%;--y:6%;--r:-13deg" data-cx="2" data-cy="2"><span class="ob-swap"><img src="images/work/arch/first-floor-plan.jpg" alt="A first floor plan I drew" width="1600" height="1200" draggable="false"><img class="alt" src="images/work/riu-dashboard.jpg" alt="" width="1100" height="687" draggable="false"></span><figcaption data-say="a plan I drew|a screen I designed">a plan I drew</figcaption></figure>
-        <figure class="ob ob--ill ob--cup" data-o="cup" style="--x:19%;--y:40%;--r:14deg" data-cx="4" data-cy="40"><svg viewBox="0 0 120 150" aria-hidden="true"><g class="steam" fill="none" stroke="#b7aa98" stroke-width="3" stroke-linecap="round"><path d="M48 26c-6-8 6-12 0-20"/><path d="M62 24c-6-8 6-12 0-20"/><path d="M76 26c-6-8 6-12 0-20"/></g><g transform="translate(0 30)"><circle cx="60" cy="60" r="56" fill="#efe4d3"/><circle cx="60" cy="60" r="40" fill="#fffaf2"/><circle cx="60" cy="60" r="33" fill="#8b5a3c"/><path d="M60 72c-14-9-16-20-8-23 4-1 7 1 8 5 1-4 4-6 8-5 8 3 6 14-8 23z" fill="#ead6ba"/><path d="M98 52h12a8 8 0 0 1 0 16H98" fill="none" stroke="#fffaf2" stroke-width="7"/></g></svg><figcaption data-say="coffee first|ahh, better">coffee first</figcaption></figure>
-        <figure class="ob ob--ill ob--cookie" data-o="cookie" style="--x:6%;--y:74%;--r:-24deg" data-cx="5" data-cy="72"><svg viewBox="0 0 100 92" aria-hidden="true"><defs><mask id="bite" maskUnits="userSpaceOnUse"><rect width="100" height="92" fill="#fff"/><g class="bites" fill="#000"><circle class="b1" cx="90" cy="30" r="12"/><circle class="b2" cx="14" cy="34" r="12"/><circle class="b3" cx="50" cy="86" r="14"/></g></mask></defs><g mask="url(#bite)"><path d="M50 88C10 60 2 38 12 20 22 4 42 6 50 22 58 6 78 4 88 20c10 18 2 40-38 68z" fill="#d9a066"/><path d="M50 62C34 50 32 40 38 34c4-4 9-2 12 4 3-6 8-8 12-4 6 6 4 16-12 28z" fill="#b8323f"/><g fill="#a4703d"><circle cx="26" cy="30" r="2.5"/><circle cx="74" cy="28" r="2.5"/><circle cx="70" cy="56" r="2"/><circle cx="30" cy="54" r="2"/></g></g></svg><figcaption data-say="baked this|oops, a bite|one more|all gone. baking more!">baked this</figcaption></figure>
-        <figure class="ob ob--polaroid" data-o="flip" style="--x:75%;--y:4%;--r:12deg" data-cx="84" data-cy="2"><span class="ob-card"><span class="ob-front"><img src="images/avatar.jpg" alt="Usha" width="165" height="165" draggable="false"><span class="ob-cap">me, Bengaluru</span></span><span class="ob-back">I bake when I’m stressed. It works every time.</span></span></figure>
-        <figure class="ob ob--home ob--wire" data-o="swap" style="--x:75%;--y:46%;--r:-11deg" data-cx="79" data-cy="38"><span class="ob-swap"><img src="images/work/sketch/smart-top.jpg" alt="A wireframe sketch of the Smart Dealer home screen" width="420" height="520" draggable="false"><img class="alt" src="images/work/smart-top.jpg" alt="" width="420" height="520" draggable="false"></span><figcaption data-say="a wireframe|the shipped screen">a wireframe</figcaption></figure>
-        <figure class="ob ob--plant" data-o="plant" style="--x:88%;--y:64%;--r:9deg" data-cx="86" data-cy="68"><svg viewBox="0 0 160 190" aria-hidden="true">
-          <g fill="#7f9f78"><circle cx="52" cy="58" r="17"/><circle cx="104" cy="44" r="19"/><circle cx="80" cy="22" r="15"/><circle cx="36" cy="94" r="14"/><circle cx="122" cy="84" r="16"/><circle cx="70" cy="80" r="13"/></g>
-          <g class="new" fill="#9fbf91"><circle class="l1" cx="138" cy="52" r="12"/><circle class="l2" cx="22" cy="62" r="11"/><circle class="l3" cx="100" cy="100" r="10"/></g>
-          <g fill="#9fbf91"><circle cx="58" cy="54" r="6"/><circle cx="110" cy="40" r="7"/><circle cx="84" cy="18" r="5"/><circle cx="126" cy="80" r="6"/></g>
-          <g fill="none" stroke="#5f7d58" stroke-width="2" stroke-linecap="round"><path d="M80 128C78 100 60 78 52 58M80 128c4-30 18-62 24-84M80 128c0-40 0-80 0-106M80 128C66 116 48 104 36 94M80 128c14-14 30-30 42-44M80 128c-4-18-8-34-10-48"/></g>
-          <path d="M40 124h80l-10 60H50z" fill="#c9714a"/><path d="M36 118h88v14H36z" fill="#b8613c"/><path d="M58 140c10 8 34 8 44 0" fill="none" stroke="#e9a27f" stroke-width="2" stroke-linecap="round"/></svg><figcaption data-say="pilea, my desk buddy|a new leaf!|growing well|thriving">pilea, my desk buddy</figcaption></figure>
-      </div>
-      <div class="lt-tools">
-        <button type="button" class="lt-tool" data-scatter aria-label="Scatter the desk" title="Scatter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h4a2 2 0 1 1 3 0h3v5a2 2 0 1 0 0 3v5h-5a2 2 0 1 0-3 0H6v-4a2 2 0 1 1 0-3V4z"/></svg></button>
-        <button type="button" class="lt-tool" data-tidy aria-label="Tidy up the desk" title="Tidy up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3h4v7h-4zM5 10h14l1 4H4zM5 14l-1 7h16l-1-7M8 21v-3M12 21v-3M16 21v-3"/></svg></button>
-        <span class="lt-tools__hint" data-hint>Scroll to tidy up · click things</span>
-      </div>
+      <a class="rg-down" href="#house" aria-label="Scroll to the house"><span></span></a>
     </section>
 
     <!-- HOUSE: a section through a house I designed; each room is a part of the portfolio -->
@@ -319,5 +305,6 @@
   <script src="assets/js/v2-light.js"></script>
   <script src="assets/js/v2-creative.js"></script>
   <script src="assets/js/v14.js"></script>
+  <script src="assets/js/v4-hero.js"></script>
 </body>
 </html>
