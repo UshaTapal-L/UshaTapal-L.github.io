@@ -1,0 +1,22 @@
+/* Version 14: sections flow into each other. A band of the hero's ribbed glass
+   fades in and out at every join, with a soft rose or matcha glow that drifts
+   only as you scroll. The page ends by melting into the dark footer. */
+.seam { position: relative; z-index: -1; height: 56vh; margin: -28vh 0; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 38%, #000 62%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 38%, #000 62%, transparent); }
+.seam::before { content: ""; position: absolute; top: 50%; left: var(--x, 50%); width: 60vmax; aspect-ratio: 1.6; translate: -50% -50%; border-radius: 50%; filter: blur(60px); opacity: .5;
+  background: radial-gradient(closest-side, var(--glow), transparent 72%); }
+.seam::after { content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, rgba(255,253,248,.55) 0, rgba(255,253,248,.05) 9px, rgba(255,253,248,0) 14px, rgba(46,59,47,.045) 22px, rgba(255,253,248,.55) 30px); }
+.seam--m { --glow: #a9c98f; }
+.seam--r { --glow: #e46a85; }
+.seam--foot { --glow: #e46a85; height: 26vh; margin: -4vh 0 0; -webkit-mask-image: none; mask-image: none;
+  background: linear-gradient(to bottom, rgba(46,59,47,0), rgba(46,59,47,.35) 60%, var(--ink)); }
+.seam--foot::before { top: 70%; opacity: .35; }
+.seam--foot::after { -webkit-mask-image: linear-gradient(to bottom, transparent, #000 60%); mask-image: linear-gradient(to bottom, transparent, #000 60%); opacity: .5; }
+/* no hard dividers between rooms */
+.lt-work__top { border-top: 0; }
+/* each section rises in softly */
+@media (prefers-reduced-motion: no-preference) {
+  .flow-in { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
+  .flow-in.is-in { opacity: 1; transform: none; }
+}
