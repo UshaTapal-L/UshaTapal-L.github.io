@@ -17,3 +17,13 @@
   .flow-in { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
   .flow-in.is-in { opacity: 1; transform: none; }
 }
+/* About: heading and closed journal fit in one screen */
+.jr { padding-top: clamp(48px, 7vh, 80px); padding-bottom: clamp(32px, 5vh, 60px); }
+.jr-head { gap: 8px; margin-bottom: clamp(20px, 3.5vh, 36px); }
+.jr-head h2 { font-size: clamp(44px, min(6vw, 9vh), 88px); }
+.jr-cover { width: min(440px, calc((100svh - 250px) * .75), 100%); }
+.jr-cover__title { font-size: clamp(40px, min(6vw, 8vh), 82px); }
+.jr-stage { position: relative; }
+.jr:not(.is-open) .jr-book { position: absolute; top: 0; left: 0; right: 0; }
+.jr:not(.is-open) .jr-cover { align-self: start; }
+@media (max-width: 700px) { .jr-cover { width: min(340px, calc((100svh - 230px) * .75), 100%); } }
