@@ -70,3 +70,31 @@
 .sx-back, .sx-back * { white-space: nowrap; }
 @media (max-width: 520px) { .sx-back { font-size: 14px; padding: 10px 16px 10px 12px; } .sx-back em { font-size: 15px; } }
 .sx-fun .heart { fill: var(--rose); }
+
+/* house section carries the hero's look, kept clean */
+.hs .hs-head { gap: 0; }
+.hs .hs-head .lt-label { font: 500 16px var(--sans); color: var(--mute); margin-bottom: 18px; }
+.hs .hs-head h2 { font: 600 clamp(44px, 6.6vw, 96px)/1.02 var(--sans); letter-spacing: -.045em; color: var(--ink); }
+.hs .hs-head h2 em { font: italic 400 1.08em/1 var(--serif); }
+.hs .hs-hint { font: 400 clamp(18px, 1.7vw, 22px)/1.5 var(--sans); letter-spacing: 0; color: var(--mute); margin-top: 22px; }
+.hs .sx { padding: 16px 16px 0; border-radius: 30px; border: 1px solid var(--line); isolation: isolate;
+  background: repeating-linear-gradient(90deg, rgba(255,253,248,.9) 0, rgba(255,253,248,.55) 9px, rgba(255,253,248,.4) 14px, rgba(46,59,47,.04) 22px, rgba(255,253,248,.9) 30px);
+  box-shadow: 0 40px 80px -50px rgba(46,59,47,.45); }
+.hs .sx::before { content: ""; position: absolute; inset: -12% -6%; z-index: -1; pointer-events: none; filter: blur(50px); opacity: .55;
+  background: radial-gradient(36% 46% at 18% 70%, rgba(228,106,133,.55), transparent 70%), radial-gradient(34% 44% at 86% 30%, rgba(169,201,143,.6), transparent 70%); }
+.hs .sx img { border-radius: 16px; }
+.hs .sx-svg { left: 16px; top: 16px; width: calc(100% - 32px); }
+.hs .sx figcaption { padding: 14px 6px 16px; margin: 0; }
+/* tags: hero chips; hovered room turns dark like the hero's Contact pill */
+.hs .sx-tag rect { fill: rgba(255,253,248,.92); stroke: #cfc8b6; filter: none; }
+.hs .sx-room:hover .sx-tag rect, .hs .sx-room:focus-visible .sx-tag rect, .hs .sx-room.on .sx-tag rect { fill: var(--ink); stroke: var(--ink); }
+.hs .sx-room:hover .sx-tag text, .hs .sx-room:focus-visible .sx-tag text, .hs .sx-room.on .sx-tag text { fill: #fffdf8; }
+.hs .sx-room:hover .sx-tag .sx-n, .hs .sx-room:focus-visible .sx-tag .sx-n, .hs .sx-room.on .sx-tag .sx-n { fill: #e46a85; }
+/* room tint: only rose or matcha, like the hero light */
+.hs .sx-room { --tagc: #f3d6dc; }
+.hs .sx-room[data-k="process"], .hs .sx-room[data-k="playground"] { --tagc: #dbe8cf; }
+.hs .sx-room:hover .sx-hl, .hs .sx-room:focus-visible .sx-hl, .hs .sx-room.on .sx-hl { fill-opacity: .6; stroke-opacity: 0; }
+@media (max-width: 700px) { .hs .sx { padding: 8px 8px 0; border-radius: 18px; } .hs .sx img { border-radius: 10px; } .hs .sx-svg { left: 8px; top: 8px; width: calc(100% - 16px); } }
+.hs .sx-chips a { border-color: #cfc8b6; background: rgba(255,253,248,.7); }
+.hs .sx-chips a:hover, .hs .sx-chips a:focus-visible, .hs .sx-chips a.on { background: var(--ink); border-color: var(--ink); color: #fffdf8; }
+.hs .sx-chips a:hover b, .hs .sx-chips a:focus-visible b, .hs .sx-chips a.on b { color: #e46a85; }
