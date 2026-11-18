@@ -3,7 +3,7 @@
 .sx { position: relative; margin: 0 auto; max-width: 1180px; width: 100%; justify-self: center; }
 .sx img { width: 100%; height: auto; border-radius: 10px; }
 .sx figcaption { margin-top: 12px; font-size: 13px; letter-spacing: .04em; color: var(--mute); text-align: left; }
-.sx-svg { position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1620 / 593; height: auto; }
+.sx-svg { position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1465 / 593; height: auto; }
 .sx-room { cursor: pointer; outline: none; }
 .sx-hl { fill: var(--rose); fill-opacity: 0; stroke: var(--rose); stroke-opacity: 0; stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; mix-blend-mode: multiply; pointer-events: all; }
 .sx-tag rect { fill: var(--paper); stroke: var(--rose); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
