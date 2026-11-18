@@ -86,3 +86,11 @@
 .dr-card[data-k="zeeproc"] .dc-shot img { object-position: 50% 50%; }
 @media (min-width: 701px) { .dr { --w: 300px; --h: 420px; --R: 380px; } }
 @media (max-width: 700px) { .wk.grid .dc-foot { font-size: 10px; } .wk.grid .dc-foot span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70%; } }
+
+/* tighter work section */
+.lt-work { padding-top: 48px; padding-bottom: clamp(60px, 8vw, 100px); }
+.lt-work .lt-rule { display: none; }
+.lt .lt-work__h { font-size: clamp(72px, 11vw, 160px); margin: 28px 0 0; }
+.wk { margin-top: 8px; }
+.dr { height: calc(var(--h) + 40px); }
+.wk-bar { margin-top: 6px; }
