@@ -5,17 +5,12 @@
 .sx figcaption { margin-top: 12px; font-size: 13px; letter-spacing: .04em; color: var(--mute); text-align: left; }
 .sx-svg { position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1465 / 593; height: auto; }
 .sx-room { cursor: pointer; outline: none; }
-.sx-hl { fill: var(--rose); fill-opacity: 0; stroke: var(--rose); stroke-opacity: 0; stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; mix-blend-mode: multiply; pointer-events: all; }
-.sx-tag rect { fill: var(--tagc, var(--paper)); stroke: var(--ink); stroke-width: 1.4; vector-effect: non-scaling-stroke; filter: drop-shadow(3px 4px 0 rgba(46,59,47,.18)); }
+.sx-hl { fill: var(--tagc, var(--rose)); fill-opacity: 0; stroke: var(--ink); stroke-opacity: 0; stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; mix-blend-mode: multiply; pointer-events: all; }
+.sx-tag rect { fill: var(--paper); stroke: var(--line); stroke-width: 1.2; vector-effect: non-scaling-stroke; filter: drop-shadow(0 4px 10px rgba(46,59,47,.10)); }
 .sx-room[data-k="work"] { --tagc: #dfe9d2; } .sx-room[data-k="process"] { --tagc: #f6e6b4; } .sx-room[data-k="about"] { --tagc: #f5d7de; }
 .sx-room[data-k="playground"] { --tagc: #d5e6ee; } .sx-room[data-k="contact"] { --tagc: #e6dcf0; }
-.sx-bob { transform-box: fill-box; transform-origin: 50% 50%; transform: rotate(var(--r)); }
-@media (prefers-reduced-motion: no-preference) {
-  .sx-bob { animation: sxBob 3.2s ease-in-out var(--d) infinite; }
-  .sx-room:hover .sx-bob, .sx-room:focus-visible .sx-bob, .sx-room.on .sx-bob { animation: sxWig .5s ease-in-out infinite; }
-}
-@keyframes sxBob { 0%,100% { transform: rotate(var(--r)) translateY(0); } 50% { transform: rotate(var(--r)) translateY(-6px); } }
-@keyframes sxWig { 0%,100% { transform: rotate(calc(var(--r) - 4deg)) scale(1.08); } 50% { transform: rotate(calc(var(--r) + 4deg)) scale(1.08); } }
+.sx-bob { transform-box: fill-box; transform-origin: 50% 50%; transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.sx-room:hover .sx-bob, .sx-room:focus-visible .sx-bob, .sx-room.on .sx-bob { transform: translateY(-4px); }
 /* little surprises in each room */
 .sx-fun { opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; transform: translateY(14px) scale(.7); transition: opacity .2s, transform .35s cubic-bezier(.3,1.6,.5,1); pointer-events: none; }
 .sx-room:hover .sx-fun, .sx-room:focus-visible .sx-fun, .sx-room.on .sx-fun { opacity: 1; transform: none; }
@@ -37,14 +32,12 @@
 @keyframes sxTwinkle { from { transform: scale(.6) rotate(0); } to { transform: scale(1.15) rotate(45deg); } }
 /* lamps glow */
 .sx-glow { pointer-events: none; }
-.sx-glow circle { fill: #ffd84d; filter: url(#sxblur); opacity: .45; mix-blend-mode: multiply; }
-@media (prefers-reduced-motion: no-preference) { .sx-glow circle { animation: sxGlow 2.6s ease-in-out var(--d, 0s) infinite alternate; } }
-@keyframes sxGlow { from { opacity: .25; } to { opacity: .7; } }
+.sx-glow circle { fill: #ffd84d; filter: url(#sxblur); opacity: .3; mix-blend-mode: multiply; }
 .sx-tag text { font: 500 22px var(--sans); fill: var(--ink); }
 .sx-tag .sx-n { fill: var(--rose); font-weight: 600; }
-.sx-room:hover .sx-hl, .sx-room:focus-visible .sx-hl, .sx-room.on .sx-hl { fill-opacity: .16; stroke-opacity: .9; }
-.sx-room:hover .sx-tag rect, .sx-room:focus-visible .sx-tag rect, .sx-room.on .sx-tag rect { fill: var(--rose); stroke: var(--rose); }
-.sx-room:hover .sx-tag text, .sx-room:hover .sx-tag .sx-n, .sx-room:focus-visible .sx-tag text, .sx-room:focus-visible .sx-tag .sx-n, .sx-room.on .sx-tag text, .sx-room.on .sx-tag .sx-n { fill: #fff; }
+.sx-room:hover .sx-hl, .sx-room:focus-visible .sx-hl, .sx-room.on .sx-hl { fill-opacity: .55; stroke-opacity: .6; }
+.sx-room:hover .sx-tag rect, .sx-room:focus-visible .sx-tag rect, .sx-room.on .sx-tag rect { fill: var(--tagc); stroke: var(--ink); }
+
 @media (prefers-reduced-motion: no-preference) { .sx-hl, .sx-tag rect, .sx-tag text { transition: fill-opacity .15s, stroke-opacity .15s, fill .15s; } }
 
 .sx-chips { display: none; }
