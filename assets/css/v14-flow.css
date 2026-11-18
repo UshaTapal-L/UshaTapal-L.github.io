@@ -10,7 +10,6 @@
 .seam--m { --glow: #a9c98f; }
 .seam--r { --glow: #e46a85; }
 .seam--foot { --glow: #e46a85; height: 30vh; margin-bottom: -4vh; }
-.lt-foot { position: relative; border-radius: clamp(28px, 4vw, 48px) clamp(28px, 4vw, 48px) 0 0; }
 /* no hard dividers between rooms */
 .lt-work__top { border-top: 0; }
 /* each section rises in softly */
