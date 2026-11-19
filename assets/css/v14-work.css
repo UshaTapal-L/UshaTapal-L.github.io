@@ -241,3 +241,14 @@ a.dr-card { text-decoration: none; }
   .wk.few .dr-card[data-k="clients"] { grid-column: 1 / 3; }
   .wk.few .dr-card[data-k="clients"] .dc-art { aspect-ratio: 16 / 10; }
 }
+/* few cards: an open fan instead of a closed drum, Drum/Grid switch kept */
+.wk.fan .dr { --R: 720px; overflow-x: clip; overflow-y: visible; }
+.wk.fan .dr-ring { transform: translateZ(calc(var(--R) * -1)) rotateY(var(--rot, 0deg)); }
+@media (max-width: 700px) { .wk.fan .dr { --R: 520px; } }
+.wk.fan.grid .dr-ring { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1080px; margin: 0 auto; }
+.wk.fan.grid .dr-card[data-k] { grid-column: auto; grid-row: auto; }
+@media (max-width: 700px) {
+  .wk.fan.grid .dr-ring { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .wk.fan.grid .dr-card[data-k="clients"] { grid-column: 1 / 3; }
+  .wk.fan.grid .dr-card[data-k="clients"] .dc-art { aspect-ratio: 16 / 10; }
+}

@@ -4,9 +4,9 @@
   var wk = document.querySelector('[data-wk]'); if (!wk) return;
   var dr = wk.querySelector('[data-dr]'), ring = wk.querySelector('[data-ring]'), cards = [].slice.call(ring.children);
   var wd = wk.querySelector('[data-wd]'), items = [].slice.call(wd.querySelectorAll('.wd-item'));
-  var bar = wk.querySelector('.wk-bar'), n = cards.length, wrap = n >= 6, step = wrap ? 360 / n : 34, rot = 0;
+  var bar = wk.querySelector('.wk-bar'), n = cards.length, wrap = n >= 6, step = wrap ? 360 / n : 30, rot = 0;
   ring.style.setProperty('--step', step + 'deg');
-  if (!wrap) { wk.classList.add('grid', 'few'); }
+  if (!wrap) { wk.classList.add('fan'); }
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function front() { var k = Math.round(-rot / step); return wrap ? ((k % n) + n) % n : Math.max(0, Math.min(n - 1, k)); }
