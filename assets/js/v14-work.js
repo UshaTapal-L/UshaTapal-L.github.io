@@ -4,11 +4,13 @@
   var wk = document.querySelector('[data-wk]'); if (!wk) return;
   var dr = wk.querySelector('[data-dr]'), ring = wk.querySelector('[data-ring]'), cards = [].slice.call(ring.children);
   var wd = wk.querySelector('[data-wd]'), items = [].slice.call(wd.querySelectorAll('.wd-item'));
-  var bar = wk.querySelector('.wk-bar'), n = cards.length, step = 360 / n, rot = 0;
+  var bar = wk.querySelector('.wk-bar'), n = cards.length, wrap = n >= 6, step = wrap ? 360 / n : 34, rot = 0;
   ring.style.setProperty('--step', step + 'deg');
+  if (!wrap) { wk.classList.add('grid', 'few'); }
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function front() { return ((Math.round(-rot / step) % n) + n) % n; }
+  function front() { var k = Math.round(-rot / step); return wrap ? ((k % n) + n) % n : Math.max(0, Math.min(n - 1, k)); }
+  function clampRot(r) { return wrap ? r : Math.max(-(n - 1) * step, Math.min(0, r)); }
   function paint() {
     ring.style.setProperty('--rot', rot + 'deg');
     cards.forEach(function (c, i) {
@@ -17,10 +19,10 @@
       c.tabIndex = (i === front() || wk.classList.contains('grid')) ? 0 : -1;
     });
   }
-  function go(to, ease) { dr.classList.toggle('ease', !!ease && !reduce); rot = to; paint(); }
+  function go(to, ease) { dr.classList.toggle('ease', !!ease && !reduce); rot = ease ? clampRot(to) : to; paint(); }
   function snap() { go(Math.round(rot / step) * step, true); }
   function turn(k) { go((Math.round(rot / step) - k) * step, true); }
-  function toCard(i) { var cur = Math.round(rot / step), want = -i, diff = ((want - cur) % n + n + Math.floor(n / 2)) % n - Math.floor(n / 2); go((cur + diff) * step, true); }
+  function toCard(i) { if (!wrap) { go(-i * step, true); return; } var cur = Math.round(rot / step), want = -i, diff = ((want - cur) % n + n + Math.floor(n / 2)) % n - Math.floor(n / 2); go((cur + diff) * step, true); }
 
   // drag / swipe
   var sx = 0, sr = 0, moved = false, down = false;
@@ -37,16 +39,18 @@
   var last = null;
   function open(i) {
     last = cards[i];
-    items.forEach(function (it, j) { it.hidden = j !== i; });
+    var k = cards[i].dataset.k; items.forEach(function (it) { it.hidden = it.dataset.k !== k; });
     dr.hidden = true; bar.hidden = true; wd.hidden = false;
     var top = wk.getBoundingClientRect().top; if (top < 0 || top > innerHeight * .5) wk.scrollIntoView({ behavior: 'instant', block: 'start' });
     wd.querySelector('[data-back]').focus({ preventScroll: true });
   }
   function close() { wd.hidden = true; dr.hidden = false; bar.hidden = false; paint(); if (last) last.focus({ preventScroll: true }); }
   cards.forEach(function (c, i) {
-    c.addEventListener('click', function () {
+    c.addEventListener('click', function (e) {
+      var atFront = wk.classList.contains('grid') || i === front();
+      if (c.hasAttribute('href')) { if (moved || !atFront) { e.preventDefault(); if (!moved) toCard(i); } return; }
       if (moved) return;
-      if (wk.classList.contains('grid') || i === front()) open(i); else toCard(i);
+      if (atFront) open(i); else toCard(i);
     });
   });
   wd.querySelector('[data-back]').addEventListener('click', close);
