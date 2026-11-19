@@ -2,179 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>NutraScan · Usha Tapal</title>
-  <meta name="description" content="NutraScan case study: an AI food buddy app. Brand, UX and UI by Usha Tapal.">
+  <meta name="description" content="NutraScan: a project by Usha Tapal, product designer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/case.css">
 </head>
 <body>
-  <header class="nav is-scrolled">
-    <div class="wrap nav__inner">
-      <a class="nav__brand" href="../index.html"><img src="../images/avatar.jpg" alt="" width="40" height="40"><span>Usha Tapal</span></a>
-      <a class="nav__back" href="../index.html#work">← All work</a>
-    </div>
+  <header class="cs-top">
+    <a class="cs-brand" href="../index.html" data-home>Usha Tapal</a>
+    <nav class="cs-nav"><a class="cs-pill cs-pill--next" href="design-system.html">Next: Design system →</a><a class="cs-pill" href="../index.html" data-home>← Home</a></nav>
   </header>
-  <main id="main" class="wrap">
-<article class="cx">
-  <header class="cx-head">
-    <p class="cx-eyebrow">Health &amp; nutrition · Mobile AI · Team Sixth Sense</p>
-    <h1>NutraScan</h1>
-    <p class="cx-lede">An AI food buddy that scans your fridge, reads your mood and turns what you have into healthier meals.</p>
-  </header>
-  <figure class="cx-cover"><img src="../images/work/nutrascan/cover.jpg" alt="NutraScan mockup: home screen with mood check-in and curated recipes" width="2400" height="1500"></figure>
-
-  <section class="cx-sec" id="overview">
-    <p class="cx-num">01 · Overview</p>
-    <div class="cx-split">
-      <div>
-        <h2>Small, consistent steps towards health</h2>
-        <p class="cx-p">Most health apps ask you to count. NutraScan asks how you feel, looks in your fridge and suggests a healthy meal you can actually make, then turns good habits into weekly challenges.</p>
-      </div>
-      <dl class="cx-facts"><div><dt>Role</dt><dd>Product designer</dd></div><div><dt>Team</dt><dd>Team Sixth Sense</dd></div><div><dt>Platform</dt><dd>Android & iOS app</dd></div><div><dt>Scope</dt><dd>Brand · UX · UI</dd></div><div class="cx-facts__wide"><dt>Tools</dt><dd>Figma, ChatGPT &amp; Gemini (storyboard)</dd></div></dl>
-    </div>
-  </section>
-
-  <section class="cx-sec" id="persona">
-    <p class="cx-num">02 · Who it's for</p>
-    <div class="nx-persona">
-      <div class="nx-who"><span class="nx-av" aria-hidden="true">G</span><div><h2>Meet Garima</h2><p>29, working professional, lives alone</p></div></div>
-      <ul class="nx-pains">
-        <li>Always rushing between meetings</li><li>Eats out often</li><li>Wants to eat better, hates calorie logging</li><li>Overwhelmed at grocery stores</li><li>Deleted 3 food apps last month</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="cx-sec cx-pa" id="problem">
-    <div><p class="cx-num">03 · Problem</p><h2>Health apps feel like homework</h2><ol class="cx-list">
-      <li><b>Logging is tedious</b><span>Garima quit three apps because typing every meal was a chore.</span></li>
-      <li><b>Too much data</b><span>Leaders like HealthifyMe overwhelm casual users with numbers.</span></li>
-      <li><b>Weak on local food</b><span>Apps like Lifesum miss Indian and home-cooked meals.</span></li></ol></div>
-    <div><p class="cx-num">04 · Approach</p><h2>How we tackled it</h2><ol class="cx-list cx-list--steps">
-      <li><b>Competitor SWOT</b><span>HealthifyMe and Lifesum: what to keep, what to drop.</span></li>
-      <li><b>Talk or scan, never type</b><span>Voice and camera replace manual logging.</span></li>
-      <li><b>Mood before metrics</b><span>Open on "what's the vibe today?", not a calorie count.</span></li>
-      <li><b>Habits as play</b><span>Points, challenges and badges for small wins.</span></li></ol></div>
-  </section>
-
-  <section class="cx-sec" id="concept">
-    <p class="cx-num">05 · Concept storyboard</p>
-    <h2>A day in Arpit's life</h2>
-    <p class="ai-line">Before a single screen, we told the idea as a story: three ordinary moments where one small nudge changes the choice.</p>
-
-    <ol class="st">
-      <li class="st__ch st__ch--morning">
-        <div class="st__art"><img src="../images/work/nutrascan/story-morning.jpg" alt="Morning: Arpit on the sofa, NutraScan suggests a better breakfast and awards 20 points" width="1200" height="800" loading="lazy"></div>
-        <div class="st__text">
-          <p class="st__time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Morning</p>
-          <h3>"I just want to make one better choice."</h3>
-          <p class="st__moment">Yesterday he skipped breakfast: chai and a muffin. Today he opens NutraScan, already logged in.</p>
-          <p class="st__bubble"><b>NutraScan</b>Good morning, Arpit! Let's swap one thing today: boiled egg or peanut-butter toast?</p>
-          <p class="st__win"><span>+1 point</span>He taps yes. Logged automatically, no typing.</p>
-        </div>
-      </li>
-      <li class="st__ch st__ch--afternoon">
-        <div class="st__art"><img src="../images/work/nutrascan/story-afternoon.jpg" alt="Afternoon: Arpit scans a bag of chips in a supermarket and sees it is high in unhealthy fats" width="1000" height="1000" loading="lazy"></div>
-        <div class="st__text">
-          <p class="st__time"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h2l2.4 9.6a2 2 0 0 0 2 1.4h7.8a2 2 0 0 0 2-1.5L21 10H6.2"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>Afternoon</p>
-          <h3>"Is this protein bar even healthy?"</h3>
-          <p class="st__moment">Lost in the supermarket aisle, he points his phone at the barcode.</p>
-          <p class="st__bubble"><b>NutraScan</b>This bar is high in sugar. Want a better one with more protein?</p>
-          <p class="st__win"><span>+5 points</span>He picks the alternative and adds it to his healthy list. Bonus: a 2-day streak.</p>
-        </div>
-      </li>
-      <li class="st__ch st__ch--evening">
-        <div class="st__art"><img src="../images/work/nutrascan/story-evening.jpg" alt="Evening: Arpit orders grilled paneer instead of pasta and earns the Takeout Tamer badge" width="1000" height="1000" loading="lazy"></div>
-        <div class="st__text">
-          <p class="st__time"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>Evening</p>
-          <h3>"What do I even eat tonight?"</h3>
-          <p class="st__moment">Tired from work, about to order pasta again. He presses the mic: "What's a healthy dinner I can order fast?"</p>
-          <p class="st__bubble"><b>NutraScan</b>Try grilled paneer with roti. Fills you up and keeps your streak going!</p>
-          <p class="st__win"><span>+5 points</span>He taps Order and unlocks the "Takeout Tamer" badge.</p>
-        </div>
-      </li>
-    </ol>
-    <p class="st__end">Healthy choices, <em>without missing out.</em></p>
-
-    <h3 class="nx-h3">The gamification loop</h3>
-    <div class="nx-loop">
-      <figure><img src="../images/work/nutrascan/loop-earn.jpg" alt="Earn points: smart swaps, staying hydrated, hitting fibre or protein goals, using camera or voice" width="1000" height="1000" loading="lazy"></figure>
-      <figure><img src="../images/work/nutrascan/loop-redeem.jpg" alt="Redeem points: unlock recipes, cashback on healthy brands, weekly challenges, premium features" width="1000" height="1000" loading="lazy"></figure>
-      <figure><img src="../images/work/nutrascan/loop-hooked.jpg" alt="Stay hooked: daily streaks, mood-based suggestions, badges, weekly progress reports" width="1000" height="1000" loading="lazy"></figure>
-    </div>
-
-    <h3 class="nx-h3">Why users stay</h3>
-    <div class="nx-why" role="table" aria-label="Hooks, the emotional value they give and the feature behind them">
-      <div class="nx-why__row nx-why__head" role="row"><span role="columnheader">Hook</span><span role="columnheader">Emotional value</span><span role="columnheader">Feature</span></div>
-      <div class="nx-why__row" role="row"><span role="cell">Voice interaction</span><span role="cell">Feels human, easy to use</span><span role="cell">Ask NutraScan</span></div>
-      <div class="nx-why__row" role="row"><span role="cell">Points + badges</span><span role="cell">Motivation without guilt</span><span role="cell">Daily goals</span></div>
-      <div class="nx-why__row" role="row"><span role="cell">Personalised tips</span><span role="cell">Relevant to their life</span><span role="cell">Onboarding + preferences</span></div>
-      <div class="nx-why__row" role="row"><span role="cell">Grocery &amp; restaurant help</span><span role="cell">Real-time clarity</span><span role="cell">Scan &amp; alternatives</span></div>
-      <div class="nx-why__row" role="row"><span role="cell">Compare with yesterday</span><span role="cell">Progress you can see</span><span role="cell">Smart history log</span></div>
-    </div>
-  </section>
-
-  <section class="cx-sec" id="brand">
-    <p class="cx-num">Brand</p>
-    <h2>A buddy, not a coach or a calculator</h2>
-    <div class="nx-brand">
-      <figure class="cx-shot nx-logo"><img src="../images/work/nutrascan/logo.jpg" alt="NutraScan logo construction: N and S blend, a central AI diamond and a wave cut" width="1100" height="673"></figure>
-      <div class="nx-side">
-        <ul class="nx-meaning">
-          <li><b>N + S blend</b><span>The mark joins the letters of NutraScan.</span></li>
-          <li><b>AI diamond</b><span>The spark at the centre is the AI, always analysing.</span></li>
-          <li><b>Wave cut</b><span>A non-linear journey: consistency over perfection.</span></li>
-        </ul>
-        <div class="nx-pal"><span style="background:#0B4141"></span><span style="background:#E2EDE0"></span><span style="background:#89515A"></span><span style="background:#FFFCF5"></span></div>
-        <p class="nx-type"><b>Nunito</b> for headings · <b>Manrope</b> for body · tagline <b>"Your pocket food buddy"</b></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cx-sec" id="screens">
-    <p class="cx-num">06 · A day with Garima</p>
-    <h2>Scan, see, cook, <em>repeat.</em></h2>
-    <p class="ai-line">Follow Garima through her week. AI does the noticing: what she says, what is in her fridge, what is on her plate. She decides what to eat.</p>
-    <div class="ann" data-ann><div class="ann__tabs" role="tablist" aria-label="Screens"><button type="button" role="tab" class="ann__tab" id="ann-t0" aria-controls="ann-p0">1 · Rushed morning</button><button type="button" role="tab" class="ann__tab" id="ann-t1" aria-controls="ann-p1">2 · Fridge scan</button><button type="button" role="tab" class="ann__tab" id="ann-t2" aria-controls="ann-p2">3 · Recipe match</button><button type="button" role="tab" class="ann__tab" id="ann-t3" aria-controls="ann-p3">4 · Food check</button><button type="button" role="tab" class="ann__tab" id="ann-t4" aria-controls="ann-p4">5 · Rainbow Week</button><button type="button" role="tab" class="ann__tab" id="ann-t5" aria-controls="ann-p5">6 · Weekly insights</button></div><div class="ann__panel ann__panel--phone" role="tabpanel" id="ann-p0" aria-labelledby="ann-t0">
-      <svg class="ann__lines" aria-hidden="true"></svg>
-      <div class="ann__fig ann__fig--phone"><div class="ann__frame"><img src="../images/work/nutrascan/voice.jpg" alt="NutraScan AI voice companion: Garima asks what to eat and picks salad over a muffin" width="390" height="844"><button type="button" class="ann__pin" data-n="1" style="left:35%;top:34%" aria-label="Note 1: Voice companion">1</button><button type="button" class="ann__pin" data-n="2" style="left:75%;top:70%" aria-label="Note 2: Salad over muffin">2</button><button type="button" class="ann__pin" data-n="3" style="left:50%;top:81%" aria-label="Note 3: Claim 10 points">3</button></div></div>
-      <div class="ann__side"><p class="ann__story">Running late again, no time for breakfast. She taps the mic: “What can I eat real quick?”</p><p class="ann__why"><b>Why AI here:</b> she is late and has no time to type, so she just asks out loud.</p><ol class="ann__notes"><li class="ann__note" data-n="1" tabindex="0"><span class="ann__num">1</span><div><p class="ann__t"><b>Voice companion</b><span class="cx-ux">Natural interaction</span></p><span class="ann__how">&quot;What can I eat real quick?&quot; No typing.</span><span class="ann__ai"><svg class="ann__ai-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>AI understands speech and suggests a quick meal</span></div></li><li class="ann__note" data-n="2" tabindex="0"><span class="ann__num">2</span><div><p class="ann__t"><b>Salad over muffin</b><span class="cx-ux">Choice architecture</span></p><span class="ann__how">The healthy option, one tap away.</span></div></li><li class="ann__note" data-n="3" tabindex="0"><span class="ann__num">3</span><div><p class="ann__t"><b>Claim 10 points</b><span class="cx-ux">Positive reinforcement</span></p><span class="ann__how">Every good choice is celebrated.</span></div></li></ol></div>
-    </div><div class="ann__panel ann__panel--phone" role="tabpanel" id="ann-p1" aria-labelledby="ann-t1" hidden>
-      <svg class="ann__lines" aria-hidden="true"></svg>
-      <div class="ann__fig ann__fig--phone"><div class="ann__frame"><img src="../images/work/nutrascan/camera.jpg" alt="NutraScan AI camera labelling ingredients live: avocado, tomato, rice, tuna" width="390" height="844"><button type="button" class="ann__pin" data-n="1" style="left:71%;top:33.6%" aria-label="Note 1: Live ingredient labels">1</button><button type="button" class="ann__pin" data-n="2" style="left:19%;top:77%" aria-label="Note 2: Camera · Barcode · Gallery">2</button><button type="button" class="ann__pin" data-n="3" style="left:50%;top:88%" aria-label="Note 3: Shutter">3</button></div></div>
-      <div class="ann__side"><p class="ann__story">Home, hungry, clueless. She scans the fridge: lettuce, tomatoes, a lemon, leftover paneer.</p><p class="ann__why"><b>Why AI here:</b> she is hungry but clueless, so the camera works out what is in the fridge.</p><ol class="ann__notes"><li class="ann__note" data-n="1" tabindex="0"><span class="ann__num">1</span><div><p class="ann__t"><b>Live ingredient labels</b><span class="cx-ux">Visibility of status</span></p><span class="ann__how">She sees what the app sees, as it scans.</span><span class="ann__ai"><svg class="ann__ai-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>AI labels every ingredient in real time</span></div></li><li class="ann__note" data-n="2" tabindex="0"><span class="ann__num">2</span><div><p class="ann__t"><b>Camera · Barcode · Gallery</b><span class="cx-ux">Flexibility</span></p><span class="ann__how">Scan food, packets or an old photo.</span></div></li><li class="ann__note" data-n="3" tabindex="0"><span class="ann__num">3</span><div><p class="ann__t"><b>Shutter</b><span class="cx-ux">Fitts&#x27;s law</span></p><span class="ann__how">One big button at thumb height.</span></div></li></ol></div>
-    </div><div class="ann__panel ann__panel--phone" role="tabpanel" id="ann-p2" aria-labelledby="ann-t2" hidden>
-      <svg class="ann__lines" aria-hidden="true"></svg>
-      <div class="ann__fig ann__fig--phone"><div class="ann__frame"><img src="../images/work/nutrascan/recipes.jpg" alt="NutraScan curated recipes matched to the ingredients in the fridge" width="390" height="844"><button type="button" class="ann__pin" data-n="1" style="left:50%;top:17%" aria-label="Note 1: Food categories">1</button><button type="button" class="ann__pin" data-n="2" style="left:52%;top:42%" aria-label="Note 2: &quot;Matches 4 ingredients&quot;">2</button></div></div>
-      <div class="ann__side"><p class="ann__story">“Got it! Want to try a quick tangy paneer salad?”</p><p class="ann__why"><b>Why AI here:</b> &quot;what can I make?&quot; is the hardest question, so AI matches recipes to what she has.</p><ol class="ann__notes"><li class="ann__note" data-n="1" tabindex="0"><span class="ann__num">1</span><div><p class="ann__t"><b>Food categories</b><span class="cx-ux">Recognition over recall</span></p><span class="ann__how">Pictures, not menus.</span></div></li><li class="ann__note" data-n="2" tabindex="0"><span class="ann__num">2</span><div><p class="ann__t"><b>&quot;Matches 4 ingredients&quot;</b><span class="cx-ux">Relevance</span></p><span class="ann__how">Ranked by what is already in the fridge.</span><span class="ann__ai"><svg class="ann__ai-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>AI matches recipes to the scan</span></div></li></ol></div>
-    </div><div class="ann__panel ann__panel--phone" role="tabpanel" id="ann-p3" aria-labelledby="ann-t3" hidden>
-      <svg class="ann__lines" aria-hidden="true"></svg>
-      <div class="ann__fig ann__fig--phone"><div class="ann__frame"><img src="../images/work/nutrascan/detail.jpg" alt="NutraScan details: Salmon Cucumber Roll, a bad-to-fit health meter, macro tiles and ingredients" width="390" height="844"><button type="button" class="ann__pin" data-n="1" style="left:81%;top:31%" aria-label="Note 1: Bad ↔ Fit meter">1</button><button type="button" class="ann__pin" data-n="2" style="left:50%;top:51.5%" aria-label="Note 2: Macro tiles">2</button><button type="button" class="ann__pin" data-n="3" style="left:30%;top:77%" aria-label="Note 3: Ingredients identified">3</button></div></div>
-      <div class="ann__side"><p class="ann__story">She checks what&#x27;s on her plate before she eats. Simple, fresh, done in 10 minutes.</p><p class="ann__why"><b>Why AI here:</b> nutrition labels are hard to read, so AI turns a photo into one simple verdict.</p><ol class="ann__notes"><li class="ann__note" data-n="1" tabindex="0"><span class="ann__num">1</span><div><p class="ann__t"><b>Bad ↔ Fit meter</b><span class="cx-ux">Simplification</span></p><span class="ann__how">One verdict instead of a table of numbers.</span><span class="ann__ai"><svg class="ann__ai-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>AI scores the dish from a photo</span></div></li><li class="ann__note" data-n="2" tabindex="0"><span class="ann__num">2</span><div><p class="ann__t"><b>Macro tiles</b><span class="cx-ux">Glanceability</span></p><span class="ann__how">Calories, protein, carbs and fat at a glance.</span></div></li><li class="ann__note" data-n="3" tabindex="0"><span class="ann__num">3</span><div><p class="ann__t"><b>Ingredients identified</b><span class="cx-ux">Transparency</span></p><span class="ann__how">Shows what the scan found.</span></div></li></ol></div>
-    </div><div class="ann__panel ann__panel--phone" role="tabpanel" id="ann-p4" aria-labelledby="ann-t4" hidden>
-      <svg class="ann__lines" aria-hidden="true"></svg>
-      <div class="ann__fig ann__fig--phone"><div class="ann__frame"><img src="../images/work/nutrascan/rainbow.jpg" alt="NutraScan Rainbow Week challenge: eat 7 colours, 2 of 7 logged" width="390" height="844"><button type="button" class="ann__pin" data-n="1" style="left:23%;top:21%" aria-label="Note 1: 7-colour checklist">1</button><button type="button" class="ann__pin" data-n="2" style="left:50%;top:61%" aria-label="Note 2: Log Now">2</button><button type="button" class="ann__pin" data-n="3" style="left:20%;top:78%" aria-label="Note 3: Rewards">3</button></div></div>
-      <div class="ann__side"><p class="ann__story">A new challenge: eat 7 colours this week. An apple at breakfast, broccoli at lunch, grapes on the grocery run.</p><p class="ann__why"><b>Why AI here:</b> habits stick when they log themselves, so each scan counts toward a colour.</p><ol class="ann__notes"><li class="ann__note" data-n="1" tabindex="0"><span class="ann__num">1</span><div><p class="ann__t"><b>7-colour checklist</b><span class="cx-ux">Gamification</span></p><span class="ann__how">Apple, broccoli, lemon… one colour at a time.</span></div></li><li class="ann__note" data-n="2" tabindex="0"><span class="ann__num">2</span><div><p class="ann__t"><b>Log Now</b><span class="cx-ux">One-tap action</span></p><span class="ann__how">Progress: 2 of 7 colours.</span><span class="ann__ai"><svg class="ann__ai-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>AI counts colours from each scan</span></div></li><li class="ann__note" data-n="3" tabindex="0"><span class="ann__num">3</span><div><p class="ann__t"><b>Rewards</b><span class="cx-ux">Variable rewards</span></p><span class="ann__how">Points, a Rainbow Hero badge, a bonus scan.</span></div></li></ol></div>
-    </div><div class="ann__panel ann__panel--phone" role="tabpanel" id="ann-p5" aria-labelledby="ann-t5" hidden>
-      <svg class="ann__lines" aria-hidden="true"></svg>
-      <div class="ann__fig ann__fig--phone"><div class="ann__frame"><img src="../images/work/nutrascan/insights.jpg" alt="NutraScan weekly insights: overall score 82/100, best and least balanced day, mood tracker" width="390" height="844"><button type="button" class="ann__pin" data-n="1" style="left:30%;top:24%" aria-label="Note 1: Overall score 82/100">1</button><button type="button" class="ann__pin" data-n="2" style="left:55%;top:62.5%" aria-label="Note 2: Best and least balanced day">2</button><button type="button" class="ann__pin" data-n="3" style="left:40%;top:76%" aria-label="Note 3: Nutrition &amp; mood tracker">3</button></div></div>
-      <div class="ann__side"><p class="ann__story">Sunday. Her week in one score: 82/100. Thursday was her best day.</p><p class="ann__why"><b>Why AI here:</b> a week of scans is a lot of data, so AI sums it up in one score and two tips.</p><ol class="ann__notes"><li class="ann__note" data-n="1" tabindex="0"><span class="ann__num">1</span><div><p class="ann__t"><b>Overall score 82/100</b><span class="cx-ux">Summary first</span></p><span class="ann__how">One number for the whole week.</span></div></li><li class="ann__note" data-n="2" tabindex="0"><span class="ann__num">2</span><div><p class="ann__t"><b>Best and least balanced day</b><span class="cx-ux">Actionable insight</span></p><span class="ann__how">Thursday great, Sunday needs care.</span><span class="ann__ai"><svg class="ann__ai-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>AI spots patterns across the week</span></div></li><li class="ann__note" data-n="3" tabindex="0"><span class="ann__num">3</span><div><p class="ann__t"><b>Nutrition &amp; mood tracker</b><span class="cx-ux">Emotional design</span></p><span class="ann__how">Food and feelings, side by side.</span></div></li></ol></div>
-    </div></div>
-  </section>
-
-  <section class="cx-sec cx-impact" id="impact">
-    <div class="cx-stat"><p class="cx-num">07 · Impact</p><b>1 scan</b><span>from fridge to a healthy recipe</span></div>
-    <ul class="cx-learn">
-      <li><b>Mood before metrics.</b> Starting with feelings made the app feel kinder than calorie trackers.</li>
-      <li><b>Play keeps people coming back.</b> Challenges turn healthy eating into small weekly wins.</li>
-      <li><b>Next:</b> a deeper Indian food library, grocery lists from scans, and usability tests with people like Garima.</li>
-    </ul>
-  </section>
-
-  <nav class="cx-end"><a href="../index.html#work">← All work</a><a href="smart-dealer.html">Next: Smart Dealer →</a></nav>
-</article>
+  <main id="main" class="cs">
+<section class="cs-hero">
+  <div class="cs-hero-txt"><p class="cs-k">Health &amp; nutrition · Mobile AI · Concept</p><h1>Nutra<em>Scan.</em></h1><p class="cs-l">An AI food buddy that reads your mood, scans your fridge and turns what you have into a better meal.</p><dl class="cs-facts"><div><dt>Role</dt><dd>Product designer, end to end</dd></div><div><dt>Team</dt><dd>Team Sixth Sense</dd></div><div><dt>Platform</dt><dd>Android &amp; iOS</dd></div><div><dt>Scope</dt><dd>Brand · UX · UI</dd></div></dl></div>
+  <figure class="cs-art cs-art--contain" style="--tone:var(--blush)"><img src="../images/work/mock/nutra.webp" alt="NutraScan app mockup" ></figure>
+</section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">01 · Problem</p><h2>Health apps feel <em>like homework.</em></h2></div><div class="cs-cards" style="--c:3"><article class="cs-card rv " style="--d:0"><i>Logging</i><b>Typing every meal</b><p>Our user quit three apps because logging was a chore.</p></article><article class="cs-card rv " style="--d:1"><i>Overload</i><b>Too many numbers</b><p>Calorie-first apps overwhelm casual users.</p></article><article class="cs-card rv cs-card--rose" style="--d:2"><i>Local food</i><b>Indian meals missing</b><p>Home-cooked and regional food is barely covered.</p></article></div></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">02 · How I found it</p><h2>I started with <em>why people quit.</em></h2></div><ol class="cs-steps"><li class="rv" style="--d:0"><i>Compare</i><b>Competitor SWOT</b><p>HealthifyMe and Lifesum: what works, what overwhelms.</p></li><li class="rv" style="--d:1"><i>Meet</i><b>A persona: Garima, 29</b><p>Rushed, eats out often, wants to eat better, hates logging.</p></li><li class="rv" style="--d:2"><i>Story</i><b>A storyboard before screens</b><p>Three moments in a day where one nudge changes a choice.</p></li><li class="rv" style="--d:3"><i>Build</i><b>Prototype</b><p>Voice, scan and mood flows in Figma.</p></li></ol></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">03 · Research evidence</p><h2>What we found, <em>and what it changed.</em></h2></div><ul class="cs-ev"><li class="rv"><div><i>Method</i><b>Competitor SWOT</b><small>HealthifyMe, Lifesum</small></div><div><i>What we heard</i><p>Leaders overwhelm casual users with numbers, and miss Indian, home-cooked food.</p></div><div><i>What changed</i><p>Mood first, numbers later; recipes from local food.</p></div></li><li class="rv"><div><i>Method</i><b>Persona research</b><small>Garima · <mark class="todo">add how many people you spoke to</mark></small></div><div><i>What we heard</i><p>“Deleted 3 food apps last month.” Logging every meal was the reason.</p></div><div><i>What changed</i><p>No typing at all: voice and camera replace logging.</p></div></li><li class="rv"><div><i>Method</i><b>Persona research</b><small>Garima at the grocery store</small></div><div><i>What we heard</i><p>Overwhelmed by labels in the aisle.</p></div><div><i>What changed</i><p>Barcode scan with a better alternative.</p></div></li><li class="rv"><div><i>Method</i><b>Usability tests</b><small><mark class="todo">Add if you tested, and with whom</mark></small></div><div><i>What we heard</i><p><mark class="todo">Add what people struggled with.</mark></p></div><div><i>What changed</i><p><mark class="todo">Add what you changed.</mark></p></div></li></ul></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">04 · Approach</p><h2>Mood before metrics.</h2></div><div class="cs-cards" style="--c:4"><article class="cs-card rv " style="--d:0"><i>Research</i><b>Competitor SWOT</b><p>What to keep and drop from the market leaders.</p></article><article class="cs-card rv cs-card--matcha" style="--d:1"><i>Input</i><b>Talk or scan, never type</b><p>Voice and camera replace manual logging.</p></article><article class="cs-card rv " style="--d:2"><i>Tone</i><b>How do you feel?</b><p>Open on the vibe of the day, not a calorie count.</p></article><article class="cs-card rv cs-card--ink" style="--d:3"><i>Habit</i><b>Play, not guilt</b><p>Points, challenges and badges for small wins.</p></article></div></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">05 · Storyboard</p><h2>One day, <em>three small nudges.</em></h2><p class="cs-sub">Before a single screen, we told the idea as a story.</p></div><div class="cs-strip-wrap rv" data-strip><div class="cs-strip" aria-label="Screens, scroll sideways"><figure><img src="../images/work/nutrascan/story-morning.jpg" alt="Morning storyboard" loading="lazy"><figcaption><b>Morning</b>“I just want to make one better choice.” A swap suggestion, logged with one tap.</figcaption></figure><figure><img src="../images/work/nutrascan/story-afternoon.jpg" alt="Afternoon storyboard" loading="lazy"><figcaption><b>Afternoon</b>“Is this protein bar even healthy?” Scan the barcode, see a better pick.</figcaption></figure><figure><img src="../images/work/nutrascan/story-evening.jpg" alt="Evening storyboard" loading="lazy"><figcaption><b>Evening</b>“What do I even eat tonight?” Ask out loud, get a quick healthy order.</figcaption></figure></div><div class="cs-arrows"><button type="button" data-prev aria-label="Previous">←</button><button type="button" data-next aria-label="Next">→</button></div></div></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">06 · Key screens</p><h2>Scan, see, <em>cook, repeat.</em></h2></div><div class="cs-strip-wrap rv" data-strip><div class="cs-strip cs-strip--phone" aria-label="Screens, scroll sideways"><figure><img src="../images/work/nutrascan/voice.jpg" alt="Voice companion" loading="lazy"><figcaption><b>Voice</b>No time to type. Ask “what can I eat real quick?”</figcaption></figure><figure><img src="../images/work/nutrascan/camera.jpg" alt="Fridge scan" loading="lazy"><figcaption><b>Fridge scan</b>Point the camera; the app sees what is there.</figcaption></figure><figure><img src="../images/work/nutrascan/recipes.jpg" alt="Recipe matches" loading="lazy"><figcaption><b>Recipe match</b>Meals from what you already have.</figcaption></figure><figure><img src="../images/work/nutrascan/detail.jpg" alt="Food check" loading="lazy"><figcaption><b>Food check</b>Is it good for you, and what is better?</figcaption></figure><figure><img src="../images/work/nutrascan/rainbow.jpg" alt="Rainbow week challenge" loading="lazy"><figcaption><b>Rainbow Week</b>A playful weekly goal: eat every colour.</figcaption></figure><figure><img src="../images/work/nutrascan/insights.jpg" alt="Weekly insights" loading="lazy"><figcaption><b>Insights</b>Progress you can see, compared with last week.</figcaption></figure></div><div class="cs-arrows"><button type="button" data-prev aria-label="Previous">←</button><button type="button" data-next aria-label="Next">→</button></div></div></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">07 · Habit loop</p><h2>Healthy choices, <em>without missing out.</em></h2></div><div class="cs-board"><figure class="rv" style="--w:2;--d:0"><img src="../images/work/nutrascan/loop-hooked.jpg" alt="Hooked: the trigger" loading="lazy"><figcaption>Hooked</figcaption></figure><figure class="rv" style="--w:2;--d:1"><img src="../images/work/nutrascan/loop-earn.jpg" alt="Earn: points for small wins" loading="lazy"><figcaption>Earn</figcaption></figure><figure class="rv" style="--w:2;--d:2"><img src="../images/work/nutrascan/loop-redeem.jpg" alt="Redeem: rewards" loading="lazy"><figcaption>Redeem</figcaption></figure></div></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">08 · Brand</p><h2>A buddy, <em>not a calculator.</em></h2></div><div class="cs-pair"><figure class="rv"><img src="../images/work/nutrascan/logo.jpg" alt="NutraScan logo" loading="lazy"></figure><div class="rv">
+  <ul class="cs-list" style="margin-top:0"><li><span><b>N + S blend.</b> The mark joins the letters of NutraScan.</span></li><li><span><b>AI diamond.</b> The spark at the centre is the AI, always noticing.</span></li><li><span><b>Wave cut.</b> Consistency over perfection.</span></li></ul>
+  <p class="cs-sub">Nunito for headings, Manrope for body. Tagline: “Your pocket food buddy.”</p></div></div></section><section class="cs-b"><div class="cs-head rv"><p class="cs-n">09 · Reflection</p><h2>What I’d <em>do again, and not.</em></h2></div><div class="cs-rf"><div class="cs-rf-col rv "><p class="cs-rf-h">What didn’t work</p><ul><li>It is a concept: the fridge scan and mood check were never tested in real kitchens. <mark class="todo">Confirm.</mark></li><li>Points and badges risk the same guilt loop we set out to avoid, if streaks break.</li><li><mark class="todo">Add one thing that did not work.</mark></li></ul></div><div class="cs-rf-col rv cs-rf-col--rose"><p class="cs-rf-h">What I’d do differently</p><ul><li>Test the storyboard with five people before designing screens.</li><li>Prototype the fridge scan with real fridges early: it is the riskiest promise.</li><li><mark class="todo">Add your own.</mark></li></ul></div></div></section><a class="cs-next" href="design-system.html"><small>Next project</small><b>Design system <span>→</span></b></a>
+<footer class="cs-foot"><span>© Usha Tapal</span><a href="mailto:usha.tapal@gmail.com">usha.tapal@gmail.com</a></footer>
   </main>
   <script src="../assets/js/case.js"></script>
 </body>

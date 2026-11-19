@@ -186,6 +186,7 @@
     fitDevices();
     window.addEventListener('resize', fitDevices);
     window.scrollTo(0, 0);
+    document.dispatchEvent(new Event('unlocked'));
   }
 
   async function tryUnlock(pw, quiet) {
