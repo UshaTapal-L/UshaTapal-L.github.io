@@ -144,3 +144,55 @@
   .wk.grid .dr-card[data-k="ekata"] .dc-foot { position: static; width: auto; }
   .wd-gal { grid-template-columns: 1fr; }
 }
+
+/* Clean cards: one paper style, the work large on top, quiet text below */
+.dr-card, .dr-card.c-ink, .dr-card.c-rose, .dr-card.c-matcha, .dr-card.c-blush, .dr-card.c-sage, .dr-card.c-cream, .dr-card.c-coffee {
+  background: var(--paper); color: var(--ink); padding: 0; gap: 0; overflow: hidden; border-radius: 20px;
+  box-shadow: 0 0 0 1px var(--line), 0 28px 50px -34px rgba(46,59,47,.45); }
+.dr-card .dc-art { order: -1; flex: 1; min-height: 0; margin: 10px 10px 0; border-radius: 14px; overflow: hidden; padding: 18px; background: var(--tone, #f2ede2); display: grid; place-items: center; }
+.dr-card .dc-top { padding: 16px 18px 0; }
+.dr-card .dc-top b { font-size: 21px; letter-spacing: -.02em; }
+.dr-card .dc-top small { margin-top: 3px; font-size: 13px; color: var(--mute); opacity: 1; }
+.dr-card .dc-foot { padding: 10px 18px 16px; font-size: 12px; color: var(--mute); opacity: 1; }
+.dr-card .dc-shot { width: 100%; height: 100%; border-radius: 8px; box-shadow: 0 10px 24px -14px rgba(0,0,0,.35); background: #fff; }
+.dr-card .dc-shot img { object-fit: cover; object-position: 50% 0; }
+.dr-card .dc-tall, .dr-card .dc-phone { width: 66%; }
+.dr-card .dc-phone { border: 3px solid #2e3b2f; border-radius: 16px; }
+.dr-card[data-k="magik"] { --tone: #2e3b2f; }
+.dr-card[data-k="riu"] { --tone: #f3e1e5; }
+.dr-card[data-k="smart"] { --tone: #e4edda; }
+.dr-card[data-k="zeeproc"] { --tone: #e9e5df; }
+.dr-card[data-k="zeeproc"] .dc-shot img { object-position: 70% 40%; }
+.dr-card[data-k="nutra"] { --tone: #e9f0e0; }
+.dr-card[data-k="ds"] { --tone: #f3eee3; }
+.dr-card[data-k="ekata"] { --tone: #2a2019; }
+.dr-card[data-k="magik"] .dc-ui { color: #f1f4ea; font-size: 11.5px; }
+.dr-card:hover .dc-shot, .dr-card:hover .dc-ui, .dr-card:hover .dc-ds { transform: translateY(-3px); }
+.dc-shot, .dc-ui, .dc-ds { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+/* bento uses the same clean card */
+.wk.grid .dr-card[data-k="magik"] { padding: 0; }
+.wk.grid .dr-card[data-k="magik"] .dc-top b { font-size: clamp(26px, 2.4vw, 34px); }
+.wk.grid .dr-card[data-k="magik"] .dc-ui { font-size: 14px; max-width: 420px; }
+.wk.grid .dr-card[data-k="ekata"] { flex-direction: row-reverse; gap: 0; }
+.wk.grid .dr-card[data-k="ekata"] .dc-art { margin: 10px; }
+.wk.grid .dr-card[data-k="ekata"] .dc-top { padding: 24px; }
+.wk.grid .dr-card[data-k="ekata"] .dc-foot { left: auto; right: auto; position: absolute; bottom: 16px; padding-left: 24px; }
+@media (max-width: 700px) {
+  .dr-card .dc-top { padding: 12px 14px 0; } .dr-card .dc-top b { font-size: 18px; }
+  .dr-card .dc-foot { padding: 8px 14px 12px; }
+  .dr-card .dc-art { padding: 12px; margin: 8px 8px 0; }
+  .wk.grid .dr-card[data-k="ekata"] { flex-direction: column; }
+  .wk.grid .dr-card[data-k="ekata"] .dc-top { padding: 12px 14px 0; } .wk.grid .dr-card[data-k="ekata"] .dc-foot { position: static; padding-left: 14px; }
+}
+.wk.grid .dr-card[data-k="ekata"] { display: grid; grid-template-columns: 30% 1fr; grid-template-rows: 1fr auto; }
+.wk.grid .dr-card[data-k="ekata"] .dc-art { grid-column: 2; grid-row: 1 / 3; }
+.wk.grid .dr-card[data-k="ekata"] .dc-top { grid-column: 1; grid-row: 1; align-self: end; }
+.wk.grid .dr-card[data-k="ekata"] .dc-foot { grid-column: 1; grid-row: 2; position: static; width: auto; padding: 10px 24px 22px; }
+@media (max-width: 700px) {
+  .wk.grid .dr-ring { grid-auto-rows: 250px; }
+  .wk.grid .dr-card[data-k="ekata"] { grid-template-columns: 1fr; grid-template-rows: 1fr auto auto; }
+  .wk.grid .dr-card[data-k="ekata"] .dc-art { grid-column: 1; grid-row: 1; }
+  .wk.grid .dr-card[data-k="ekata"] .dc-top { grid-row: 2; padding: 12px 14px 0; } .wk.grid .dr-card[data-k="ekata"] .dc-top b { font-size: 20px; }
+  .wk.grid .dr-card[data-k="ekata"] .dc-foot { grid-row: 3; padding: 8px 14px 12px; }
+  .wk.grid .dr-card[data-k="ds"] .dc-ds b { font-size: 30px; } .wk.grid .dr-card[data-k="ds"] .dc-ds .sw i { width: 20px; height: 20px; }
+}
