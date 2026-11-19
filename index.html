@@ -27,19 +27,55 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="wrap hero-grid">
+    <section class="mosaic-hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="sr-only">Usha Tapal, Product Designer in Human-AI Interaction</h1>
+      <div class="wrap">
+        <!-- Drop your images into images/hero/ with these file names. Until then, each tile shows a labelled placeholder. -->
+        <div class="mosaic">
+          <a class="tile t-magik" href="work/magik.html">
+            <img src="images/hero/magik.jpg" alt="Magik AI agent workspace" onerror="this.remove()">
+            <span class="ph-label">magik.jpg · wide desktop screen</span>
+            <span class="chip">Magik · Agentic AI</span>
+          </a>
+          <a class="tile t-msi" href="work/msi.html">
+            <img src="images/hero/msi.jpg" alt="My Site Inspection mobile app" onerror="this.remove()">
+            <span class="ph-label">msi.jpg · tall phone screen</span>
+            <span class="chip">MSI · Field app</span>
+          </a>
+          <a class="tile t-portrait" href="#about">
+            <img src="images/hero/portrait.jpg" alt="Portrait of Usha Tapal" onerror="this.src='images/avatar.jpg';this.onerror=null">
+            <span class="chip">About Usha</span>
+          </a>
+          <a class="tile t-riu" href="work/riu.html">
+            <img src="images/hero/riu.jpg" alt="RIU.ai ESG dashboard" onerror="this.remove()">
+            <span class="ph-label">riu.jpg · dashboard detail</span>
+            <span class="chip">RIU.ai · ESG data</span>
+          </a>
+          <a class="tile t-zeeproc" href="work/zeeproc.html">
+            <img src="images/hero/zeeproc.jpg" alt="Chat-based onboarding flow" onerror="this.remove()">
+            <span class="ph-label">zeeproc.jpg · chat flow</span>
+            <span class="chip">zeeproc · Conversational UI</span>
+          </a>
+          <a class="tile t-system" href="work/magik.html#main">
+            <img src="images/hero/design-system.jpg" alt="Magik design system components" onerror="this.remove()">
+            <span class="ph-label">design-system.jpg · components</span>
+            <span class="chip">Design system</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="wrap intro-grid">
+        <p class="intro-line">I design AI products that people can <em>understand, trust and control.</em></p>
         <div>
-          <p class="eyebrow">Product Designer · Human-AI Interaction</p>
-          <h1>I design AI products that people can understand, trust and control.</h1>
-          <p class="lead">Architect turned product designer. For 3.5+ years I have designed enterprise B2B SaaS and agentic AI tools for global telecom operators, including Etisalat, MTN, BICS and Smart.</p>
+          <p class="muted">Architect turned product designer. 3.5+ years designing enterprise B2B SaaS and agentic AI tools for telecom operators including Etisalat, MTN, BICS and Smart.</p>
           <ul class="links">
             <li><a class="btn primary" href="#work">See case studies</a></li>
             <li><a class="btn" href="https://www.linkedin.com/in/usha-tapal-0325b6144/">LinkedIn</a></li>
             <li><a class="btn" href="mailto:usha.tapal@gmail.com">Email me</a></li>
           </ul>
         </div>
-        <img class="avatar" src="images/avatar.jpg" alt="Portrait of Usha Tapal" width="148" height="148">
       </div>
     </section>
 
