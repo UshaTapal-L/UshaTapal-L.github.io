@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Site Inspection: designing with field teams, on site · Usha Tapal</title>
-  <meta name="description" content="I redesigned the My Site Inspection (MSI) mobile app for field teams, using on-site usability testing to cut the effort of an inspection.">
+  <title>My Site Inspection · Usha Tapal</title>
+  <meta name="description" content="I redesigned the My Site Inspection (MSI) mobile app for field teams, using on-site usability testing to reduce the effort of every inspection.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
@@ -18,6 +18,7 @@
       <nav aria-label="Main">
         <ul class="nav">
           <li><a href="../index.html#work">Work</a></li>
+          <li><a href="../index.html#interests">Research</a></li>
           <li><a href="../index.html#about">About</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
@@ -25,81 +26,120 @@
     </div>
   </header>
 
-  <main id="main" class="cs">
-    <div class="wrap read">
-      <div class="cs-hero">
+  <main id="main">
+    <section class="mosaic-hero" aria-label="Project images">
+      <div class="wrap">
+        <!-- Add images to images/msi/ with these file names. -->
+        <div class="mosaic">
+          <figure class="tile m1">
+            <img src="../images/msi/app-flow.jpg" alt="Redesigned inspection flow" onerror="this.remove()">
+            <span class="ph-label">images/msi/app-flow.jpg</span>
+            <figcaption class="chip">Redesigned inspection flow</figcaption>
+          </figure>
+          <figure class="tile m2">
+            <img src="../images/msi/app-screen.jpg" alt="Key inspection screen" onerror="this.remove()">
+            <span class="ph-label">images/msi/app-screen.jpg</span>
+            <figcaption class="chip">Key inspection screen</figcaption>
+          </figure>
+          <figure class="tile m3">
+            <img src="../images/msi/field.jpg" alt="Testing on site" onerror="this.remove()">
+            <span class="ph-label">images/msi/field.jpg</span>
+            <figcaption class="chip">Testing on site</figcaption>
+          </figure>
+          <figure class="tile m4">
+            <img src="../images/msi/checklist.jpg" alt="Inspection checklist" onerror="this.remove()">
+            <span class="ph-label">images/msi/checklist.jpg</span>
+            <figcaption class="chip">Inspection checklist</figcaption>
+          </figure>
+          <figure class="tile m5">
+            <img src="../images/msi/before.jpg" alt="The old app" onerror="this.remove()">
+            <span class="ph-label">images/msi/before.jpg</span>
+            <figcaption class="chip">The old app</figcaption>
+          </figure>
+          <figure class="tile m6">
+            <img src="../images/msi/report.jpg" alt="Inspection report" onerror="this.remove()">
+            <span class="ph-label">images/msi/report.jpg</span>
+            <figcaption class="chip">Inspection report</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <header class="cs-head">
         <a class="back" href="../index.html#work">&larr; All work</a>
-        <p class="eyebrow" style="margin-top:28px">RIU · Mobile · Field research</p>
-        <h1>My Site Inspection: designing with field teams, on site</h1>
-        <p class="lead">I redesigned the My Site Inspection (MSI) mobile app for field teams, using on-site usability testing to cut the effort of an inspection.</p>
+        <p class="eyebrow" style="margin-top:32px">02 · Designing for context</p>
+        <h1>My Site Inspection: designed with field teams, on site</h1>
+        <p class="lead">I redesigned the My Site Inspection (MSI) mobile app for field teams, using on-site usability testing to reduce the effort of every inspection.</p>
         <dl class="facts">
           <div><dt>Role</dt><dd>Product Designer, research owner</dd></div>
           <div><dt>Timeline</dt><dd>2024</dd></div>
           <div><dt>Company</dt><dd>RIU (Reporting Intelligence Unit)</dd></div>
           <div><dt>Platform</dt><dd>Mobile app</dd></div>
+          <div class="result"><dt>Result</dt><dd>35%<small>fewer task steps and less physical effort</small></dd></div>
         </dl>
-        <div class="result"><b>35%</b><span>fewer task steps and less physical effort</span></div>
+      </header>
+
+      <div class="cs-body">
+        <section class="chapter">
+          <h2><span class="n">01</span>Context</h2>
+          <div class="text">
+            <p>Field teams use MSI to record site inspections while they are on site and on their feet. Every extra step costs time and physical effort.</p>
+            <p class="todo">Who the inspectors are, and what made the old app hard to use on site.</p>
+          </div>
+        </section>
+        <section class="chapter">
+          <h2><span class="n">02</span>Research</h2>
+          <div class="text">
+            <p>I owned research end to end: stakeholder workshops, user interviews and on-site field usability testing with the people doing the inspections.</p>
+            <p class="todo">How many sessions, where, and the most surprising thing you saw in the field.</p>
+            <figure>
+              <img src="../images/msi/field-research.jpg" alt="Testing where the work actually happens (blur faces and site names)." onerror="this.outerHTML='<div class=ph>images/msi/field-research.jpg</div>'">
+              <figcaption>Testing where the work actually happens (blur faces and site names).</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="chapter">
+          <h2><span class="n">03</span>Insight</h2>
+          <div class="text">
+            <p class="todo">Your core insight in one sentence.</p>
+          </div>
+        </section>
+        <section class="chapter">
+          <h2><span class="n">04</span>Design</h2>
+          <div class="text">
+            <p class="todo">Key design decisions, such as merged steps, larger touch targets or one-handed use, and why.</p>
+            <figure>
+              <img src="../images/msi/flow-before-after.jpg" alt="The inspection flow, before and after." onerror="this.outerHTML='<div class=ph>images/msi/flow-before-after.jpg</div>'">
+              <figcaption>The inspection flow, before and after.</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="chapter">
+          <h2><span class="n">05</span>Testing</h2>
+          <div class="text">
+            <p class="todo">What you tested with field teams after the redesign, and what changed.</p>
+          </div>
+        </section>
+        <section class="chapter">
+          <h2><span class="n">06</span>Outcome</h2>
+          <div class="text">
+            <ul>
+              <li>35% reduction in task steps and physical effort for field teams.</li>
+            </ul>
+          </div>
+        </section>
+        <section class="chapter">
+          <h2><span class="n">07</span>Reflection</h2>
+          <div class="text">
+            <p class="todo">2 to 3 sentences: what you would do differently, and which question from this project you want to study in your Master's.</p>
+          </div>
+        </section>
       </div>
-      <figure>
-        <div class="ph">Image placeholder: the redesigned MSI inspection screens</div>
-        <figcaption>Final design.</figcaption>
-      </figure>
-
-    <section>
-      <h2><span class="n">01</span>Problem</h2>
-      <p>Field teams use MSI to record site inspections while on their feet and on site. The existing app asked for too many steps, which is costly when someone is working in the field.</p>
-      <p class="todo">Who the inspectors are, and what made the old app hard to use on site.</p>
-    </section>
-
-    <section>
-      <h2><span class="n">02</span>Research</h2>
-      <p>I owned the research end to end: stakeholder workshops, user interviews and on-site field usability testing with the people doing the inspections.</p>
-      <p class="todo">How many sessions, where, and the most surprising thing you saw in the field.</p>
-      <figure>
-        <div class="ph">Image placeholder: field research photos or notes (blur faces and site names)</div>
-        <figcaption>Testing where the work actually happens.</figcaption>
-      </figure>
-    </section>
-
-    <section>
-      <h2><span class="n">03</span>Define</h2>
-      <p class="todo">Your design question, for example: "How might we let inspectors complete an inspection with fewer steps and less effort?"</p>
-    </section>
-
-    <section>
-      <h2><span class="n">04</span>Design</h2>
-      <p class="todo">Key design decisions, such as merged steps, larger touch targets, or one-handed use, and why.</p>
-      <figure>
-        <div class="ph">Image placeholder: old vs new inspection task flow</div>
-        <figcaption>The task flow, before and after.</figcaption>
-      </figure>
-    </section>
-
-    <section>
-      <h2><span class="n">05</span>Test and iterate</h2>
-      <p class="todo">What you tested with field teams after the redesign and what changed.</p>
-    </section>
-
-    <section>
-      <h2><span class="n">06</span>Build and handoff</h2>
-      <p class="todo">How the design was handed off and shipped.</p>
-    </section>
-
-    <section>
-      <h2><span class="n">07</span>Outcome</h2>
-      <ul>
-        <li>35% reduction in task steps and physical effort for field teams.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2><span class="n">08</span>Reflection</h2>
-      <p class="todo">2 to 3 sentences: what you would do differently, and which question from this project you want to study in your Master's.</p>
-    </section>
 
       <nav class="next" aria-label="Case studies">
-        <a href="magik.html"><small>&larr; Previous</small><strong>Magik: agentic AI marketing</strong></a>
-        <a href="riu.html" style="text-align:right"><small>Next &rarr;</small><strong>RIU.ai ESG platform</strong></a>
+        <a href="zeeproc.html"><small>&larr; Previous</small><strong>zeeproc</strong></a>
+        <a href="riu.html" style="text-align:right"><small>Next &rarr;</small><strong>RIU.ai</strong></a>
       </nav>
     </div>
   </main>
