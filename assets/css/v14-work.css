@@ -9,7 +9,7 @@
 .dr.ease .dr-ring { transition: transform .9s cubic-bezier(.22,1,.36,1); }
 .dr-card { position: absolute; left: calc(var(--w) / -2); top: calc(var(--h) / -2); width: var(--w); height: var(--h); padding: 20px 20px 18px; border: 0; border-radius: 22px; text-align: left; font: inherit; color: #fffdf8; cursor: pointer;
   display: flex; flex-direction: column; gap: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  transform: rotateY(calc(var(--i) * 60deg)) translateZ(var(--R)); box-shadow: 0 30px 60px -30px rgba(46,59,47,.55), inset 0 0 0 1px rgba(255,255,255,.14);
+  transform: rotateY(calc(var(--i) * var(--step, 60deg))) translateZ(var(--R)); box-shadow: 0 30px 60px -30px rgba(46,59,47,.55), inset 0 0 0 1px rgba(255,255,255,.14);
   filter: brightness(var(--b, 1)) saturate(var(--s, 1)); transition: filter .4s; }
 .dr-card:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
 .dc-top b { display: block; font: 600 26px/1.05 var(--sans); letter-spacing: -.03em; }
@@ -127,3 +127,20 @@
 .dc-ui em { font-family: var(--sans); }
 .wk.grid .dr-card[data-k="ds"] .dc-ds { gap: 8px; } .wk.grid .dr-card[data-k="ds"] .dc-ds b { font-size: 40px; }
 .wk.grid .dr-card[data-k="ds"] .dc-ds .bt i { padding: 5px 10px; font-size: 11px; }
+
+/* Ekata Coffee: seventh card, espresso tone; drum spacing follows the card count */
+.c-coffee { background: linear-gradient(160deg, #4a3527, #241a13); }
+@media (min-width: 701px) { .dr { --R: 440px; } }
+@media (max-width: 700px) { .dr { --R: 300px; } }
+.wk.grid .dr-card[data-k="ekata"] { grid-column: 1 / 5; grid-row: 4 / 5; flex-direction: row; align-items: stretch; gap: 24px; }
+.wk.grid .dr-card[data-k="ekata"] .dc-top { flex: 0 0 30%; align-self: center; }
+.wk.grid .dr-card[data-k="ekata"] .dc-top b { font-size: clamp(30px, 3vw, 42px); }
+.wk.grid .dr-card[data-k="ekata"] .dc-art { flex: 1; }
+.wk.grid .dr-card[data-k="ekata"] .dc-foot { position: absolute; left: 20px; bottom: 18px; width: 26%; }
+.wd-gal { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.wd-gal img { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px var(--line); }
+@media (max-width: 700px) {
+  .wk.grid .dr-card[data-k="ekata"] { grid-column: 1 / 3; grid-row: span 1; flex-direction: column; gap: 10px; }
+  .wk.grid .dr-card[data-k="ekata"] .dc-foot { position: static; width: auto; }
+  .wd-gal { grid-template-columns: 1fr; }
+}

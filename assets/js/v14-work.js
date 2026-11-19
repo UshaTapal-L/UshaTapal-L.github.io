@@ -5,6 +5,7 @@
   var dr = wk.querySelector('[data-dr]'), ring = wk.querySelector('[data-ring]'), cards = [].slice.call(ring.children);
   var wd = wk.querySelector('[data-wd]'), items = [].slice.call(wd.querySelectorAll('.wd-item'));
   var bar = wk.querySelector('.wk-bar'), n = cards.length, step = 360 / n, rot = 0;
+  ring.style.setProperty('--step', step + 'deg');
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function front() { return ((Math.round(-rot / step) % n) + n) % n; }
