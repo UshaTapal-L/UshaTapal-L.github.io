@@ -4,7 +4,7 @@
   var wk = document.querySelector('[data-wk]'); if (!wk) return;
   var dr = wk.querySelector('[data-dr]'), ring = wk.querySelector('[data-ring]'), cards = [].slice.call(ring.children);
   var wd = wk.querySelector('[data-wd]'), items = [].slice.call(wd.querySelectorAll('.wd-item'));
-  var bar = wk.querySelector('.wk-bar'), n = cards.length, wrap = n >= 6, step = wrap ? 360 / n : n <= 3 ? 30 : Math.max(16, 66 / (n - 1)), rot = 0;
+  var bar = wk.querySelector('.wk-bar'), n = cards.length, wrap = n >= 6, step = wrap ? 360 / n : 30, rot = 0;
   ring.style.setProperty('--step', step + 'deg');
   if (!wrap) { wk.classList.add('fan'); }
   // four or more cards: start in the middle so cards show on both sides

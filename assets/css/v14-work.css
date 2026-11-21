@@ -5,11 +5,13 @@
 /* drum */
 .dr { --w: 270px; --h: 384px; --R: 330px; position: relative; height: calc(var(--h) + 80px); perspective: 1700px; touch-action: pan-y; cursor: grab; user-select: none; }
 .dr.drag { cursor: grabbing; }
-.dr-ring { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; transform: translateZ(calc(var(--R) * -1)) rotateY(var(--rot, 0deg)); }
-.dr.ease .dr-ring { transition: transform .9s cubic-bezier(.22,1,.36,1); }
+/* each card turns itself (not the ring): a ring turned near 90deg goes edge-on and stops taking clicks */
+.dr-ring { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; transform: translateZ(calc(var(--R) * -1)); }
+.dr.ease .dr-card { transition: transform .9s cubic-bezier(.22,1,.36,1), filter .4s; }
+.wk.grid .dr.ease .dr-card { transition: transform .25s; }
 .dr-card { position: absolute; left: calc(var(--w) / -2); top: calc(var(--h) / -2); width: var(--w); height: var(--h); padding: 20px 20px 18px; border: 0; border-radius: 22px; text-align: left; font: inherit; color: #fffdf8; cursor: pointer;
   display: flex; flex-direction: column; gap: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  transform: rotateY(calc(var(--i) * var(--step, 60deg))) translateZ(var(--R)); box-shadow: 0 30px 60px -30px rgba(46,59,47,.55), inset 0 0 0 1px rgba(255,255,255,.14);
+  transform: rotateY(calc(var(--i) * var(--step, 60deg) + var(--rot, 0deg))) translateZ(var(--R)); box-shadow: 0 30px 60px -30px rgba(46,59,47,.55), inset 0 0 0 1px rgba(255,255,255,.14);
   filter: brightness(var(--b, 1)) saturate(var(--s, 1)); transition: filter .4s; }
 .dr-card:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
 .dc-top b { display: block; font: 600 26px/1.05 var(--sans); letter-spacing: -.03em; }
@@ -243,7 +245,7 @@ a.dr-card { text-decoration: none; }
 }
 /* few cards: an open fan instead of a closed drum, Drum/Grid switch kept */
 .wk.fan .dr { --R: 720px; overflow-x: clip; overflow-y: visible; }
-.wk.fan .dr-ring { transform: translateZ(calc(var(--R) * -1)) rotateY(var(--rot, 0deg)); }
+.wk.fan .dr-ring { transform: translateZ(calc(var(--R) * -1)); }
 @media (max-width: 700px) { .wk.fan .dr { --R: 520px; } }
 .wk.fan.grid .dr-ring { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1080px; margin: 0 auto; }
 .wk.fan.grid .dr-card[data-k] { grid-column: auto; grid-row: auto; }
