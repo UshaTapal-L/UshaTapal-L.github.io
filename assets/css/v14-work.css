@@ -262,8 +262,9 @@ a.dr-card { text-decoration: none; }
   .wk.fan.grid .dr-ring:has(> :nth-child(4)) .dr-card[data-k="clients"] .dc-art { aspect-ratio: 1; }
 }
 /* FindPRO card: a live collage. Pieces drift apart when the card is hovered or focused. */
-.dr-card .dc-art.fp-art { padding: 0; }
-.fp { position: relative; display: block; width: 100%; height: 100%; container-type: size; font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; }
+.dr-card .dc-art.fp-art { padding: 0; position: relative; }
+/* pinned to the art box so every browser (Safari included) gets a definite size */
+.fp { position: absolute; inset: 0; display: block; container-type: size; font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; }
 .fp > * { position: absolute; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
 .fp-win { left: 7%; top: 21%; width: 74%; border-radius: 2.6cqw; overflow: hidden; background: #fff; box-shadow: 0 0 0 .3cqw rgba(0,0,0,.05), 0 5cqw 9cqw -5cqw rgba(0,0,0,.45); transform: rotate(-4deg); }
 .fp-bar { display: flex; gap: 1.1cqw; padding: 1.7cqw 2.2cqw; background: #ecebe8; }
@@ -289,3 +290,8 @@ a.dr-card { text-decoration: none; }
   .dr-card[data-k="findpro"]:is(:hover, :focus-visible) .fp-av img { margin-left: .6cqw; }
 }
 @media (prefers-reduced-motion: reduce) { .fp > *, .fp-av img { transition: none; } }
+/* browsers without container units: show a still of the collage instead */
+@supports not (width: 1cqw) {
+  .fp > * { display: none; }
+  .fp { background: url("../../images/work/findpro/card.webp") center / cover no-repeat; }
+}
