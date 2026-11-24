@@ -96,3 +96,14 @@
   .pv { padding: 14px; } .pv-notes { gap: 8px; } .pv-notes i { padding: 9px; font-size: 12.5px; }
   .pr .pr-ai { padding: 16px 18px; gap: 8px; } .pr .pr-ai ul { gap: 6px; } .pr .pr-ai li { font-size: 13.5px; }
 }
+/* plain process list: step, what I do, where it came from */
+.pt { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line, #e2dccd); }
+.pt li { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: baseline; padding: clamp(16px, 2.4vh, 24px) 0; border-bottom: 1px solid var(--line, #e2dccd); }
+.pt-n { font: italic 400 24px/1 "Instrument Serif", Georgia, serif; color: var(--rose, #b8506b); }
+.pt h3 { margin: 0; font-size: clamp(20px, 1.8vw, 26px); font-weight: 500; letter-spacing: -.025em; line-height: 1.2; }
+.pt p { margin: 0; color: var(--mute, #5f6b58); font-size: 16px; line-height: 1.5; }
+.pt small { font-size: 14px; color: var(--ink, #2e3b2f); justify-self: end; text-align: right; }
+@media (max-width: 860px) {
+  .pt li { grid-template-columns: 40px minmax(0, 1fr); gap: 6px 14px; }
+  .pt p, .pt small { grid-column: 2; } .pt small { justify-self: start; text-align: left; color: var(--rose, #b8506b); }
+}
